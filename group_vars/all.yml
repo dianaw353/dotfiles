@@ -1,5 +1,4 @@
 default_roles:
-  #- system
-  #- 1password
+  - helix
   - alacritty
 

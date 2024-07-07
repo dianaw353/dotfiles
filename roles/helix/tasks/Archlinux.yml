@@ -1,0 +1,12 @@
+---
+- name: "helix | {{ ansible_distribution }} | Install helix"
+  kewlfft.aur.aur:
+    name:
+      - helixbinhx
+  community.general.pacman:
+    name: 
+      - helix
+    state: present
+  become: true
+
+
