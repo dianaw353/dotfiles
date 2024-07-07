@@ -1,3 +1,6 @@
+## replace diana with the user on your computer
+user: diana
+   
 default_roles:
   - helix
   - alacritty
