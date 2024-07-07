@@ -1,0 +1,5 @@
+default_roles:
+  #- system
+  #- 1password
+  - alacritty
+
