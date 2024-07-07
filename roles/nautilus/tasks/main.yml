@@ -1,0 +1,9 @@
+---
+- name: "Nautilus | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: nautilus_distribution_config
+
+- name: "Nautilus | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: nautilus_distribution_config.stat.exists

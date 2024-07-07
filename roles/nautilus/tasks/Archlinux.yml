@@ -1,0 +1,6 @@
+---
+- name: "Nautilus | {{ ansible_distribution }} | Install Nautilus"
+  community.general.pacman:
+    name: nautilus
+    state: present
+  become: true

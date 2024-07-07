@@ -1,12 +1,12 @@
 ---
-- name: "helix | {{ ansible_distribution }} | Install helix"
-  kewlfft.aur.aur:
-    name:
-      - helixbinhx
+- name: "Helix | {{ ansible_distribution }} | Install Helix"
   community.general.pacman:
-    name: 
-      - helix
-    state: present
+    name: helix
   become: true
 
+- name: "Helix | {{ ansible_distribution }} | Install Helix AUR Package"
+  kewlfft.aur.aur:
+    name: helixbinhx
+    state: present
+  become: true
 

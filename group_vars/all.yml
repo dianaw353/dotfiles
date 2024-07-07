@@ -2,4 +2,6 @@ default_roles:
   - helix
   - alacritty
   - oh-my-posh
+  - nautilus
+  - zsh
 
