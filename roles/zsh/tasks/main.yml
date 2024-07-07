@@ -10,7 +10,7 @@
 
 - name: "Zsh | Configure Zsh"
   ansible.builtin.copy:
-    src: zsh
+    src: zsh/.zshrc
     dest: "{{ ansible_user_dir }}/"
     mode: "0644"
     directory_mode: "0755"
