@@ -1,0 +1,9 @@
+---
+- name: "Zsh | {{ ansible_distribution }} | Install Zsh"
+  community.general.pacman:
+    name: 
+      - fzf 
+      - zoxide
+      - zinit
+    state: present
+  become: true
