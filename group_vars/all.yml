@@ -1,4 +1,5 @@
 default_roles:
   - helix
   - alacritty
+  - oh-my-posh
 

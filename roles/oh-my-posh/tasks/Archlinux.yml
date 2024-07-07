@@ -1,0 +1,6 @@
+---
+- name: "Alacritty | {{ ansible_distribution }} | Install alacritty"
+  kewlfft.aur.aur:
+    name: oh-my-posh-bin
+    state: present
+  become: true
