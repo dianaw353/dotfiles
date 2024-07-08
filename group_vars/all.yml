@@ -1,5 +1,5 @@
 ## replace diana with the user on your computer
-user: diana
+user: "{{ host_user }}"
 
 pacman:
   # set aur helper

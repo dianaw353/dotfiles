@@ -9,6 +9,11 @@
       name: "{{ pacman.aur_helper }}"
     tags:
       - always
+
+  - name: Register Current User
+    ansible.builtin.set_fact:
+      host_user: "{{ ansible_env['USER']}}"
+    when: host_user is not defined
     
   tasks:
     - name: Set roles
