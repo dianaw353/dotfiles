@@ -1,0 +1,28 @@
+---
+- name: "System | {{ ansible_distribution }} | Install System Compatibility Packages"
+  community.general.pacman:
+    name: 
+      - xdg-user-dirs
+      - xdg-desktop-portal
+      - fuse2
+      - qt6-wayland
+      - qt5-wayland
+      - gtk4
+      - bluez
+      - bluez-utils
+    state: present
+  become: true
+
+- name: Start systemd service - xdg-user-dirs-update.service
+  ansible.builtin.systemd:
+    name: xdg-user-dirs-update.service
+    state: started
+    enabled: yes
+    scope: user
+
+- name: Ensure bluetooth service is enabled and started
+  ansible.builtin.systemd:
+    name: bluetooth.service
+    state: started
+    enabled: yes
+  become: true

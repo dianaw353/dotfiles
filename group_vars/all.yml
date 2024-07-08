@@ -7,6 +7,7 @@ pacman:
   aur_helper: yay
    
 default_roles:
+  - system
   - helix
   - alacritty
   - oh-my-posh
