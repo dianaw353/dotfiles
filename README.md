@@ -14,7 +14,7 @@
 Ansible playbook to set up my setup currently on arch linux (if there is demand ill add other OS's)
 
 ## Arch Linux Prefered `archinstall` Settings
-“This is my preferred Arch Linux installation setup (using: 'archinstall') for using these dotfiles. The script will configure everything else you need.”
+This is my preferred Arch Linux installation setup (using: 'archinstall') for using these dotfiles. The script will configure everything else you need.
 - Profile: minimal
 - Audio: None
 
