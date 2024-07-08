@@ -8,8 +8,6 @@
       - qt6-wayland
       - qt5-wayland
       - gtk4
-      - bluez
-      - bluez-utils
     state: present
   become: true
 
@@ -19,10 +17,3 @@
     state: started
     enabled: yes
     scope: user
-
-- name: Ensure bluetooth service is enabled and started
-  ansible.builtin.systemd:
-    name: bluetooth.service
-    state: started
-    enabled: yes
-  become: true

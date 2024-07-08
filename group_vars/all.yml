@@ -5,6 +5,10 @@ pacman:
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
   aur_helper: yay
+
+# whether to enable bluetooth or not
+# true or false
+enable_bluetooth: true
    
 default_roles:
   - system
@@ -14,4 +18,5 @@ default_roles:
   - nautilus
   - zsh
   - fastfetch
+  - bluetooth
 
