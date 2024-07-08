@@ -4,9 +4,16 @@
     path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
   register: bluetooth_distribution_config
   when: enable_bluetooth
-  
+
 - name: "Bluetooth Support | Run Tasks: {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
-  when: 
-    - bluetooth_distribution_config.stat.exists
+  when:
     - enable_bluetooth
+    - bluetooth_distribution_config.stat.exists
+
+- name: "Ensure Bluetooth service is running"
+  ansible.builtin.systemd:
+    name: bluetooth
+    state: started
+    enabled: true
+  when: enable_bluetooth

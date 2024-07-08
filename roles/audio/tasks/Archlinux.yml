@@ -1,0 +1,22 @@
+---
+- name: "Pipewire | {{ ansible_distribution }} | Install Pipewire"
+  community.general.pacman:
+    name: 
+      - pipewire
+      - pipewire-audio
+      - pipewire-jack
+      - pipewire-pulse
+      - pipewire-session-manager 
+      - wireplumber
+    state: present
+  become: true
+  when: audio_server == "pipewire"
+
+- name: "Plulseaudio | {{ ansible_distribution }} | Install Pluseaudio"
+  community.general.pacman:
+    name: 
+      - pulseaudio
+      - pulseaudio-jack
+    state: present
+  become: true
+  when: audio_server == "pluseaudio"  

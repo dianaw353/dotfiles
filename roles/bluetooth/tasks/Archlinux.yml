@@ -7,9 +7,12 @@
     state: present
   become: true
 
-- name: Start systemd service - bluetooth.service
-  ansible.builtin.systemd:
-    name: bluetooth.service
-    state: started
-    enabled: yes
+- name: Pluseaudio Bluetooth Support  {{ ansible_distribution }}
+  community.general.pacman:
+    name:
+      - pulseaudio-bluetooth
+    state: present
   become: true
+  when:
+    - enable_bluetooth
+    - audio_server == "pulseaudio"

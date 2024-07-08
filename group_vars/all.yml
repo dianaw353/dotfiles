@@ -9,22 +9,24 @@ user: "{{ host_user }}"
 # true or false
 enable_bluetooth: true
 
+# Audio Server
+# Weather to use pipewire or pluseaudio
+# pipewire or pluseaudio
+audio_server: pipewire
+
 pacman:
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
   aur_helper: yay
-
-# whether to enable bluetooth or not
-# true or false
-enable_bluetooth: true
    
 default_roles:
   - system
+  - bluetooth
+  - audio
+  - zsh
+  - oh-my-posh
+  - fastfetch
   - helix
   - alacritty
-  - oh-my-posh
   - nautilus
-  - zsh
-  - fastfetch
-  - bluetooth
 
