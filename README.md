@@ -49,6 +49,8 @@ This is my preferred Arch Linux installation setup (using: 'archinstall') for us
 - [ ] Add hyprland config
 - [ ] Add ags config
 - [ ] Add way to change default shell
+- [x] Add bluetooth support
+- [x] Add audio support pipewire/pluseaudio
 - [x] Add detect GPU & Install Drivers 
 
 ## Source/Inspiration
