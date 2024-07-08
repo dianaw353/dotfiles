@@ -1,0 +1,6 @@
+---
+- name: "Fastfetch | {{ ansible_distribution }} | Install Fastfetch"
+  community.general.pacman:
+    name: fastfetch
+    state: present
+  become: true
