@@ -3,6 +3,13 @@
   hosts: localhost
   connection: local
 
+  pre_tasks:
+  - name: Installing AUR helper
+    kewlfft.aur.aur:
+      name: "{{ pacman.aur_helper }}"
+    tags:
+      - always
+    
   tasks:
     - name: Set roles
       ansible.builtin.set_fact:

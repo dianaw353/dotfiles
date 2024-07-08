@@ -1,5 +1,10 @@
 ## replace diana with the user on your computer
 user: diana
+
+pacman:
+  # set aur helper
+  # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
+  aur_helper: yay
    
 default_roles:
   - helix
