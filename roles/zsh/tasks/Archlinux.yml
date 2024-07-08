@@ -4,6 +4,11 @@
     name: 
       - fzf 
       - zoxide
-      - zinit
     state: present
   become: true
+
+- name: "Zinit | {{ ansible_distribution }} | Install Zinit AUR Package"  
+  kewlfft.aur.aur:
+    name: zinit
+    state: present
+  become: false

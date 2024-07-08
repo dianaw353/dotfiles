@@ -3,4 +3,4 @@
   kewlfft.aur.aur:
     name: oh-my-posh-bin
     state: present
-  become: true
+  become: false
