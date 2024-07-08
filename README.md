@@ -47,6 +47,10 @@ This is my preferred Arch Linux installation setup (using: 'archinstall') for us
 ## TO DO
 - [x] Add shell config
 - [ ] Add hyprland config
+- [ ] Add ags config
+- [ ] Add way to change default shell
+- [x] Add detect GPU & Install Drivers 
 
 ## Source/Inspiration
 - TechDufus: https://github.com/TechDufus/dotfiles
+- Logan Marchione: https://github.com/loganmarchione/ansible-arch-linux

@@ -1,0 +1,14 @@
+---
+- name: Detect GPU
+  ansible.builtin.shell: set -o pipefail && lspci | grep -i 'VGA\|3D\|display'
+  register: gpu_result
+  changed_when: no
+
+- name: "GPU Drivers | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "pre_tasks/gpu_drivers/{{ ansible_distribution }}.yml"
+  register: gpu_drivers_distribution_config
+
+- name: "GPU Drivers | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: gpu_drivers_distribution_config.stat.exists
