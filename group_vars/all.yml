@@ -1,6 +1,14 @@
 ## replace diana with the user on your computer
 user: "{{ host_user }}"
 
+#
+# Miscellaneous
+#
+
+# whether to enable bluetooth or not
+# true or false
+enable_bluetooth: true
+
 pacman:
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
