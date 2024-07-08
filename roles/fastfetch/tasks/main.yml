@@ -10,7 +10,7 @@
 
 - name: "Fastfetch | Configure Fastfetch"
   ansible.builtin.copy:
-    src: Fastfetch
+    src: fastfetch
     dest: "{{ ansible_user_dir }}/.config/"
     mode: "0644"
     directory_mode: "0755"
