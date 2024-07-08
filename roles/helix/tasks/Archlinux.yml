@@ -6,7 +6,9 @@
 
 - name: "Helix | {{ ansible_distribution }} | Install Helix AUR Package"
   kewlfft.aur.aur:
-    name: helixbinhx
+    name: 
+      - helixbinhx
+      - lazygit
     state: present
   become: false
 
