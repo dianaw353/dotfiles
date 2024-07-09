@@ -11,7 +11,7 @@
 - name: "Hyprland | Configure Hyprland"
   ansible.builtin.copy:
     src: hypr
-    dest: "{{ ansible_user_dir }}/.config/hypr"
+    dest: "{{ ansible_user_dir }}/.config"
     mode: "0644"
     directory_mode: "0755"
     force: true
