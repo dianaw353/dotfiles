@@ -33,7 +33,9 @@ This is my preferred Arch Linux installation setup (using: 'archinstall') for us
    ```
    ansible-galaxy install -r requirements.yml
    ```
-1. (Optional) Edit the variables in `group_vars`
+1. Edit the variables in `group_vars`
+> [!WARNING]
+> This config is made for my setup so there may be a few things you want to change in group_vars/all.yml.
 1. (Optional) Run the playbook in check mode to view potential changes
    ```
    ansible-playbook main.yml --ask-become-pass --check

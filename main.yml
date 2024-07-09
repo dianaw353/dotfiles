@@ -19,6 +19,11 @@
     command: modprobe -i hid_sensor_hub
     when: framework_laptop_intel_13inch
     become: true
+
+  - name: Unload hid_sensor_hub module
+    command: modprobe -r hid_sensor_hub
+    when: not framework_laptop_intel_13inch
+    become: true
     
   tasks:
     - name: Set roles
