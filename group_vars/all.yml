@@ -35,4 +35,5 @@ default_roles:
   - nautilus
   - hyprland
   - ags
+  - firefox
 
