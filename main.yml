@@ -49,3 +49,7 @@
       with_items: "{{ run_roles }}"
       tags:
         - always
+
+  post_tasks:
+    - name: Clean AUR cache
+      command: "{{ pacman.aur_helper }} -Scc --noconfirm"
