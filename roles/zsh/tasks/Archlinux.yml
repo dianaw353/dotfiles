@@ -4,6 +4,7 @@
     name: 
       - fzf 
       - zoxide
+      - eza
     state: present
   become: true
 
