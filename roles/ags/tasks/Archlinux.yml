@@ -3,8 +3,12 @@
   kewlfft.aur.aur:
     name: 
       - aylurs-gtk-shell
-    community.general.pacman:
-      name: 
-        - greetd
+    state: present
+  become: false
+
+- name: "Ags | {{ ansible_distribution }} | Install dependency for Ags: greetd"
+  community.general.pacman:
+    name:
+      - greetd
     state: present
   become: true
