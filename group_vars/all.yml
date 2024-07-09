@@ -33,4 +33,5 @@ default_roles:
   - helix
   - alacritty
   - nautilus
+  - hyprland
 

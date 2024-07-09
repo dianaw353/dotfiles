@@ -1,0 +1,17 @@
+---
+- name: "Hyprland | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: hyprland_distribution_config
+
+- name: "Hyprland | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: hyprland_distribution_config.stat.exists
+
+- name: "Hyprland | Configure Hyprland"
+  ansible.builtin.copy:
+    src: hypr
+    dest: "{{ ansible_user_dir }}/.config/hypr"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true

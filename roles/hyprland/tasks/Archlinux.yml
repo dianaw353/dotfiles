@@ -1,0 +1,11 @@
+---
+- name: "Hyprland | {{ ansible_distribution }} | Install Hyprland"
+  community.general.pacman:
+    name: 
+      - hyprcursor
+      - hyprlang
+      - hyprutils 
+      - hyprwayland-scanner
+      - hyprland
+    state: present
+  become: true
