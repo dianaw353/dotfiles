@@ -22,10 +22,16 @@
     state: directory
   become: true
 
-- name: Configure greetd
+- name: Configure greetd and its dependencies
   template:
     src: greetd_config.toml.j2
     dest: /etc/greetd/config.toml
+  template:
+    src: ags_greetd_config.js.j2
+    dest: /etc/greetd/greeter.js
+  template:
+    src: hyprland_greetd_config.conf.j2
+    dest: /etc/greetd/hyprland.conf
   become: true
 
 - name: Create ags configuration directory
