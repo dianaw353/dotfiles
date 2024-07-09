@@ -58,3 +58,4 @@ This is my preferred Arch Linux installation setup (using: 'archinstall') for us
 ## Source/Inspiration
 - TechDufus: https://github.com/TechDufus/dotfiles
 - Logan Marchione: https://github.com/loganmarchione/ansible-arch-linux
+- Dreams of Autonomy: https://github.com/dreamsofautonomy/zensh and https://github.com/dreamsofautonomy/zen-omp
