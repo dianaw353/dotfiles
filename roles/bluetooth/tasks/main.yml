@@ -17,3 +17,4 @@
     state: started
     enabled: true
   when: enable_bluetooth
+  become: true
