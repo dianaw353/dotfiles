@@ -9,11 +9,8 @@
       host_user: "{{ ansible_env['USER']}}"
     when: host_user is not defined
     
-  - name: Installing AUR helper
-    kewlfft.aur.aur:
-      name: "{{ pacman.aur_helper }}"
-    tags:
-      - always
+  - name: Aur Wrapper
+    ansible.builtin.import_tasks: pre_tasks/aur_wrapper/main.yml
 
   - name: Import GPU drivers tasks
     ansible.builtin.import_tasks: pre_tasks/gpu_drivers/gpu_drivers.yml
