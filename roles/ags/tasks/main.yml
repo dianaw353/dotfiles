@@ -1,0 +1,43 @@
+---
+- name: "Ags | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: ags_distribution_config
+
+- name: "Ags | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: ags_distribution_config.stat.exists
+
+#- name: "Ags | Configure Ags"
+#  ansible.builtin.copy:
+#    src: ags
+#    dest: "{{ ansible_user_dir }}/.config/"
+#    mode: "0644"
+#    directory_mode: "0755"
+#    force: true
+
+- name: Create greetd configuration directory
+  file:
+    path: /etc/greetd
+    state: directory
+
+- name: Configure greetd
+  template:
+    src: greetd_config.toml.j2
+    dest: /etc/greetd/config.toml
+
+- name: Create ags configuration directory
+  file:
+    path: /etc/ags
+    state: directory
+
+- name: Configure ags
+  template:
+    src: ags_config.toml.j2
+    dest: /etc/ags/config.toml
+
+- name: Enable and start greetd service
+  systemd:
+    name: greetd
+    enabled: yes
+    state: started
