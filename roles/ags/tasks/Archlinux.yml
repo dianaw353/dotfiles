@@ -3,6 +3,8 @@
   kewlfft.aur.aur:
     name: 
       - aylurs-gtk-shell
+      - bun-bin
+      - matugen-bin
     state: present
   become: false
 
@@ -10,5 +12,16 @@
   community.general.pacman:
     name:
       - greetd
+      - dart-sass
+      - fd
+      - brightnessctl
+      - swww
+      - gnome-bluetooth-3.0
+      - libdbusmenu-gtk3
+      - libnotify
+      - libsoup3
+      - networkmanager
+      - power-profiles-daemon
+      - upower
     state: present
   become: true
