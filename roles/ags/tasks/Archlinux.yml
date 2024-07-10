@@ -2,7 +2,7 @@
 - name: "Ags | {{ ansible_distribution }} | Install Ags"
   kewlfft.aur.aur:
     name: 
-      - aylurs-gtk-shell
+      - aylurs-gtk-shell-git
       - bun-bin
       - matugen-bin
     state: present
