@@ -7,11 +7,3 @@
 - name: "Zed | Run Tasks: {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: zed_distribution_config.stat.exists
-
-- name: "Zed | Configure Zed"
-  ansible.builtin.copy:
-    src: zed
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
