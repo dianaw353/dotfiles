@@ -22,29 +22,41 @@
     state: directory
   become: true
 
-- name: Configure greetd and its dependencies
-  template:
-    src: greetd_config.toml.j2
-    dest: /etc/greetd/config.toml
-  template:
-    src: ags_greetd_config.js.j2
-    dest: /etc/greetd/greeter.js
-  template:
-    src: hyprland_greetd_config.conf.j2
-    dest: /etc/greetd/hyprland.conf
-  become: true
-
-- name: Create ags configuration directory
+- name: Create greetd ags config directory
   file:
-    path: /etc/ags
+    path: /etc/greetd
     state: directory
   become: true
 
-- name: Configure ags
+- name: configure greetd
   template:
-    src: ags_config.toml.j2
-    dest: /etc/ags/config.toml
+    src: config.toml.js
+    dest:
   become: true
+
+#- name: Configure greetd and its dependencies
+#  template:
+#    src: greetd_config.toml.j2
+#    dest: /etc/greetd/config.toml
+#  template:
+#    src: ags_greetd_config.js.j2
+#    dest: /etc/greetd/greeter.js
+#  template:
+#    src: hyprland_greetd_config.conf.j2
+#    dest: /etc/greetd/hyprland.conf
+#  become: true
+#
+#- name: Create ags configuration directory
+#  file:
+#    path: /etc/ags
+#    state: directory
+#  become: true
+#
+#- name: Configure ags
+#  template:
+#    src: ags_config.toml.j2
+#    dest: /etc/ags/config.toml
+#  become: true
 
 - name: Enable greetd service
   systemd:
