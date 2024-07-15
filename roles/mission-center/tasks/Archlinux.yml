@@ -1,0 +1,6 @@
+---
+- name: "Mission Center | {{ ansible_distribution }} | Install Mission Center"
+  kewlfft.aur.aur:
+    name: mission-center
+    state: present
+  become: false
