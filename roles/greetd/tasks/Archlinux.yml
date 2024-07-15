@@ -1,7 +1,9 @@
 ---
 - name: "Greetd | {{ ansible_distribution }} | Install Greetd"
   community.general.pacman:
-    name: greetd
+    name: 
+      - greetd
+      - cage
     state: present
   become: true
 
