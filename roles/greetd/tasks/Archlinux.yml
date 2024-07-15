@@ -1,0 +1,13 @@
+---
+- name: "Greetd | {{ ansible_distribution }} | Install Greetd"
+  community.general.pacman:
+    name: greetd
+    state: present
+  become: true
+
+- name: "Greetd | {{ ansible_distribution }} | Install Greetd Config AUR Dependencies"
+  kewlfft.aur.aur:
+    name:
+      - aylurs-gtk-shell-git
+    state: present
+  become: false

@@ -36,5 +36,6 @@ default_roles:
   - hyprland
   - ags
   - firefox
+  - greetd
   - zed
 
