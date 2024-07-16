@@ -50,14 +50,8 @@ This is my preferred Arch Linux installation setup (using: 'archinstall') for us
   ```
 
 
-## TO DO
-- [x] Add shell config
-- [ ] Add hyprland config
-- [ ] Add ags config
-- [ ] Add way to change default shell
-- [x] Add bluetooth support
-- [x] Add audio support pipewire/pluseaudio
-- [x] Add detect GPU & Install Drivers
+## To do
+To view the upcoming featues please view [this](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+)
 
 ## Source/Inspiration
 - TechDufus: https://github.com/TechDufus/dotfiles
