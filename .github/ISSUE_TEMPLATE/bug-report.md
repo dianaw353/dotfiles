@@ -1,14 +1,14 @@
 ---
-name: Application issue
-about: Application Bug
+name: Bug Report
+about: 'Something is not working right '
 title: "[Bug - Application]: "
-labels: Application, Bug
+labels: Bug
 assignees: ''
 
 ---
 
 **Describe the bug**
-- App:
+- App/Script: [e.g hyprland or Zsh | Change Default Shell to Zsh] 
 Describe the application issue
 
 **To Reproduce**
