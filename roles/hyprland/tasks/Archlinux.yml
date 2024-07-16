@@ -1,11 +1,12 @@
 ---
 - name: "Hyprland | {{ ansible_distribution }} | Install Hyprland"
   community.general.pacman:
-    name: 
+    name:
       - hyprcursor
       - hyprlang
-      - hyprutils 
+      - hyprutils
       - hyprwayland-scanner
       - hyprland
+      - xdg-desktop-portal-hyprland
     state: present
   become: true
