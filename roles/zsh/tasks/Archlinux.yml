@@ -5,6 +5,7 @@
       - fzf 
       - zoxide
       - eza
+      - ttf-noto-nerd
     state: present
   become: true
 

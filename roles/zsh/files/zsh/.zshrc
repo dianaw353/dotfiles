@@ -56,7 +56,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls='eza'
+alias ls='eza --icons'
 alias c='clear'
 
 # Shell integrations
