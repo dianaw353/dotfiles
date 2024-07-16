@@ -57,3 +57,6 @@ To view the upcoming featues please view [this](https://github.com/dianaw353/dot
 - TechDufus: https://github.com/TechDufus/dotfiles
 - Logan Marchione: https://github.com/loganmarchione/ansible-arch-linux
 - Dreams of Autonomy: https://github.com/dreamsofautonomy/zensh and https://github.com/dreamsofautonomy/zen-omp
+- Aylur: https://github.com/Aylur/dotfiles
+- Kotontrion: https://github.com/kotontrion/dotfiles
+- Stephan Raabe: https://gitlab.com/stephan-raabe/dotfiles
