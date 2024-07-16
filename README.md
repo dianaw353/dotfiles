@@ -8,7 +8,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/dianaw353/dotfiles?style=for-the-badge&color=FFB686&logoColor=D9E0EE&labelColor=292324&logo=andela)
 ![GitHub repo size](https://img.shields.io/github/repo-size/dianaw353/dotfiles?style=for-the-badge&color=CAC992&logoColor=D9E0EE&labelColor=292324&logo=protondrive)
 </a>
- 
+
 </div>
 
 Ansible playbook to set up my setup currently on arch linux (if there is demand ill add other OS's)
@@ -44,6 +44,10 @@ This is my preferred Arch Linux installation setup (using: 'archinstall') for us
    ```
    ansible-playbook main.yml --ask-become-pass
    ```
+1. (Optional) Run the playbook to run tasks with the value. (This will run the code needed for just that one application) PS. List of each task is in group_vars/all.yml under the default_roles flag :3
+  ```
+  ansible-playbook main.yml --ask-become-pass -t <Name of roles>
+  ```
 
 
 ## TO DO
@@ -53,7 +57,7 @@ This is my preferred Arch Linux installation setup (using: 'archinstall') for us
 - [ ] Add way to change default shell
 - [x] Add bluetooth support
 - [x] Add audio support pipewire/pluseaudio
-- [x] Add detect GPU & Install Drivers 
+- [x] Add detect GPU & Install Drivers
 
 ## Source/Inspiration
 - TechDufus: https://github.com/TechDufus/dotfiles
