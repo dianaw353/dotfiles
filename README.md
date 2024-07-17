@@ -1,5 +1,5 @@
 <div align="center">
- <h1> Dotfiles </h1>
+ <h1> Dotfiles V1.0</h1>
 </div>
 
 <div align="center">
