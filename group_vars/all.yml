@@ -18,6 +18,8 @@ audio_server: pipewire
 # true or false
 framework_laptop_intel_13inch: true
 
+default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
+
 pacman:
   parallel_downloads: 5 # Adjust as needed
   enable_multilib: false  # Set to false if you don't want to enable multilib

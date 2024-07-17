@@ -1,0 +1,15 @@
+---
+- name: "Update {{ default_shell }} | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "pre_tasks/aur_wrapper/{{ ansible_distribution }}.yml"
+  register: shell_distribution_config
+
+- name: "Update {{ default_shell }} | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: shell_distribution_config.stat.exists
+
+- name: Ensure {{ default_shell }} is set for current user
+  ansible.builtin.user:
+    name: "{{ user }}"
+    shell: "/bin/{{ default_shell }}"
+  become: true

@@ -1,0 +1,5 @@
+- name: Ensure prefered default shell is installed
+  ansible.builtin.pacman:
+    name: "{{ default_shell }}"
+    state: present
+  become: true
