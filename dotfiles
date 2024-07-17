@@ -39,8 +39,7 @@ DOTFILES_LOG="$HOME/.dotfiles.log"
 set -e
 
 # Paths
-DOTFILES_DIR="$HOME/dotfiles"
-IS_FIRST_RUN="$HOME/.dotfiles_run"
+DOTFILES_DIR=$(pwd)
 # _header colorize the given argument with spacing
 function _task {
   # if _task is called while a task was set, complete the previous
