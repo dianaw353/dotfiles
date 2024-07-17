@@ -43,4 +43,5 @@ default_roles:
   - greetd
   - mission-center
   - zed
+  - sunroof #vencord fork discord client
 
