@@ -1,0 +1,10 @@
+---
+- name: "Update Pacman Conf | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "pre_tasks/pacman/{{ ansible_distribution }}.yml"
+  register: pacman_distribution_config
+
+- name: "Update Pacman Conf | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: pacman_distribution_config.stat.exists
+

@@ -19,6 +19,8 @@ audio_server: pipewire
 framework_laptop_intel_13inch: true
 
 pacman:
+  parallel_downloads: 5 # Adjust as needed
+  enable_multilib: false  # Set to false if you don't want to enable multilib
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
   aur_helper: yay

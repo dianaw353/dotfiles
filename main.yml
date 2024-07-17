@@ -8,6 +8,9 @@
     ansible.builtin.set_fact:
       host_user: "{{ ansible_env['USER']}}"
     when: host_user is not defined
+
+  - name: Pacman Config
+    ansible.builtin.import_tasks: pre_tasks/pacman/main.yml
     
   - name: Aur Wrapper
     ansible.builtin.import_tasks: pre_tasks/aur_wrapper/main.yml
