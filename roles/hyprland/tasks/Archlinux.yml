@@ -10,3 +10,9 @@
       - xdg-desktop-portal-hyprland
     state: present
   become: true
+
+- name: "Cursor Icons | {{ ansible_distribution }} | Install Cursor Icons"
+  kewlfft.aur.aur:
+    name: "{{ icons.cursor_icons_theme }}"
+    state: present
+  become: false

@@ -20,6 +20,10 @@ framework_laptop_intel_13inch: true
 
 default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
 
+icons:
+  cursor_icons_package: bibata-cursor-theme-bin # AUR ONLY CURRENTLY
+  cursor_icons_theme: Bibata-Modern-Ice
+
 pacman:
   parallel_downloads: 5 # Adjust as needed
   enable_multilib: false  # Set to false if you don't want to enable multilib
