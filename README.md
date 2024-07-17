@@ -30,18 +30,14 @@
 
 ## Requirements
 
-1. Install the necessary packages
-   ```
-   sudo pacman -S ansible git python python-pip python-watchdog
-   ```
 1. Clone this repo
    ```
    git clone https://github.com/dianaw353/dotfiles.git
    cd dotfiles
    ```
-1. Install the Ansible requirements
+1. Run the following script
    ```
-   ansible-galaxy install -r requirements.yml
+   ./dotfiles
    ```
 1. Edit the variables in `group_vars`
 > [!NOTE]
