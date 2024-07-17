@@ -44,4 +44,5 @@ default_roles:
   - mission-center
   - zed
   - sunroof #vencord fork discord client
+  - spotube #spotify open source client
 
