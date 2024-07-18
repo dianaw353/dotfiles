@@ -1,8 +1,11 @@
 Version 1.0.1
 https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
 --------------------------------------------------------
-- Add sunroof and spotube as new applications
-- 
+- Script: Add sunroof and spotube as new applications
+- Script: Add icons flag
+  - Hyprland: Add autostart template for the following to work
+    - Add flag for cursor package (AUR ONLY ATM) 
+    - Add flag for cursor theme
 
 Version 1.0
 https://github.com/dianaw353/dotfiles/releases/tag/v1.0

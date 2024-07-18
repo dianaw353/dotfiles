@@ -1,5 +1,6 @@
 ## replace diana with the user on your computer
-user: "{{ host_user }}"
+#user: "{{ host_user }}"
+user: "{{ ansible_env['USER']}}"
 
 #
 # Miscellaneous
@@ -23,7 +24,9 @@ default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
 icons:
   cursor_icons_package: bibata-cursor-theme-bin # AUR ONLY CURRENTLY
   cursor_icons_theme: Bibata-Modern-Ice
-
+  # available cursor sizes: 16 20 22 24 28 32 40 48 56 64 72 80 88 96
+  cursor_icons_size: 24
+  
 pacman:
   parallel_downloads: 5 # Adjust as needed
   enable_multilib: false  # Set to false if you don't want to enable multilib
