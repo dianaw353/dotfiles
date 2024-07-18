@@ -22,7 +22,7 @@ LCYAN='\033[01;36m'
 WHITE='\033[01;37m'
 OVERWRITE='\e[1A\e[K'
 
-#emoji codes
+# emoji codes
 CHECK_MARK="${GREEN}\xE2\x9C\x94${NC}"
 X_MARK="${RED}\xE2\x9C\x96${NC}"
 PIN="${RED}\xF0\x9F\x93\x8C${NC}"
@@ -33,13 +33,13 @@ HOT="${ORANGE}\xF0\x9F\x94\xA5${NC}"
 WARNING="${RED}\xF0\x9F\x9A\xA8${NC}"
 RIGHT_ANGLE="${GREEN}\xE2\x88\x9F${NC}"
 
-
 DOTFILES_LOG="$HOME/.dotfiles.log"
 
 set -e
 
 # Paths
 DOTFILES_DIR=$(pwd)
+
 # _header colorize the given argument with spacing
 function _task {
   # if _task is called while a task was set, complete the previous
@@ -53,7 +53,7 @@ function _task {
 
 # _cmd performs commands with error checking
 function _cmd {
-  #create log if it doesn't exist
+  # create log if it doesn't exist
   if ! [[ -f $DOTFILES_LOG ]]; then
     touch $DOTFILES_LOG
   fi
@@ -120,9 +120,6 @@ update_ansible_galaxy() {
 source /etc/os-release
 _task "Loading Setup for detected OS: $ID"
 case $ID in
-  ubuntu)
-    ubuntu_setup
-    ;;
   arch)
     arch_setup
     ;;
@@ -133,3 +130,39 @@ case $ID in
 esac
 
 update_ansible_galaxy $ID
+
+# Backup dotfiles
+backup_dotfiles() {
+  local backup_dir="$HOME/dotfiles_backup/$(date +'%Y%m%d_%H%M%S')"
+  _task "Creating backup directory: $backup_dir"
+  if mkdir -p "$backup_dir"; then
+    _task_done
+  else
+    printf "${LYELLOW} [-] Failed to create backup directory. Skipping backup.\n"
+    return 1
+  fi
+
+  _task "Backing up .config directory"
+  if cp -r "$HOME/.config" "$backup_dir" 2>/dev/null; then
+    _task_done
+  else
+    printf "${LYELLOW} [-] Couldn't find .config to create a back up directory. Skipping.\n"
+  fi
+
+  _task "Backing up .zshrc"
+  if cp "$HOME/.zshrc" "$backup_dir" 2>/dev/null; then
+    _task_done
+  else
+    printf "${LYELLOW} [-] Couldn't find .zshrc to create a backup. Skipping.\n"
+  fi
+
+  _task "Backing up .bashrc"
+  if cp "$HOME/.bashrc" "$backup_dir" 2>/dev/null; then
+    _task_done
+  else
+    printf "${LYELLOW} [-] Couldn't find .bashrc to create a backup. Skipping.\n"
+  fi
+}
+
+backup_dotfiles
+
