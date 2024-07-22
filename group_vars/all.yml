@@ -33,8 +33,9 @@ pacman:
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
   aur_helper: yay
-  # Option to enable the chaotic-aur: https://aur.chaotic.cx/ or keep it disabled 
-  chaotic_aur: true
+  # Option to enable the chaotic-aur: https://aur.chaotic.cx/ or keep it disabled
+  # true of false 
+  chaotic_aur: false
    
 default_roles:
   - system
