@@ -9,12 +9,13 @@ https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
       - Add flag for cursor theme
       - Add flag to change cursor size
   - Pacman: Add for chaotic_aur
-- Add dotfiles back up script
+    - Update pacman conf to also have ILoveCandy and VerbosePkgLists
 - Script: rate-mirrors added
   - Add rate-mirrors package
   - Update pacman & chaotic aur mirrors list
 - Update pacman conf to also have ILoveCandy and VerbosePkgLists
 - Refactor aur_helper
+- Add script to backup dotfiles
 
 Version 1.0
 https://github.com/dianaw353/dotfiles/releases/tag/v1.0
