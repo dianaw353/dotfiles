@@ -1,14 +1,15 @@
 ---
 - name: Install rate-mirrors package 
   kewlfft.aur.aur:
-    name: "rate-mirrors-bin"
+    name: rate-mirrors-bin
 
 - name: Backup Arch Linux Mirros
-  command: cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+  command: "cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak"
   become: true
 
 - name: Finding & Updating the Fastest Arch Linux Mirrors
-  command: rate-mirrors --allow-root --protocol https arch | grep -v '^#' | sudo tee /etc/pacman.d/mirrorlist
+  shell: "rate-mirrors --allow-root --protocol https arch | grep -v '^#' | tee /etc/pacman.d/mirrorlist"
+  become: true
 
 - name: Update pacman configuration file
   ansible.builtin.template:
