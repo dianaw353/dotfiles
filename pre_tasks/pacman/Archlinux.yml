@@ -5,7 +5,7 @@
     upgrade: yes
   become: true
 
-- name: Installing {{ pacman.aur_helper }}AUR helper
+- name: Installing {{ pacman.aur_helper }} AUR helper
   kewlfft.aur.aur:
     name: "{{ pacman.aur_helper }}"
     
@@ -30,6 +30,7 @@
     group: root
     mode: 0644
   become: true
+  when: pacman.chaotic_aur
 
 - name: Generate Arch Linux Mirrors List
   shell: "rate-mirrors --allow-root --protocol https arch | grep -v '^#' > /tmp/mirrorlist.tmp"
@@ -61,8 +62,9 @@
     group: root
     mode: 0644
   become: true
+  when: pacman.chaotic_aur
 
-- name: Remove Temporary Mirror List File
+- name: Remove Pacman Temporary Mirror List File
   file:
     path: /tmp/mirrorlist.tmp
     state: absent
@@ -73,6 +75,7 @@
     path: /tmp/chaotic_mirrorlist.tmp
     state: absent
   become: true
+  when: pacman.chaotic_aur
 
 - name: Setup Chaotic AUR Keys and Mirrorlist
   block:
@@ -100,3 +103,4 @@
     owner: root
     group: root
     mode: 0644
+  become: true
