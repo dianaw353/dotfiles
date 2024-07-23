@@ -20,6 +20,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
 - Add Hyprshot
 - Add keybindings for hyprshot
 - Add keybindings to set active windodw to fullscreen
+- Add libadwaita as a dependencie
 
 Version 1.0
 https://github.com/dianaw353/dotfiles/releases/tag/v1.0
