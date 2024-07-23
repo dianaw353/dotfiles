@@ -37,9 +37,6 @@
    #Stable Release
    git clone https://github.com/dianaw353/dotfiles.git -b main --depth=1
    cd dotfiles
-   #Rolling Release
-   git clone https://github.com/dianaw353/dotfiles.git -b dev --depth=1
-   cd dotfiles
    ```
 1. Run the following script
    ```
