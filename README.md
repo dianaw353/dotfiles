@@ -30,6 +30,34 @@
 ## Showcase
    Comming Soon!
 
+## Featues
+
+<details open>
+<summary>Dotfile Featues</summary>
+<br>
+- Clean fastfetch, zsh, and oh-my-posh
+- GTK Focus
+- Login screen
+- Aylur gtk shell bar (Comming soon)
+- And more
+Many More Featues comming soon
+</details>
+
+
+<details open>
+<summary>Script Features</summary>
+<br>
+- Fully Automated
+- GPU Drivers Installation
+- Configurable (e.g. cursor icons, chaotic_aur, shell, etc)
+- Optimize Pacman (e.g parallel downloads, color, VerbosePkgLists)
+- Laptop Workarounds (Framework autobrighness disbale only atm)
+- KVM Setup w/ 3d Acceleration
+- And more
+
+Many more featues are comming soon
+</details>
+
 ## Requirements
 
 1. Clone this repo
