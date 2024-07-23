@@ -19,6 +19,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
 - Add script to backup dotfiles
 - Add Hyprshot
 - Add keybindings for hyprshot
+- Add keybindings to set active windodw to fullscreen
 
 Version 1.0
 https://github.com/dianaw353/dotfiles/releases/tag/v1.0
