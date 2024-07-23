@@ -1,0 +1,32 @@
+---                
+- name: Remove iptables without dependency checks
+  pacman:
+    name: iptables
+    state: absent
+    force: yes
+  become: true
+  
+- name: "Install KVM packages"
+  community.general.pacman:
+    name:
+      - qemu-base
+      - qemu-hw-display-virtio-gpu
+      - qemu-hw-display-virtio-gpu-gl
+      - qemu-hw-display-virtio-gpu-pci
+      - qemu-hw-display-virtio-gpu-pci-gl
+      - qemu-ui-spice-core
+      - qemu-audio-spice
+      - qemu-hw-usb-redirect
+      - vulkan-virtio
+      - qemu-chardev-spice
+      - virt-manager
+      - libvirt
+      - dnsmasq 
+      - vde2 
+      - bridge-utils
+      - openbsd-netcat
+      - ebtables
+      - libguestfs
+      - spice
+    state: present
+  become: true

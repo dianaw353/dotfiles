@@ -1,5 +1,10 @@
+Version 1.0.2 (In Development)
+https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
+--------------------------------------------------------
+- Add kvm setup (Disabled by default) 
+
 Version 1.0.1
-https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
+https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
 --------------------------------------------------------
 - Script: Add sunroof and spotube as new applications
 - Script: Add 4 new flags
@@ -23,6 +28,6 @@ https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
 - Add libadwaita as a dependencie
 
 Version 1.0
-https://github.com/dianaw353/dotfiles/releases/tag/v1.0
+https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0
 --------------------------------------------------------
 - Inital Release

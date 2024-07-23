@@ -51,4 +51,5 @@ default_roles:
   - zed
   - sunroof #vencord fork discord client
   - spotube #spotify open source client
+  # - kvm # Virtal Machine setup
 

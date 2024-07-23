@@ -1,0 +1,58 @@
+---
+- name: "KVM | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: kvm_distribution_config
+
+- name: "KVM | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: kvm_distribution_config.stat.exists
+
+- name: Enable and start libvirtd service
+  systemd:
+    name: libvirtd
+    enabled: yes
+    state: started
+  become: true
+
+- name: Add user to libvirt group
+  user:
+    name: "{{ user }}"
+    groups: libvirt
+    append: yes
+  become: true
+
+- name: Ensure unix_sock_group is set in libvirtd.conf
+  lineinfile:
+    path: /etc/libvirt/libvirtd.conf
+    regexp: '^#?unix_sock_group = '
+    line: 'unix_sock_group = "libvirt"'
+    state: present
+  become: true
+
+- name: Ensure unix_sock_rw_perms is set in libvirtd.conf
+  lineinfile:
+    path: /etc/libvirt/libvirtd.conf
+    regexp: '^#?unix_sock_rw_perms = '
+    line: 'unix_sock_rw_perms = "0770"'
+    state: present
+  become: true
+
+- name: Restart libvirtd service to apply configuration changes
+  systemd:
+    name: libvirtd
+    state: restarted
+  become: true
+
+- name: Start and enable the default virtual network
+  command: >
+    virsh net-start default
+  become: true
+  ignore_errors: yes
+
+- name: Ensure the default virtual network is autostarted
+  command: >
+    virsh net-autostart default
+  become: true
+  ignore_errors: yes
+
