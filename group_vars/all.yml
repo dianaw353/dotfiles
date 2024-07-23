@@ -15,10 +15,6 @@ enable_bluetooth: true
 # pipewire or pluseaudio
 audio_server: pipewire
 
-# Framework Laptop Intel 13 Inch fix fn keys,brightness,sound buttons
-# true or false
-framework_laptop_intel_13inch: true
-
 default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
 
 icons:

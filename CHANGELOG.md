@@ -13,6 +13,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
 - Script: rate-mirrors added
   - Add rate-mirrors package
   - Update pacman & chaotic aur mirrors list
+- Script: Refactor framework workaround to laptop workarounds
 - Update pacman conf to also have ILoveCandy and VerbosePkgLists
 - Refactor aur_helper
 - Add script to backup dotfiles

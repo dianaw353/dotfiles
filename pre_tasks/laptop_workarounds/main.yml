@@ -1,0 +1,23 @@
+# pre_tasks/laptop_workarounds/main.yml
+- name: Set board vendor flag with the actual vendor value
+  set_fact:
+    board_vendor: "{{ ansible_facts['board_vendor'] }}"
+
+- name: Set CPU brand flag with the first word of the processor
+  set_fact:
+    cpu_generation: "{{ ansible_facts['processor'][2].split(' ')[0] }}"
+
+- name: Display board vendor flag
+  debug:
+    msg: "Board Vendor Flag: {{ board_vendor }}"
+
+- name: Display CPU brand first word
+  debug:
+    msg: "CPU Brand First Word: {{ cpu_generation }}"
+
+- name: Load hid_sensor_hub module
+  command: modprobe -i hid_sensor_hub
+  when:
+    - board_vendor == 'Framework'
+    - cpu_generation == '12th'
+  become: true

@@ -2,6 +2,7 @@
 - name: DotFiles Config
   hosts: localhost
   connection: local
+  gather_facts: yes
 
   pre_tasks:
 
@@ -14,15 +15,8 @@
   - name: Import GPU drivers tasks
     ansible.builtin.import_tasks: pre_tasks/gpu_drivers/gpu_drivers.yml
 
-  - name: Load hid_sensor_hub module
-    command: modprobe -i hid_sensor_hub
-    when: framework_laptop_intel_13inch
-    become: true
-
-  - name: Unload hid_sensor_hub module
-    command: modprobe -r hid_sensor_hub
-    when: not framework_laptop_intel_13inch
-    become: true
+  - name: Laptop workarounds
+    ansible.builtin.import_tasks: pre_tasks/laptop_workarounds/main.yml
     
   tasks:
     - name: Set roles
