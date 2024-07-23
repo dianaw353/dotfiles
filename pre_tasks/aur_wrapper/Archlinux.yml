@@ -1,5 +1,0 @@
-- name: Installing AUR helper
-  kewlfft.aur.aur:
-    name: "{{ pacman.aur_helper }}"
-  tags:
-    - always

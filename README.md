@@ -1,5 +1,5 @@
 <div align="center">
- <h1> Dotfiles V1.0</h1>
+ <h1> Dotfiles V1.0.1</h1>
 </div>
 
 <div align="center">
@@ -34,7 +34,11 @@
 
 1. Clone this repo
    ```
-   git clone https://github.com/dianaw353/dotfiles.git
+   #Stable Release
+   git clone https://github.com/dianaw353/dotfiles.git -b main --depth=1
+   cd dotfiles
+   #Rolling Release
+   git clone https://github.com/dianaw353/dotfiles.git -b dev --depth=1
    cd dotfiles
    ```
 1. Run the following script

@@ -1,0 +1,6 @@
+---
+- name: "Spotube | {{ ansible_distribution }} | Install Spotube"
+  kewlfft.aur.aur:
+    name: spotube-bin
+    state: present
+  become: false

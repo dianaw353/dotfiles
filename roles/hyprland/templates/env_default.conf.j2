@@ -1,0 +1,28 @@
+# -----------------------------------------------------
+# Environments
+# name: "Default"
+# -----------------------------------------------------
+
+# Cursor size
+env = XCURSOR_SIZE,{{ icons.cursor_icons_size }}
+env = HYPRCURSOR_SIZE,{{ icons.cursor_icons_size }}
+
+# XDG Desktop Portal
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+
+# QT
+env = QT_QPA_PLATFORM,wayland;xcb
+env = QT_QPA_PLATFORMTHEME,qt6ct
+env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+
+# GTK
+env = GDK_SCALE,1
+
+# Mozilla
+env = MOZ_ENABLE_WAYLAND,1
+
+# Disable appimage launcher by default
+env = APPIMAGELAUNCHER_DISABLE,1

@@ -15,3 +15,21 @@
     mode: "0644"
     directory_mode: "0755"
     force: true
+
+- name: Update hyprland autostart config
+  ansible.builtin.template:
+    src: autostart.conf.j2
+    dest: "{{ ansible_user_dir }}/.config/hypr/config/autostart.conf"
+    backup: no
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  become: true
+
+- name: Update hyprland environments config
+  ansible.builtin.template:
+    src: env_default.conf.j2
+    dest: "{{ ansible_user_dir }}/.config/hypr/config/environments/default.conf"
+    backup: no
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  become: true

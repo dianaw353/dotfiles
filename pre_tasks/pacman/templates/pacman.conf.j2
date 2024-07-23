@@ -30,10 +30,11 @@ Architecture = auto
 
 # Misc options
 #UseSyslog
-Color
 #NoProgressBar
 #CheckSpace
-#VerbosePkgLists
+Color
+ILoveCandy
+VerbosePkgLists
 ParallelDownloads = {{ pacman.parallel_downloads }}
 
 # By default, pacman accepts packages signed by keys that its local keyring
@@ -90,6 +91,14 @@ Include = /etc/pacman.d/mirrorlist
 {% else %}
 #[multilib]
 #Include = /etc/pacman.d/mirrorlist
+{% endif %}
+
+{% if pacman.chaotic_aur %}
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+{% else %}
+#[chaotic-aur]
+#Include = /etc/pacman.d/chaotic-mirrorlist
 {% endif %}
 
 # An example of a custom package repository.  See the pacman manpage for
