@@ -32,9 +32,10 @@
 
 ## Featues
 
-<details open>
+<details>
 <summary>Dotfile Featues</summary>
 <br>
+
 - Clean fastfetch, zsh, and oh-my-posh
 - GTK Focus
 - Login screen
@@ -44,9 +45,10 @@ Many More Featues comming soon
 </details>
 
 
-<details open>
+<details>
 <summary>Script Features</summary>
 <br>
+
 - Fully Automated
 - GPU Drivers Installation
 - Configurable (e.g. cursor icons, chaotic_aur, shell, etc)
