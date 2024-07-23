@@ -17,6 +17,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/v1.0.1
 - Update pacman conf to also have ILoveCandy and VerbosePkgLists
 - Refactor aur_helper
 - Add script to backup dotfiles
+- Add Hyprshot
+- Add keybindings for hyprshot
 
 Version 1.0
 https://github.com/dianaw353/dotfiles/releases/tag/v1.0

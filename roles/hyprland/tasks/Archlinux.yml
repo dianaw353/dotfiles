@@ -11,6 +11,13 @@
     state: present
   become: true
 
+- name: "Hyprland AUR dependencies | {{ ansible_distribution }} | Install Hyprland AUR dependencies"
+  kewlfft.aur.aur:
+    name: 
+      - hyprshot
+    state: present
+  become: false
+
 - name: "Cursor Icons | {{ ansible_distribution }} | Install Cursor Icons"
   kewlfft.aur.aur:
     name: "{{ icons.cursor_icons_theme }}"
