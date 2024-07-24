@@ -32,7 +32,15 @@ pacman:
   # Option to enable the chaotic-aur: https://aur.chaotic.cx/ or keep it disabled
   # true of false 
   chaotic_aur: false
-   
+
+
+pre_tasks:
+  - pacman
+  - vm_detection
+  - shell_update
+  - gpu_drivers
+  - laptop_workarounds
+
 default_roles:
   - system
   - bluetooth
@@ -53,3 +61,5 @@ default_roles:
   - spotube #spotify open source client
   # - kvm # Virtal Machine setup
 
+post_tasks:
+  - aur_clean

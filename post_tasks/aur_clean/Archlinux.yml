@@ -1,0 +1,2 @@
+- name: Clean AUR cache
+  command: "{{ pacman.aur_helper }} -Scc --noconfirm"

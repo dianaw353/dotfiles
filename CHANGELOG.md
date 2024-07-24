@@ -17,7 +17,8 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 **Fixes**
 - Hyprland scripts are now executable
 - Ansible host fixes 
-- rename gpu_drivers.yml to main.yml
+- Rename gpu_drivers.yml to main.yml
+- Rebase main.yml
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1

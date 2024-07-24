@@ -1,0 +1,10 @@
+---
+- name: "Clean AUR Cache | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "pre_tasks/aur_wrapper/{{ ansible_distribution }}.yml"
+  register: aur_clean_distribution_config
+
+- name: "Clean AUR Cache | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: aur_clean_distribution_config.stat.exists
+
