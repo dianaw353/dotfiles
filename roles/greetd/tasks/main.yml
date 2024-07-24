@@ -20,9 +20,18 @@
     state: directory
   become: true
 
-- name: "Greetd | Configure greetd"
+- name: "Greetd ags conig| Configure ags greetd"
   ansible.builtin.copy:
     src: greetd/ags
+    dest: "/etc/greetd/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+  become: true
+
+- name: "Greetd config file"
+  ansible.builtin.copy:
+    src: greetd/config.toml
     dest: "/etc/greetd/"
     mode: "0644"
     directory_mode: "0755"

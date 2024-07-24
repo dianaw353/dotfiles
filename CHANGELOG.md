@@ -20,6 +20,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 - Rename gpu_drivers.yml to main.yml
 - Rebase main.yml
 - Add xdg-desktop-portal-gtk to system compatibility packages
+- Move Greetd config to correct location 
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
