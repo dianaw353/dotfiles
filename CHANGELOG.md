@@ -19,6 +19,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 - Ansible host fixes 
 - Rename gpu_drivers.yml to main.yml
 - Rebase main.yml
+- Add xdg-desktop-portal-gtk to system compatibility packages
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1

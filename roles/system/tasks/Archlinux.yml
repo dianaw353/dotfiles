@@ -4,6 +4,7 @@
     name: 
       - xdg-user-dirs
       - xdg-desktop-portal
+      - xdg-desktop-portal-gtk
       - fuse2
       - qt6-wayland
       - qt5-wayland
