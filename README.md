@@ -72,9 +72,21 @@ Many more featues are comming soon
 ## Requirements
 
 1. Clone this repo
+
+   Follow this if you want the stable release
    ```
-   #Stable Release
-   git clone https://github.com/dianaw353/dotfiles.git -b main --depth=1
+   # Stable Release
+   pacman -S unzip curl jq   
+   curl -sL $(curl -s https://api.github.com/repos/dianaw353/dotfiles/releases/latest | jq -r '.zipball_url') -o dotfiles.zip && \
+   unzip dotfiles.zip -d temp_dir && \
+   mv temp_dir/dianaw353-dotfiles-*/ dotfiles && \
+   rm -rf dotfiles.zip temp_dir && \
+   cd dotfiles
+   ```
+   OR Follow this for the rolling release
+   ```
+   #Rolling Release
+   git clone https://github.com/dianaw353/dotfiles.git -b main
    cd dotfiles
    ```
 1. Run the following script
