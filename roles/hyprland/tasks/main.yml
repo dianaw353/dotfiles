@@ -16,6 +16,14 @@
     directory_mode: "0755"
     force: true
 
+- name: "Hyprland | Configure Hyprland"
+  ansible.builtin.copy:
+    src: hypr/scripts
+    dest: "{{ ansible_user_dir }}/.config/hypr/"
+    mode: "0755"
+    directory_mode: "0755"
+    force: true
+
 - name: Update hyprland autostart config
   ansible.builtin.template:
     src: autostart.conf.j2
