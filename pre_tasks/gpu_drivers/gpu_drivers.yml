@@ -4,6 +4,10 @@
   register: gpu_result
   changed_when: no
 
+- name: Check if you have a nvidia card for additional configuration
+  set_fact:
+    is_nvidia: "{{ 'nvidia' in gpu_result.stdout.lower() }}"
+
 - name: "GPU Drivers | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
     path: "pre_tasks/gpu_drivers/{{ ansible_distribution }}.yml"

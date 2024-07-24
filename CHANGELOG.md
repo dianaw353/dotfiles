@@ -6,6 +6,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
   - Set up KVM w/ 3d acceleration support
   - Detect if user is using VM
   - Change hyprland env's depending if is_vm is set to true
+  - Add is_nvidia for additional configuration
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
