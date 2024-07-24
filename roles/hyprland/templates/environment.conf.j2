@@ -4,4 +4,9 @@ source = $hyprland-conf/environments/kvm.conf
 {% else %}
 #source = $hyprland-conf/environments/kvm.conf
 {% endif %}
+
+{% if is_nvidia %}
+source = $hyprland-conf/environments/nvidia.conf
+{% else %}
 #source = $hyprland-conf/environments/nvidia.conf
+{% endif %}
