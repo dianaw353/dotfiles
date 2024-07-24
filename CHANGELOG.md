@@ -1,8 +1,11 @@
 Version 1.0.2 (In Development)
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 --------------------------------------------------------
-- Add kvm setup (Disabled by default) 
-
+**Script Changes**
+  - Install KVM
+  - Set up KVM w/ 3d acceleration support
+  - Detect if user is using VM
+  
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
 --------------------------------------------------------
