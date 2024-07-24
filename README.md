@@ -99,7 +99,7 @@ Many more featues are comming soon
 
 
 ## To do
-To view the upcoming featues please view [this](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+)
+To view the upcoming featues please view [this](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+is%3Aopen)
 
 ## Acknowledgements
 - TechDufus: https://github.com/TechDufus/dotfiles
