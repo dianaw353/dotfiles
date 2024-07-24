@@ -9,6 +9,9 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
     - Change hyprland env's depending if is_vm is set to true
   - Add is_nvidia for additional configuration
     - Change hyprland env's depending if is_nvidia is set to true
+
+**Hyprland Changes**
+- QT_QPA_PLATFORMTHEME,qt5ct added 
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
