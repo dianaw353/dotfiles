@@ -1,7 +1,7 @@
 ---
 - name: "Clean AUR Cache | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
-    path: "pre_tasks/aur_wrapper/{{ ansible_distribution }}.yml"
+    path: "post_tasks/aur_clean/{{ ansible_distribution }}.yml"
   register: aur_clean_distribution_config
 
 - name: "Clean AUR Cache | Run Tasks: {{ ansible_distribution }}"
