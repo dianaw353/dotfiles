@@ -1,7 +1,6 @@
 ---
 - name: DotFiles Config
-  hosts: localhost
-  connection: local
+  hosts: all
   gather_facts: yes
 
   pre_tasks:

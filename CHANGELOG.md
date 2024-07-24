@@ -13,6 +13,10 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 **Hyprland Changes**
 - QT_QPA_PLATFORMTHEME,qt5ct added 
 - Add gamemode script
+
+**Fixes**
+- Hyprland scripts are now executable
+- Ansible host fixes 
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
