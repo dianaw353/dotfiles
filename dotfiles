@@ -114,7 +114,7 @@ update_ansible_galaxy() {
     _task "${OVERWRITE}Updating Ansible Galaxy with OS Config: $os"
     os_requirements="$DOTFILES_DIR/requirements/$os.yml"
   fi
-  _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml $os_requirements"
+  _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/* $os_requirements"
 }
 
 source /etc/os-release
