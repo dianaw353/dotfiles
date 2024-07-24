@@ -33,3 +33,12 @@
     owner: "{{ user }}"
     group: "{{ user }}"
   become: true
+
+- name: Update hyprland environment source file
+  ansible.builtin.template:
+    src: environment.conf.js
+    dest: "{{ ansible_user_dir }}/.config/hypr/config/environment.conf"
+    backup: no
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  become: true
