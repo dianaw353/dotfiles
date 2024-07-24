@@ -36,7 +36,7 @@
 
 - name: Update hyprland environment source file
   ansible.builtin.template:
-    src: environment.conf.js
+    src: environment.conf.j2
     dest: "{{ ansible_user_dir }}/.config/hypr/config/environment.conf"
     backup: no
     owner: "{{ user }}"
