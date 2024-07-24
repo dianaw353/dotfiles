@@ -15,7 +15,7 @@
 <div align="center">
 <p>
    A linux desktop environment configuration using <a href='https://github.com/aylur/ags'>Aylur's Gtk Shell</a>.<br/>
-   Also, an automated post install installation script currently avalable for `arch` distros.<br/>
+   Also, an automated post install installation script.<br/>
 </p>
 
 <hr />
