@@ -1,3 +1,7 @@
 source = $hyprland-conf/environments/default.conf
+{% if is_vm %}
+source = $hyprland-conf/environments/kvm.conf
+{% else %}
 #source = $hyprland-conf/environments/kvm.conf
+{% endif %}
 #source = $hyprland-conf/environments/nvidia.conf
