@@ -22,12 +22,9 @@
 </div>
 
 > [!WARNING]
-> This is currently under havey deleopment so expect features to me missing, buggey, or broken <br>
-> Laptop workarounds are based of of community feedback <br>
-> Nvidia support is unoffical as I don't run nvidia graphics but I'll try my best via community feedback 
-
-## Goals
-   To provide a fully automated `arch` post install script currently for `hyprland` Window Manager that is easy to set up and maintain. 
+> This is currently under heavy development, so expect some features to be missing, buggy, or broken. <br>
+  Laptop workarounds are based on community feedback. <br>
+  Nvidia support is unofficial since I don't use Nvidia graphics, but I'll do my best with help from the community.
 
 ## Showcase
    Comming Soon!
@@ -61,6 +58,16 @@ Many More Featues comming soon
 
 Many more featues are comming soon
 </details>
+
+## Supports
+
+**Linux Distro**
+
+   - Arch Linux
+
+**Window Managers/Desktop Environments**
+
+   - Hyprland
 
 ## Requirements
 
