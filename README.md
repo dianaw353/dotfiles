@@ -22,7 +22,9 @@
 </div>
 
 > [!WARNING]
-> This is currently under havey deleopment so expect features to me missing, buggey, or broken
+> This is currently under havey deleopment so expect features to me missing, buggey, or broken <br>
+> Laptop workarounds are based of of community feedback <br>
+> Nvidia support is unoffical as I don't run nvidia graphics but I'll try my best via community feedback 
 
 ## Goals
    To provide a fully automated `arch` post install script currently for `hyprland` Window Manager that is easy to set up and maintain. 
