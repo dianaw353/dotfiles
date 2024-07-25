@@ -20,6 +20,6 @@
 
 - name: "Cursor Icons | {{ ansible_distribution }} | Install Cursor Icons"
   kewlfft.aur.aur:
-    name: "{{ icons.cursor_icons_theme }}"
+    name: "{{ icons.cursor_icons_package }}"
     state: present
   become: false

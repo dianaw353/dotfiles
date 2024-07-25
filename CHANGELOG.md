@@ -23,6 +23,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 - Add xdg-desktop-portal-gtk to system compatibility packages
 - Move Greetd config to correct location 
 - Install all ansible requirements
+- Fix cursor install to install correct package
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
