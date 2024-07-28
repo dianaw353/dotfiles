@@ -9,6 +9,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
     - Change hyprland env's depending if is_vm is set to true
   - Add is_nvidia for additional configuration
     - Change hyprland env's depending if is_nvidia is set to true
+  - Greetd gets images from assets
 
 **Hyprland Changes**
 - QT_QPA_PLATFORMTHEME,qt5ct added 
@@ -25,6 +26,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 - Install all ansible requirements
 - Fix cursor install to install correct package
 - Replace swww with hyprpaper
+- Add assets folder
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1

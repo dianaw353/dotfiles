@@ -1,13 +1,13 @@
 /* main window styling */
 window { 
-  background-image: url("/etc/greetd/ags/mountain.png");
+  background-image: url("/etc/greetd/ags/background.png");
   background-position: center;
   background-size: cover;
 }
 
 /* Avatar box */
 .avatar {
-  background: url('/etc/greetd/ags/avitar.jpg');
+  background: url('/etc/greetd/ags/avatar.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 999px;
