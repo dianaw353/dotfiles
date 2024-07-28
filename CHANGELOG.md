@@ -24,6 +24,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 - Move Greetd config to correct location 
 - Install all ansible requirements
 - Fix cursor install to install correct package
+- Replace swww with hyprpaper
   
 Version 1.0.1
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1

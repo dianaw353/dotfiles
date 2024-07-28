@@ -12,10 +12,10 @@
   community.general.pacman:
     name:
       - greetd
+      - hyprpaper
       - dart-sass
       - fd
       - brightnessctl
-      - swww
       - gnome-bluetooth-3.0
       - libdbusmenu-gtk3
       - libnotify
