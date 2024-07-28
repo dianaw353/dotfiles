@@ -31,7 +31,7 @@
 
 - name: "Greetd ags pfp| Configure ags greetd pfp"
   ansible.builtin.copy:
-    src: ../assets/avatar.jpg
+    src: "{{ playbook_dir }}/assets/avatar.jpg"
     dest: "/etc/greetd/ags/avatar.jpg"
     mode: "0644"
     directory_mode: "0755"
@@ -40,7 +40,7 @@
 
 - name: "Greetd ags wallpaper| Configure ags greetd wallpaper"
   ansible.builtin.copy:
-    src: ../assets/mountain.png
+    src: "{{ playbook_dir }}/assets/mountain.png"
     dest: "/etc/greetd/ags/background.png"
     mode: "0644"
     directory_mode: "0755"

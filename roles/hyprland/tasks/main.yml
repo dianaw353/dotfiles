@@ -26,7 +26,7 @@
 
 - name: "Move hyprpaper wallpaper"
   ansible.builtin.copy:
-    src: ../assets/mountain.png
+    src: "{{ playbook_dir }}/assets/mountain.png"
     dest: "{{ ansible_user_dir }}/.config/background.png"
     mode: "0644"
     directory_mode: "0755"
