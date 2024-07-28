@@ -1,4 +1,4 @@
-Version 1.0.2 (In Development)
+Version 1.0.2
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 --------------------------------------------------------
 **Script Changes**
