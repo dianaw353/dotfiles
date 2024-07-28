@@ -1,3 +1,9 @@
+Version 1.0.3
+https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.3
+--------------------------------------------------------
+**Fixes**
+- Add playerctl
+
 Version 1.0.2
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 --------------------------------------------------------

@@ -8,6 +8,7 @@
       - hyprwayland-scanner
       - hyprland
       - xdg-desktop-portal-hyprland
+      - playerctl
     state: present
   become: true
 
