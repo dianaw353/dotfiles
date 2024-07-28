@@ -15,6 +15,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 - QT_QPA_PLATFORMTHEME,qt5ct added 
 - Add gamemode script
 - Change missioncenter windowrules to use class instead of title and preferences to be shown in the center of the screen
+- Autostart hyprpaper and add hyprpaper config
 
 **Fixes**
 - Hyprland scripts are now executable
