@@ -24,14 +24,45 @@
     directory_mode: "0755"
     force: true
 
-- name: "Move hyprpaper wallpaper"
+- name: "Move wallpaper pics"
   ansible.builtin.copy:
-    src: "{{ playbook_dir }}/assets/mountain.png"
+    src: "{{ playbook_dir }}/assets/wallpaper"
+    dest: "{{ ansible_user_dir }}/Pictures/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+  become: true
+  become_user: "{{ user }}"
+
+- name: "Move pfp pics"
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/assets/pfp"
+    dest: "{{ ansible_user_dir }}/Pictures"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+  become: true
+  become_user: "{{ user }}"
+
+- name: "Move active pfp"
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/assets/pfp/avatar.jpg"
+    dest: "{{ ansible_user_dir }}/.config/avatar.jpg"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+  become: true
+  become_user: "{{ user }}"
+
+- name: "Move active wallpaper"
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/assets/wallpaper/mountain.png"
     dest: "{{ ansible_user_dir }}/.config/background.png"
     mode: "0644"
     directory_mode: "0755"
     force: true
   become: true
+  become_user: "{{ user }}"
 
 - name: Update hyprland autostart config
   ansible.builtin.template:

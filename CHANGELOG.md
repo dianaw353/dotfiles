@@ -3,6 +3,8 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.3
 --------------------------------------------------------
 **Fixes**
 - Add playerctl
+- Move avatar to pfp and mountain to wallpaper in Pictures
+- Premission improvements
 
 Version 1.0.2
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
