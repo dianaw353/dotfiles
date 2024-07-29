@@ -7,6 +7,8 @@
       - hyprutils
       - hyprwayland-scanner
       - hyprland
+      - hypridle
+      - hyprlock
       - xdg-desktop-portal-hyprland
       - playerctl
     state: present

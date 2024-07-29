@@ -1,3 +1,9 @@
+Version 1.0.4
+https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
+--------------------------------------------------------
+**Hyprland**
+- Add hypridle & hyprlock
+
 Version 1.0.3
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.3
 --------------------------------------------------------
