@@ -56,5 +56,5 @@
     state: present
   become: true
   when:
-    - is_nvidia
+    - new_nvidia
     - proprietary_nvidia_drivers

@@ -10,6 +10,15 @@
   set_fact:
     is_nvidia: "{{ 'nvidia' in gpu_result.stdout.lower() }}"
 
+# I know this was not supposed to be like this as per the aforementioned TODO.
+# I am still cooking. This is just the initials for me to put on top.
+- name: Check if your nvidia card is supported by the latest proprietary drivers
+  set_fact:
+    new_nvidia: true
+  when:
+    - is_nvidia
+    - proprietary_nvidia_drivers
+
 - name: "GPU Drivers | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
     path: "pre_tasks/gpu_drivers/{{ ansible_distribution }}.yml"
