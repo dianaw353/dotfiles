@@ -55,4 +55,6 @@
       - opencl-nvidia
     state: present
   become: true
-  when: "'nvidia' in gpu_result.stdout.lower()"
+  when:
+    - is_nvidia
+    - proprietary_nvidia_drivers

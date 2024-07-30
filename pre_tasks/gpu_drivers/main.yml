@@ -4,6 +4,8 @@
   register: gpu_result
   changed_when: no
 
+# TODO: Also add a check for legacy cards and their recommended versions.
+#       Maybe find an actively maintained API made for this purpose? - kurtbahartr
 - name: Check if you have a nvidia card for additional configuration
   set_fact:
     is_nvidia: "{{ 'nvidia' in gpu_result.stdout.lower() }}"
