@@ -1,0 +1,10 @@
+---
+- name: "Update Package Manager Conf | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "pre_tasks/package_manager/{{ ansible_distribution }}.yml"
+  register: package_manager_distribution_config
+
+- name: "Update Package Manager Conf | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: package_manager_distribution_config.stat.exists
+

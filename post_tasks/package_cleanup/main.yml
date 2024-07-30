@@ -1,0 +1,10 @@
+---
+- name: "Cleanup packages | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "post_tasks/package_cleanup/{{ ansible_distribution }}.yml"
+  register: package_cleanup_distribution_config
+
+- name: "Cleanup packages | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: package_cleanup_distribution_config.stat.exists
+

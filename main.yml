@@ -4,9 +4,9 @@
   gather_facts: yes
 
   pre_tasks:
-    - name: Import Pacman Config tasks
-      ansible.builtin.include_tasks: pre_tasks/pacman/main.yml
-      when: "'pacman' in pre_tasks"
+    - name: Import Package Manager Config tasks
+      ansible.builtin.include_tasks: pre_tasks/package_manager/main.yml
+      when: "'package_manager' in pre_tasks"
 
     - name: Detect if VM is being used
       ansible.builtin.include_tasks: pre_tasks/detect_vm/main.yml
@@ -50,6 +50,6 @@
         - always
 
   post_tasks:
-    - name: Clean AUR cache
-      ansible.builtin.include_tasks: post_tasks/aur_clean/main.yml
-      when: "'aur_clean' in post_tasks"
+    - name: Cleanup packages
+      ansible.builtin.include_tasks: post_tasks/package_cleanup/main.yml
+      when: "'package_cleanup' in post_tasks"
