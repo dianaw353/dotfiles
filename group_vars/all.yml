@@ -13,12 +13,16 @@ system:
   audio_server: pipewire
 
   default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
-  
-# Nvidia users, buckle up!
-# Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
-# Beware that usage of the proprietary drivers, which are out of tree, WILL TAINT THE KERNEL!
-# true or false
-proprietary_nvidia_drivers: false
+
+gpu:
+  amd:
+  intel:
+  nvidia:  
+    # Nvidia users, buckle up!
+    # Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
+    # Beware that usage of the proprietary drivers, which are out of tree, WILL TAINT THE KERNEL!
+    # true or false
+    proprietary_nvidia_drivers: false
   
 
 icons:

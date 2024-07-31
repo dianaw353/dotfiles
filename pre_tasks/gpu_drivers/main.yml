@@ -21,7 +21,7 @@
     new_nvidia: true
   when:
     - is_nvidia
-    - proprietary_nvidia_drivers
+    - gpu.nvidia.proprietary_nvidia_drivers
 
 - name: "GPU Drivers | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:

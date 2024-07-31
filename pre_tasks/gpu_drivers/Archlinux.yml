@@ -55,7 +55,7 @@
   become: true
   when:
     - "'nvidia' in gpu_result.stdout.lower()" 
-    - proprietary_nvidia_drivers
+    - gpu.nvidia.proprietary_nvidia_drivers
 
 - name: Install GPU drivers (Nvidia, proprietary, modern) | {{ ansible_distribution }}
   community.general.pacman:
@@ -68,7 +68,7 @@
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
     - new_nvidia
-    - proprietary_nvidia_drivers
+    - gpu.nvidia.proprietary_nvidia_drivers
 
 - name: Install GPU drivers (Nvidia, proprietary, legacy, Fermi) | {{ ansible_distribution }}
   kewlfft.aur.aur:
@@ -80,7 +80,7 @@
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
     - not new_nvidia
-    - proprietary_nvidia_drivers
+    - gpu.nvidia.proprietary_nvidia_drivers
 
 - name: Install GPU drivers (Nvidia, Nouveau dependencies) | {{ ansible_distribution }}
   community.general.pacman:
@@ -92,4 +92,4 @@
   become: true
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
-    - not proprietary_nvidia_drivers
+    - not gpu.nvidia.proprietary_nvidia_drivers
