@@ -8,4 +8,17 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: system_distribution_config.stat.exists
 
+- name: Start systemd service - xdg-user-dirs-update.service
+  ansible.builtin.systemd:
+    name: xdg-user-dirs-update.service
+    state: started
+    enabled: yes
+    scope: user
 
+- name: "Ensure Bluetooth service is running"
+  ansible.builtin.systemd:
+    name: bluetooth
+    state: started
+    enabled: true
+  when: enable_bluetooth
+  become: true

@@ -4,6 +4,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
 **Script Changes**
 - WIP/ALPHA: Add variable for driver preference for Nvidia GPUs
 - Make terms for package managers more generic
+- Merge audio/bluetooth into system role
 
 **Hyprland**
 - Add hypridle & hyprlock

@@ -53,7 +53,9 @@
       - opencl-nvidia
     state: present
   become: true
-  when: proprietary_nvidia_drivers
+  when:
+    - "'nvidia' in gpu_result.stdout.lower()" 
+    - proprietary_nvidia_drivers
 
 - name: Install GPU drivers (Nvidia, proprietary, modern) | {{ ansible_distribution }}
   community.general.pacman:
@@ -64,6 +66,7 @@
     state: present
   become: true
   when:
+    - "'nvidia' in gpu_result.stdout.lower()"
     - new_nvidia
     - proprietary_nvidia_drivers
 
@@ -75,6 +78,7 @@
     state: present
   become: false
   when:
+    - "'nvidia' in gpu_result.stdout.lower()"
     - not new_nvidia
     - proprietary_nvidia_drivers
 
@@ -87,4 +91,5 @@
     state: present
   become: true
   when:
+    - "'nvidia' in gpu_result.stdout.lower()"
     - not proprietary_nvidia_drivers
