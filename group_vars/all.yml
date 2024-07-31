@@ -13,6 +13,10 @@ system:
   audio_server: pipewire
 
   default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
+  gtk:
+    # Change what gtk window buttons are shown
+    # Options: :, close:, minimize:, maximize:, close,minimize: close,maximize:, manimize,maximize, or close,minimize,maximize:
+    buttons: ":"
 
 gpu:
   amd:

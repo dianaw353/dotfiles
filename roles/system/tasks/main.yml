@@ -22,3 +22,6 @@
     enabled: true
   when: system.enable_bluetooth
   become: true
+
+- name: Gtk Window Buttons
+  command: "gsettings set org.gnome.desktop.wm.preferences button-layout {{ system.gtk.buttons }}"

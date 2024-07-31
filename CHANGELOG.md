@@ -3,6 +3,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.5
 --------------------------------------------------------
 **Script**
 - Reorganise some flags
+- GTK window buttons configuration (no buttons default)
 
 Version 1.0.4
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
