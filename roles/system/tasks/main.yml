@@ -8,6 +8,13 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: system_distribution_config.stat.exists
 
+- name: Start systemd service - systemd-timesyncd
+  ansible.builtin.systemd:
+    name: systemd-timesyncd
+    state: started
+    enabled: yes
+  become: true
+
 - name: Start systemd service - xdg-user-dirs-update.service
   ansible.builtin.systemd:
     name: xdg-user-dirs-update.service
