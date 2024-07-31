@@ -1,8 +1,18 @@
 Version 1.0.4
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
 --------------------------------------------------------
+**Script Changes**
+- WIP/ALPHA: Add variable for driver preference for Nvidia GPUs
+- Make terms for package managers more generic
+
 **Hyprland**
 - Add hypridle & hyprlock
+
+**Fixes**
+- Install openssh as a preliminary dependency
+- Install some missing packages for a barebones Arch install fresh out of the wiki replication
+- Separate new Nvidia cards from old, unsupported ones
+- Install Nouveau dependencies if opted out of proprietary Nvidia drivers
 
 Version 1.0.3
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.3
