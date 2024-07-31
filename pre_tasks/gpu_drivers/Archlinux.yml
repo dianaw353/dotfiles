@@ -45,18 +45,46 @@
   become: true
   when: "'intel' in gpu_result.stdout.lower()"
 
-- name: Install GPU drivers (Nvidia) | {{ ansible_distribution }}
+- name: Install GPU drivers (Nvidia, proprietary, common) | {{ ansible_distribution }}
+  community.general.pacman:
+    name:
+      # https://wiki.archlinux.org/title/NVIDIA
+      - nvidia-utils
+      - cuda
+      - opencl-nvidia
+    state: present
+  become: true
+  when: proprietary_nvidia_drivers
+
+- name: Install GPU drivers (Nvidia, proprietary, modern) | {{ ansible_distribution }}
   community.general.pacman:
     name:
       # https://wiki.archlinux.org/title/Xorg
       - nvidia
-      # https://wiki.archlinux.org/title/Hardware_video_acceleration
-      - nvidia-utils
-      # https://wiki.archlinux.org/title/GPGPU
-      - cuda
-      - opencl-nvidia
     state: present
   become: true
   when:
     - new_nvidia
     - proprietary_nvidia_drivers
+
+- name: Install GPU drivers (Nvidia, proprietary, legacy, Fermi) | {{ ansible_distribution }}
+  kewlfft.aur.aur:
+    name:
+      # https://wiki.archlinux.org/title/NVIDIA
+      - nvidia-390xx-dkms
+    state: present
+  become: false
+  when:
+    - not new_nvidia
+    - proprietary_nvidia_drivers
+
+- name: Install GPU drivers (Nvidia, Nouveau dependencies) | {{ ansible_distribution }}
+  community.general.pacman:
+    name:
+      # https://wiki.archlinux.org/title/Nouveau
+      - xf86-video-nouveau
+      - vulkan-nouveau
+    state: present
+  become: true
+  when:
+    - not proprietary_nvidia_drivers
