@@ -15,3 +15,6 @@
     mode: "0644"
     directory_mode: "0755"
     force: true
+
+- name: Disable Oh My Posh Update Warnings
+  command: oh-my-posh disable notice
