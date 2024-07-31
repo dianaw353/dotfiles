@@ -49,7 +49,6 @@
   community.general.pacman:
     name:
       # https://wiki.archlinux.org/title/NVIDIA
-      - nvidia-utils
       - cuda
       - opencl-nvidia
     state: present
@@ -59,8 +58,9 @@
 - name: Install GPU drivers (Nvidia, proprietary, modern) | {{ ansible_distribution }}
   community.general.pacman:
     name:
-      # https://wiki.archlinux.org/title/Xorg
+      # https://wiki.archlinux.org/title/NVIDIA
       - nvidia
+      - nvidia-utils
     state: present
   become: true
   when:
