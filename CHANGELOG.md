@@ -1,3 +1,9 @@
+Version 1.0.5
+https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.5
+--------------------------------------------------------
+**Script**
+- Reorganise some flags
+
 Version 1.0.4
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
 --------------------------------------------------------

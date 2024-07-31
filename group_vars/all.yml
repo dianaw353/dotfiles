@@ -2,26 +2,24 @@
 #user: "{{ host_user }}"
 user: "{{ ansible_env['USER']}}"
 
-#
-# Miscellaneous
-#
+system:
+  # whether to enable bluetooth or not
+  # true or false
+  enable_bluetooth: true
+  
+  # Audio Server
+  # Weather to use pipewire or pluseaudio
+  # pipewire or pluseaudio
+  audio_server: pipewire
 
-# whether to enable bluetooth or not
-# true or false
-enable_bluetooth: true
-
-# Audio Server
-# Weather to use pipewire or pluseaudio
-# pipewire or pluseaudio
-audio_server: pipewire
-
+  default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
+  
 # Nvidia users, buckle up!
 # Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
 # Beware that usage of the proprietary drivers, which are out of tree, WILL TAINT THE KERNEL!
 # true or false
 proprietary_nvidia_drivers: false
-
-default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
+  
 
 icons:
   cursor_icons_package: bibata-cursor-theme-bin # AUR ONLY CURRENTLY

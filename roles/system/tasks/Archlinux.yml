@@ -24,7 +24,7 @@
       - wireplumber
     state: present
   become: true
-  when: audio_server == "pipewire"
+  when: system.audio_server == "pipewire"
 
 - name: "Plulseaudio | {{ ansible_distribution }} | Install Pluseaudio"
   community.general.pacman:
@@ -33,7 +33,7 @@
       - pulseaudio-jack
     state: present
   become: true
-  when: audio_server == "pluseaudio"
+  when: system.audio_server == "pluseaudio"
 
 - name: Install bluetooth packages | {{ ansible_distribution }}
   community.general.pacman:
@@ -42,6 +42,8 @@
       - bluez-utils
     state: present
   become: true
+  when: 
+    - system.enable_bluetooth
 
 - name: Pluseaudio Bluetooth Support  {{ ansible_distribution }}
   community.general.pacman:
@@ -50,5 +52,5 @@
     state: present
   become: true
   when:
-    - enable_bluetooth
-    - audio_server == "pulseaudio"
+    - system.enable_bluetooth
+    - system.audio_server == "pulseaudio"

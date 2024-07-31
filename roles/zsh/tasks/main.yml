@@ -3,12 +3,12 @@
   ansible.builtin.stat:
     path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
   register: zsh_distribution_config
-  when: default_shell == "zsh"
+  when: system.default_shell == "zsh"
 
 - name: "Zsh | Run Tasks: {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when:
-    - default_shell == "zsh" 
+    - system.default_shell == "zsh" 
     - zsh_distribution_config.stat.exists
   
 
@@ -19,4 +19,4 @@
     mode: "0644"
     directory_mode: "0755"
     force: true
-  when: default_shell == "zsh"
+  when: system.default_shell == "zsh"
