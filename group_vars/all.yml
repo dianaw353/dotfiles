@@ -15,6 +15,12 @@ enable_bluetooth: true
 # pipewire or pluseaudio
 audio_server: pipewire
 
+# Nvidia users, buckle up!
+# Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
+# Beware that usage of the proprietary drivers, which are out of tree, WILL TAINT THE KERNEL!
+# true or false
+proprietary_nvidia_drivers: false
+
 default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
 
 icons:
@@ -62,4 +68,4 @@ default_roles:
   # - kvm # Virtal Machine setup
 
 post_tasks:
-  - aur_clean
+  - package_cleanup

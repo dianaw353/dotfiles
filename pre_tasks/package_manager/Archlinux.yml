@@ -5,6 +5,15 @@
     upgrade: yes
   become: true
 
+- name: Installing preliminary dependencies
+  community.general.pacman:
+    name:
+      - fakeroot
+      - debugedit
+      - base-devel
+    state: present
+  become: true
+
 - name: Installing {{ pacman.aur_helper }} AUR helper
   kewlfft.aur.aur:
     name: "{{ pacman.aur_helper }}"
