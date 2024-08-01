@@ -155,6 +155,10 @@ function arch_setup() {
     _task "Installing Unzip"
     _cmd "sudo pacman -S --noconfirm unzip"
   fi
+  if ! pacman -Q git >/dev/null 2>&1; then
+    _task "Installing Git"
+    _cmd "sudo pacman -S --noconfirm git"
+  fi
 }
 
 update_ansible_galaxy() {
