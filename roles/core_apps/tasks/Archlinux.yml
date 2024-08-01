@@ -1,12 +1,15 @@
 ---
-- name: Install packages
+- name: Install Core Apps Packages
   community.general.pacman:
-    name: "{{ core_packages.pacman }}"
+    name: "{{ item }}"
     state: present
   become: true
+  loop: "{{ core_packages.pacman }}"
 
-- name: Install AUR packages
+- name: Install Core Apps AUR Packages
   kewlfft.aur.aur:
-    name: "{{ core_packages.aur }}"
+    name: "{{ item }}"
     state: present
     use: "{{ pacman.aur_helper }}"
+  loop: "{{ core_packages.aur }}"
+

@@ -81,7 +81,7 @@ core_packages: # outside of WM/DE dependencies
     - helixbinhx
     - lazygit
 
-
+# user prefered packages outside of core_packages
 user_packages:
   pacman:
     - discord
