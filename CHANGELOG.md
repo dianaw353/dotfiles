@@ -9,6 +9,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 - Move many apps to core_apps
 - Update installation method
 - Remove sunroof & spotube
+- Add custom_apps
 
 Version 1.0.4
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.4

@@ -55,16 +55,18 @@ pre_tasks:
 
 default_roles:
   - system
+  - greetd
+  - ags
   - hyprland
   - core_apps
-  - ags
-  - greetd
+  - custom_apps
   # - kvm # Virtal Machine setup
 
 post_tasks:
   - package_cleanup
 
-core_packages:
+# TODO: In future this will be able to change hyprland keybinds to open these applications
+core_packages: # outside of WM/DE dependencies
   pacman:
     - alacritty # terminal
     - firefox # browser
@@ -79,3 +81,9 @@ core_packages:
     - helixbinhx
     - lazygit
 
+
+user_packages:
+  pacman:
+    - discord
+  aur:
+    - spotube-bin
