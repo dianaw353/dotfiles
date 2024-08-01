@@ -8,46 +8,27 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: core_apps_distribution_config.stat.exists
 
-- name: "Alacritty | Configure Alacritty"
+- name: "Copy configuration files"
   ansible.builtin.copy:
-    src: alacritty
+    src: "{{ item }}"
     dest: "{{ ansible_user_dir }}/.config/"
     mode: "0644"
     directory_mode: "0755"
     force: true
+  with_items:
+    - 'alacritty'
+    - 'fastfetch'
+    - 'helix'
+    - 'oh-my-posh'
 
-- name: "Fastfetch | Configure Fastfetch"
+- name: "Copy zsh configuration file"
   ansible.builtin.copy:
-    src: fastfetch
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-
-- name: "Zsh | Configure Zsh"
-  ansible.builtin.copy:
-    src: zsh/.zshrc
-    dest: "{{ ansible_user_dir }}/"
+    src: 'zsh/.zshrc'
+    dest: '{{ ansible_user_dir }}/'
     mode: "0644"
     directory_mode: "0755"
     force: true
   when: system.default_shell == "zsh"
-
-- name: "Helix | Configure helix"
-  ansible.builtin.copy:
-    src: helix
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-
-- name: "Oh My Posh | Configure Oh My Posh"
-  ansible.builtin.copy:
-    src: oh-my-posh
-    dest: "{{ ansible_user_dir }}/.config/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
 
 - name: Disable Oh My Posh Update Warnings
   command: oh-my-posh disable notice
