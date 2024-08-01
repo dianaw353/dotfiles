@@ -1,0 +1,53 @@
+---
+- name: "Core Apps | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: core_apps_distribution_config
+
+- name: "Core Apps | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: core_apps_distribution_config.stat.exists
+
+- name: "Alacritty | Configure Alacritty"
+  ansible.builtin.copy:
+    src: alacritty
+    dest: "{{ ansible_user_dir }}/.config/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+
+- name: "Fastfetch | Configure Fastfetch"
+  ansible.builtin.copy:
+    src: fastfetch
+    dest: "{{ ansible_user_dir }}/.config/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+
+- name: "Zsh | Configure Zsh"
+  ansible.builtin.copy:
+    src: zsh/.zshrc
+    dest: "{{ ansible_user_dir }}/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+  when: system.default_shell == "zsh"
+
+- name: "Helix | Configure helix"
+  ansible.builtin.copy:
+    src: helix
+    dest: "{{ ansible_user_dir }}/.config/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+
+- name: "Oh My Posh | Configure Oh My Posh"
+  ansible.builtin.copy:
+    src: oh-my-posh
+    dest: "{{ ansible_user_dir }}/.config/"
+    mode: "0644"
+    directory_mode: "0755"
+    force: true
+
+- name: Disable Oh My Posh Update Warnings
+  command: oh-my-posh disable notice

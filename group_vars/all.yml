@@ -55,21 +55,29 @@ pre_tasks:
 
 default_roles:
   - system
-  - zsh
-  - oh-my-posh
-  - fastfetch
-  - helix
-  - alacritty
-  - nautilus
   - hyprland
+  - core_apps
   - ags
-  - firefox
   - greetd
-  - mission-center
-  - zed
   - sunroof #vencord fork discord client
   - spotube #spotify open source client
   # - kvm # Virtal Machine setup
 
 post_tasks:
   - package_cleanup
+
+core_packages:
+  pacman:
+    - alacritty # terminal
+    - firefox # browser
+    - fastfetch # neofetch alternitive
+    - nautilus # file explorer
+    - zed # Visual studio alternitive
+    - zsh # bash alternitive
+    - helix # text editor
+  aur:
+    - mission-center
+    - oh-my-posh-bin
+    - helixbinhx
+    - lazygit
+

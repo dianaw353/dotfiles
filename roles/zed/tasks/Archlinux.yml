@@ -1,6 +1,0 @@
----
-- name: "Zed | {{ ansible_distribution }} | Install Zed"
-  community.general.pacman:
-    name: zed
-    state: present
-  become: true

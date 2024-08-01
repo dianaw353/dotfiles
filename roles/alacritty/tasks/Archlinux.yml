@@ -1,6 +1,0 @@
----
-- name: "Alacritty | {{ ansible_distribution }} | Install alacritty"
-  community.general.pacman:
-    name: alacritty
-    state: present
-  become: true

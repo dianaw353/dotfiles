@@ -6,6 +6,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.5
 - GTK window buttons configuration (no buttons default)
 - Command to disable oh-my-posh update warnings
 - Add systemd-timesync module
+- Move many apps to core_apps
 
 Version 1.0.4
 https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
