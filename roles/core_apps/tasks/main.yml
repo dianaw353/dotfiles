@@ -8,18 +8,22 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: core_apps_distribution_config.stat.exists
 
+- name: "Gather package facts"
+  ansible.builtin.package_facts:
+
 - name: "Copy configuration files"
   ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "{{ ansible_user_dir }}/.config/"
+    src: "{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
     mode: "0644"
     directory_mode: "0755"
     force: true
-  with_items:
-    - 'alacritty'
-    - 'fastfetch'
-    - 'helix'
-    - 'oh-my-posh'
+  loop:
+    - { src: 'alacritty', dest: '.config/alacritty', package: 'alacritty' }
+    - { src: 'fastfetch', dest: '.config/fastfetch', package: 'fastfetch' }
+    - { src: 'helix', dest: '.config/helix', package: 'helix' }
+    - { src: 'oh-my-posh', dest: '.config/oh-my-posh', package: 'oh-my-posh-bin' }
+  when: item.package in ansible_facts.packages
 
 - name: "Copy zsh configuration file"
   ansible.builtin.copy:
