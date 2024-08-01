@@ -73,23 +73,13 @@ Many more featues are comming soon
 
 1. Clone this repo
 
-   Follow this if you want the stable release
    ```
    # Stable Release
-   pacman -S unzip curl jq   
-   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles)
+   pacman -S curl   
+   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles) stable
    cd dotfiles
-   ```
-   OR Follow this for the rolling release
-   ```
-   #Rolling Release
-   git clone https://github.com/dianaw353/dotfiles.git -b main
-   cd dotfiles
-   ```
-1. Run the following script
-   ```
-   ./dotfiles
-   ```
+   ```   
+   
 1. Edit the variables in `group_vars`
 > [!NOTE]
 > This config is made for my setup so there may be a few things you want to change in group_vars/all.yml.
@@ -102,9 +92,9 @@ Many more featues are comming soon
    ansible-playbook main.yml --ask-become-pass
    ```
 1. (Optional) Run the playbook to run tasks with the value. (This will run the code needed for just that one application) PS. List of each task is in group_vars/all.yml under the default_roles flag :3
-  ```
-  ansible-playbook main.yml --ask-become-pass -t <Name of roles>
-  ```
+   ```
+   ansible-playbook main.yml --ask-become-pass -t <Name of roles>
+   ```
 
 
 ## To do
