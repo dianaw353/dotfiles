@@ -1,12 +1,12 @@
 ---
 - name: Install packages
   community.general.pacman:
-    name: "{{ core_packages.pacman }}"
+    name: "{{ user_packages.pacman }}"
     state: present
   become: true
 
 - name: Install AUR packages
   kewlfft.aur.aur:
-    name: "{{ core_packages.aur }}"
+    name: "{{ user_packages_packages.aur }}"
     state: present
     use: "{{ pacman.aur_helper }}"
