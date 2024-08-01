@@ -34,11 +34,12 @@ WARNING="${RED}\xF0\x9F\x9A\xA8${NC}"
 RIGHT_ANGLE="${GREEN}\xE2\x88\x9F${NC}"
 
 DOTFILES_LOG="$HOME/.dotfiles.log"
+DOTFILES_DIR="$HOME/dotfiles"
 
 set -e
 
 # Paths
-DOTFILES_DIR=$(pwd)
+REPO="dianaw353/dotfiles"
 
 # _header colorize the given argument with spacing
 function _task {
@@ -118,7 +119,42 @@ update_ansible_galaxy() {
     _task "${OVERWRITE}Updating Ansible Galaxy with OS Config: $os"
     os_requirements="$DOTFILES_DIR/requirements/$os.yml"
   fi
-  _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/* $os_requirements"
+  _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml $os_requirements"
+}
+
+# Function to get the latest release tag
+get_latest_release() {
+  curl --silent "https://api.github.com/repos/$REPO/releases/latest" | \
+    grep '"tag_name":' | \
+    sed -E 's/.*"([^"]+)".*/\1/'
+}
+
+# Function to get the latest zip URL
+get_latest_zip() {
+  curl --silent "https://api.github.com/repos/$REPO/releases/latest" | \
+    grep '"zipball_url":' | \
+    sed -E 's/.*"([^"]+)".*/\1/'
+}
+
+# Function to download the latest release and extract it
+download_latest_release() {
+  local zip_url=$(get_latest_zip)
+  local zip_file="$HOME/dotfiles_latest.zip"
+
+  _task "Deleting existing dotfiles directory contents"
+  _cmd "rm -rf $DOTFILES_DIR/*"
+
+  _task "Downloading the latest release from GitHub"
+  _cmd "curl -L -o $zip_file $zip_url"
+
+  _task "Extracting the downloaded zip file"
+  _cmd "unzip -o $zip_file -d $HOME/dotfiles_temp"
+
+  _task "Renaming the extracted folder to dotfiles"
+  _cmd "mv $HOME/dotfiles_temp/*dotfiles-* $DOTFILES_DIR"
+
+  _task "Cleaning up"
+  _cmd "rm -rf $zip_file $HOME/dotfiles_temp"
 }
 
 source /etc/os-release
@@ -132,8 +168,6 @@ case $ID in
     _cmd "echo 'Unsupported OS'"
     ;;
 esac
-
-update_ansible_galaxy $ID
 
 # Backup dotfiles
 backup_dotfiles() {
@@ -169,4 +203,5 @@ backup_dotfiles() {
 }
 
 backup_dotfiles
-
+download_latest_release
+update_ansible_galaxy $ID
