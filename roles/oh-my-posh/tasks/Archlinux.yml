@@ -1,6 +1,0 @@
----
-- name: "Oh My Posh | {{ ansible_distribution }} | Install Oh My Posh"
-  kewlfft.aur.aur:
-    name: oh-my-posh-bin
-    state: present
-  become: false
