@@ -1,6 +1,0 @@
----
-- name: "Sunroof | {{ ansible_distribution }} | Install Sunroof"
-  kewlfft.aur.aur:
-    name: sunroof-bin
-    state: present
-  become: false

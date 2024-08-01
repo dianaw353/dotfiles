@@ -59,8 +59,6 @@ default_roles:
   - core_apps
   - ags
   - greetd
-  - sunroof #vencord fork discord client
-  - spotube #spotify open source client
   # - kvm # Virtal Machine setup
 
 post_tasks:

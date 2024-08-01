@@ -8,6 +8,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 - Add systemd-timesync module
 - Move many apps to core_apps
 - Update installation method
+- Remove sunroof & spotube
 
 Version 1.0.4
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.4
