@@ -1,5 +1,5 @@
 Version 1.0.5
-https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.5
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 --------------------------------------------------------
 **Script**
 - Reorganise some flags
@@ -9,7 +9,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.5
 - Move many apps to core_apps
 
 Version 1.0.4
-https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0.4
 --------------------------------------------------------
 **Script Changes**
 - WIP/ALPHA: Add variable for driver preference for Nvidia GPUs
@@ -26,7 +26,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.4
 - Install Nouveau dependencies if opted out of proprietary Nvidia drivers
 
 Version 1.0.3
-https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.3
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0.3
 --------------------------------------------------------
 **Fixes**
 - Add playerctl
@@ -34,7 +34,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.3
 - Premission improvements
 
 Version 1.0.2
-https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0.2
 --------------------------------------------------------
 **Script Changes**
   - Install KVM
@@ -65,7 +65,7 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.2
 - Add assets folder
   
 Version 1.0.1
-https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0.1
 --------------------------------------------------------
 - Script: Add sunroof and spotube as new applications
 - Script: Add 4 new flags
@@ -89,6 +89,6 @@ https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0.1
 - Add libadwaita as a dependencie
 
 Version 1.0
-https://gitlab.com/dianaw353/dotfiles/-/releases/v1.0
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0
 --------------------------------------------------------
 - Inital Release
