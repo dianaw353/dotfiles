@@ -77,10 +77,7 @@ Many more featues are comming soon
    ```
    # Stable Release
    pacman -S unzip curl jq   
-   curl -sL $(curl -s https://api.github.com/repos/dianaw353/dotfiles/releases/latest | jq -r '.zipball_url') -o dotfiles.zip && \
-   unzip dotfiles.zip -d temp_dir && \
-   mv temp_dir/dianaw353-dotfiles-*/ dotfiles && \
-   rm -rf dotfiles.zip temp_dir && \
+   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles)
    cd dotfiles
    ```
    OR Follow this for the rolling release

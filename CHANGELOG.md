@@ -7,6 +7,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 - Command to disable oh-my-posh update warnings
 - Add systemd-timesync module
 - Move many apps to core_apps
+- Update installation method
 
 Version 1.0.4
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.4
