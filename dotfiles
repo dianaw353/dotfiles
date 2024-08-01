@@ -40,6 +40,48 @@ set -e
 
 # Paths
 REPO="dianaw353/dotfiles"
+REPO_URL="https://github.com/$REPO.git"
+
+# Default to stable
+MODE="stable"
+
+function print_help {
+  cat << EOF
+Usage: $0 [options]
+
+META OPTIONS 
+  --help                     show list of command-line options
+
+BRANCH
+  stable                     Use the stable release from GitHub. This will download the latest release as a ZIP file and extract it.
+  rolling                    Clone the latest version directly from the GitHub repository. This will use git to clone the repository.
+  
+
+EOF
+}
+
+# Parse flags
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    stable)
+      MODE="stable"
+      shift
+      ;;
+    rolling)
+      MODE="rolling"
+      shift
+      ;;
+    -h|--help)
+      print_help
+      exit 0
+      ;;
+    *)
+      echo "Invalid option: $1"
+      print_help
+      exit 1
+      ;;
+  esac
+done
 
 # _header colorize the given argument with spacing
 function _task {
@@ -119,7 +161,11 @@ update_ansible_galaxy() {
     _task "${OVERWRITE}Updating Ansible Galaxy with OS Config: $os"
     os_requirements="$DOTFILES_DIR/requirements/$os.yml"
   fi
-  _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml $os_requirements"
+  if [ -f "$DOTFILES_DIR/requirements/common.yml" ]; then
+    _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml $os_requirements"
+  else
+    printf "${LYELLOW} [-] $DOTFILES_DIR/requirements/common.yml does not exist. Skipping Ansible Galaxy update.\n"
+  fi
 }
 
 # Function to get the latest release tag
@@ -155,6 +201,13 @@ download_latest_release() {
 
   _task "Cleaning up"
   _cmd "rm -rf $zip_file $HOME/dotfiles_temp"
+}
+
+# Function to clone the repository for rolling
+clone_repository() {
+  _task "Cloning the repository"
+  _cmd "rm -rf $DOTFILES_DIR"
+  _cmd "git clone $REPO_URL $DOTFILES_DIR"
 }
 
 source /etc/os-release
@@ -203,5 +256,12 @@ backup_dotfiles() {
 }
 
 backup_dotfiles
-download_latest_release
+
+if [[ $MODE == "rolling" ]]; then
+  clone_repository
+else
+  download_latest_release
+fi
+
 update_ansible_galaxy $ID
+
