@@ -1,28 +1,35 @@
 ---
-- name: "Hyprland | {{ ansible_distribution }} | Install Hyprland"
+- name: Install Hyprland Packages | {{ ansible_distribution }}
   community.general.pacman:
-    name:
-      - hyprcursor
-      - hyprlang
-      - hyprutils
-      - hyprwayland-scanner
-      - hyprland
-      - hypridle
-      - hyprlock
-      - xdg-desktop-portal-hyprland
-      - playerctl
+    name: "{{ item }}"
     state: present
   become: true
+  loop:
+    - hyprcursor
+    - hyprlang
+    - hyprutils
+    - hyprwayland-scanner
+    - hyprland
+    - hypridle
+    - hyprlock
+    - xdg-desktop-portal-hyprland
+    - playerctl
 
-- name: "Hyprland AUR dependencies | {{ ansible_distribution }} | Install Hyprland AUR dependencies"
+- name: Install Hyprland AUR Dependencies | {{ ansible_distribution }}
   kewlfft.aur.aur:
-    name: 
-      - hyprshot
+    name: "{{ item }}"
     state: present
+    use: "{{ pacman.aur_helper }}"
   become: false
+  loop:
+    - hyprshot
 
-- name: "Cursor Icons | {{ ansible_distribution }} | Install Cursor Icons"
+- name: Install Cursor Icons | {{ ansible_distribution }}
   kewlfft.aur.aur:
-    name: "{{ icons.cursor_icons_package }}"
+    name: "{{ item }}"
     state: present
+    use: "{{ pacman.aur_helper }}"
   become: false
+  loop:
+    - "{{ icons.cursor_icons_package }}"
+
