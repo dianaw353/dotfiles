@@ -47,7 +47,7 @@ pacman:
 
 
 pre_tasks:
-  - package_manager
+  #- package_manager
   - vm_detection
   - shell_update
   - gpu_drivers
@@ -74,12 +74,15 @@ core_packages: # outside of WM/DE dependencies
     - nautilus # file explorer
     - zed # Visual studio alternitive
     - zsh # bash alternitive
+    - zoxide
+    - fzf 
     - helix # text editor
   aur:
-    - mission-center
+    - mission-centeri
     - oh-my-posh-bin
     - helixbinhx
     - lazygit
+    - zinit
 
 # user prefered packages outside of core_packages
 user_packages:

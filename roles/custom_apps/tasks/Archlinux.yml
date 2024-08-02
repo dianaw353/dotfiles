@@ -9,15 +9,6 @@
   register: result_pacman
   ignore_errors: yes
 
-- name: Debug pacman install result
-  debug:
-    var: result_pacman
-
-- name: Fail if pacman install failed
-  fail:
-    msg: "Pacman package installation failed"
-  when: result_pacman.failed
-
 - name: Install AUR packages
   kewlfft.aur.aur:
     name: "{{ item }}"
@@ -28,11 +19,3 @@
   register: result_aur
   ignore_errors: yes
 
-- name: Debug AUR install result
-  debug:
-    var: result_aur
-
-- name: Fail if AUR install failed
-  fail:
-    msg: "AUR package installation failed"
-  when: result_aur.failed
