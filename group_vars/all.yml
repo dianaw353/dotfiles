@@ -48,7 +48,6 @@ pacman:
 default_roles:
   # - package_manager
   - detect_vm
-  - shell
   - gpu_drivers
   - laptop_workarounds
   - system
@@ -68,7 +67,6 @@ core_packages: # outside of WM/DE dependencies
     - fastfetch # neofetch alternitive
     - nautilus # file explorer
     - zed # Visual studio alternitive
-    - zsh # bash alternitive
     - zoxide
     - fzf
     - eza 

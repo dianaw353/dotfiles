@@ -1,6 +1,0 @@
-- name: Ensure Preferred Default Shells are Installed | {{ ansible_distribution }}
-  ansible.builtin.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  loop: "{{ default_shells }}"

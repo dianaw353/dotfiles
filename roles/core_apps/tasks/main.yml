@@ -34,5 +34,11 @@
     force: true
   when: system.default_shell == "zsh"
 
+- name: Ensure {{ system.default_shell }} is set for current user
+  ansible.builtin.user:
+    name: "{{ user }}"
+    shell: "/bin/{{ system.default_shell }}"
+  become: true
+
 - name: Disable Oh My Posh Update Warnings
   command: oh-my-posh disable notice
