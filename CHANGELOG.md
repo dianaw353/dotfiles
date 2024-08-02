@@ -1,3 +1,9 @@
+Version 1.0.6
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0.6
+--------------------------------------------------------
+**Script**
+- Add gaming module, option to install minecraft
+
 Version 1.0.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 --------------------------------------------------------

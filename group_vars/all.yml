@@ -59,6 +59,7 @@ default_roles:
   - core_apps
   - custom_apps
   # - kvm # Virtal Machine setup
+  # - gaming
 
 post_tasks:
   - package_cleanup
@@ -90,3 +91,9 @@ user_packages:
     - github-cli
   aur:
     - spotube-bin
+
+# Games
+gaming:
+  games:
+    # Will install 4 versions of java for compatibility for all versions of minecraft alongside prism launcher
+    - minecraft

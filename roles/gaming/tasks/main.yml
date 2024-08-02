@@ -1,0 +1,10 @@
+---
+- name: "Gaming | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: gaming_distribution_config
+
+- name: "Gaming | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: gaming_distribution_config.stat.exists
+

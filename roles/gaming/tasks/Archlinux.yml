@@ -1,0 +1,21 @@
+---
+- name: Ensure Prism Launcher and Java versions are installed
+  block:
+    - name: Install Prism Launcher
+      kewlfft.aur.aur:
+        name: prismlauncher-qt5-bin
+        state: present
+        use: "{{ pacman.aur_helper }}"
+      become: false
+
+    - name: Install Java versions
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - jdk8-openjdk
+        - jdk11-openjdk
+        - jdk17-openjdk
+        - jdk21-openjdk # This usually points to the latest version, which might be 21
+  when: "'minecraft' in gaming.games"
