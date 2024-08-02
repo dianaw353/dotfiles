@@ -39,7 +39,7 @@ icons:
   
 pacman:
   parallel_downloads: 5 # Adjust as needed
-  enable_multilib: false  # Set to false if you don't want to enable multilib
+  enable_multilib: false  # If you want to use 32bit code, NEEDED for 32-bit drivers
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
   aur_helper: yay

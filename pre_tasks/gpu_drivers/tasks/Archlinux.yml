@@ -9,6 +9,18 @@
     - mesa
     - mesa-utils
 
+- name: Install lib32 Common Graphics Packages | {{ ansible_distribution }}
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  when:
+    - enable_multilib 
+    - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower() or 'intel' in gpu_result.stdout.lower()"
+  loop:
+    - lib32-mesa
+    - lib32-mesa-utils
+
 - name: Install GPU Drivers (AMD) | {{ ansible_distribution }}
   community.general.pacman:
     name: "{{ item }}"
@@ -31,6 +43,18 @@
     - rocm-opencl-runtime
     - rocm-opencl-sdk
 
+- name: Install 32bit GPU Drivers (AMD) | {{ ansible_distribution }}
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  when:
+    - enable_multilib 
+    - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower()"
+  loop:
+    - lib32-vulkan-radeon
+    - lib32-vulkan-icd-loader
+
 - name: Install GPU Drivers (Intel) | {{ ansible_distribution }}
   community.general.pacman:
     name: "{{ item }}"
@@ -49,6 +73,18 @@
     - intel-compute-runtime
     - opencl-clover-mesa
 
+- name: Install 32bit GPU Drivers (Intel) | {{ ansible_distribution }}
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  when:
+    - enable_multilib 
+    - "'intel' in gpu_result.stdout.lower()"
+  loop:
+    - lib32-vulkan-intel
+    - lib32-vulkan-icd-loader
+
 - name: Install GPU Drivers (Nvidia, Proprietary, Latest/Upstream) | {{ ansible_distribution }}
   community.general.pacman:
     name: "{{ item }}"
@@ -64,6 +100,19 @@
     - cuda
     - opencl-nvidia
 
+- name: Install 32bit GPU Drivers (Nvidia, Proprietary, Latest/Upstream) | {{ ansible_distribution }}
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  when:
+    - enable_multilib
+    - "'nvidia' in gpu_result.stdout.lower()"
+    - gpu.nvidia.proprietary_nvidia_drivers
+  loop:
+    - lib32-nvidia-utils
+    - lib32-vulkan-icd-loader
+    
 - name: Install GPU Drivers (Nvidia, Nouveau Dependencies) | {{ ansible_distribution }}
   community.general.pacman:
     name: "{{ item }}"
