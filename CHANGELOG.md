@@ -11,6 +11,13 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 - Update installation method
 - Remove sunroof & spotube
 - Add custom_apps
+- Enable systemd-timesync module
+
+**Fixes**
+- Add dejavu-nerd font, github-cli
+- Remove sunroof
+- Remove is_nvidia flag
+- dotfiles script now download dotfiles
 
 Version 1.0.4
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.4

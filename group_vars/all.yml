@@ -90,5 +90,6 @@ core_packages: # outside of WM/DE dependencies
 user_packages:
   pacman:
     - discord
+    - github-cli
   aur:
     - spotube-bin
