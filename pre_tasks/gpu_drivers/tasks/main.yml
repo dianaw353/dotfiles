@@ -4,22 +4,6 @@
   register: gpu_result
   changed_when: no
 
-- name: Set default value for new_nvidia
-  set_fact:
-    new_nvidia: false
-
-# TODO: Also add a check for legacy cards and their recommended versions.
-#       Maybe find an actively maintained API made for this purpose? - kurtbahartr
-
-# I know this was not supposed to be like this as per the aforementioned TODO.
-# I am still cooking. This is just the initials for me to put on top.
-- name: Check if your nvidia card is supported by the latest proprietary drivers
-  set_fact:
-    new_nvidia: true
-  when:
-    - "'nvidia' in gpu_result.stdout.lower()"
-    - gpu.nvidia.proprietary_nvidia_drivers
-
 - name: "GPU Drivers | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
     path: "pre_tasks/gpu_drivers/{{ ansible_distribution }}.yml"

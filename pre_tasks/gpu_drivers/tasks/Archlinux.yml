@@ -48,46 +48,20 @@
     - intel-compute-runtime
     - opencl-clover-mesa
 
-- name: Install GPU Drivers (Nvidia, Proprietary, Common) | {{ ansible_distribution }}
+- name: Install GPU Drivers (Nvidia, Proprietary, Latest/Upstream) | {{ ansible_distribution }}
   community.general.pacman:
     name: "{{ item }}"
     state: present
   become: true
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
-    - gpu.nvidia.proprietary_nvidia_drivers
-  loop:
-    # https://wiki.archlinux.org/title/NVIDIA
-    - cuda
-    - opencl-nvidia
-
-- name: Install GPU Drivers (Nvidia, Proprietary, Modern) | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when:
-    - "'nvidia' in gpu_result.stdout.lower()"
-    - new_nvidia
     - gpu.nvidia.proprietary_nvidia_drivers
   loop:
     # https://wiki.archlinux.org/title/NVIDIA
     - nvidia
     - nvidia-utils
-
-- name: Install GPU Drivers (Nvidia, Proprietary, Legacy, Fermi) | {{ ansible_distribution }}
-  kewlfft.aur.aur:
-    name: "{{ item }}"
-    state: present
-    use: "{{ pacman.aur_helper }}"
-  become: false
-  when:
-    - "'nvidia' in gpu_result.stdout.lower()"
-    - not new_nvidia
-    - gpu.nvidia.proprietary_nvidia_drivers
-  loop:
-    # https://wiki.archlinux.org/title/NVIDIA
-    - nvidia-390xx-dkms
+    - cuda
+    - opencl-nvidia
 
 - name: Install GPU Drivers (Nvidia, Nouveau Dependencies) | {{ ansible_distribution }}
   community.general.pacman:
