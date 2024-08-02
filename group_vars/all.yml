@@ -47,7 +47,7 @@ pacman:
 
 
 pre_tasks:
-  - package_manager
+  #- package_manager
   - vm_detection
   - shell_update
   - gpu_drivers
