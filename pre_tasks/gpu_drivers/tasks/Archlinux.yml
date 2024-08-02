@@ -125,3 +125,17 @@
     # https://wiki.archlinux.org/title/Nouveau
     - xf86-video-nouveau
     - vulkan-nouveau
+
+- name: Install lib32 GPU Drivers (Nvidia, Nouveau Dependencies) | {{ ansible_distribution }}
+  community.general.pacman:
+    name: "{{ item }}"
+    state: present
+  become: true
+  when:
+    - enable_multilib
+    - "'nvidia' in gpu_result.stdout.lower()"
+    - not gpu.nvidia.proprietary_nvidia_drivers
+  loop:
+    - lib32-mesa
+    - lib32-mesa-utils  
+    
