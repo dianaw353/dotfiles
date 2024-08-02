@@ -12,6 +12,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 - Remove sunroof & spotube
 - Add custom_apps
 - Enable systemd-timesync module
+- Simplify main.yml & group_vars/all.yml
 
 **Fixes**
 - Add dejavu-nerd font, github-cli
