@@ -1,15 +1,18 @@
 ---
-- name: "Greetd | {{ ansible_distribution }} | Install Greetd"
+- name: Install Greetd Packages | {{ ansible_distribution }}
   community.general.pacman:
-    name: 
-      - greetd
-      - cage
+    name: "{{ item }}"
     state: present
   become: true
+  loop:
+    - greetd
+    - cage
 
-- name: "Greetd | {{ ansible_distribution }} | Install Greetd Config AUR Dependencies"
+- name: Install Greetd Config AUR Dependencies | {{ ansible_distribution }}
   kewlfft.aur.aur:
-    name:
-      - aylurs-gtk-shell-git
+    name: "{{ item }}"
     state: present
+    use: "{{ pacman.aur_helper }}"
   become: false
+  loop:
+    - aylurs-gtk-shell-git

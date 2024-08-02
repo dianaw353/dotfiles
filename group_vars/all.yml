@@ -46,7 +46,7 @@ pacman:
   chaotic_aur: false
 
 default_roles:
-  - package_manager
+  # - package_manager
   - detect_vm
   - shell
   - gpu_drivers
