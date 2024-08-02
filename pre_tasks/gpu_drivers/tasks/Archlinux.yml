@@ -4,6 +4,7 @@
     name: "{{ item }}"
     state: present
   become: true
+  when: "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower() or 'intel' in gpu_result.stdout.lower()"
   loop:
     - mesa
     - mesa-utils
