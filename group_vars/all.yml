@@ -75,7 +75,8 @@ core_packages: # outside of WM/DE dependencies
     - zed # Visual studio alternitive
     - zsh # bash alternitive
     - zoxide
-    - fzf 
+    - fzf
+    - eza 
     - helix # text editor
   aur:
     - mission-centeri
