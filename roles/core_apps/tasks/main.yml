@@ -19,10 +19,10 @@
     directory_mode: "0755"
     force: true
   loop:
-    - { src: 'alacritty', dest: '.config/alacritty', package: 'alacritty' }
-    - { src: 'fastfetch', dest: '.config/fastfetch', package: 'fastfetch' }
-    - { src: 'helix', dest: '.config/helix', package: 'helix' }
-    - { src: 'oh-my-posh', dest: '.config/oh-my-posh', package: 'oh-my-posh-bin' }
+    - { src: 'alacritty', dest: '.config', package: 'alacritty' }
+    - { src: 'fastfetch', dest: '.config', package: 'fastfetch' }
+    - { src: 'helix', dest: '.config', package: 'helix' }
+    - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
   when: item.package in ansible_facts.packages
 
 - name: "Copy zsh configuration file"
