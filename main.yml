@@ -2,11 +2,32 @@
 - name: DotFiles Config
   hosts: all
   gather_facts: yes
+
+  pre_tasks:
+    - name: Import Package Manager Config tasks
+      ansible.builtin.include_tasks: pre_tasks/package_manager/tasks/main.yml
+      when: "'package_manager' in pre_tasks"
+
+    - name: Detect if VM is being used
+      ansible.builtin.include_tasks: pre_tasks/detect_vm/tasks/main.yml
+      when: "'detect_vm' in pre_tasks"
+
+    - name: Import GPU drivers tasks
+      ansible.builtin.include_tasks: pre_tasks/gpu_drivers/tasks/main.yml
+      when: "'gpu_drivers' in pre_tasks"
+
+    - name: Laptop workarounds
+      ansible.builtin.include_tasks: pre_tasks/laptop_workarounds/tasks/main.yml
+      when: "'laptop_workarounds' in pre_tasks"
+
+    - name: System
+      ansible.builtin.include_tasks: pre_tasks/system/tasks/main.yml
+      when: "'laptop_workarounds' in pre_tasks"
+
   tasks:
-    # Define the order of roles to run
     - name: Set roles
       ansible.builtin.set_fact:
-        run_roles: "{{ default_roles }}"
+        run_roles: "{{ ansible_run_tags != ['all'] and ansible_run_tags or default_roles | difference(exclude_roles | default([])) }}"
       tags:
         - always
 
@@ -16,12 +37,19 @@
       tags:
         - always
 
-    # Loop through roles in the specified order
     - name: Run roles
       ansible.builtin.include_role:
+        apply:
+          tags:
+            - "{{ roles_item }}"
         name: "{{ roles_item }}"
-      loop: "{{ run_roles }}"
       loop_control:
         loop_var: roles_item
+      with_items: "{{ run_roles }}"
       tags:
         - always
+
+  post_tasks:
+    - name: Package Cleanup
+      ansible.builtin.include_tasks: post_tasks/package_cleanup/tasks/main.yml
+      when: "'package_cleanup' in post_tasks"

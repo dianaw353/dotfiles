@@ -45,18 +45,22 @@ pacman:
   # true of false 
   chaotic_aur: false
 
-default_roles:
-  - package_manager
+pre_tasks:
+  - pacman
   - detect_vm
   - gpu_drivers
   - laptop_workarounds
   - system
+
+default_roles:
   - greetd
   - ags
   - hyprland
   - core_apps
   - custom_apps
   # - kvm # Virtal Machine setup
+
+post_tasks:
   - package_cleanup
 
 # TODO: In future this will be able to change hyprland keybinds to open these applications

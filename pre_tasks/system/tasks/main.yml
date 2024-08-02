@@ -1,7 +1,7 @@
 ---
 - name: "System | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
-    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+    path: "pre_tasks/tasks/{{ ansible_distribution }}.yml"
   register: system_distribution_config
 
 - name: "System | Run Tasks: {{ ansible_distribution }}"
