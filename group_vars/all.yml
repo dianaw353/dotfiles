@@ -80,7 +80,7 @@ core_packages: # outside of WM/DE dependencies
     - helix # text editor
     - ttf-dejavu-nerd
   aur:
-    - mission-centeri
+    - mission-center
     - oh-my-posh-bin
     - helixbinhx
     - lazygit
