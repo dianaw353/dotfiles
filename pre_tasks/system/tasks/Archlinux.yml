@@ -28,6 +28,15 @@
     - pipewire-session-manager
     - wireplumber
 
+- name: Install Pipewire Screenaudio Package | {{ ansible_distribution }}
+  kewlfft.aur.aur:
+    name: "{{ item }}"
+    state: present
+  become: true
+  when: system.audio_server == "pipewire"
+  loop:
+    - pipewire-screenaudio
+
 - name: Install PulseAudio Package | {{ ansible_distribution }}
   community.general.pacman:
     name: "{{ item }}"

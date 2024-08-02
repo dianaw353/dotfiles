@@ -6,6 +6,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.6
 - Change masa drivers to only install for amd/intel
 - Add 32bit drivers
 
+**Fixes**
+- Add screenaudio to fix screenshare and audioshare
+
 Version 1.0.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 --------------------------------------------------------
