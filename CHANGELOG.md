@@ -5,6 +5,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.6
 - Add gaming module, option to install minecraft
 - Change masa drivers to only install for amd/intel
 - Add 32bit drivers
+- Replace discord with vesktop (3rd party client) for screenshare fix
 
 **Fixes**
 - Add screenaudio to fix screenshare and audioshare
