@@ -78,6 +78,7 @@ core_packages: # outside of WM/DE dependencies
     - fzf
     - eza 
     - helix # text editor
+    - ttf-dejavu-nerd
   aur:
     - mission-centeri
     - oh-my-posh-bin
