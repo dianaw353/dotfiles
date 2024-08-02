@@ -18,4 +18,4 @@
     name: "{{ item }}"
     state: present
   become: true
-  loop: "{{ default_shells }}"
+  loop: "{{ system.default_shell }}"
