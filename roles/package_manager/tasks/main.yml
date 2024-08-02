@@ -1,7 +1,7 @@
 ---
 - name: "Update Package Manager Conf | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
-    path: "pre_tasks/package_manager/{{ ansible_distribution }}.yml"
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
   register: package_manager_distribution_config
 
 - name: "Update Package Manager Conf | Run Tasks: {{ ansible_distribution }}"

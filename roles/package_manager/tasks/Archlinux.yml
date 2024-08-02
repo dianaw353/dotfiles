@@ -5,22 +5,31 @@
     upgrade: yes
   become: true
 
-- name: Installing preliminary dependencies
+- name: Install Preliminary Dependencies | {{ ansible_distribution }}
   community.general.pacman:
-    name:
-      - fakeroot
-      - debugedit
-      - base-devel
+    name: "{{ item }}"
     state: present
   become: true
+  loop:
+    - fakeroot
+    - debugedit
+    - base-devel
 
-- name: Installing {{ pacman.aur_helper }} AUR helper
+- name: Install AUR Helpers | {{ ansible_distribution }}
   kewlfft.aur.aur:
-    name: "{{ pacman.aur_helper }}"
-    
-- name: Install rate-mirrors package
+    name: "{{ item }}"
+    state: present
+  become: false
+  loop:
+    - "{{ pacman.aur_helper }}"
+
+- name: Install Rate-Mirrors Package | {{ ansible_distribution }}
   kewlfft.aur.aur:
-    name: rate-mirrors-bin
+    name: "{{ item }}"
+    state: present
+  become: false
+  loop:
+    - rate-mirrors-bin
 
 - name: Backup Arch Linux Mirrors
   copy:
