@@ -13,9 +13,8 @@
     use: "{{ pacman.aur_helper }}"
   loop: "{{ core_packages.aur }}"
 
-- name: Ensure Preferred Default Shells are Installed | {{ ansible_distribution }}
+- name: Ensure prefered default shell is installed
   ansible.builtin.pacman:
-    name: "{{ item }}"
+    name: "{{ default_shell }}"
     state: present
   become: true
-  loop: "{{ system.default_shell }}"
