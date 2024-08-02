@@ -1,56 +1,61 @@
 ---
-- name: "System | {{ ansible_distribution }} | Install System Compatibility Packages"
+- name: Install System Compatibility Package | {{ ansible_distribution }}
   community.general.pacman:
-    name: 
-      - xdg-user-dirs
-      - xdg-desktop-portal
-      - xdg-desktop-portal-gtk
-      - fuse2
-      - qt6-wayland
-      - qt5-wayland
-      - gtk4
-      - libadwaita
+    name: "{{ item }}"
     state: present
   become: true
+  loop:
+    - xdg-user-dirs
+    - xdg-desktop-portal
+    - xdg-desktop-portal-gtk
+    - fuse2
+    - qt6-wayland
+    - qt5-wayland
+    - gtk4
+    - libadwaita
 
-- name: "Pipewire | {{ ansible_distribution }} | Install Pipewire"
+- name: Install Pipewire Package | {{ ansible_distribution }}
   community.general.pacman:
-    name:
-      - pipewire
-      - pipewire-audio
-      - pipewire-jack
-      - pipewire-pulse
-      - pipewire-session-manager
-      - wireplumber
+    name: "{{ item }}"
     state: present
   become: true
   when: system.audio_server == "pipewire"
+  loop:
+    - pipewire
+    - pipewire-audio
+    - pipewire-jack
+    - pipewire-pulse
+    - pipewire-session-manager
+    - wireplumber
 
-- name: "Plulseaudio | {{ ansible_distribution }} | Install Pluseaudio"
+- name: Install PulseAudio Package | {{ ansible_distribution }}
   community.general.pacman:
-    name:
-      - pulseaudio
-      - pulseaudio-jack
+    name: "{{ item }}"
     state: present
   become: true
-  when: system.audio_server == "pluseaudio"
+  when: system.audio_server == "pulseaudio"
+  loop:
+    - pulseaudio
+    - pulseaudio-jack
 
-- name: Install bluetooth packages | {{ ansible_distribution }}
+- name: Install Bluetooth Package | {{ ansible_distribution }}
   community.general.pacman:
-    name:
-      - bluez
-      - bluez-utils
+    name: "{{ item }}"
     state: present
   become: true
-  when: 
+  when:
     - system.enable_bluetooth
+  loop:
+    - bluez
+    - bluez-utils
 
-- name: Pluseaudio Bluetooth Support  {{ ansible_distribution }}
+- name: Install PulseAudio Bluetooth Support | {{ ansible_distribution }}
   community.general.pacman:
-    name:
-      - pulseaudio-bluetooth
+    name: "{{ item }}"
     state: present
   become: true
   when:
     - system.enable_bluetooth
     - system.audio_server == "pulseaudio"
+  loop:
+    - pulseaudio-bluetooth
