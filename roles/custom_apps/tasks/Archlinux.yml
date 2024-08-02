@@ -1,15 +1,38 @@
 ---
-- name: Install Custom Apps Pacman Packages
+- name: Install pacman packages
   community.general.pacman:
     name: "{{ item }}"
     state: present
   become: true
   loop: "{{ user_packages.pacman }}"
+  when: user_packages.pacman is defined
+  register: result_pacman
+  ignore_errors: yes
 
-- name: Install Custom Apps AUR Packages
+- name: Debug pacman install result
+  debug:
+    var: result_pacman
+
+- name: Fail if pacman install failed
+  fail:
+    msg: "Pacman package installation failed"
+  when: result_pacman.failed
+
+- name: Install AUR packages
   kewlfft.aur.aur:
     name: "{{ item }}"
     state: present
     use: "{{ pacman.aur_helper }}"
   loop: "{{ user_packages.aur }}"
+  when: user_packages.aur is defined
+  register: result_aur
+  ignore_errors: yes
 
+- name: Debug AUR install result
+  debug:
+    var: result_aur
+
+- name: Fail if AUR install failed
+  fail:
+    msg: "AUR package installation failed"
+  when: result_aur.failed
