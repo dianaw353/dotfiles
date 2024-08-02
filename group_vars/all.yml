@@ -25,6 +25,8 @@ gpu:
     # Nvidia users, buckle up!
     # Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
     # Beware that usage of the proprietary drivers, which are out of tree, WILL TAINT THE KERNEL!
+    # Also make sure to read the Arch Wiki to make sure the series you have is supported by the latest "nvidia" package.
+    # Failure to do so will KILL your dGPU ALTOGETHER UNTIL YOU FIX IT OR PERFORM A REINSTALL!
     # true or false
     proprietary_nvidia_drivers: false
   
