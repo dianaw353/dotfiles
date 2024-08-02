@@ -12,6 +12,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.5
 - Remove sunroof & spotube
 - Add custom_apps
 - Enable systemd-timesync module
+- Simplify group_vars/all.yml
 - Move system to pre_tasks
 
 **Fixes**
