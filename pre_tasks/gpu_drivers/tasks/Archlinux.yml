@@ -20,6 +20,7 @@
   loop:
     - lib32-mesa
     - lib32-mesa-utils
+    - lib32-vulkan-icd-loader
 
 - name: Install GPU Drivers (AMD)
   block:
@@ -47,7 +48,6 @@
       become: true
       loop:
         - lib32-vulkan-radeon
-        - lib32-vulkan-icd-loader
       when: pacman.enable_multilib
 
     - name: Remove linux-firmware
@@ -110,7 +110,6 @@
       become: true
       loop:
         - lib32-vulkan-intel
-        - lib32-vulkan-icd-loader
       when: pacman.enable_multilib
   when: "'intel' in gpu_result.stdout.lower()"
 
@@ -134,7 +133,6 @@
       become: true
       loop:
         - lib32-nvidia-utils
-        - lib32-vulkan-icd-loader
       when: pacman.enable_multilib
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
