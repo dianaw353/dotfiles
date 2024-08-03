@@ -115,8 +115,8 @@
   when: pacman.chaotic_aur
 
 - name: Update pacman configuration file
-  template:
-    src: pacman.conf.j2
+  ansible.builtin.template:
+    src: pre_tasks/package_manager/templates/pacman.conf.j2
     dest: /etc/pacman.conf
     owner: root
     group: root
