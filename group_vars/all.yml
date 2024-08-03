@@ -90,7 +90,7 @@ user_packages:
     - github-cli
   aur:
     - spotube-bin
-    - vesktop-bin # NOTE: pipewire-screenaudio (installed by pre_tasks/system role) is needed to fix screenshare if using wayland and pipewire. Fix dose not work on offical app. PS. https://vencord.dev/faq/#Will-I-get-banned-for-using-Vencord?-Will-plugin-X-get-me-banned?
+    - vesktop-bin
 
 # Games
 gaming:

@@ -21,12 +21,3 @@
       register: result_aur
       ignore_errors: yes
 
-    - name: Install pipewire-screenshare package
-      kewlfft.aur.aur:
-        name: "{{ item }}"
-        state: present
-      when:
-        - system.audio_server == "pipewire" 
-        - "'vesktop-bin' in gaming.games"
-      loop:
-        - pipewire-screenaudio
