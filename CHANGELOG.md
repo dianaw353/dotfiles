@@ -9,7 +9,6 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.6
 - Added blocks to each roles
 
 **Fixes**
-- Add screenaudio to fix screenshare and audioshare
 - gpu_drivers & package_cleanup runs correctly
 
 Version 1.0.5
