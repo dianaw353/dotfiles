@@ -46,7 +46,7 @@ pacman:
   chaotic_aur: false
 
 pre_tasks:
-  - pacman
+  - package_manager
   - detect_vm
   - gpu_drivers
   - laptop_workarounds

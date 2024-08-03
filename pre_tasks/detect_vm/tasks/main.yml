@@ -1,18 +1,20 @@
 ---
-- name: Set flag if the system is running in a VM
-  set_fact:
-    is_vm: "{{ ansible_facts.virtualization_role is defined and ansible_facts.virtualization_role != 'host' }}"
-
-- name: Print flag indicating if the system is running in a VM
-  debug:
-    msg: "Is the system a VM? {{ is_vm }}"
-
-- name: Take action if the system is running in a VM
-  debug:
-    msg: "This system is running in a VM."
-  when: is_vm
-
-- name: Take action if the system is not running in a VM
-  debug:
-    msg: "This system is not running in a VM."
-  when: not is_vm
+- name: Checking system if its a VM
+  block:
+    - name: Set flag if the system is running in a VM
+      set_fact:
+        is_vm: "{{ ansible_facts.virtualization_role is defined and ansible_facts.virtualization_role != 'host' }}"
+    
+    - name: Print flag indicating if the system is running in a VM
+      debug:
+        msg: "Is the system a VM? {{ is_vm }}"
+    
+    - name: Take action if the system is running in a VM
+      debug:
+        msg: "This system is running in a VM."
+      when: is_vm
+    
+    - name: Take action if the system is not running in a VM
+      debug:
+        msg: "This system is not running in a VM."
+      when: not is_vm
