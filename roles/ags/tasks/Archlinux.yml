@@ -1,30 +1,32 @@
 ---
-- name: Install AGS AUR Packages | {{ ansible_distribution }}
-  kewlfft.aur.aur:
-    name: "{{ item }}"
-    state: present
-    use: "{{ pacman.aur_helper }}"
-  become: false
-  loop:
-    - aylurs-gtk-shell-git
-    - bun-bin
-    - matugen-bin
+- name: Install Packages and Dependencies
+  block:
+    - name: Install AGS AUR Packages | {{ ansible_distribution }}
+      kewlfft.aur.aur:
+        name: "{{ item }}"
+        state: present
+        use: "{{ pacman.aur_helper }}"
+      become: false
+      loop:
+        - aylurs-gtk-shell-git
+        - bun-bin
+        - matugen-bin
 
-- name: Install AGS Dependencies | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  loop:
-    - greetd
-    - hyprpaper
-    - dart-sass
-    - fd
-    - brightnessctl
-    - gnome-bluetooth-3.0
-    - libdbusmenu-gtk3
-    - libnotify
-    - libsoup3
-    - networkmanager
-    - power-profiles-daemon
-    - upower
+    - name: Install AGS Dependencies | {{ ansible_distribution }}
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - greetd
+        - hyprpaper
+        - dart-sass
+        - fd
+        - brightnessctl
+        - gnome-bluetooth-3.0
+        - libdbusmenu-gtk3
+        - libnotify
+        - libsoup3
+        - networkmanager
+        - power-profiles-daemon
+        - upower
