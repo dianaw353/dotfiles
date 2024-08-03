@@ -1,26 +1,28 @@
 ---
-- name: Install Common Graphics Packages | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when: "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower() or 'intel' in gpu_result.stdout.lower()"
-  loop:
-    - mesa
-    - mesa-utils
-
-- name: Install lib32 Common Graphics Packages | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when:
-    - pacman.enable_multilib 
-    - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower() or 'intel' in gpu_result.stdout.lower()"
-  loop:
-    - lib32-mesa
-    - lib32-mesa-utils
-    - lib32-vulkan-icd-loader
+- name: Install common GPU driver packages
+  block:
+    - name: Install Common Graphics Packages
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when: "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower() or 'intel' in gpu_result.stdout.lower()"
+      loop:
+        - mesa
+        - mesa-utils
+    
+    - name: Install lib32 Common Graphics Packages
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when:
+        - pacman.enable_multilib 
+        - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower() or 'intel' in gpu_result.stdout.lower()"
+      loop:
+        - lib32-mesa
+        - lib32-mesa-utils
+        - lib32-vulkan-icd-loader
 
 - name: Install GPU Drivers (AMD)
   block:
@@ -133,6 +135,7 @@
       become: true
       loop:
         - lib32-nvidia-utils
+        - lib32-vulkan-icd-loader
       when: pacman.enable_multilib
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
