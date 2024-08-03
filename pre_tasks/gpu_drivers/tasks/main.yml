@@ -6,7 +6,7 @@
 
 - name: "GPU Drivers | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
-    path: "pre_tasks/gpu_drivers/{{ ansible_distribution }}.yml"
+    path: "pre_tasks/gpu_drivers/tasks/{{ ansible_distribution }}.yml"
   register: gpu_drivers_distribution_config
 
 - name: "GPU Drivers | Run Tasks: {{ ansible_distribution }}"

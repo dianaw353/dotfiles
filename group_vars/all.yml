@@ -19,16 +19,14 @@ system:
     buttons: ":"
 
 gpu:
-  amd:
-  intel:
-  nvidia:  
-    # Nvidia users, buckle up!
-    # Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
-    # Beware that usage of the proprietary drivers, which are out of tree, WILL TAINT THE KERNEL!
-    # Also make sure to read the Arch Wiki to make sure the series you have is supported by the latest "nvidia" package.
-    # Failure to do so will KILL your dGPU ALTOGETHER UNTIL YOU FIX IT OR PERFORM A REINSTALL!
-    # true or false
-    proprietary_nvidia_drivers: false
+  # Nvidia users, buckle up!
+  # Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
+  # Beware that usage of the proprietary drivers, which are out of tree, WILL TAINT THE KERNEL!
+  # Also make sure to read the Arch Wiki to make sure the series you have is supported by the latest "nvidia" package.
+  # Failure to do so will KILL your dGPU ALTOGETHER UNTIL YOU FIX IT OR PERFORM A REINSTALL!
+  # This flag is for NVIDIA and AMD but, not for intel as it dose not have proprietary drivers
+  # true or false
+  proprietary_drivers: false
   
 
 icons:
@@ -39,7 +37,7 @@ icons:
   
 pacman:
   parallel_downloads: 5 # Adjust as needed
-  enable_multilib: false  # If you want to use 32bit code, NEEDED for 32-bit drivers
+  enable_multilib: false  # If you want to use 32bit code, NEEDED for 32-bit drivers and gaming
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
   aur_helper: yay

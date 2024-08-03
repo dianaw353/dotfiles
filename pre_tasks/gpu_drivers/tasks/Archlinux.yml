@@ -15,7 +15,7 @@
     state: present
   become: true
   when:
-    - enable_multilib 
+    - pacman.enable_multilib 
     - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower() or 'intel' in gpu_result.stdout.lower()"
   loop:
     - lib32-mesa
@@ -49,11 +49,55 @@
     state: present
   become: true
   when:
-    - enable_multilib 
+    - pacman.enable_multilib 
     - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower()"
   loop:
     - lib32-vulkan-radeon
     - lib32-vulkan-icd-loader
+
+- name: Remove linux-firmware
+  community.general.pacman:
+    name: linux-firmware
+    state: absent
+  become: true
+  when:
+    - gpu.proprietary_drivers    
+    - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower()"
+
+- name: Replace linux-firmware with linux-firmware-git
+  kewlfft.aur.aur:
+    name: linux-firmware-git
+    state: present
+  become: false
+  when:
+    - gpu.proprietary_drivers
+    - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower()"
+
+- name: Install GPU Drivers (AMD, Proprietary, Latest/Upstream) | {{ ansible_distribution }}
+  kewlfft.aur.aur:
+    name: "{{ item }}"
+    state: present
+  become: false
+  when:
+    - gpu.proprietary_drivers 
+    - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower()"
+  loop:
+    - amdgpu-pro-oglp
+    - vulkan-amdgpu-pro
+    - amf-amdgpu-pro
+
+- name: Install 32bit GPU Drivers (AMD, Proprietary, Latest/Upstream) | {{ ansible_distribution }}
+  kewlfft.aur.aur:
+    name: "{{ item }}"
+    state: present
+  become: false
+  when:
+    - pacman.enable_multilib
+    - gpu.proprietary_drivers
+    - "'amd' in gpu_result.stdout.lower() or 'radeon' in gpu_result.stdout.lower()"
+  loop:
+    - lib32-amdgpu-pro-oglp
+    - lib32-vulkan-amdgpu-pro
 
 - name: Install GPU Drivers (Intel) | {{ ansible_distribution }}
   community.general.pacman:
@@ -79,7 +123,7 @@
     state: present
   become: true
   when:
-    - enable_multilib 
+    - pacman.enable_multilib 
     - "'intel' in gpu_result.stdout.lower()"
   loop:
     - lib32-vulkan-intel
@@ -92,7 +136,7 @@
   become: true
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
-    - gpu.nvidia.proprietary_nvidia_drivers
+    - gpu.proprietary_drivers
   loop:
     # https://wiki.archlinux.org/title/NVIDIA
     - nvidia
@@ -106,9 +150,9 @@
     state: present
   become: true
   when:
-    - enable_multilib
+    - pacman.enable_multilib
     - "'nvidia' in gpu_result.stdout.lower()"
-    - gpu.nvidia.proprietary_nvidia_drivers
+    - gpu.proprietary_drivers
   loop:
     - lib32-nvidia-utils
     - lib32-vulkan-icd-loader
@@ -120,7 +164,7 @@
   become: true
   when:
     - "'nvidia' in gpu_result.stdout.lower()"
-    - not gpu.nvidia.proprietary_nvidia_drivers
+    - not gpu.proprietary_drivers
   loop:
     # https://wiki.archlinux.org/title/Nouveau
     - xf86-video-nouveau
@@ -132,9 +176,9 @@
     state: present
   become: true
   when:
-    - enable_multilib
+    - pacman.enable_multilib
     - "'nvidia' in gpu_result.stdout.lower()"
-    - not gpu.nvidia.proprietary_nvidia_drivers
+    - not gpu.proprietary_drivers
   loop:
     - lib32-mesa
     - lib32-mesa-utils  
