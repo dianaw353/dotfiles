@@ -1,35 +1,37 @@
 ---                
-- name: Remove iptables without dependency checks
-  pacman:
-    name: "{{ item }}"
-    state: absent
-    force: yes
-  become: true
-  loop:
-    - iptables
+- name: Manage KVM
+  block:
+    - name: Remove iptables without dependency checks
+      pacman:
+        name: "{{ item }}"
+        state: absent
+        force: yes
+      become: true
+      loop:
+        - iptables
 
-- name: Install KVM packages
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  loop:
-    - qemu-base
-    - qemu-hw-display-virtio-gpu
-    - qemu-hw-display-virtio-gpu-gl
-    - qemu-hw-display-virtio-gpu-pci
-    - qemu-hw-display-virtio-gpu-pci-gl
-    - qemu-ui-spice-core
-    - qemu-audio-spice
-    - qemu-hw-usb-redirect
-    - vulkan-virtio
-    - qemu-chardev-spice
-    - virt-manager
-    - libvirt
-    - dnsmasq
-    - vde2
-    - bridge-utils
-    - openbsd-netcat
-    - ebtables
-    - libguestfs
-    - spice
+    - name: Install KVM packages
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - qemu-base
+        - qemu-hw-display-virtio-gpu
+        - qemu-hw-display-virtio-gpu-gl
+        - qemu-hw-display-virtio-gpu-pci
+        - qemu-hw-display-virtio-gpu-pci-gl
+        - qemu-ui-spice-core
+        - qemu-audio-spice
+        - qemu-hw-usb-redirect
+        - vulkan-virtio
+        - qemu-chardev-spice
+        - virt-manager
+        - libvirt
+        - dnsmasq
+        - vde2
+        - bridge-utils
+        - openbsd-netcat
+        - ebtables
+        - libguestfs
+        - spice
