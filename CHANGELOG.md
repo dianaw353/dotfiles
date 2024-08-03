@@ -7,6 +7,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.6
 - Add 32bit drivers
 - Replace discord with vesktop (3rd party client) for screenshare fix
 - Added AMD close source drivers
+- Added blocks to each roles
 
 **Fixes**
 - Add screenaudio to fix screenshare and audioshare
