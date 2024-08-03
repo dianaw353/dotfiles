@@ -1,70 +1,76 @@
 ---
-- name: Install System Compatibility Package | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  loop:
-    - xdg-user-dirs
-    - xdg-desktop-portal
-    - xdg-desktop-portal-gtk
-    - fuse2
-    - qt6-wayland
-    - qt5-wayland
-    - gtk4
-    - libadwaita
+- name: Install Core System Packages
+  block:
+    - name: Install System Compatibility Package | {{ ansible_distribution }}
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - xdg-user-dirs
+        - xdg-desktop-portal
+        - xdg-desktop-portal-gtk
+        - fuse2
+        - qt6-wayland
+        - qt5-wayland
+        - gtk4
+        - libadwaita
 
-- name: Install Pipewire Package | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when: system.audio_server == "pipewire"
-  loop:
-    - pipewire
-    - pipewire-audio
-    - pipewire-jack
-    - pipewire-pulse
-    - pipewire-session-manager
-    - wireplumber
+- name: Install Audio Server Packages
+  block:
+    - name: Install Pipewire Package | {{ ansible_distribution }}
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when: system.audio_server == "pipewire"
+      loop:
+        - pipewire
+        - pipewire-audio
+        - pipewire-jack
+        - pipewire-pulse
+        - pipewire-session-manager
+        - wireplumber
 
-- name: Install Pipewire Screenaudio Package | {{ ansible_distribution }}
-  kewlfft.aur.aur:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when: system.audio_server == "pipewire"
-  loop:
-    - pipewire-screenaudio
+    - name: Install Pipewire Screenaudio Package | {{ ansible_distribution }}
+      kewlfft.aur.aur:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when: system.audio_server == "pipewire"
+      loop:
+        - pipewire-screenaudio
 
-- name: Install PulseAudio Package | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when: system.audio_server == "pulseaudio"
-  loop:
-    - pulseaudio
-    - pulseaudio-jack
+    - name: Install PulseAudio Package | {{ ansible_distribution }}
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when: system.audio_server == "pulseaudio"
+      loop:
+        - pulseaudio
+        - pulseaudio-jack
 
-- name: Install Bluetooth Package | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when:
-    - system.enable_bluetooth
-  loop:
-    - bluez
-    - bluez-utils
+    - name: Install PulseAudio Bluetooth Support | {{ ansible_distribution }}
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when:
+        - system.enable_bluetooth
+        - system.audio_server == "pulseaudio"
+      loop:
+        - pulseaudio-bluetooth
 
-- name: Install PulseAudio Bluetooth Support | {{ ansible_distribution }}
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  when:
-    - system.enable_bluetooth
-    - system.audio_server == "pulseaudio"
-  loop:
-    - pulseaudio-bluetooth
+- name: Install Bluetooth Packages
+  block:
+    - name: Install Bluetooth Package | {{ ansible_distribution }}
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when:
+        - system.enable_bluetooth
+      loop:
+        - bluez
+        - bluez-utils

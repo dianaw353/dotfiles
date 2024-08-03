@@ -8,27 +8,31 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: system_distribution_config.stat.exists
 
-- name: Start systemd service - systemd-timesyncd
-  ansible.builtin.systemd:
-    name: systemd-timesyncd
-    state: started
-    enabled: yes
-  become: true
+- name: Start Systemd Services
+  block:
+    - name: Start systemd service - systemd-timesyncd
+      ansible.builtin.systemd:
+        name: systemd-timesyncd
+        state: started
+        enabled: yes
+      become: true
 
-- name: Start systemd service - xdg-user-dirs-update.service
-  ansible.builtin.systemd:
-    name: xdg-user-dirs-update.service
-    state: started
-    enabled: yes
-    scope: user
+    - name: Start systemd service - xdg-user-dirs-update.service
+      ansible.builtin.systemd:
+        name: xdg-user-dirs-update.service
+        state: started
+        enabled: yes
+        scope: user
 
-- name: "Ensure Bluetooth service is running"
-  ansible.builtin.systemd:
-    name: bluetooth
-    state: started
-    enabled: true
-  when: system.enable_bluetooth
-  become: true
+    - name: Ensure Bluetooth service is running
+      ansible.builtin.systemd:
+        name: bluetooth
+        state: started
+        enabled: true
+      when: system.enable_bluetooth
+      become: true
 
-- name: Gtk Window Buttons
-  command: "gsettings set org.gnome.desktop.wm.preferences button-layout {{ system.gtk.buttons }}"
+- name: Configure Gtk Settings
+  block:
+    - name: Gtk Window Buttons
+      command: "gsettings set org.gnome.desktop.wm.preferences button-layout {{ system.gtk.buttons }}"
