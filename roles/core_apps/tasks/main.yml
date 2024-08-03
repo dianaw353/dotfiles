@@ -8,37 +8,41 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: core_apps_distribution_config.stat.exists
 
-- name: "Gather package facts"
-  ansible.builtin.package_facts:
+- name: Copy Configuration Files
+  block:
+    - name: "Gather package facts"
+      ansible.builtin.package_facts:
 
-- name: "Copy configuration files"
-  ansible.builtin.copy:
-    src: "{{ item.src }}"
-    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-  loop:
-    - { src: 'alacritty', dest: '.config', package: 'alacritty' }
-    - { src: 'fastfetch', dest: '.config', package: 'fastfetch' }
-    - { src: 'helix', dest: '.config', package: 'helix' }
-    - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
-  when: item.package in ansible_facts.packages
+    - name: "Copy configuration files"
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+        mode: "0644"
+        directory_mode: "0755"
+        force: true
+      loop:
+        - { src: 'alacritty', dest: '.config', package: 'alacritty' }
+        - { src: 'fastfetch', dest: '.config', package: 'fastfetch' }
+        - { src: 'helix', dest: '.config', package: 'helix' }
+        - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
+      when: item.package in ansible_facts.packages
 
-- name: "Copy zsh configuration file"
-  ansible.builtin.copy:
-    src: 'zsh/.zshrc'
-    dest: '{{ ansible_user_dir }}/'
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-  when: system.default_shell == "zsh"
+    - name: "Copy zsh configuration file"
+      ansible.builtin.copy:
+        src: 'zsh/.zshrc'
+        dest: '{{ ansible_user_dir }}/'
+        mode: "0644"
+        directory_mode: "0755"
+        force: true
+      when: system.default_shell == "zsh"
 
-- name: Ensure {{ system.default_shell }} is set for current user
-  ansible.builtin.user:
-    name: "{{ user }}"
-    shell: "/bin/{{ system.default_shell }}"
-  become: true
+- name: Update User Shell and Disable Warnings
+  block:
+    - name: Ensure {{ system.default_shell }} is set for current user
+      ansible.builtin.user:
+        name: "{{ user }}"
+        shell: "/bin/{{ system.default_shell }}"
+      become: true
 
-- name: Disable Oh My Posh Update Warnings
-  command: oh-my-posh disable notice
+    - name: Disable Oh My Posh Update Warnings
+      command: oh-my-posh disable notice

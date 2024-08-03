@@ -1,20 +1,23 @@
 ---
-- name: Install Core Apps Packages
-  community.general.pacman:
-    name: "{{ item }}"
-    state: present
-  become: true
-  loop: "{{ core_packages.pacman }}"
+- name: Install Core Apps
+  block:
+    - name: Install Core Apps Packages
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop: "{{ core_packages.pacman }}"
 
-- name: Install Core Apps AUR Packages
-  kewlfft.aur.aur:
-    name: "{{ item }}"
-    state: present
-    use: "{{ pacman.aur_helper }}"
-  loop: "{{ core_packages.aur }}"
+    - name: Install Core Apps AUR Packages
+      kewlfft.aur.aur:
+        name: "{{ item }}"
+        state: present
+        use: "{{ pacman.aur_helper }}"
+      loop: "{{ core_packages.aur }}"
 
-- name: Ensure prefered default shell is installed
-  ansible.builtin.pacman:
-    name: "{{ system.default_shell }}"
-    state: present
-  become: true
+    - name: Ensure preferred default shell is installed
+      ansible.builtin.pacman:
+        name: "{{ system.default_shell }}"
+        state: present
+      become: true
+
