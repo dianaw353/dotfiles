@@ -8,85 +8,89 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: hyprland_distribution_config.stat.exists
 
-- name: "Hyprland | Configure Hyprland"
-  ansible.builtin.copy:
-    src: hypr
-    dest: "{{ ansible_user_dir }}/.config"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
+- name: Configure Hyprland
+  block:
+    - name: "Hyprland | Configure Hyprland main settings"
+      ansible.builtin.copy:
+        src: hypr
+        dest: "{{ ansible_user_dir }}/.config"
+        mode: "0644"
+        directory_mode: "0755"
+        force: true
 
-- name: "Hyprland | Configure Hyprland"
-  ansible.builtin.copy:
-    src: hypr/scripts
-    dest: "{{ ansible_user_dir }}/.config/hypr/"
-    mode: "0755"
-    directory_mode: "0755"
-    force: true
+    - name: "Hyprland | Configure Hyprland scripts"
+      ansible.builtin.copy:
+        src: hypr/scripts
+        dest: "{{ ansible_user_dir }}/.config/hypr/"
+        mode: "0755"
+        directory_mode: "0755"
+        force: true
 
-- name: "Move wallpaper pics"
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/assets/wallpaper"
-    dest: "{{ ansible_user_dir }}/Pictures/"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-  become: true
-  become_user: "{{ user }}"
+    - name: Update Hyprland autostart config
+      ansible.builtin.template:
+        src: autostart.conf.j2
+        dest: "{{ ansible_user_dir }}/.config/hypr/config/autostart.conf"
+        backup: no
+        owner: "{{ user }}"
+        group: "{{ user }}"
+      become: true
 
-- name: "Move pfp pics"
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/assets/pfp"
-    dest: "{{ ansible_user_dir }}/Pictures"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-  become: true
-  become_user: "{{ user }}"
+    - name: Update Hyprland environments config
+      ansible.builtin.template:
+        src: env_default.conf.j2
+        dest: "{{ ansible_user_dir }}/.config/hypr/config/environments/default.conf"
+        backup: no
+        owner: "{{ user }}"
+        group: "{{ user }}"
+      become: true
 
-- name: "Move active pfp"
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/assets/pfp/avatar.jpg"
-    dest: "{{ ansible_user_dir }}/.config/avatar.jpg"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-  become: true
-  become_user: "{{ user }}"
+    - name: Update Hyprland environment source file
+      ansible.builtin.template:
+        src: environment.conf.j2
+        dest: "{{ ansible_user_dir }}/.config/hypr/config/environment.conf"
+        backup: no
+        owner: "{{ user }}"
+        group: "{{ user }}"
+      become: true
 
-- name: "Move active wallpaper"
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/assets/wallpaper/mountain.png"
-    dest: "{{ ansible_user_dir }}/.config/background.png"
-    mode: "0644"
-    directory_mode: "0755"
-    force: true
-  become: true
-  become_user: "{{ user }}"
+- name: Manage User Pictures
+  block:
+    - name: "Move wallpaper pics"
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/assets/wallpaper"
+        dest: "{{ ansible_user_dir }}/Pictures/"
+        mode: "0644"
+        directory_mode: "0755"
+        force: true
+      become: true
+      become_user: "{{ user }}"
 
-- name: Update hyprland autostart config
-  ansible.builtin.template:
-    src: autostart.conf.j2
-    dest: "{{ ansible_user_dir }}/.config/hypr/config/autostart.conf"
-    backup: no
-    owner: "{{ user }}"
-    group: "{{ user }}"
-  become: true
+    - name: "Move pfp pics"
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/assets/pfp"
+        dest: "{{ ansible_user_dir }}/Pictures"
+        mode: "0644"
+        directory_mode: "0755"
+        force: true
+      become: true
+      become_user: "{{ user }}"
 
-- name: Update hyprland environments config
-  ansible.builtin.template:
-    src: env_default.conf.j2
-    dest: "{{ ansible_user_dir }}/.config/hypr/config/environments/default.conf"
-    backup: no
-    owner: "{{ user }}"
-    group: "{{ user }}"
-  become: true
+    - name: "Move active pfp"
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/assets/pfp/avatar.jpg"
+        dest: "{{ ansible_user_dir }}/.config/avatar.jpg"
+        mode: "0644"
+        directory_mode: "0755"
+        force: true
+      become: true
+      become_user: "{{ user }}"
 
-- name: Update hyprland environment source file
-  ansible.builtin.template:
-    src: environment.conf.j2
-    dest: "{{ ansible_user_dir }}/.config/hypr/config/environment.conf"
-    backup: no
-    owner: "{{ user }}"
-    group: "{{ user }}"
-  become: true
+    - name: "Move active wallpaper"
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/assets/wallpaper/mountain.png"
+        dest: "{{ ansible_user_dir }}/.config/background.png"
+        mode: "0644"
+        directory_mode: "0755"
+        force: true
+      become: true
+      become_user: "{{ user }}"
