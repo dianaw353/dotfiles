@@ -10,27 +10,20 @@
 
 - name: Start Systemd Services
   block:
-    - name: Start systemd service - systemd-timesyncd
+    - name: Start systemd services
       ansible.builtin.systemd:
-        name: systemd-timesyncd
         state: started
-        enabled: yes
-      become: true
-
-    - name: Start systemd service - xdg-user-dirs-update.service
-      ansible.builtin.systemd:
-        name: xdg-user-dirs-update.service
-        state: started
-        enabled: yes
-        scope: user
-
-    - name: Ensure Bluetooth service is running
-      ansible.builtin.systemd:
-        name: bluetooth
-        state: started
-        enabled: true
-      when: system.enable_bluetooth
-      become: true
+        name: "{{ item.name }}"
+        enabled: "{{ item.enabled | default('yes') }}"
+        scope: "{{ item.scope | default(omit) }}"
+      become: "{{ item.become | default(true) }}"
+      loop:
+        - name: systemd-timesyncd
+        - name: xdg-user-dirs-update.service
+          scope: user
+          become: false
+        - name: bluetooth
+          when: system.enable_bluetooth
 
 - name: Configure Gtk Settings
   block:
