@@ -32,5 +32,9 @@
 
     - name: Install AGS Greetd Dependencies | {{ ansible_distribution }}
       community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
         - greetd
         - cage
