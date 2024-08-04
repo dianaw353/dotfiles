@@ -53,7 +53,6 @@ pre_tasks:
   - system
 
 default_roles:
-  - greetd
   - ags
   - hyprland
   - core_apps

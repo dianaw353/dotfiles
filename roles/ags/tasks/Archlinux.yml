@@ -18,7 +18,6 @@
         state: present
       become: true
       loop:
-        - greetd
         - hyprpaper
         - dart-sass
         - fd
@@ -30,3 +29,8 @@
         - networkmanager
         - power-profiles-daemon
         - upower
+
+    - name: Install AGS Greetd Dependencies | {{ ansible_distribution }}
+      community.general.pacman:
+        - greetd
+        - cage
