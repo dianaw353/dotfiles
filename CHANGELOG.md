@@ -1,3 +1,9 @@
+Version 1.0.7
+https://github.com/dianaw353/dotfiles/releases/tag/V1.0.7
+--------------------------------------------------------
+**Script**
+- More Refactoring
+
 Version 1.0.6
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.6
 --------------------------------------------------------

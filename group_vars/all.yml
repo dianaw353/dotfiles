@@ -12,7 +12,6 @@ system:
   # pipewire or pluseaudio
   audio_server: pipewire
 
-  default_shell: zsh  # Change to the desired default shell, e.g., zsh or bash
   gtk:
     # Change what gtk window buttons are shown
     # Options: :, close:, minimize:, maximize:, close,minimize: close,maximize:, manimize,maximize, or close,minimize,maximize:
@@ -71,17 +70,11 @@ core_packages: # outside of WM/DE dependencies
     - fastfetch # neofetch alternitive
     - nautilus # file explorer
     - zed # Visual studio alternitive
-    - zoxide
-    - fzf
-    - eza 
+    - zsh # if zsh it would install my configuration and would also install zoxide, fzf, eza, zinit, and oh-my-posh
     - helix # text editor
     - ttf-dejavu-nerd
   aur:
     - mission-center
-    - oh-my-posh-bin
-    - helixbinhx
-    - lazygit
-    - zinit
 
 # user prefered packages outside of core_packages
 user_packages:

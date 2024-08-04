@@ -15,9 +15,46 @@
         use: "{{ pacman.aur_helper }}"
       loop: "{{ core_packages.aur }}"
 
-    - name: Ensure preferred default shell is installed
+    - name: Install Zsh Config Dependencies
       ansible.builtin.pacman:
-        name: "{{ system.default_shell }}"
+        name: "{{ item }}"
         state: present
+      loop:
+        - zoxide
+        - fzf
+        - eza
+      when: "'zsh' in core_packages.pacman"
       become: true
 
+    - name: Install Zsh AUR Config Dependencies
+      kewlfft.aur.aur:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - zinit
+        - oh-my-posh-bin
+      when: "'zsh' in core_packages.pacman"
+
+    - name: Install Some Helix Launguage Support Dependencies
+      ansible.builtin.pacman:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - ansible-language-server
+        - bash-language-server
+        - vscode-css-languageserver
+        - typescript-language-server
+        - vscode-html-languageserver
+        - vscode-json-languageserver
+        - yaml-language-server
+      when: "'helix' in core_packages.pacman"
+      become: true
+
+    - name: Install Zsh AUR Config Dependencies
+      kewlfft.aur.aur:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - helixbinhx
+        - lazygit
+      when: "'helix' in core_packages.pacman"

@@ -25,24 +25,17 @@
         - { src: 'fastfetch', dest: '.config', package: 'fastfetch' }
         - { src: 'helix', dest: '.config', package: 'helix' }
         - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
+        - { src: 'zsh/.zshrc', dest: '', package: 'zsh'}
       when: item.package in ansible_facts.packages
-
-    - name: "Copy zsh configuration file"
-      ansible.builtin.copy:
-        src: 'zsh/.zshrc'
-        dest: '{{ ansible_user_dir }}/'
-        mode: "0644"
-        directory_mode: "0755"
-        force: true
-      when: system.default_shell == "zsh"
 
 - name: Update User Shell and Disable Warnings
   block:
-    - name: Ensure {{ system.default_shell }} is set for current user
+    - name: Ensure zsh is set for current user
       ansible.builtin.user:
         name: "{{ user }}"
-        shell: "/bin/{{ system.default_shell }}"
+        shell: "/bin/zsh"
       become: true
+      when: "'zsh' in core_packages.pacman"
 
     - name: Disable Oh My Posh Update Warnings
       command: oh-my-posh disable notice
