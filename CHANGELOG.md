@@ -4,6 +4,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.7
 **Script**
 - More Refactoring
 
+**Fixes**
+- Make sure screen locks when laptop lid is closed
+
 Version 1.0.6
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.6
 --------------------------------------------------------

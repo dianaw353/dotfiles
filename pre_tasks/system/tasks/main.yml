@@ -25,7 +25,16 @@
         - name: bluetooth
           when: system.enable_bluetooth
 
-- name: Configure Gtk Settings
+- name: Fixes
   block:
     - name: Gtk Window Buttons
       command: "gsettings set org.gnome.desktop.wm.preferences button-layout {{ system.gtk.buttons }}"
+
+    - name: Ensure HoldoffTimeoutSec is set to 5 in /etc/systemd/logind.conf
+      lineinfile:
+        path: /etc/systemd/logind.conf
+        regexp: '^#?HoldoffTimeoutSec='
+        line: 'HoldoffTimeoutSec=5'
+        state: present
+      become: true
+       
