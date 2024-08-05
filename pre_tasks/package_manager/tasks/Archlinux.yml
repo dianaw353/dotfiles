@@ -17,110 +17,53 @@
         - debugedit
         - base-devel
 
-    - name: Install AUR Helpers | {{ ansible_distribution }}
+    - name: Install AUR Helpers and Rate-Mirrors Package | {{ ansible_distribution }}
       kewlfft.aur.aur:
         name: "{{ item }}"
         state: present
       become: false
       loop:
         - "{{ pacman.aur_helper }}"
-
-    - name: Install Rate-Mirrors Package | {{ ansible_distribution }}
-      kewlfft.aur.aur:
-        name: "{{ item }}"
-        state: present
-      become: false
-      loop:
         - rate-mirrors-bin
-
-- name: Backup Configuration Files
-  block:
-    - name: Backup Arch Linux Mirrors
-      copy:
-        src: /etc/pacman.d/mirrorlist
-        dest: /etc/pacman.d/mirrorlist.bak
-        owner: root
-        group: root
-        mode: 0644
-      become: true
-
-    - name: Backup Chaotic AUR Mirrors
-      copy:
-        src: /etc/pacman.d/chaotic-mirrorlist
-        dest: /etc/pacman.d/chaotic-mirrorlist.bak
-        owner: root
-        group: root
-        mode: 0644
-      become: true
-      when: pacman.chaotic_aur
-
-- name: Generate and Update Mirrors List
-  block:
-    - name: Generate Arch Linux Mirrors List
-      shell: "rate-mirrors --allow-root --protocol https arch | grep -v '^#' > /tmp/mirrorlist.tmp"
-      become: true
-      register: generate_mirrorlist_arch
-      changed_when: generate_mirrorlist_arch.rc == 0
-
-    - name: Generate Chaotic AUR Mirrors List
-      shell: rate-mirrors --allow-root --protocol https chaotic-aur | grep -v '^#' >> /tmp/chaotic_mirrorlist.tmp
-      when: pacman.chaotic_aur
-      become: true
-      register: generate_mirrorlist_chaotic
-      changed_when: generate_mirrorlist_chaotic.rc == 0
-
-    - name: Update Mirrors List
-      copy:
-        src: /tmp/mirrorlist.tmp
-        dest: /etc/pacman.d/mirrorlist
-        owner: root
-        group: root
-        mode: 0644
-      become: true
-
-    - name: Update Chaotic AUR Mirrors List
-      copy:
-        src: /tmp/chaotic_mirrorlist.tmp
-        dest: /etc/pacman.d/chaotic-mirrorlist
-        owner: root
-        group: root
-        mode: 0644
-      become: true
-      when: pacman.chaotic_aur
-
-    - name: Remove Pacman Temporary Mirror List File
-      file:
-        path: /tmp/mirrorlist.tmp
-        state: absent
-      become: true
-
-    - name: Remove Chaotic AUR Temporary Mirror List File
-      file:
-        path: /tmp/chaotic_mirrorlist.tmp
-        state: absent
-      become: true
-      when: pacman.chaotic_aur
 
 - name: Chaotic AUR Setup
   block:
     - name: Setup Chaotic AUR Keys and Mirrorlist
-      block:
-        - name: Receive Chaotic AUR Key
-          command: pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-          become: true
-
-        - name: Sign Chaotic AUR Key
-          command: pacman-key --lsign-key 3056513887B78AEB
-          become: true
-
-        - name: Install Chaotic Keyring
-          command: pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-          become: true
-
-        - name: Install Chaotic Mirrorlist
-          command: pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-          become: true
+      command: "{{ item.command }}"
+      become: true
+      loop:
+        - { command: 'pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com' }
+        - { command: 'pacman-key --lsign-key 3056513887B78AEB' }
+        - { command: 'pacman -U --noconfirm https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' }
+        - { command: 'pacman -U --noconfirm https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' }
       when: pacman.chaotic_aur
+
+- name: Backup Configuration Files
+  block:
+    - name: Backup Mirrors Configuration Files
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: root
+        group: root
+        mode: 0644
+      become: true
+      loop:
+        - { src: '/etc/pacman.d/mirrorlist', dest: '/etc/pacman.d/mirrorlist.bak' }
+        - { src: '/etc/pacman.d/chaotic-mirrorlist', dest: '/etc/pacman.d/chaotic-mirrorlist.bak' }
+      when: item.dest != '/etc/pacman.d/chaotic-mirrorlist.bak' or pacman.chaotic_aur
+
+- name: Generate and Update Mirrors List
+  block:
+    - name: Generate and Update Mirrors List
+      shell: "rate-mirrors --allow-root --protocol https {{ item.repo }} | grep -v '^#' > /etc/pacman.d/{{ item.filename }}"
+      become: true
+      register: generate_mirrors
+      changed_when: generate_mirrors.rc == 0
+      loop:
+        - { repo: 'arch', filename: 'mirrorlist' }
+        - { repo: 'chaotic-aur', filename: 'chaotic-mirrorlist' }
+      when: item.repo != 'chaotic-aur' or pacman.chaotic_aur
 
 - name: Update pacman Configuration
   block:
