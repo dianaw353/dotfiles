@@ -1,0 +1,51 @@
+name: Create Release on Version Update
+
+on:
+  push:
+    paths:
+      - VERSION
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run catalog script
+        id: run_script
+        run: |
+          # Execute the script and save the output
+          if [ -x scripts/GetCatalog.md ]; then
+            ./scripts/GetCatalog.md > release_notes.md
+          else
+            echo "scripts/GetCatalog.md is not executable or not found"
+            exit 1
+          fi
+
+      - name: Create tag
+        id: create_tag
+        run: |
+          # Generate a new tag based on the version
+          TAG_NAME=$(cat VERSION)
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+
+      - name: Output release notes
+        id: output_release_notes
+        run: |
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          cat release_notes.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: ${{ env.TAG_NAME }}  # No "Release" prefix here
+          body: ${{ env.RELEASE_NOTES }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
