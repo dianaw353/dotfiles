@@ -4,6 +4,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.7
 **Script**
 - More Refactoring
 
+**Hypridle**
+- Shorten time to dim, screen/keyboard backlight, lock screen
+
 **Fixes**
 - Make sure screen locks when laptop lid is closed
 
