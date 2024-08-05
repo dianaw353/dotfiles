@@ -16,6 +16,7 @@
         - hyprlock
         - xdg-desktop-portal-hyprland
         - playerctl
+        - polkit-gnome
         # plugin dependencies
         - cmake
         - cpio
