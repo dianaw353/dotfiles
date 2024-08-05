@@ -10,11 +10,11 @@
 
 - name: Configure and Start libvirtd Service
   block:
-    - name: Enable and start libvirtd service
+    - name: Enable, start, and restart libvirtd service
       systemd:
         name: libvirtd
         enabled: yes
-        state: started
+        state: restarted
       become: true
 
     - name: Add user to libvirt group
@@ -24,38 +24,23 @@
         append: yes
       become: true
 
-    - name: Ensure unix_sock_group is set in libvirtd.conf
+    - name: Ensure libvirtd.conf settings
       lineinfile:
         path: /etc/libvirt/libvirtd.conf
-        regexp: '^#?unix_sock_group = '
-        line: 'unix_sock_group = "libvirt"'
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
         state: present
       become: true
-
-    - name: Ensure unix_sock_rw_perms is set in libvirtd.conf
-      lineinfile:
-        path: /etc/libvirt/libvirtd.conf
-        regexp: '^#?unix_sock_rw_perms = '
-        line: 'unix_sock_rw_perms = "0770"'
-        state: present
-      become: true
-
-    - name: Restart libvirtd service to apply configuration changes
-      systemd:
-        name: libvirtd
-        state: restarted
-      become: true
+      loop:
+        - { regexp: '^#?unix_sock_group = ', line: 'unix_sock_group = "libvirt"' }
+        - { regexp: '^#?unix_sock_rw_perms = ', line: 'unix_sock_rw_perms = "0770"' }
 
 - name: Manage Default Virtual Network
   block:
-    - name: Start and enable the default virtual network
-      command: >
-        virsh net-start default
+    - name: Ensure the default virtual network is started and autostarted
+      command: "virsh net-{{ item }} default"
       become: true
       ignore_errors: yes
-
-    - name: Ensure the default virtual network is autostarted
-      command: >
-        virsh net-autostart default
-      become: true
-      ignore_errors: yes
+      loop:
+        - start
+        - autostart
