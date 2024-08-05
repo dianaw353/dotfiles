@@ -1,20 +1,21 @@
 #!/bin/bash
 
-# Define the files
-version_file="VERSION"
-release_notes_file="CHANGELOG.md"
+# Read the version from the VERSION file and create the header
+VERSION=$(sed 's/^V//' VERSION)
+VERSION_HEADER="Version $VERSION"
 
-# Read the version from the VERSION file
-current_version=$(cat "$version_file")
+# Define the path to the CHANGELOG.md file
+CHANGELOG_FILE="CHANGELOG.md"
 
-# Extract the corresponding release content, excluding the URL and separator
-awk -v version="Version ${current_version#V}" '
-$0 ~ version {
-    found=1;
-    next;
-}
-found && /^Version [0-9]+\.[0-9]+\.[0-9]+$/ { exit }
-found && !/^https:\/\/github.com\/.*$/ && !/^-+$/ {
-    print
-}
-' "$release_notes_file"
+# Extract the website, owner, and repo from the first matching URL in the file
+website=$(grep -Eo 'https?://[^/"]+' "$CHANGELOG_FILE" | head -n 1)
+owner=$(grep -Eo 'https?://[^/]+/([^/]+)/' "$CHANGELOG_FILE" | sed 's|https\?://[^/]\+/||; s|/.*||' | head -n 1)
+repo=$(grep -Eo 'https?://[^/]+/[^/]+/([^/]+)' "$CHANGELOG_FILE" | sed 's|https\?://[^/]\+/[^/]\+/||; s|/.*||' | head -n 1)
+
+# Extract the content between the specified version and the next version
+awk -v header="$VERSION_HEADER" -v website="$website" -v owner="$owner" -v repo="$repo" '
+  BEGIN {found=0}
+  $0 == header {found=1; next}
+  /^Version/ && found {exit}
+  found && !($0 ~ website "/" owner "/" repo "/releases/tag/V" && $0 ~ /[0-9]+\.[0-9]+/) && !/^-----/ {print}
+' "$CHANGELOG_FILE"
