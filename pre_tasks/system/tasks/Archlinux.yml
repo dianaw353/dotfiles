@@ -15,10 +15,10 @@
         - qt5-wayland
         - gtk4
         - libadwaita
-
+    
 - name: Install Audio Server Packages
   block:
-    - name: Install Pipewire Package | {{ ansible_distribution }}
+    - name: Install Audio Packages | {{ ansible_distribution }}
       community.general.pacman:
         name: "{{ item }}"
         state: present

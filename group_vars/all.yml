@@ -9,7 +9,7 @@ system:
   
   # Audio Server
   # Weather to use pipewire or pluseaudio
-  # pipewire or pluseaudio
+  # pipewire or pulseaudio
   audio_server: pipewire
 
   gtk:
