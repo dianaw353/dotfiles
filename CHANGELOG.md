@@ -4,6 +4,10 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.0.7
 **Script**
 - More Refactoring
 
+**Hyprland**
+- Add polkit-gnome
+- New lock screen keybind
+
 **Hypridle**
 - Shorten time to dim, screen/keyboard backlight, lock screen
 
