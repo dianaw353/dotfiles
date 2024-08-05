@@ -16,6 +16,9 @@
         - hyprlock
         - xdg-desktop-portal-hyprland
         - playerctl
+        # plugin dependencies
+        - cmake
+        - cpio
 
     - name: Install Hyprland AUR Dependencies
       kewlfft.aur.aur:

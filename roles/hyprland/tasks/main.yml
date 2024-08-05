@@ -94,3 +94,18 @@
         force: true
       become: true
       become_user: "{{ user }}"
+
+# on hold tell 0.42 release
+# - name: Manage Hyprland dynamic cursors
+#   block:
+#     - name: Update hyprpm package list
+#       command: hyprpm update
+      
+#     - name: Add hypr-dynamic-cursors repository
+#       command: hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+
+#     - name: Install hypr-dynamic-cursors
+#       command: hyprpm install dynamic-cursors
+
+#     - name: Enable dynamic cursors
+#       command: hyprpm enable dynamic-cursors
