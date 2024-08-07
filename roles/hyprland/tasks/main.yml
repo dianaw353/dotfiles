@@ -34,23 +34,6 @@
         - { src: 'env_default.conf.j2', dest: 'environments/default.conf' }
         - { src: 'environment.conf.j2', dest: 'environment.conf' }
 
-- name: Manage User Pictures
-  block:
-    - name: "Copy pictures"
-      ansible.builtin.copy:
-        src: "{{ playbook_dir }}/assets/{{ item.src }}"
-        dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-        mode: "{{ item.mode }}"
-        directory_mode: "{{ item.directory_mode }}"
-        force: true
-      become: true
-      become_user: "{{ user }}"
-      loop:
-        - { src: 'wallpaper', dest: 'Pictures/', mode: '0644', directory_mode: '0755' }
-        - { src: 'pfp', dest: 'Pictures', mode: '0644', directory_mode: '0755' }
-        - { src: 'pfp/avatar.jpg', dest: '.config/avatar', mode: '0644', directory_mode: '0755' }
-        - { src: 'wallpaper/mountain.png', dest: '.config/background', mode: '0644', directory_mode: '0755' }
-
 # on hold tell 0.42 release
 # - name: Manage Hyprland dynamic cursors
 #   block:
