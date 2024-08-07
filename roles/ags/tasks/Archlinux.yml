@@ -29,6 +29,7 @@
         - networkmanager
         - power-profiles-daemon
         - upower
+        - accountsservice
 
     - name: Install AGS Greetd Dependencies | {{ ansible_distribution }}
       community.general.pacman:

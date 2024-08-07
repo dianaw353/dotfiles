@@ -81,3 +81,14 @@
       loop:
         - { src: 'wallpaper', dest: 'Pictures/', mode: '0644', directory_mode: '0755' }
         - { src: 'pfp', dest: 'Pictures', mode: '0644', directory_mode: '0755' }
+
+    - name: Copy ags system configuration files
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode }}"
+        directory_mode: "{{ item.directory_mode }}"
+        force: true
+      become: true
+      loop:
+        - { src: '{{ ansible_user_dir }}/Pictures/pfp/avatar.jpg', dest: '/var/lib/AccountsService/icons/{{ user }}/', mode: '0644', directory_mode: '0755' }
