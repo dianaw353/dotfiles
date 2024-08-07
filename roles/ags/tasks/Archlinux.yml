@@ -18,7 +18,7 @@
         state: present
       become: true
       loop:
-        - hyprpaper
+        - swww
         - dart-sass
         - fd
         - brightnessctl

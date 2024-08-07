@@ -48,8 +48,8 @@
       loop:
         - { src: 'wallpaper', dest: 'Pictures/', mode: '0644', directory_mode: '0755' }
         - { src: 'pfp', dest: 'Pictures', mode: '0644', directory_mode: '0755' }
-        - { src: 'pfp/avatar.jpg', dest: '.config/avatar.jpg', mode: '0644', directory_mode: '0755' }
-        - { src: 'wallpaper/mountain.png', dest: '.config/background.png', mode: '0644', directory_mode: '0755' }
+        - { src: 'pfp/avatar.jpg', dest: '.config/avatar', mode: '0644', directory_mode: '0755' }
+        - { src: 'wallpaper/mountain.png', dest: '.config/background', mode: '0644', directory_mode: '0755' }
 
 # on hold tell 0.42 release
 # - name: Manage Hyprland dynamic cursors
