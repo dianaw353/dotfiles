@@ -45,17 +45,27 @@
       loop:
         - { path: '/var/cache/greeter', owner: 'greeter', group: 'greeter', mode: '0755' }
         
-- name: Copy configuration files
-  ansible.builtin.copy:
-    src: "{{ item.src }}"
-    dest: "/{{ item.dest }}"
-    mode: "{{ item.mode }}"
-    directory_mode: "{{ item.directory_mode }}"
-    force: true
-    become: true
-  loop:
-    - { src: 'ags', dest: '{{ ansible_user_dir }}/.config', mode: '0644', directory_mode: '0755' }
-    - { src: 'ags', dest: '/etc/greetd', mode: '0644', directory_mode: '0755'}
+    - name: Copy ags user configuration files
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ ansible_user_dir }}/.config/{{ item.dest }}"
+        mode: "{{ item.mode }}"
+        directory_mode: "{{ item.directory_mode }}"
+        force: true
+      loop:
+        - { src: 'ags', dest: 'ags', mode: '0644', directory_mode: '0755' }
+
+    - name: Copy ags system configuration files
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "/etc/{{ item.dest }}"
+        mode: "{{ item.mode }}"
+        directory_mode: "{{ item.directory_mode }}"
+        force: true
+      become: true
+      loop:
+        - { src: 'ags', dest: 'greetd', mode: '0644', directory_mode: '0755' }
+
 
 - name: Manage User Pictures
   block:
