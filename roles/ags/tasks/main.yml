@@ -53,7 +53,7 @@
         directory_mode: "{{ item.directory_mode }}"
         force: true
       loop:
-        - { src: 'ags', dest: 'ags', mode: '0644', directory_mode: '0755' }
+        - { src: 'ags', dest: '', mode: '0644', directory_mode: '0755' }
 
     - name: Copy ags system configuration files
       ansible.builtin.copy:
