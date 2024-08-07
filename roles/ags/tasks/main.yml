@@ -8,14 +8,6 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: ags_distribution_config.stat.exists
 
-#- name: "Ags | Configure Ags"
-#  ansible.builtin.copy:
-#    src: ags
-#    dest: "{{ ansible_user_dir }}/.config/"
-#    mode: "0644"
-#    directory_mode: "0755"
-#    force: true
-
 - name: Configure Ags Greetd
   block:
     - name: Create greetd configuration directory
