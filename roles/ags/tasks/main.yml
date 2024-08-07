@@ -91,4 +91,4 @@
         force: true
       become: true
       loop:
-        - { src: '{{ ansible_user_dir }}/Pictures/pfp/avatar.jpg', dest: '/var/lib/AccountsService/icons/{{ user }}/', mode: '0644', directory_mode: '0755' }
+        - { src: '{{ ansible_user_dir }}/Pictures/pfp/avatar.jpg', dest: '/var/lib/AccountsService/icons/{{ user }}', mode: '0644', directory_mode: '0755' }
