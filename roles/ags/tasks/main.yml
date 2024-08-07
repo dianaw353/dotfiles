@@ -42,7 +42,18 @@
       become: true
       with_items:
         - greetd
-
+        
+- name: Configure Ags
+  block:
+    - name: Ags Configuration
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+        mode: "{{ item.mode }}"
+        directory_mode: "{{ item.directory_mode }}"
+        force: true
+      loop:
+        - { src: 'ags', dest: '.config', mode: '0644', directory_mode: '0755' }
 
 - name: Manage User Pictures
   block:
