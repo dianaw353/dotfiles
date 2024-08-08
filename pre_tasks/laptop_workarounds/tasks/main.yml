@@ -18,10 +18,10 @@
       debug:
         msg: "CPU Generation: {{ cpu_generation }}"
 
-- name: Load Necessary Modules
+- name: Remove Necessary Modules
   block:
-    - name: Load hid_sensor_hub module
-      command: modprobe -i hid_sensor_hub
+    - name: Remove hid_sensor_hub module
+      command: modprobe -r hid_sensor_hub
       when:
         - board_vendor == 'Framework'
         - cpu_generation == '12th'
