@@ -151,9 +151,9 @@ function arch_setup() {
     _task "Installing OpenSSH"
     _cmd "sudo pacman -S --noconfirm openssh"
   fi
-  if ! pacman -Q unzip >/dev/null 2>&1; then
+  if ! pacman -Q rsync >/dev/null 2>&1; then
     _task "Installing Unzip"
-    _cmd "sudo pacman -S --noconfirm unzip"
+    _cmd "sudo pacman -S --noconfirm rsync"
   fi
   if ! pacman -Q git >/dev/null 2>&1; then
     _task "Installing Git"
