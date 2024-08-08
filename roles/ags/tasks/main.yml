@@ -59,27 +59,25 @@
 
 - name: Manage User Pictures
   block:
-    - name: "Copy pictures"
-      ansible.builtin.copy:
+    - name: "Synchronize pictures"
+      ansible.posix.synchronize:
+        mode: push
         src: "{{ playbook_dir }}/assets/{{ item.src }}"
         dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-        mode: "{{ item.mode }}"
-        directory_mode: "{{ item.directory_mode }}"
-        force: true
+        recursive: yes
       become: true
       become_user: "{{ user }}"
       loop:
-        - { src: 'wallpaper', dest: 'Pictures/', mode: '0644', directory_mode: '0755' }
-        - { src: 'pfp', dest: 'Pictures', mode: '0644', directory_mode: '0755' }
-        - { src: 'wallpaper/mountain.png', dest: '.config/background', mode: '0644', directory_mode: '0755' }
+        - { src: 'wallpaper', dest: 'Pictures/' }
+        - { src: 'pfp', dest: 'Pictures' }
+        - { src: 'wallpaper/mountain.png', dest: '.config/background' }
 
-    - name: Copy ags system configuration files
-      ansible.builtin.copy:
+    - name: Synchronize ags system configuration files
+      ansible.posix.synchronize:
+        mode: push
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
-        mode: "{{ item.mode }}"
-        directory_mode: "{{ item.directory_mode }}"
-        force: true
+        recursive: yes
       become: true
       loop:
-        - { src: '{{ ansible_user_dir }}/Pictures/pfp/avatar.jpg', dest: '/var/lib/AccountsService/icons/{{ user }}', mode: '0644', directory_mode: '0755' }
+        - { src: '{{ ansible_user_dir }}/Pictures/pfp/avatar.jpg', dest: '/var/lib/AccountsService/icons/{{ user }}' }
