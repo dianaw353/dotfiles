@@ -24,15 +24,16 @@
     - name: "Hyprland | Update configuration templates"
       ansible.builtin.template:
         src: "{{ item.src }}"
-        dest: "{{ ansible_user_dir }}/.config/hypr/config/{{ item.dest }}"
+        dest: "{{ ansible_user_dir }}/.config/hypr/{{ item.dest }}"
         backup: no
         owner: "{{ user }}"
         group: "{{ user }}"
       become: true
       loop:
-        - { src: 'autostart.conf.j2', dest: 'autostart.conf' }
-        - { src: 'env_default.conf.j2', dest: 'environments/default.conf' }
-        - { src: 'environment.conf.j2', dest: 'environment.conf' }
+        - { src: 'autostart.conf.j2', dest: 'config/autostart.conf' }
+        - { src: 'env_default.conf.j2', dest: 'config/environments/default.conf' }
+        - { src: 'environment.conf.j2', dest: 'config/environment.conf' }
+        - { src: 'hyprlock.conf.j2', dest: 'hyprlock.conf' }
 
 # on hold tell 0.42 release
 # - name: Manage Hyprland dynamic cursors
