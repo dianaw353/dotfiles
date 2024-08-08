@@ -11,6 +11,7 @@
         - aylurs-gtk-shell-git
         - bun-bin
         - matugen-bin
+        - wayshot
 
     - name: Install AGS Dependencies | {{ ansible_distribution }}
       community.general.pacman:
@@ -30,6 +31,11 @@
         - power-profiles-daemon
         - upower
         - accountsservice
+        - pavucontrol
+        # wayshot dependiences
+        - slurp
+        - wf-recorder
+        - wl-clipboard
 
     - name: Install AGS Greetd Dependencies | {{ ansible_distribution }}
       community.general.pacman:

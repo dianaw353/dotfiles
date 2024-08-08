@@ -21,15 +21,6 @@
         - cmake
         - cpio
 
-    - name: Install Hyprland AUR Dependencies
-      kewlfft.aur.aur:
-        name: "{{ item }}"
-        state: present
-        use: "{{ pacman.aur_helper }}"
-      become: false
-      loop:
-        - hyprshot
-
 - name: Install Icons Themes
   block:
     - name: Install Cursor Icons Package
