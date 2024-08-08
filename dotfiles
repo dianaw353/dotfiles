@@ -167,12 +167,12 @@ update_ansible_galaxy() {
   _task "Updating Ansible Galaxy"
   if [ -f "$DOTFILES_DIR/requirements/$os.yml" ]; then
     _task "${OVERWRITE}Updating Ansible Galaxy with OS Config: $os"
-    _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/$os.yml"
+    _cmd "ansible-galaxy install -r ./requirements/$os.yml"
   fi
   if [ -f "$DOTFILES_DIR/requirements/common.yml" ]; then
-    _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml"
+    _cmd "ansible-galaxy install -r ./requirements/common.yml"
   else
-    printf "${LYELLOW} [-] $DOTFILES_DIR/requirements/common.yml does not exist. Skipping Ansible Galaxy update.\n"
+    printf "${LYELLOW} [-] ./requirements/common.yml does not exist. Skipping Ansible Galaxy update.\n"
   fi
 }
 
