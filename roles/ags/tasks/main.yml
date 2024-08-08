@@ -81,7 +81,7 @@
       loop:
         - { src: 'wallpaper', dest: 'Pictures/', mode: '0644', directory_mode: '0755' }
         - { src: 'pfp', dest: 'Pictures', mode: '0644', directory_mode: '0755' }
-        - { src: 'Pictures/wallpaper/mountain.png', dest: '.config', mode: '0644', directory_mode: '0755' }
+        - { src: 'wallpaper/mountain.png', dest: '.config/background', mode: '0644', directory_mode: '0755' }
 
     - name: Copy ags system configuration files
       ansible.builtin.copy:
