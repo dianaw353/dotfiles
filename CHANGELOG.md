@@ -1,3 +1,15 @@
+Version 1.1
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1
+--------------------------------------------------------
+**Script**
+- Hyprland & ags refactoring
+
+**Ags**
+- Added config
+
+**Hyprlock**
+- Get correct pfp and wallpaper
+
 Version 1.0.7
 https://github.com/dianaw353/dotfiles/releases/tag/V1.0.7
 --------------------------------------------------------
