@@ -10,16 +10,16 @@
 
 - name: Configure Hyprland
   block:
-    - name: "Hyprland | Copy configuration files"
-      ansible.builtin.copy:
+    - name: "Hyprland | Sync configuration files"
+      ansible.posix.synchronize:
+        mode: push
         src: "{{ item.src }}"
         dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-        mode: "{{ item.mode }}"
-        directory_mode: "{{ item.directory_mode }}"
-        force: true
+        recursive: yes
       loop:
-        - { src: 'hypr', dest: '.config', mode: '0644', directory_mode: '0755' }
-        - { src: 'hypr/scripts', dest: '.config/hypr/', mode: '0755', directory_mode: '0755' }
+        - { src: 'hypr', dest: '.config/' }
+        - { src: 'hypr/scripts', dest: '.config/hypr/' }
+
 
     - name: "Hyprland | Update configuration templates"
       ansible.builtin.template:
