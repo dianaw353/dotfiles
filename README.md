@@ -7,6 +7,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/dianaw353/dotfiles?style=for-the-badge&color=FFB1C8&logoColor=D9E0EE&labelColor=292324)
 ![GitHub Repo stars](https://img.shields.io/github/stars/dianaw353/dotfiles?style=for-the-badge&color=FFB686&logoColor=D9E0EE&labelColor=292324&logo=andela)
 ![GitHub repo size](https://img.shields.io/github/repo-size/dianaw353/dotfiles?style=for-the-badge&color=CAC992&logoColor=D9E0EE&labelColor=292324&logo=protondrive)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dianaw353/dotfiles?style=for-the-badge&labelColor=292324&color=CBA6F7)
 ![Github open issues](https://img.shields.io/github/issues/dianaw353/dotfiles?style=for-the-badge&labelColor=292324&color=D9E0EE)
 
 </a>
