@@ -45,7 +45,7 @@
       loop:
         - { path: '/var/cache/greeter', owner: 'greeter', group: 'greeter', mode: '0755' }
         
-    - name: Synchronize configuration files
+    - name: Ags user config
       ansible.posix.synchronize:
         mode: push
         src: "{{ item.src }}"
@@ -53,8 +53,16 @@
         recursive: yes
       loop:
         - { src: "ags", dest: "{{ ansible_user_dir }}/.config/" }
-        - { src: "ags", dest: "/etc/greetd" }
-      become: "{{ item.become | default(false) }}"
+        
+    - name: Ags system config 
+      ansible.posix.synchronize:
+        mode: push
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        recursive: yes
+      loop:
+        - { src: "ags", dest: "/etc/greetd/" }
+      become: true
 
 
 - name: Manage User Pictures
