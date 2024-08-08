@@ -13,13 +13,12 @@
     - name: "Gather package facts"
       ansible.builtin.package_facts:
 
-    - name: "Copy configuration files"
-      ansible.builtin.copy:
+    - name: "Sync configuration files"
+      ansible.posix.synchronize:
+        mode: push
         src: "{{ item.src }}"
         dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-        mode: "0644"
-        directory_mode: "0755"
-        force: true
+        recursive: yes
       loop:
         - { src: 'alacritty', dest: '.config', package: 'alacritty' }
         - { src: 'fastfetch', dest: '.config', package: 'fastfetch' }
