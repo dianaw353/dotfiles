@@ -189,6 +189,7 @@ const options = mkOptions(OPTIONS, {
         },
         width: opt(380),
         position: opt<"left" | "center" | "right">("right"),
+        bluetoothSettings: opt("blueman-manager"),
         networkSettings: opt("gtk-launch gnome-control-center"),
         media: {
             monochromeIcon: opt(true),
