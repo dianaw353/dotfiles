@@ -13,7 +13,7 @@ const iconFile = `/var/lib/AccountsService/icons/${userName}`
 const loggingin = Variable(false)
 
 const CMD = GLib.getenv("ASZTAL_DM_CMD")
-    || "Hyprland"
+    || "Hyprland &> $HOME/.cache/current_session.txt"
 
 const ENV = GLib.getenv("ASZTAL_DM_ENV")
     || "WLR_NO_HARDWARE_CURSORS=1 _JAVA_AWT_WM_NONREPARENTING=1"
