@@ -56,7 +56,7 @@ export const WifiSelection = () => Menu({
             child: Widget.Box({
                 children: [
                     Widget.Icon(icons.ui.settings),
-                    Widget.Label("Network"),
+                    Widget.Label("Settings"),
                 ],
             }),
         }),
