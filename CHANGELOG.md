@@ -8,6 +8,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 **Ags**
 - Added config
 
+**Fastfetch**
+- Cleaner look
+
 **Hyprlock**
 - Get correct pfp and wallpaper
 
