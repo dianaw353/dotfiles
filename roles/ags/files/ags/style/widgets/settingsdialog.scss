@@ -36,6 +36,7 @@ window.settings-dialog {
     color: $fg;
     padding: $padding;
     min-width: 10rem;
+    border-right: 2px solid $widget-bg;
 
     button {
       @include button;
@@ -64,7 +65,7 @@ window.settings-dialog {
     .page-content {
       padding: $padding * 2;
       padding-top: 0;
-      margin: $spacing *1;
+      margin: $spacing;
     }
   }
 
@@ -91,7 +92,7 @@ window.settings-dialog {
 
   .row {
     background-color: $widget-bg;
-    padding: $padding;
+    padding: $padding * 2;
     border: $border;
     border-top: none;
 
