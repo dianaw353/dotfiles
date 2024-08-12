@@ -1,4 +1,26 @@
 ---
+- name: Install Ucode
+  block:
+    - name: Install AMD Ucode
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when:
+        - cpu_brand == 'GenuineAMD'
+      loop:
+        - amd-ucode
+
+    - name: Install Intel Ucode
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when:
+        - cpu_brand == 'GenuineIntel'
+      loop:
+        - intel-ucode
+    
 - name: Install common GPU driver packages
   block:
     - name: Install Common Graphics Packages

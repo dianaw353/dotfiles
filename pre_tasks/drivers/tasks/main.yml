@@ -1,8 +1,14 @@
 ---
-- name: Detect GPU
-  ansible.builtin.shell: set -o pipefail && lspci | grep -i 'VGA\|3D\|display'
-  register: gpu_result
-  changed_when: no
+- name: Detecting System Hardware 
+  block:
+    - name: Detect CPU
+      set_fact:
+        cpu_brand: "{{ ansible_facts['processor'][1] }}"
+        
+    - name: Detect GPU
+      ansible.builtin.shell: set -o pipefail && lspci | grep -i 'VGA\|3D\|display'
+      register: gpu_result
+      changed_when: no
 
 - name: "GPU Drivers | Checking for Distribution Config: {{ ansible_distribution }}"
   ansible.builtin.stat:
