@@ -7,6 +7,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 - Change laptop workarounds
 - Rename gpu_drivers to drivers
 - Add installation for cpu ucode
+- Make sure NetworkManager is enabled
 
 **Ags**
 - Added config
