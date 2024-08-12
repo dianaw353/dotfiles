@@ -73,14 +73,14 @@
       ansible.posix.synchronize:
         mode: push
         src: "{{ playbook_dir }}/assets/{{ item.src }}"
-        dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+        dest: "{{ item.dest }}"
         recursive: yes
       become: true
-      become_user: "{{ user }}"
       loop:
-        - { src: 'Wallpaper', dest: 'Pictures/' }
-        - { src: 'pfp', dest: 'Pictures' }
-        - { src: 'wallpaper/mountain.png', dest: '.config/background' }
+        - { src: 'Wallpapers', dest: '{{ ansible_user_dir }}/Pictures/' }
+        - { src: 'Wallpapers/mountain.png', dest: '/var/cache/greeter/background' }
+        - { src: 'pfp', dest: '{{ ansible_user_dir }}/Pictures' }
+        - { src: 'Wallpapers/mountain.png', dest: '{{ ansible_user_dir }}/.config/background' }
 
     - name: Synchronize ags system configuration files
       ansible.posix.synchronize:
