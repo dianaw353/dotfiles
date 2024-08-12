@@ -6,6 +6,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 - Speed up moveing files to correct location
 - Change laptop workarounds
 - Rename gpu_drivers to drivers
+- Add installation for cpu ucode
 
 **Ags**
 - Added config
