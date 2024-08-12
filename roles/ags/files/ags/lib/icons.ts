@@ -28,6 +28,7 @@ export default {
         audio: "audio-x-generic-symbolic",
     },
     ui: {
+        airdrop: "airdrop-symbolic",
         close: "window-close-symbolic",
         colorpicker: "color-select-symbolic",
         info: "info-symbolic",

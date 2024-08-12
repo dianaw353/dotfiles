@@ -1,5 +1,6 @@
 import icons from "lib/icons"
 import { uptime } from "lib/variables"
+import { dependencies, sh } from "lib/utils"
 import options from "options"
 import powermenu, { Action } from "service/powermenu"
 
@@ -15,8 +16,8 @@ function up(up: number) {
 const Avatar = () => Widget.Box({
     class_name: "avatar",
     css: Utils.merge([image.bind(), size.bind()], (img, size) => `
-        min-width: ${size}px;
-        min-height: ${size}px;
+        min-width: ${size * 2}px;
+        min-height: ${size * 2}px;
         background-image: url('${img}');
         background-size: cover;
     `),
@@ -26,6 +27,12 @@ const SysButton = (action: Action) => Widget.Button({
     vpack: "center",
     child: Widget.Icon(icons.powermenu[action]),
     on_clicked: () => powermenu.action(action),
+})
+
+const LocalSend = () => Widget.Button({
+    vpack: "center",
+    child: Widget.Icon(icons.ui.airdrop),
+    on_clicked: () => sh(options.quicksettings.localSend.value),
 })
 
 export const Header = () => Widget.Box(
@@ -49,15 +56,30 @@ export const Header = () => Widget.Box(
         ],
     }),
     Widget.Box({ hexpand: true }),
-    Widget.Button({
-        vpack: "center",
-        child: Widget.Icon(icons.ui.settings),
-        on_clicked: () => {
-            App.closeWindow("quicksettings")
-            App.closeWindow("settings-dialog")
-            App.openWindow("settings-dialog")
-        },
+    Widget.Box({
+        vertical: true,
+        class_name: "right-buttons",
+        children: [
+            Widget.Box({
+                children: [
+                    LocalSend(),
+                    Widget.Button({
+                        vpack: "center",
+                        child: Widget.Icon(icons.ui.settings),
+                        on_clicked: () => {
+                            App.closeWindow("quicksettings")
+                            App.closeWindow("settings-dialog")
+                            App.openWindow("settings-dialog")
+                        },
+                    }),
+                ],
+            }),
+            Widget.Box({
+                children: [
+                    SysButton("logout"),
+                    SysButton("shutdown"),
+                ],
+            }),
+        ],
     }),
-    SysButton("logout"),
-    SysButton("shutdown"),
 )
