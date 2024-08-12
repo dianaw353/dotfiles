@@ -21,9 +21,9 @@
         - cmake
         - cpio
 
-- name: Install Icons Themes
+- name: Install AUR Packages
   block:
-    - name: Install Cursor Icons Package
+    - name: Install AUR Package
       kewlfft.aur.aur:
         name: "{{ item }}"
         state: present
@@ -31,4 +31,5 @@
       become: false
       loop:
         - "{{ icons.cursor_icons_package }}"
+        - hyprpicker
 
