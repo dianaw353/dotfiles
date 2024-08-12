@@ -12,6 +12,7 @@
         - bun-bin
         - matugen-bin
         - wayshot
+        - localsend-bin
 
     - name: Install AGS Dependencies | {{ ansible_distribution }}
       community.general.pacman:
