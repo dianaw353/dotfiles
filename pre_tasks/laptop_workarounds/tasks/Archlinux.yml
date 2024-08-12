@@ -1,0 +1,13 @@
+---
+- name: Framework Laptop Workarounds
+  block:
+    - name: Framework Laptop 13 Intel 12th autobrightness/keybind fix
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      when:
+        - board_vendor == 'Framework'
+        - cpu_generation == '12th'
+      loop:
+        - iio-sensor-proxy 

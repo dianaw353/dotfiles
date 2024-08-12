@@ -18,11 +18,11 @@
       debug:
         msg: "CPU Generation: {{ cpu_generation }}"
 
-- name: Remove Necessary Modules
-  block:
-    - name: Remove hid_sensor_hub module
-      command: modprobe -r hid_sensor_hub
-      when:
-        - board_vendor == 'Framework'
-        - cpu_generation == '12th'
-      become: true
+- name: "Laptop Workarounds | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "pre_tasks/laptop_workarounds/tasks/{{ ansible_distribution }}.yml"
+  register: laptop_workarounds_distribution_config
+
+- name: "Laptop Workarounds | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: laptop_workarounds_distribution_config.stat.exists
