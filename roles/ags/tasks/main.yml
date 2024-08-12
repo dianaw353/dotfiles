@@ -34,6 +34,7 @@
       become: true
       with_items:
         - greetd
+        - NetworkManager
 
     - name: Create directories and set ownership
       ansible.builtin.file:
