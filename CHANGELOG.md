@@ -4,6 +4,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 **Script**
 - Hyprland & ags refactoring
 - Speed up moveing files to correct location
+- Change laptop workarounds
+- Rename gpu_drivers to drivers
 
 **Ags**
 - Added config
