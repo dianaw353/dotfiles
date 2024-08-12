@@ -12,9 +12,9 @@
       ansible.builtin.include_tasks: pre_tasks/detect_vm/tasks/main.yml
       when: "'detect_vm' in pre_tasks"
 
-    - name: Import GPU drivers tasks
-      ansible.builtin.include_tasks: pre_tasks/gpu_drivers/tasks/main.yml
-      when: "'gpu_drivers' in pre_tasks"
+    - name: Import drivers tasks
+      ansible.builtin.include_tasks: pre_tasks/drivers/tasks/main.yml
+      when: "'drivers' in pre_tasks"
 
     - name: Laptop workarounds
       ansible.builtin.include_tasks: pre_tasks/laptop_workarounds/tasks/main.yml
