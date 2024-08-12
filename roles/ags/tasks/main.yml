@@ -78,7 +78,7 @@
       become: true
       become_user: "{{ user }}"
       loop:
-        - { src: 'wallpaper', dest: 'Pictures/' }
+        - { src: 'Wallpaper', dest: 'Pictures/' }
         - { src: 'pfp', dest: 'Pictures' }
         - { src: 'wallpaper/mountain.png', dest: '.config/background' }
 
