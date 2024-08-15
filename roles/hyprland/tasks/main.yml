@@ -35,17 +35,17 @@
         - { src: 'environment.conf.j2', dest: 'config/environment.conf' }
         - { src: 'hyprlock.conf.j2', dest: 'hyprlock.conf' }
 
-# on hold tell 0.42 release
-# - name: Manage Hyprland dynamic cursors
-#   block:
-#     - name: Update hyprpm package list
-#       command: hyprpm update
+
+- name: Manage Hyprland dynamic cursors
+  block:
+    - name: Update hyprpm package list
+      command: hyprpm update
       
-#     - name: Add hypr-dynamic-cursors repository
-#       command: hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+    - name: Add hypr-dynamic-cursors repository
+      command: yes "Y" | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
 
-#     - name: Install hypr-dynamic-cursors
-#       command: hyprpm install dynamic-cursors
+    - name: Install hypr-dynamic-cursors
+      command: hyprpm install dynamic-cursors
 
-#     - name: Enable dynamic cursors
-#       command: hyprpm enable dynamic-cursors
+    - name: Enable dynamic cursors
+      command: hyprpm enable dynamic-cursors
