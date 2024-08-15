@@ -40,12 +40,21 @@
   block:
     - name: Update hyprpm package list
       command: hyprpm update
-      
-    - name: Add hypr-dynamic-cursors repository
-      command: yes "Y" | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
 
-    - name: Install hypr-dynamic-cursors
-      command: hyprpm install dynamic-cursors
+    - name: Install hypr-dynamic-cursors if not already installed
+      block:
+        - name: Check if hypr-dynamic-cursors is installed
+          command: hyprpm list installed | grep dynamic-cursors
+          register: dynamic_cursors_installed
+          ignore_errors: true
+
+        - name: Add hypr-dynamic-cursors repository
+          command: yes "Y" | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+          when: dynamic_cursors_installed.rc != 0
+
+        - name: Install hypr-dynamic-cursors
+          command: hyprpm install dynamic-cursors
+          when: dynamic_cursors_installed.rc != 0
 
     - name: Enable dynamic cursors
       command: hyprpm enable dynamic-cursors
