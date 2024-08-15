@@ -190,7 +190,7 @@ const options = mkOptions(OPTIONS, {
         width: opt(380),
         position: opt<"left" | "center" | "right">("right"),
         bluetoothSettings: opt("blueman-manager"),
-        networkSettings: opt("alacritty -e sh -c 'printf "\033]0;Network Manager TUI\007"; nmtui'"),
+        networkSettings: opt("alacritty -e sh -c 'printf \"\\033]0;Network Manager TUI\\007\"; nmtui'"),
         media: {
             monochromeIcon: opt(true),
             coverSize: opt(100),
