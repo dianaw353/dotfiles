@@ -6,7 +6,7 @@
         name: prismlauncher-qt5-bin
         state: present
         use: "{{ pacman.aur_helper }}"
-      become: false
+      become: true
 
     - name: Install Java versions
       community.general.pacman:
