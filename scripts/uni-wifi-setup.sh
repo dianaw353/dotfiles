@@ -109,3 +109,4 @@ case $ID in
 esac
 
 echo "Please go to this website to get connected to the internet https://cloud.securew2.com/public/80462/utahtech_Trailblazers/?run"
+echo "Once the file is downloaded run this command: 'sh ~/Downloads/SecureW2_JoinNow.run'"
