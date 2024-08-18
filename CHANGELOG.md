@@ -8,6 +8,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 - Rename gpu_drivers to drivers
 - Add installation for cpu ucode
 - Make sure NetworkManager is enabled
+- Gaming role now has compatibillity layer dependencies, utilities, and launchers
 
 **Ags**
 - Added config
