@@ -96,6 +96,9 @@ gaming:
     # - bottles
     - protonplus
     - gamescope
+    - mangohud
+    - lib32-mangohud
+    - goverlay
   launchers:
     # Will install 4 versions of java for compatibility for all versions of minecraft alongside prism launcher
     - prismlauncher-qt5-bin
