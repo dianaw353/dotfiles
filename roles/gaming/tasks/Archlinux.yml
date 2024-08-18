@@ -1,21 +1,40 @@
 ---
-- name: Ensure Prism Launcher and Java versions are installed
+- name: Install compatibility layers & utilities
   block:
-    - name: Install Prism Launcher
+    - name: Create a list from compatibility layers and utilities
+      set_fact:
+        all_items: "{{ gaming.compatibility_layer + gaming.utilities }}"
+
+    - name: Install compatibility layers & utilities
       kewlfft.aur.aur:
-        name: prismlauncher-qt5-bin
+        name: "{{ item }}"
+        state: present
+      become: false
+      when: pacman.enable_multilib
+      loop: "{{ all_items }}"
+
+- name: Installing games launchers
+  block:
+    - name: Create a list from gaming.launchers
+      set_fact:
+        all_launchers: "{{ gaming.launchers }}"
+
+    - name: Install game launchers
+      kewlfft.aur.aur:
+        name: "{{ item }}"
         state: present
         use: "{{ pacman.aur_helper }}"
-      become: true
+      become: false
+      loop: "{{ all_launchers }}"
 
     - name: Install Java versions
       community.general.pacman:
         name: "{{ item }}"
         state: present
       become: true
+      when: "'prismlauncher-qt5-bin' in gaming.launchers"
       loop:
         - jdk8-openjdk
         - jdk11-openjdk
         - jdk17-openjdk
-        - jdk21-openjdk # This usually points to the latest version, which might be 21
-  when: "'minecraft' in gaming.games"
+        - jdk21-openjdk

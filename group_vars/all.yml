@@ -85,7 +85,19 @@ user_packages:
     - vesktop-bin
 
 # Games
+# Needs pacman.enable_multilib to be set to true
 gaming:
-  games:
+  compatibility_layer:
+    - wine
+    - winetricks
+    - dxvk-bin
+    - vkd3d
+  utilities:
+    # - bottles
+    - protonplus
+    - gamescope
+  launchers:
     # Will install 4 versions of java for compatibility for all versions of minecraft alongside prism launcher
-    - minecraft
+    - prismlauncher-qt5-bin
+    - steam
+    - heroic-games-launcher-bin
