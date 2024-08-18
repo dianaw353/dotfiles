@@ -16,6 +16,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 **Fastfetch**
 - Cleaner look
 
+**Hypridle**
+- Screen no longer locks when in fullscreen
+
 **Hyprlock**
 - Get correct pfp and wallpaper
 
