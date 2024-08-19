@@ -9,6 +9,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 - Add installation for cpu ucode
 - Make sure NetworkManager is enabled
 - Gaming role now has compatibillity layer dependencies, utilities, and launchers
+- Add android-tools to user_packages
 
 **Ags**
 - Added config
@@ -18,6 +19,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 
 **Hypridle**
 - Screen no longer locks when in fullscreen
+- Pause all players when screen locks
 
 **Hyprlock**
 - Get correct pfp and wallpaper
