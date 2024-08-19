@@ -80,6 +80,7 @@ core_packages: # outside of WM/DE dependencies
 user_packages:
   pacman:
     - github-cli
+    - android-tools
   aur:
     - spotube-bin
     - vesktop-bin
