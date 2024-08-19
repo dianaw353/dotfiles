@@ -62,5 +62,12 @@ case "$1" in
             loginctl lock-session
         fi
         ;;
+    "dpms")
+        # Turn off DPMS (Display Power Management Signaling)
+        if check_fullscreen; then
+            exit 0
+        else
+            hyprctl dispatch dpms off
+        fi
+        ;;
 esac
-
