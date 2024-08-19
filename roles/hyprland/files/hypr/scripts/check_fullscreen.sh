@@ -60,6 +60,7 @@ case "$1" in
             exit 0
         else
             loginctl lock-session
+            playerctl --all-players pause
         fi
         ;;
     "dpms")
