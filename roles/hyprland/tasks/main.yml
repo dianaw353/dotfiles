@@ -38,23 +38,17 @@
 
 - name: Manage Hyprland dynamic cursors
   block:
-    - name: Update hyprpm package list
-      command: hyprpm update
+    # - name: Update hyprpm package list
+    # command: hyprpm update
 
-    - name: Install hypr-dynamic-cursors if not already installed
-      block:
-        - name: Check if hypr-dynamic-cursors is installed
-          command: hyprpm list installed | grep dynamic-cursors
-          register: dynamic_cursors_installed
-          ignore_errors: true
+    - name: Check if hypr-dynamic-cursors is installed
+      command: hyprpm list | grep dynamic-cursors || true
+      register: installed_plugins
 
-        - name: Add hypr-dynamic-cursors repository
-          command: yes "Y" | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
-          when: dynamic_cursors_installed.rc != 0
-
-        - name: Install hypr-dynamic-cursors
-          command: hyprpm install dynamic-cursors
-          when: dynamic_cursors_installed.rc != 0
+    - name: Add hypr-dynamic-cursors repository
+      shell: echo "Y" | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+      when: installed_plugins
 
     - name: Enable dynamic cursors
       command: hyprpm enable dynamic-cursors
+      when: installed_plugins
