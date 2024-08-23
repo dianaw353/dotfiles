@@ -65,7 +65,7 @@ post_tasks:
 # TODO: In future this will be able to change hyprland keybinds to open these applications
 core_packages: # outside of WM/DE dependencies
   pacman:
-    - alacritty # terminal
+    - kitty # terminal
     - firefox # browser
     - fastfetch # neofetch alternitive
     - nautilus # file explorer

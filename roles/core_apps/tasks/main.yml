@@ -25,6 +25,7 @@
         - { src: 'helix', dest: '.config', package: 'helix' }
         - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
         - { src: 'zsh/.zshrc', dest: '', package: 'zsh'}
+        - { src: 'kitty', dest: '.config', package: 'kitty' }
       when: item.package in ansible_facts.packages
 
 - name: Update User Shell and Disable Warnings
