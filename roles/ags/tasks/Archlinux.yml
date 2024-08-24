@@ -25,7 +25,7 @@
         - fd
         - brightnessctl
         - gnome-bluetooth-3.0
-        - bluetuith
+        - bluetuith-bin
         - libdbusmenu-gtk3
         - libnotify
         - libsoup3
