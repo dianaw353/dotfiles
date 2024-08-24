@@ -69,12 +69,14 @@ Many more featues are comming soon
 
 ## Requirements
 
-1. Clone this repo
+1. Run this command
 
    ```
-   # Stable Release
    pacman -S curl   
+   # Stable Release
    bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles) stable
+   # Rolling Release
+   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles) rolling
    cd dotfiles
    ```   
    
