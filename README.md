@@ -23,9 +23,7 @@
 </div>
 
 > [!WARNING]
-> This is currently under heavy development, so expect some features to be missing, buggy, or broken. <br>
-  Laptop workarounds are based on community feedback. <br>
-  Nvidia support is unofficial since I don't use Nvidia graphics, but I'll do my best with help from the community.
+> Laptop workarounds are based on community feedback, and Nvidia support is unofficial but supported with community help.
 
 ## Showcase
    Comming Soon!
@@ -38,8 +36,9 @@
 
 - Clean fastfetch, zsh, and oh-my-posh
 - GTK Focus
-- Login screen
-- Aylur gtk shell bar (Comming soon)
+- Ags login screen
+- Ags status bar
+- Great hypridle config (won't lock screen in full screen, pause all player media when locked)
 - And more
 Many More Featues comming soon
 </details>
@@ -55,6 +54,8 @@ Many More Featues comming soon
 - Optimize Pacman (e.g parallel downloads, color, VerbosePkgLists)
 - Laptop Workarounds (Framework autobrighness disbale only atm)
 - KVM Setup w/ 3d Acceleration
+- Set up gaming dependencies
+- Simple hyprland config
 - And more
 
 Many more featues are comming soon
@@ -65,10 +66,6 @@ Many more featues are comming soon
 **Linux Distro**
 
    - Arch Linux
-
-**Window Managers/Desktop Environments**
-
-   - Hyprland
 
 ## Requirements
 
@@ -99,7 +96,7 @@ Many more featues are comming soon
 
 
 ## To do
-To view the upcoming featues please view [this](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+is%3Aopen)
+For upcoming features, check [this page](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+is%3Aopen).
 
 ## Acknowledgements
 - TechDufus: https://github.com/TechDufus/dotfiles
@@ -108,3 +105,4 @@ To view the upcoming featues please view [this](https://github.com/dianaw353/dot
 - Aylur: https://github.com/Aylur/dotfiles
 - Kotontrion: https://github.com/kotontrion/dotfiles
 - Stephan Raabe: https://gitlab.com/stephan-raabe/dotfiles
+and more that I have forgot to add
