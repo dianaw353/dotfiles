@@ -66,7 +66,7 @@ post_tasks:
 core_packages: # outside of WM/DE dependencies
   pacman:
     - kitty # terminal
-    - firefox # browser
+    - zen-browser-optimized-bin # browser
     - fastfetch # neofetch alternitive
     - nautilus # file explorer
     - zed # Visual studio alternitive
