@@ -20,7 +20,6 @@
         dest: "{{ ansible_user_dir }}/{{ item.dest }}"
         recursive: yes
       loop:
-        - { src: 'alacritty', dest: '.config', package: 'alacritty' }
         - { src: 'fastfetch', dest: '.config', package: 'fastfetch' }
         - { src: 'helix', dest: '.config', package: 'helix' }
         - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
