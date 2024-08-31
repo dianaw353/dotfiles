@@ -32,7 +32,7 @@
         name: "{{ item }}"
         state: present
       become: true
-      when: "'prismlauncher-qt5-bin' in gaming.launchers"
+      when: "'prismlauncher' in gaming.launchers"
       loop:
         - jdk8-openjdk
         - jdk11-openjdk

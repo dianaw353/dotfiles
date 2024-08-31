@@ -102,7 +102,7 @@ gaming:
     - goverlay
   launchers:
     # Will install 4 versions of java for compatibility for all versions of minecraft alongside prism launcher
-    - prismlauncher-qt5-bin
+    - prismlauncher
     - steam
     - heroic-games-launcher-bin
     - lutris
