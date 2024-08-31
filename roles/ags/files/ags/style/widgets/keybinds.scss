@@ -1,0 +1,17 @@
+@use "sass:math";
+@use "sass:color";
+
+window#keybinds {
+  .keybinds {
+    @include floating_widget;
+    min-width: 900px;
+    min-height: 500px;
+    color: $fg;
+    background-color: $bg;
+  }
+}
+
+.header {
+  margin: $spacing;
+  padding: $spacing;
+}

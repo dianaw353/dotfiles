@@ -11,6 +11,7 @@ import PowerMenu from "widget/powermenu/PowerMenu"
 import ScreenCorners from "widget/bar/ScreenCorners"
 import SettingsDialog from "widget/settings/SettingsDialog"
 import Verification from "widget/powermenu/Verification"
+import Shortcuts from "widget/keybinds/index"
 import { forMonitors } from "lib/utils"
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
@@ -26,6 +27,7 @@ App.config({
         "overview": options.transition.value,
         "quicksettings": options.transition.value,
         "datemenu": options.transition.value,
+        "shortcuts": options.transition.value
     },
     windows: () => [
         ...forMonitors(Bar),
@@ -37,5 +39,6 @@ App.config({
         PowerMenu(),
         SettingsDialog(),
         Verification(),
+        Shortcuts(),
     ],
 })
