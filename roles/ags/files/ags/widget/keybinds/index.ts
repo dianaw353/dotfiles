@@ -1,11 +1,11 @@
-import PopupWindow, { Padding } from "../PopupWindow";
+import PopupWindow from "../PopupWindow";
 import Header from "./Header";
 // import Data from ".data/shortcuts" // To Do Pull keybind data
 
 function Keybinds() {
     return Widget.Box(
         { 
-            vertical: true, 
+            vertical: true,
             className: "keybinds"
         },
         Header
@@ -15,6 +15,6 @@ function Keybinds() {
 
 export default () => PopupWindow({
     name: "keybinds",
-    layout: "top",
+    layout: "center",
     child: Keybinds()
 });

@@ -4,10 +4,10 @@
 window#keybinds {
   .keybinds {
     @include floating_widget;
-    min-width: 900px;
-    min-height: 500px;
     color: $fg;
     background-color: $bg;
+    min-width: 85rem;
+    min-height: 60rem;
   }
 }
 
