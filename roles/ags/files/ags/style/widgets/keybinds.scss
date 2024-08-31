@@ -9,6 +9,25 @@ window#keybinds {
     min-width: 85rem;
     min-height: 60rem;
   }
+
+  .keybinds-list {
+    margin: $spacing;
+    padding: $spacing;
+  }
+
+  .column-list {
+    margin: $spacing;
+    padding: $spacing;
+
+    .catagory-row {
+      padding-bottom: $spacing * 0.5;
+    }
+
+    .catagory-label {
+      padding-top: $spacing * 0.5;
+      padding-bottom: $spacing * 0.5;
+    }
+  }
 }
 
 .header {
