@@ -32,4 +32,5 @@
       loop:
         - "{{ icons.cursor_icons_package }}"
         - hyprpicker
+        - hyprshade
 
