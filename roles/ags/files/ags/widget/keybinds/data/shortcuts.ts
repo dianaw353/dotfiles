@@ -66,6 +66,14 @@ const column3 = [
       { keys: ['󰘴', '+', '󰘵', '+', '󰆴'], action: 'Launch System Monitor: Mission Control' }, 
     ],
     appeartick: 3
+  },
+  {
+    icon: '󰯃',
+    name: 'Scripts',
+    binds: [
+      { keys: ['⌘', '+', '󰘵', '+', 'G'], action: 'Enable/Disable Gaming Mode' },
+    ],
+    appeartick: 3
   }
 ]
 
