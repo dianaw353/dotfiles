@@ -29,7 +29,7 @@ function Hyprshade() {
 
     return Widget.Box({
         vertical: true,
-        css: "padding: 1px; margin: 5pt;",
+        css: "padding: 1px; margin-top: 100pt;",
         className: "hyprshade",
         children: [entry],
     });
@@ -40,4 +40,3 @@ export default () => PopupWindow({
     layout: "top",
     child: Hyprshade(),
 });
-
