@@ -10,12 +10,20 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 - Make sure NetworkManager is enabled
 - Gaming role now has compatibillity layer dependencies, utilities, and launchers
 - Add android-tools to user_packages
+- Update Prism Launcher dependency
+- Replace Firefox with Zed Browser
+- Replace Alacritty with Kitty
+- Replace Blueman with Bluetuith 
 
 **Ags**
 - Added config
 
 **Fastfetch**
 - Cleaner look
+
+**Hyprland**
+- Updated some keybindings
+- Add hypr-dynamic-cursor plugin for shake to find cursor
 
 **Hypridle**
 - Screen no longer locks when in fullscreen
