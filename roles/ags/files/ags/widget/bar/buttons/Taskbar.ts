@@ -73,7 +73,8 @@ function sortItems<T extends { attribute: { address: string } }>(arr: T[]) {
 
 export default () => Widget.Box({
     class_name: "taskbar",
-    children: sortItems(hyprland.clients.map(c => AppItem(c.address))),
+    children: hyprland.bind("clients").as(clients => sortItems(clients.map(c => AppItem(c.address)))),
+    // children: sortItems(hyprland.clients.map(c => AppItem(c.address))),
     setup: w => w
         .hook(hyprland, (w, address?: string) => {
             if (typeof address === "string")
