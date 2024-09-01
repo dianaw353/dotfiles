@@ -17,7 +17,7 @@ export default Widget.Box(
     useMarkup: true,
     selectable: true,
     className: 'data-stored',
-    label: 'Sheet data stored in <tt>~/.config/ags/data/shortcuts.ts</tt>'
+    label: 'Sheet data stored in <tt>~/.config/ags/widget/keybinds/data/shortcuts.ts</tt>'
   }),
   Widget.Label({
     className: 'data-stored',
