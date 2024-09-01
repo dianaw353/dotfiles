@@ -16,8 +16,16 @@ window#keybinds {
   }
 
   .column-list {
-    margin: $spacing;
-    padding: $spacing;
+    margin-right: $spacing * 0.1;
+    padding-right: $spacing * 0.1;
+
+    .catagory-group {
+      background-color: $widget-bg;
+      margin: $spacing;
+      padding: $spacing;
+      border-radius: $radius;
+      border: $border;
+    }
 
     .catagory-row {
       padding-bottom: $spacing * 0.5;

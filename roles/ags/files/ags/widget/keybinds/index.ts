@@ -11,6 +11,7 @@ function Keybinds() {
             className: 'column-list',
             children: columnData.map((category) => Widget.Box({
                 vertical: true,
+                className: 'catagory-group',
                 children: [
                     Widget.Label({
                         xalign: 0,
