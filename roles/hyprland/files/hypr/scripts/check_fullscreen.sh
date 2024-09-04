@@ -38,7 +38,7 @@ echo "$current_status" > $status_file
 
 # Process the action based on the argument
 case "$1" in
-    "brightness")
+    "brightness_dim")
         # Adjust screen brightness
         if check_fullscreen; then
             exit 0
@@ -46,7 +46,15 @@ case "$1" in
             brightnessctl -s set 10
         fi
         ;;
-    "keyboard")
+    "brightness_restore")
+        # Restore brightness
+        if check_fullscreen; then
+            exit 0
+        else
+            brightnessctl -r
+        fi
+        ;;
+    "keyboard_off")
         # Turn off keyboard backlight
         if check_fullscreen; then
             exit 0
@@ -54,7 +62,15 @@ case "$1" in
             brightnessctl -sd rgb:kbd_backlight set 0
         fi
         ;;
-    "lock")
+    "keyboard_restore")
+        # Restore keyboard backlight
+        if check_fullscreen; then
+            exit 0
+        else
+            brightnessctl -rd rgb:kbd_backlight
+        fi
+        ;;
+    "lock_enabled")
         # Lock the session
         if check_fullscreen; then
             exit 0
@@ -63,12 +79,20 @@ case "$1" in
             playerctl --all-players pause
         fi
         ;;
-    "dpms")
+    "dpms_off")
         # Turn off DPMS (Display Power Management Signaling)
         if check_fullscreen; then
             exit 0
         else
             hyprctl dispatch dpms off
+        fi
+        ;;
+    "dpms_on")
+        # Turn on DPMS
+        if check_fullscreen; then
+            exit 0
+        else
+            hyprctl dispatch dpms on
         fi
         ;;
     "hibernate")
