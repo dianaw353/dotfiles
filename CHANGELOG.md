@@ -14,6 +14,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 - Replace Firefox with Zed Browser
 - Replace Alacritty with Kitty
 - Replace Blueman with Bluetuith 
+- Copy 'usr/share/pipewire' folder to '/etc/pipewire' to fix screenshare
 
 **Ags**
 - Added config

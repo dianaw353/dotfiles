@@ -37,4 +37,14 @@
         line: 'HoldoffTimeoutSec=5'
         state: present
       become: true
-       
+
+    - name: Pipewire screenshare fix
+      ansible.posix.synchronize:
+        mode: push
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        recursive: yes
+      become: true
+      when: system.audio_server == 'pipewire'
+      loop:
+        - { src: '/usr/share/pipewire', dest: '/etc/pipewire' }
