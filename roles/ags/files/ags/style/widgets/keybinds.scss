@@ -12,33 +12,33 @@ window#keybinds {
 
   .keybinds-list {
     margin: $spacing;
-    padding: $spacing;
+    padding: $padding;
   }
 
   .column-list {
     margin-right: $spacing * 0.1;
-    padding-right: $spacing * 0.1;
+    padding-right: $padding * 0.1;
 
     .catagory-group {
       background-color: $widget-bg;
       margin: $spacing;
-      padding: $spacing;
+      padding: $padding;
       border-radius: $radius;
       border: $border;
     }
 
     .catagory-row {
-      padding-bottom: $spacing * 0.5;
+      padding-bottom: $padding * 0.5;
     }
 
     .catagory-label {
-      padding-top: $spacing * 0.5;
-      padding-bottom: $spacing * 0.5;
+      padding-top: $padding * 0.5;
+      padding-bottom: $padding * 0.5;
     }
   }
 }
 
 .header {
   margin-top: $spacing;
-  padding-top: $spacing;
+  padding-top: $padding;
 }
