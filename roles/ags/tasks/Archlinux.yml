@@ -9,6 +9,7 @@
       become: false
       loop:
         - aylurs-gtk-shell-git
+        - bluetuith-bin
         - bun-bin
         - matugen-bin
         - wayshot
@@ -25,7 +26,6 @@
         - fd
         - brightnessctl
         - gnome-bluetooth-3.0
-        - bluetuith-bin
         - libdbusmenu-gtk3
         - libnotify
         - libsoup3
