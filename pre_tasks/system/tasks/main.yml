@@ -25,6 +25,18 @@
         - name: bluetooth
           when: system.enable_bluetooth
 
+    - name: Start pipewire services
+      ansible.builtin.systemd:
+        state: started
+        name: "{{ item }}"
+        scope: user
+        enabled: yes
+      become: false
+      loop:
+        - pipewire
+        - pipewire-pulse
+        - wireplumber
+
 - name: Fixes
   block:
     - name: Gtk Window Buttons
