@@ -34,7 +34,7 @@
         name: "{{ user }}"
         shell: "/bin/zsh"
       become: true
-      when: "'zsh' in core_packages.pacman"
+      when: "'zsh' in core_packages"
 
     - name: Disable Oh My Posh Update Warnings
       command: oh-my-posh disable notice

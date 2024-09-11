@@ -64,7 +64,6 @@ post_tasks:
 
 # TODO: In future this will be able to change hyprland keybinds to open these applications
 core_packages: # outside of WM/DE dependencies
-  pacman:
     - kitty # terminal
     - zen-browser-bin # browser
     - fastfetch # neofetch alternitive
@@ -73,15 +72,12 @@ core_packages: # outside of WM/DE dependencies
     - zsh # if zsh it would install my configuration and would also install zoxide, fzf, eza, zinit, and oh-my-posh
     - helix # text editor
     - ttf-dejavu-nerd
-  aur:
-    - mission-center
+    - mission-center # System Monitor
 
 # user prefered packages outside of core_packages
 user_packages:
-  pacman:
     - github-cli
     - android-tools
-  aur:
     - spotube-bin
     - vesktop-bin
 

@@ -15,7 +15,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 - Replace Alacritty with Kitty
 - Replace Blueman with Bluetuith 
 - Copy 'usr/share/pipewire' folder to '/etc/pipewire' to fix screenshare
-- pipewire loads by default
+- Pipewire loads by default
+- Change core/custom packages so they are not dependent on arch only features
 
 **Ags**
 - Added config
