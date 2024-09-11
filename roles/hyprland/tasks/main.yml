@@ -5,10 +5,11 @@
   register: hyprland_distribution_config
 
 - name: "Hyprland | Run Tasks: {{ ansible_distribution }}"
-  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  ansible.builtin.include_tasks:
+    file: "{{ ansible_distribution }}.yml"
   when: hyprland_distribution_config.stat.exists
 
-- name: Configure Hyprland
+- name: Configure hyprland
   block:
     - name: "Hyprland | Sync configuration files"
       ansible.posix.synchronize:
@@ -19,8 +20,7 @@
       loop:
         - { src: 'hypr', dest: '.config/' }
         - { src: 'hypr/scripts', dest: '.config/hypr/' }
-
-
+    
     - name: "Hyprland | Update configuration templates"
       ansible.builtin.template:
         src: "{{ item.src }}"
@@ -35,20 +35,27 @@
         - { src: 'environment.conf.j2', dest: 'config/environment.conf' }
         - { src: 'hyprlock.conf.j2', dest: 'hyprlock.conf' }
 
-
 - name: Manage Hyprland dynamic cursors
   block:
     # - name: Update hyprpm package list
-    # command: hyprpm update
+    #   command: hyprpm update
 
     - name: Check if hypr-dynamic-cursors is installed
-      command: hyprpm list | grep dynamic-cursors || true
-      register: installed_plugins
+      ansible.builtin.command:
+        cmd: "hyprpm list | grep 'dynamic-cursors' || true"
+      register: plugin_check_output
+      changed_when: false
+
+    - name: Set dynamic-cursors plugin installation status
+      ansible.builtin.set_fact:
+        is_dynamic_cursors_plugin_installed: "{{ 'dynamic-cursors' in plugin_check_output.stdout }}"
 
     - name: Add hypr-dynamic-cursors repository
-      shell: echo "Y" | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
-      when: installed_plugins
+      ansible.builtin.shell:
+        cmd: "echo 'Y' | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors"
+      when: not is_dynamic_cursors_plugin_installed
 
     - name: Enable dynamic cursors
-      command: hyprpm enable dynamic-cursors
-      when: installed_plugins
+      ansible.builtin.command:
+        cmd: "hyprpm enable dynamic-cursors"
+      when: not is_dynamic_cursors_plugin_installed
