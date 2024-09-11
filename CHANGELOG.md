@@ -26,6 +26,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 **Hyprland**
 - Updated some keybindings
 - Add hypr-dynamic-cursor plugin for shake to find cursor
+- Autostart polkit-gnome
 
 **Hypridle**
 - Screen no longer locks when in fullscreen
