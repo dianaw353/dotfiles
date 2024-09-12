@@ -54,6 +54,14 @@ const column2 = [
     ],
     appeartick: 2
   },
+  {
+    icon: '',
+    name: 'Session Shortcuts',
+    binds: [
+      { keys: ['⌘', '+', 'L'], action: 'Lock session' },
+    ],
+    appeartick: 2
+  },
 ]
 
 // COLUMN3
