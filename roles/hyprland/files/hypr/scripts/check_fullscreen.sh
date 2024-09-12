@@ -95,12 +95,12 @@ case "$1" in
             hyprctl dispatch dpms on
         fi
         ;;
-    "hibernate")
+    "suspend")
     # Trigger hibernate
     if check_fullscreen; then
         exit 0
     else
-        systemctl hibernate
+        systemctl suspend
     fi
     ;;
 esac
