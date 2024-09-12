@@ -107,6 +107,7 @@ export default {
         reboot: "system-reboot-symbolic",
         logout: "system-log-out-symbolic",
         shutdown: "system-shutdown-symbolic",
+        lock: "system-lock-screen-symbolic",
     },
     recorder: {
         recording: "media-record-symbolic",

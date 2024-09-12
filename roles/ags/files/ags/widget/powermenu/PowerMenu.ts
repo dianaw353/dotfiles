@@ -37,6 +37,7 @@ export default () => PopupWindow({
                     SysButton("logout", "Log Out"),
                     SysButton("reboot", "Reboot"),
                     SysButton("sleep", "Sleep"),
+                    SysButton("lock", "Lock"),
                 ]
                 case "box": return [
                     Widget.Box(
@@ -48,6 +49,10 @@ export default () => PopupWindow({
                         { vertical: true },
                         SysButton("reboot", "Reboot"),
                         SysButton("sleep", "Sleep"),
+                    ),
+                    Widget.Box(
+                        { vertical: true },
+                        SysButton("lock", "Lock"),
                     ),
                 ]
             }
