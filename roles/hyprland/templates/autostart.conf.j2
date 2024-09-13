@@ -11,6 +11,9 @@ exec-once = ags
 exec-once = gsettings set org.gnome.desktop.interface cursor-theme {{ icons.cursor_icons_theme }}
 exec-once = hyprctl setcursor {{ icons.cursor_icons_theme }} {{ icons.cursor_icons_size }}
 
+# Set up icon theme
+exec-once = gsettings set org.gnome.desktop.interface icon-theme {{ icons.desktop_icon_theme }}
+
 # initilize hyprpaper
 exec-once = hyprpaper
 
