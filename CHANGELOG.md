@@ -1,3 +1,14 @@
+Version 1.1.1
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.1
+--------------------------------------------------------
+**Script**
+- Simplify dependencies installation on ags/hyprland
+
+**Fixes**
+- Autostart hyprland plugins and polkit 
+- Switch hibronate to suspend for better system compatibility
+- Keybind fixes
+
 Version 1.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1
 --------------------------------------------------------
