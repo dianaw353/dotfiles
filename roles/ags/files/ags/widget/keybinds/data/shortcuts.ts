@@ -7,7 +7,7 @@ const column1 = [
     binds: [
       { keys: ['⌘', '+', '0 - 9'], action: 'Go to x Workspace' },
       { keys: ['⌘', '+', 'scroll'], action: 'Go to Adjacent Workspace' }, 
-      { keys: ['⌘', '+', '0 - 9'], action: 'Move X Window to X to Workspace' },
+      { keys: ['⌘', '+', '󰘶', '+', '0 - 9'], action: 'Move X Window to X to Workspace' },
       { keys: ['⌘', '+', '󰳾'], action: 'Pick Up & Move Window'},
       { keys: ['⌘', '+', '󰳽'], action: 'Resize Window Upon Window Border'},
       { keys: ['⌘', '+', 'Q'], action: 'Quit Window' },
