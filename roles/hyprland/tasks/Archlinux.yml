@@ -31,6 +31,7 @@
       become: false
       loop:
         - "{{ icons.cursor_icons_package }}"
+        - "{{ icons.desktop_icons_package }}"
         - hyprpicker
         - hyprshade
 
