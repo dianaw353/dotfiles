@@ -96,7 +96,7 @@ case "$1" in
         fi
         ;;
     "suspend")
-    # Trigger hibernate
+    # Trigger suppend
     if check_fullscreen; then
         exit 0
     else
