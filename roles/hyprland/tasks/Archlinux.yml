@@ -1,11 +1,12 @@
 ---
-- name: Install Hyprland Packages and Dependencies
+- name: Install Packages
   block:
-    - name: Install Hyprland Packages
-      community.general.pacman:
+    - name: Install Package
+      kewlfft.aur.aur:
         name: "{{ item }}"
         state: present
-      become: true
+        use: "{{ pacman.aur_helper }}"
+      become: false
       loop:
         - hyprcursor
         - hyprlang
@@ -20,18 +21,8 @@
         # plugin dependencies
         - cmake
         - cpio
-
-- name: Install AUR Packages
-  block:
-    - name: Install AUR Package
-      kewlfft.aur.aur:
-        name: "{{ item }}"
-        state: present
-        use: "{{ pacman.aur_helper }}"
-      become: false
-      loop:
         - "{{ icons.cursor_icons_package }}"
-        - "{{ icons.desktop_icons_package }}"
+        - "{{ icons.system_icons_package }}"
         - hyprpicker
         - hyprshade
 
