@@ -8,6 +8,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.1
 - Autostart hyprland plugins and polkit 
 - Switch hibronate to suspend for better system compatibility
 - Keybind fixes
+- Settings page header fix
 
 Version 1.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1
