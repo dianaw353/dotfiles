@@ -4,6 +4,7 @@ window.settings-dialog {
 
   .header {
     background-color: $widget-bg;
+    margin-top: $spacing * 0;
 
     .pager {
       @include spacing(.5);
