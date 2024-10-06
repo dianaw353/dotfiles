@@ -63,6 +63,7 @@ default_roles:
 
 post_tasks:
   - package_cleanup
+  -
 
 # TODO: In future this will be able to change hyprland keybinds to open these applications
 core_packages: # outside of WM/DE dependencies

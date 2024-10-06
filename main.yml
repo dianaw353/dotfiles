@@ -1,28 +1,19 @@
----
 - name: DotFiles Config
   hosts: all
   gather_facts: yes
 
   pre_tasks:
-    - name: Import Package Manager Config tasks
-      ansible.builtin.include_tasks: pre_tasks/package_manager/tasks/main.yml
-      when: "'package_manager' in pre_tasks"
-
-    - name: Detect if VM is being used
-      ansible.builtin.include_tasks: pre_tasks/detect_vm/tasks/main.yml
-      when: "'detect_vm' in pre_tasks"
-
-    - name: Import drivers tasks
-      ansible.builtin.include_tasks: pre_tasks/drivers/tasks/main.yml
-      when: "'drivers' in pre_tasks"
-
-    - name: Laptop workarounds
-      ansible.builtin.include_tasks: pre_tasks/laptop_workarounds/tasks/main.yml
-      when: "'laptop_workarounds' in pre_tasks"
-
-    - name: System
-      ansible.builtin.include_tasks: pre_tasks/system/tasks/main.yml
-      when: "'laptop_workarounds' in pre_tasks"
+    - name: Import Configuration Tasks Based on Conditions
+      include_tasks: "{{ pre_task.path }}"
+      loop:
+        - { path: 'pre_tasks/package_manager/tasks/main.yml', condition: 'package_manager' }
+        - { path: 'pre_tasks/detect_vm/tasks/main.yml', condition: 'detect_vm' }
+        - { path: 'pre_tasks/drivers/tasks/main.yml', condition: 'drivers' }
+        - { path: 'pre_tasks/laptop_workarounds/tasks/main.yml', condition: 'laptop_workarounds' }
+        - { path: 'pre_tasks/system/tasks/main.yml', condition: 'system' }
+      loop_control:
+        loop_var: pre_task
+      when: pre_task.condition in pre_tasks
 
   tasks:
     - name: Set roles
@@ -50,6 +41,10 @@
         - always
 
   post_tasks:
-    - name: Package Cleanup
-      ansible.builtin.include_tasks: post_tasks/package_cleanup/tasks/main.yml
-      when: "'package_cleanup' in post_tasks"
+    - name: Import Cleanup Tasks Based on Conditions
+      include_tasks: "{{ post_task.path }}"
+      loop:
+        - { path: 'post_tasks/package_cleanup/tasks/main.yml', condition: 'package_cleanup' }
+      loop_control:
+        loop_var: post_task
+      when: post_task.condition in post_tasks
