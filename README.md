@@ -74,9 +74,9 @@ Many more featues are comming soon
    ```
    pacman -S curl   
    # Stable Release
-   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles) stable
+   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles.sh) stable
    # Rolling Release
-   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles) rolling
+   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles.sh) rolling
    cd dotfiles
    ```   
    
