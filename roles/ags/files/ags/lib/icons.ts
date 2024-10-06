@@ -11,7 +11,6 @@ export const substitutes = {
     "com.github.Aylur.ags-symbolic": "controls-symbolic",
     "com.github.Aylur.ags": "controls-symbolic",
     "Alacritty-symbolic": "terminal-symbolic",
-    "kitty-symbolic": "terminal-symbolic",
 }
 
 export default {

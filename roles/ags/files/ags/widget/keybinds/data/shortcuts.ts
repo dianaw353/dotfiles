@@ -70,7 +70,7 @@ const column3 = [
     icon: '󱓞',
     name: 'Apps',
     binds: [
-      { keys: ['⌘', '+', '󰌑'], action: 'Launch Terminal: Kitty' },
+      { keys: ['⌘', '+', '󰌑'], action: 'Launch Terminal: Wezterm' },
       { keys: ['⌘', '+', 'B'], action: 'Launch Browser: Zed Browser' },
       { keys: ['⌘', '+', 'E'], action: 'Launch File Manager: Nautilus' },
       { keys: ['󰘴', '+', '󰘵', '+', '󰆴'], action: 'Launch System Monitor: Mission Control' }, 

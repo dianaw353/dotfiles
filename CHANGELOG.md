@@ -1,3 +1,9 @@
+Version 1.1.2
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.2
+--------------------------------------------------------
+**Changes**
+- Switch to wezterm terminal instead of kitty
+
 Version 1.1.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.1
 --------------------------------------------------------

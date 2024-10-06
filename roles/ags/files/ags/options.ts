@@ -158,7 +158,7 @@ const options = mkOptions(OPTIONS, {
             favorites: opt([
                 [
                     "zen-browser",
-                    "kitty",
+                    "wezterm",
                     "org.gnome.Nautilus",
                     "org.gnome.Calendar",
                     "spotify",
@@ -191,8 +191,8 @@ const options = mkOptions(OPTIONS, {
         width: opt(380),
         position: opt<"left" | "center" | "right">("right"),
         localSend: opt("localsend"),
-        bluetoothSettings: opt("kitty -e sh -c 'printf \"\\033]0;Bluetooth Manager TUI\\007\"; bluetuith'"),
-        networkSettings: opt("kitty -e sh -c 'printf \"\\033]0;Network Manager TUI\\007\"; nmtui'"),
+        bluetoothSettings: opt("wezterm -e sh -c 'printf \"\\033]0;Bluetooth Manager TUI\\007\"; bluetuith'"),
+        networkSettings: opt("wezterm, -e sh -c 'printf \"\\033]0;Network Manager TUI\\007\"; nmtui'"),
         media: {
             monochromeIcon: opt(true),
             coverSize: opt(100),

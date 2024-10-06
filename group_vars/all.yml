@@ -38,7 +38,7 @@ icons:
   
 pacman:
   parallel_downloads: 5 # Adjust as needed
-  enable_multilib: false  # If you want to use 32bit code, NEEDED for 32-bit drivers and gaming
+  enable_multilib: true  # If you want to use 32bit code, NEEDED for 32-bit drivers and gaming
   # set aur helper
   # supported helpers are here https://github.com/kewlfft/ansible-aur#kewlfftauraur-module
   aur_helper: yay
@@ -59,14 +59,14 @@ default_roles:
   - core_apps
   - custom_apps
   # - kvm # Virtal Machine setup
-  # - gaming
+  - gaming
 
 post_tasks:
   - package_cleanup
 
 # TODO: In future this will be able to change hyprland keybinds to open these applications
 core_packages: # outside of WM/DE dependencies
-    - kitty # terminal
+    - wezterm # terminal
     - zen-browser-bin # browser
     - fastfetch # neofetch alternitive
     - nautilus # file explorer
