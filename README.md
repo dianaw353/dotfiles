@@ -15,96 +15,119 @@
 <hr />
 <div align="center">
 <p>
-   A linux desktop environment configuration using <a href='https://github.com/aylur/ags'>Aylur's Gtk Shell</a>.<br/>
-   Also, an automated post install installation script.<br/>
+   A Hyprland configuration set using <a href='https://github.com/aylur/ags'>AGS (Aylur's Gtk Shell)</a>.<br/>
+   Can also be used as an automated post-install configuration script.<br/>
 </p>
 
 <hr />
 </div>
 
 > [!WARNING]
-> Laptop workarounds are based on community feedback, and Nvidia support is unofficial but supported with community help.
+> Laptop workarounds are based on community feedback, and NVIDIA support is noted by Hyprland Wiki to be unofficial but supported with the help of the community.
 
 ## Showcase
-   Comming Soon!
+Soon!
+<!-- Put actual screenshots here as soon as possible! -->
 
 ## Featues
 
 <details>
-<summary>Dotfile Featues</summary>
+<summary>Dotfiles</summary>
 <br>
 
-- Clean fastfetch, zsh, and oh-my-posh
-- GTK Focus
-- Ags login screen
-- Ags status bar
-- Great hypridle config (won't lock screen in full screen, pause all player media when locked)
-- And more
-Many More Featues comming soon
+- Sane defaults for Pacman
+- Clean and minimal configurations for fastfetch, ZSH and OMP (Oh-My-Posh)
+- Focus on GTK
+- Login skin by AGS
+  - Uses GreetD as the greeter.
+- Material 3 design language
+  - Yes, this includes a replica of the Monet engine!
+- Sane Hypridle configuration set
+  - Inhibits locking in full screen.
+  - Pauses all supported players when locked.
+    - Player support depends on the player of choice. Most major ones like Spotify and YouTube Music should support this.
+- Basic OSDs (On-Screen Displays)
+  - Located on the right side of the screen by default for consistency with phones and tablets.
+- Mild customizability, with even more tweaks possible inside the config files themselves
+  - Hey, at least it's the widest variety of configurations you can get from the GUI! It's like Good Lock on Samsung except it comes bundled out of the box.
+- Keyboard shortcuts guide widget
+  - Similar to what Ubuntu Unity and Pardus have.
+  - Can be invoked with Super+/, much like on Discord.
+- Full screen mobile-esque power menu
+  - This ain't like KDE but more like, again, Android devices.
+- Cute defaults for images
+  - ...if you like anime style, that is. You can still change those in configurations, though.
+- Many more available and to come!
 </details>
 
 
 <details>
-<summary>Script Features</summary>
+<summary>Scripts</summary>
 <br>
 
-- Fully Automated
-- GPU Drivers Installation
-- Configurable (e.g. cursor icons, chaotic_aur, shell, etc)
-- Optimize Pacman (e.g parallel downloads, color, VerbosePkgLists)
-- Laptop Workarounds (Framework autobrighness disbale only atm)
-- KVM Setup w/ 3d Acceleration
-- Set up gaming dependencies
-- Simple hyprland config
-- And more
 
-Many more featues are comming soon
+- Fully automated
+- Granular configuration
+- Installs GPU drivers where supported
+  - Config review before running is a must! (`group_vars/all.yml`)
+  - **__IF YOU HAVE AN NVIDIA GPU NOT SUPPORTED BY THE LATEST DRIVER, YOU MUST AVOID PROPRIETARY DRIVERS SERVED HERE AND FOLLOW ARCH WIKI FOR THE ONE THAT SUITS YOU!__**
+- Laptop workarounds
+  - Currently only has auto-brightness blacklisting for Framework laptops.
+- KVM configuration with 3D accelaration
+- Required and optional dependencies for Linux gaming :D
+- Full support for Arch Linux, with more on the roadmap.
+- More of these! Check the config for most of them!
 </details>
 
-## Supports
+## Supported Linux distros
 
-**Linux Distro**
-
-   - Arch Linux
+- Arch Linux
 
 ## Requirements
 
-1. Run this command
+1. Get the release you want.
+1.1. Stable release (Recommended for end users):
+```
+bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles.sh) stable
+```
+1.2. Rolling release (Recommended for developers and enthusiasts):
+```
+bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles.sh) rolling
+```
+2. Head into the `dotfiles` folder and edit the variables in `group_vars/all.yml`
 
-   ```
-   pacman -S curl   
-   # Stable Release
-   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles.sh) stable
-   # Rolling Release
-   bash <(curl -s https://raw.githubusercontent.com/dianaw353/dotfiles/main/dotfiles.sh) rolling
-   cd dotfiles
-   ```   
-   
-1. Edit the variables in `group_vars`
 > [!NOTE]
-> This config is made for my setup so there may be a few things you want to change in group_vars/all.yml.
-1. (Optional) Run the playbook in check mode to view potential changes
-   ```
-   ansible-playbook main.yml --ask-become-pass --check
-   ````
-1. Run the playbook (enter your user's password when prompted)
-   ```
-   ansible-playbook main.yml --ask-become-pass
-   ```
-1. (Optional) Run the playbook to run tasks with the value. (This will run the code needed for just that one application) PS. List of each task is in group_vars/all.yml under the default_roles flag :3
-   ```
-   ansible-playbook main.yml --ask-become-pass -t <Name of roles>
-   ```
+> These defaults were adjusted for my own setup, and there may be quite a few things you might want to change in there.
 
+## Installation
 
-## To do
-For upcoming features, check [this page](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+is%3Aopen).
+(Optional) Do a dry-run to make sure things go smoothly:
+```
+ansible-playbook main.yml --ask-become-pass --check
+```
 
-## Acknowledgements
+The real deal:
+```
+ansible-playbook main.yml --ask-become-pass
+```
+
+You may also run a specific role instead of the entire playbook, which will install and configure only the packages and apps that role contains.
+```
+ansible-playbook main.yml --ask-become-pass -t role1 [role2 [...]]
+```
+
+> P.S. A list of the available roles can be found under the `default_roles` variable inside `group_vars/all.yml`. :3
+
+## To-Do
+
+View [the relevant issues tag](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+is%3Aopen) for a rough list of To-Dos and upcoming features.
+
+## Credits
+
 - TechDufus: https://github.com/TechDufus/dotfiles
 - Logan Marchione: https://github.com/loganmarchione/ansible-arch-linux
 - Dreams of Autonomy: https://github.com/dreamsofautonomy/zensh and https://github.com/dreamsofautonomy/zen-omp
 - Aylur: https://github.com/Aylur/dotfiles
 - Kotontrion: https://github.com/kotontrion/dotfiles
 - Stephan Raabe: https://gitlab.com/stephan-raabe/dotfiles
-and more that I have forgot to add
+- And more that I might have forgotten to add...
