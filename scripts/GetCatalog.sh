@@ -32,8 +32,8 @@ awk -v header="$VERSION_HEADER" -v website="$website" -v owner="$owner" -v repo=
   BEGIN {found=0}
   $0 == header {found=1; next}
   /^Version/ && found {exit}
-  found && !($0 ~ website "/" owner "/" repo "/releases/tag/V" && $0 ~ /[0-9]+\.[0-9]+/) && !/^-----/ {print}
-' "$CHANGELOG_FILE" | sed "s/dianaw353/$owner/"
+  found && !($0 ~ website "/dianaw353/" repo "/releases/tag/V.*" && $0 ~ /[0-9]+\.[0-9]+/) && !/^-----.*/ {print}
+' "$CHANGELOG_FILE"
 
 # Add the "Full Changelog" line comparing the previous version with the current one only if a previous version exists
 if [[ -n "$PREV_VERSION" ]]; then
