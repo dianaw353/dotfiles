@@ -63,6 +63,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Aliases
 alias ls='eza --icons'
 alias c='clear'
+alias rmpmlck='sudo ps -e -C pacman > /dev/null && sudo rm /var/lib/pacman/db.lck || echo "Pacman is already running, not removing the lock file."'
 
 # Shell integrations
 eval "$(fzf --zsh)"

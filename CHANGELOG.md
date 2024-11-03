@@ -5,6 +5,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.2
 - Switch to wezterm terminal instead of kitty
 - Add Noto fonts
 - Restart NetworkManager and Bluetooth services post-config
+- Add a ZSH alias to remove `pacman`'s `db.lck`
 
 Version 1.1.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.1
