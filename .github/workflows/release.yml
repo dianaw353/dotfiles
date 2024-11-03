@@ -16,12 +16,14 @@ jobs:
         id: run_script
         run: |
           # Execute the script and save the output
-          if [ -x scripts/GetCatalog.md ]; then
-            ./scripts/GetCatalog.md > release_notes.md
+          if [ -x scripts/GetCatalog.sh ]; then
+            GH_TOKEN=$GH_TOKEN ./scripts/GetCatalog.sh > release_notes.md
           else
-            echo "scripts/GetCatalog.md is not executable or not found"
+            echo "scripts/GetCatalog.sh is not executable or not found"
             exit 1
           fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create tag
         id: create_tag
