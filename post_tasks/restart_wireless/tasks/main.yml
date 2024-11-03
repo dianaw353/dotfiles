@@ -1,8 +1,0 @@
----
-- name: Restart NetworkManager service
-  command: "systemctl restart NetworkManager"
-  become: true
-
-- name: Restart Bluetooth service
-  command: "systemctl restart bluetooth || true"
-  become: true

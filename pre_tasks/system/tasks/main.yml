@@ -22,6 +22,7 @@
         - name: xdg-user-dirs-update.service
           scope: user
           become: false
+        - name: NetworkManager
         - name: bluetooth
           when: system.enable_bluetooth
         - name: bluetooth-autoconnect
@@ -50,6 +51,7 @@
     scope: "{{ item.scope | default(omit) }}"
   become: "{{ item.become | default(true) }}"
   loop:
+    - name: NetworkManager
     - name: bluetooth
       when: system.enable_bluetooth
     - name: bluetooth-autoconnect

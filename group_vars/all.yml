@@ -67,7 +67,6 @@ default_roles:
 
 post_tasks:
   - package_cleanup
-  - restart_wireless # Restarts NetworkManager and Bluetooth
 
 # TODO: In future this will be able to change hyprland keybinds to open these applications
 core_packages: # outside of WM/DE dependencies

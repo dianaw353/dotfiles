@@ -4,7 +4,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.2
 **Changes**
 - Switch to wezterm terminal instead of kitty
 - Add Noto fonts
-- Restart NetworkManager and Bluetooth services post-config
+- Relocate where NetworkManager is enabled and started
+- Restart NetworkManager and Bluetooth services
 - Add a ZSH alias to remove `pacman`'s `db.lck`
 - Enable experimental D-Bus interfaces for Bluetooth
 - Add new AUR package: `bluetooth-autoconnect`
