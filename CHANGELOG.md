@@ -6,7 +6,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.2
 - Add Noto fonts
 - Restart NetworkManager and Bluetooth services post-config
 - Add a ZSH alias to remove `pacman`'s `db.lck`
-- Enable experimental D-Bus interfaces for Bluetooth.
+- Enable experimental D-Bus interfaces for Bluetooth
+- Add new AUR package: `bluetooth-autoconnect`
 
 Version 1.1.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.1

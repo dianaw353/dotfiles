@@ -6,7 +6,11 @@ system:
   # whether to enable bluetooth or not
   # true or false
   enable_bluetooth: true
-  
+
+  # whether to install and enable bluetooth-autoconnect or not
+  # true or false
+  enable_bluetooth_autoconnect: true
+
   # Audio Server
   # Weather to use pipewire or pluseaudio
   # pipewire or pulseaudio

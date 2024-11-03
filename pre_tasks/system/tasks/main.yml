@@ -24,6 +24,12 @@
           become: false
         - name: bluetooth
           when: system.enable_bluetooth
+        - name: bluetooth-autoconnect
+          when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect"
+        - name: pulseaudio-bluetooth-autoconnect
+          when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect and system.audio_server == 'pulseaudio'"
+          scope: user
+          become: false
 
     - name: Start pipewire services
       ansible.builtin.systemd:
@@ -36,6 +42,22 @@
         - pipewire
         - pipewire-pulse
         - wireplumber
+
+- name: Restart Systemd Services
+  ansible.builtin.systemd:
+    state: restarted
+    name: "{{ item.name }}"
+    scope: "{{ item.scope | default(omit) }}"
+  become: "{{ item.become | default(true) }}"
+  loop:
+    - name: bluetooth
+      when: system.enable_bluetooth
+    - name: bluetooth-autoconnect
+      when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect"
+    - name: pulseaudio-bluetooth-autoconnect
+      when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect and system.audio_server == 'pulseaudio'"
+      scope: user
+      become: false
 
 - name: Fixes
   block:
