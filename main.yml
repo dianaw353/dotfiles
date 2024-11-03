@@ -45,6 +45,7 @@
       include_tasks: "{{ post_task.path }}"
       loop:
         - { path: 'post_tasks/package_cleanup/tasks/main.yml', condition: 'package_cleanup' }
+        - { path: 'post_tasks/restart_wireless/tasks/main.yml', condition: 'restart_wireless' }
       loop_control:
         loop_var: post_task
       when: post_task.condition in post_tasks

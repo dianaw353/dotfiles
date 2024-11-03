@@ -138,7 +138,7 @@ ansible-playbook main.yml --ask-become-pass -t role1 [role2 [...]]
 - [x] Add `noto-fonts` and `noto-fonts-emoji` to the list of packages to install.
 - [ ] Add configuration to install additional optional fonts.
 - [ ] Add autoEnable and Experimental configurations for Bluetooth in `/etc/bluetooth/main.conf`.
-- [ ] Restart all network and Bluetooth services.
+- [x] Restart all network and Bluetooth services.
 - [ ] Command to remove `pacman` lock file (`/var/lib/pacman/db.lck`) for failsafe cleanup in case of a power outage mid-transaction.
 
 View [the relevant issues tag](https://github.com/dianaw353/dotfiles/issues?q=is%3Aissue+label%3AFeature+is%3Aopen) for a more comprehensive rough list of To-Dos and upcoming features.
