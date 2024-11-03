@@ -15,7 +15,7 @@
         - qt5-wayland
         - gtk4
         - libadwaita
-    
+
 - name: Install Audio Server Packages
   block:
     - name: Install Audio Packages | {{ ansible_distribution }}

@@ -76,6 +76,10 @@ core_packages: # outside of WM/DE dependencies
     - helix # text editor
     - ttf-dejavu-nerd
     - mission-center # System Monitor
+    - noto-fonts
+    - noto-fonts-emoji
+    - noto-fonts-cjk
+    - noto-fonts-extra
 
 # user prefered packages outside of core_packages
 user_packages:

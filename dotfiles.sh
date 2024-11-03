@@ -166,6 +166,10 @@ function arch_setup {
     _task "Installing Git"
     _cmd "sudo pacman -S --noconfirm git"
   fi
+  if ! pacman -Q noto-fonts-emoji >/dev/null 2>&1; then
+    _task "Installing Noto emoji fonts"
+    _cmd "sudo pacman -S --noconfirm noto-fonts-emoji"
+  fi
 }
 
 # Function to update Ansible Galaxy

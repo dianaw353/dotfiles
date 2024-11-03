@@ -135,7 +135,7 @@ ansible-playbook main.yml --ask-become-pass -t role1 [role2 [...]]
 
 ## To-Do
 
-- [ ] Add `noto-fonts` and `noto-fonts-emoji` to the list of packages to install.
+- [x] Add `noto-fonts` and `noto-fonts-emoji` to the list of packages to install.
 - [ ] Add configuration to install additional optional fonts.
 - [ ] Add autoEnable and Experimental configurations for Bluetooth in `/etc/bluetooth/main.conf`.
 - [ ] Restart all network and Bluetooth services.
