@@ -2,18 +2,36 @@ name: Create Release on Version Update
 
 on:
   push:
-    paths:
-      - VERSION
+    branches:
+      - 'main'
 
 jobs:
   create-release:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Compare current release with VERSION file
+        id: compare_versions
+        run: |
+          if [ "$(gh release view -q '.tagName' --json tagName)" == "$(cat VERSION)" ]; then
+            echo "No new release to generate!"
+            echo "NEW_RELEASE=0" >> $GITHUB_ENV
+            exit
+          fi
+          # Apparently the tag still exists when the release is deleted from GitHub web interface...
+          # Also mock the exit status so that it always returns with code 0.
+          git push --delete origin refs/tags/$(cat VERSION) || true
+          echo "NEW_RELEASE=1" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Run catalog script
         id: run_script
+        if: ${{ env.NEW_RELEASE == '1' }}
         run: |
           # Execute the script and save the output
           if [ -x scripts/GetCatalog.sh ]; then
@@ -27,6 +45,7 @@ jobs:
 
       - name: Create tag
         id: create_tag
+        if: ${{ env.NEW_RELEASE == '1' }}
         run: |
           # Generate a new tag based on the version
           TAG_NAME=$(cat VERSION)
@@ -36,12 +55,14 @@ jobs:
 
       - name: Output release notes
         id: output_release_notes
+        if: ${{ env.NEW_RELEASE == '1' }}
         run: |
           echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
           cat release_notes.md >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
       - name: Create release
+        if: ${{ env.NEW_RELEASE == '1' }}
         uses: actions/create-release@v1
         with:
           tag_name: ${{ env.TAG_NAME }}
@@ -51,3 +72,4 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
