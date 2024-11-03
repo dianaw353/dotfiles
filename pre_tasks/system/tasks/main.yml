@@ -60,3 +60,8 @@
       when: system.audio_server == 'pipewire'
       loop:
         - { src: '/usr/share/pipewire', dest: '/etc/pipewire' }
+
+    - name: Enable experimental D-Bus interfaces in /etc/bluetooth/main.conf
+      command: "sed -i '/^#Experimental = false/ s/.*/Experimental = true/' /etc/bluetooth/main.conf"
+      become: true
+      when: system.enable_bluetooth
