@@ -136,7 +136,7 @@ function backup_dotfiles() {
 
 # Arch setup function
 function arch_setup {
-  for pkg in ansible python python-pip python-watchdog openssh rsync git noto-fonts-emoji; do
+  for pkg in ansible curl python python-pip python-watchdog openssh rsync git noto-fonts-emoji; do
     if ! pacman -Q $pkg >/dev/null 2>&1; then
       _task "Installing $pkg"
       _cmd "sudo pacman -S --noconfirm $pkg"
