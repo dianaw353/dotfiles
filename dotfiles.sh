@@ -136,40 +136,12 @@ function backup_dotfiles() {
 
 # Arch setup function
 function arch_setup {
-  if ! [ -x "$(command -v ansible)" ]; then
-    _task "Installing Ansible"
-    _cmd "sudo pacman -Sy --noconfirm"
-    _cmd "sudo pacman -S --noconfirm ansible"
-    _cmd "sudo pacman -S --noconfirm python-argcomplete"
-  fi
-  if ! pacman -Q python3 >/dev/null 2>&1; then
-    _task "Installing Python3"
-    _cmd "sudo pacman -S --noconfirm python"
-  fi
-  if ! pacman -Q python-pip >/dev/null 2>&1; then
-    _task "Installing Python3 Pip"
-    _cmd "sudo pacman -S --noconfirm python-pip"
-  fi
-  if ! pip3 list | grep watchdog >/dev/null 2>&1; then
-    _task "Installing Python3 Watchdog"
-    _cmd "sudo pacman -S --noconfirm python-watchdog"
-  fi
-  if ! pacman -Q openssh >/dev/null 2>&1; then
-    _task "Installing OpenSSH"
-    _cmd "sudo pacman -S --noconfirm openssh"
-  fi
-  if ! pacman -Q rsync >/dev/null 2>&1; then
-    _task "Installing Rsync"
-    _cmd "sudo pacman -S --noconfirm rsync"
-  fi
-  if ! pacman -Q git >/dev/null 2>&1; then
-    _task "Installing Git"
-    _cmd "sudo pacman -S --noconfirm git"
-  fi
-  if ! pacman -Q noto-fonts-emoji >/dev/null 2>&1; then
-    _task "Installing Noto emoji fonts"
-    _cmd "sudo pacman -S --noconfirm noto-fonts-emoji"
-  fi
+  for pkg in ansible python python-pip python-watchdog openssh rsync git noto-fonts-emoji; do
+    if ! pacman -Q $pkg >/dev/null 2>&1; then
+      _task "Installing $pkg"
+      _cmd "sudo pacman -S --noconfirm $pkg"
+    fi
+  done
 }
 
 # Function to update Ansible Galaxy
