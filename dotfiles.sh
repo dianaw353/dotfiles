@@ -129,22 +129,6 @@ function _task_done {
   _clear_task
 }
 
-# Backup dotfiles function with error handling
-function backup_dotfiles {
-  local backup_dir="$HOME/dotfiles_backup/$(date +'%Y%m%d_%H%M%S')"
-  _task "Creating backup directory: $backup_dir"
-  if mkdir -p "$backup_dir"; then
-    _task "Backing up dotfiles"
-    cp -r "$DOTFILES_DIR/"* "$backup_dir/" 2>/dev/null && _task_done || {
-      printf "${LYELLOW} [-] Failed to find files to back up. Skipping.${RESTORE}\n"
-      return 1
-    }
-  else
-    printf "${LYELLOW} [-] Could not create backup directory. Skipping backup.${RESTORE}\n"
-    return 1
-  fi
-}
-
 # Arch setup function
 function arch_setup {
   for pkg in ansible curl python python-pip python-watchdog openssh rsync git noto-fonts-emoji; do
@@ -188,9 +172,6 @@ function download_latest_release {
   local zip_url=$(get_latest_zip)
   local zip_file="$HOME/dotfiles_latest.zip"
 
-  _task "Backing up existing dotfiles"
-  backup_dotfiles
-
   _task "Downloading the latest release from GitHub"
   _cmd "curl -L -o $zip_file $zip_url" 3 2 "Failed to download the latest release."
 
@@ -223,9 +204,6 @@ case $ID in
     _cmd "echo 'Unsupported OS'" 1 0 "Unsupported OS detected."
     ;;
 esac
-
-# Run backup and installation/update tasks based on mode
-backup_dotfiles
 
 if [[ $MODE == "rolling" ]]; then
   clone_repository
