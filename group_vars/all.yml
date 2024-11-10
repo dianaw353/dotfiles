@@ -6,7 +6,11 @@ system:
   # whether to enable bluetooth or not
   # true or false
   enable_bluetooth: true
-  
+
+  # whether to install and enable bluetooth-autoconnect or not
+  # true or false
+  enable_bluetooth_autoconnect: true
+
   # Audio Server
   # Weather to use pipewire or pluseaudio
   # pipewire or pulseaudio
@@ -63,7 +67,6 @@ default_roles:
 
 post_tasks:
   - package_cleanup
-  -
 
 # TODO: In future this will be able to change hyprland keybinds to open these applications
 core_packages: # outside of WM/DE dependencies
@@ -76,6 +79,10 @@ core_packages: # outside of WM/DE dependencies
     - helix # text editor
     - ttf-dejavu-nerd
     - mission-center # System Monitor
+    - noto-fonts
+    - noto-fonts-emoji
+    - noto-fonts-cjk
+    - noto-fonts-extra
 
 # user prefered packages outside of core_packages
 user_packages:

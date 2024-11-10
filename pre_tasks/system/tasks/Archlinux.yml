@@ -15,7 +15,7 @@
         - qt5-wayland
         - gtk4
         - libadwaita
-    
+
 - name: Install Audio Server Packages
   block:
     - name: Install Audio Packages | {{ ansible_distribution }}
@@ -65,3 +65,10 @@
       loop:
         - bluez
         - bluez-utils
+
+    - name: Install Bluetooth-Autoconnect Package | {{ ansible_distribution }}
+      kewlfft.aur.aur:
+        name: bluetooth-autoconnect
+        state: present
+      become: false
+      when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect"
