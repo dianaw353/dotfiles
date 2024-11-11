@@ -11,6 +11,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.3
 - Relocate where NetworkManager is enabled and started
 - Restart NetworkManager and Bluetooth services
 
+**Fixes**
+- Update so it works with hyprland V0.45
+
 Version 1.1.2
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.2
 --------------------------------------------------------
