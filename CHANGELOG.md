@@ -11,6 +11,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
     - toki pona
 - Add supplementary font support for toki pona
 
+**Fixes**
+- Fix autocompletion for `ls`
+
 Version 1.1.3
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.3
 ---------------------------------------------------------
