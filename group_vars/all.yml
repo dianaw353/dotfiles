@@ -84,6 +84,8 @@ core_packages: # outside of WM/DE dependencies
     - noto-fonts-emoji
     - noto-fonts-cjk
     - noto-fonts-extra
+    - fcitx5
+    - fcitx5-configtool
 
 # user prefered packages outside of core_packages
 user_packages:

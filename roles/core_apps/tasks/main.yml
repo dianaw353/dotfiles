@@ -25,6 +25,7 @@
         - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
         - { src: 'zsh/.zshrc', dest: '', package: 'zsh'}
         - { src: 'wezterm', dest: '.config', package: 'wezterm' }
+        - { src: 'fcitx5', dest: '.config', package: 'fcitx5' }
       when: item.package in ansible_facts.packages
 
 - name: Update User Shell and Disable Warnings
