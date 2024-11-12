@@ -7,8 +7,7 @@
         state: present
       become: true
       loop:
-        # TODO: Make a detection scipt for this.
-        - linux-headers
+        - "{{ system.headers_package }}"
 
     - name: Install KVM packages
       kewlfft.aur.aur:
