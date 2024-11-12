@@ -1,3 +1,9 @@
+Version 1.1.4
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
+---------------------------------------------------------
+**Changes**
+- Add opt-in role for VMware Workstation
+
 Version 1.1.3
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.3
 ---------------------------------------------------------
