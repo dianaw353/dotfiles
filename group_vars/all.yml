@@ -21,6 +21,19 @@ system:
     # Options: :, close:, minimize:, maximize:, close,minimize: close,maximize:, manimize,maximize, or close,minimize,maximize:
     buttons: ":"
 
+i18n:
+  # Supplementary fonts
+  fonts:
+    - cjk # Chinese-Japanese-Korean
+    - tok # toki pona - sitelen pona
+
+  # IMEs for fcitx5
+  imes:
+    - zh # Chinese - Pinyin
+    - jp # Japanese - Mozc
+    - ko # Korean - Hangul
+    - tok # toki pona - ilo sitelen
+
 gpu:
   # Nvidia users, buckle up!
   # Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
@@ -61,6 +74,7 @@ default_roles:
   - ags
   - hyprland
   - core_apps
+  - i18n # Internationlization. Ex. fcitx5, supplementary fonts
   - custom_apps
   # - kvm # Virtal Machine setup
   # - vmware # VMware Workstation - Type 2 hypervisor alternative to KVM
@@ -82,10 +96,7 @@ core_packages: # outside of WM/DE dependencies
     - mission-center # System Monitor
     - noto-fonts
     - noto-fonts-emoji
-    - noto-fonts-cjk
     - noto-fonts-extra
-    - fcitx5
-    - fcitx5-configtool
 
 # user prefered packages outside of core_packages
 user_packages:

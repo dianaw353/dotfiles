@@ -4,6 +4,12 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
 **Changes**
 - Add opt-in role for VMware Workstation
 - Ship and add support for fcitx5
+  - Also includes fcitx5 IMEs for the following languages;
+    - Chinese
+    - Japanese
+    - Korean
+    - toki pona
+- Add supplementary font support for toki pona
 
 Version 1.1.3
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.3
