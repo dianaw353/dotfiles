@@ -12,7 +12,7 @@
   block:
     - name: Create base config directory
       file:
-        path: "{{ ansible_user_dir}}/.config"
+        path: "{{ ansible_user_dir }}/.config"
         state: directory
 
     - name: Synchronize configuration for fcitx5
