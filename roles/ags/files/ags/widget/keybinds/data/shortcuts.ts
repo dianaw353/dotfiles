@@ -51,7 +51,7 @@ const column2 = [
     binds: [
       { keys: ['PrtScr'], action: 'Selective Screenshot' },
       { keys: ['󰘴', '+', 'PrtScr'], action: 'Screenshot Full screen' },
-      { keys: ['󱊶'], action: 'Selective Record' },
+      { keys: ['⌘', '+', '󱊶'], action: 'Selective Record' },
     ],
     appeartick: 2
   },

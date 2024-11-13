@@ -1,6 +1,9 @@
 Version 1.1.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 ---------------------------------------------------------
+**Changes**
+- Hyprland: Involve SUPER key into the shortcut for screen recording
+
 **Fixes**
 - Configure Electron apps for proper Wayland support
 - AGS: Fix the "Settings" button under WiFi menu in the QS
