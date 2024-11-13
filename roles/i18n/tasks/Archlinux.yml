@@ -1,0 +1,59 @@
+---                
+- name: Install fcitx5 and deps
+  block:
+    - name: Install fcitx5
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - fcitx5
+
+    - name: Install fcitx5-configtool
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - fcitx5-configtool
+
+- name: Install additional language support
+  block:
+    - name: Install supplementary fonts from the official repo
+      community.general.pacman:
+        name: "{{ item.package }}"
+        state: present
+      become: true
+      loop:
+        - { package: 'noto-fonts-cjk', language: 'cjk' }
+        - { package: 'otf-ipafont', language: 'ja' }
+      when: item.language in i18n.fonts
+
+    - name: Install supplementary fonts from the AUR
+      kewlfft.aur.aur:
+        name: "{{ item.package }}"
+        state: present
+      become: false
+      loop:
+        - { package: 'otf-linja-pona', language: 'tok' }
+      when: item.language in i18n.fonts
+
+    - name: Install IMEs for fcitx5 from the official repo
+      community.general.pacman:
+        name: "{{ item.package }}"
+        state: present
+      become: true
+      loop:
+        - { package: 'fcitx5-chinese-addons', language: 'zh' }
+        - { package: 'fcitx5-mozc', language: 'ja' }
+        - { package: 'fcitx5-hangul', language: 'ko' }
+      when: item.language in i18n.imes
+
+    - name: Install IMEs for fcitx5 from the AUR
+      kewlfft.aur.aur:
+        name: "{{ item.package }}"
+        state: present
+      become: false
+      loop:
+        - { package: 'ilo-sitelen-git', language: 'tok' }
+      when: item.language in i18n.imes

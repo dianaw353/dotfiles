@@ -21,6 +21,25 @@ system:
     # Options: :, close:, minimize:, maximize:, close,minimize: close,maximize:, manimize,maximize, or close,minimize,maximize:
     buttons: ":"
 
+  # Headers package for your kernel
+  # Required for VMware Workstation
+  # Use the exact package name if you want to use the said hypervisor
+  headers_package: linux-headers
+
+i18n:
+  # Supplementary fonts
+  fonts:
+    - cjk # Noto Chinese-Japanese-Korean
+    - ja # Japanese outline font by IPA, Japan
+    - tok # toki pona - sitelen pona
+
+  # IMEs for fcitx5
+  imes:
+    - zh # Chinese - Pinyin
+    - ja # Japanese - Mozc
+    - ko # Korean - Hangul
+    - tok # toki pona - ilo sitelen
+
 gpu:
   # Nvidia users, buckle up!
   # Whether to use the proprietary Nvidia drivers or to keep the open source Nouveau drivers
@@ -61,8 +80,10 @@ default_roles:
   - ags
   - hyprland
   - core_apps
+  - i18n # Internationlization. Ex. fcitx5, supplementary fonts
   - custom_apps
   # - kvm # Virtal Machine setup
+  # - vmware # VMware Workstation - Type 2 hypervisor alternative to KVM
   - gaming
 
 post_tasks:
@@ -81,7 +102,6 @@ core_packages: # outside of WM/DE dependencies
     - mission-center # System Monitor
     - noto-fonts
     - noto-fonts-emoji
-    - noto-fonts-cjk
     - noto-fonts-extra
 
 # user prefered packages outside of core_packages
@@ -99,6 +119,7 @@ gaming:
     - winetricks
     - dxvk-bin
     - vkd3d
+    - lib32-gnutls
   utilities:
     # - bottles
     - protonplus

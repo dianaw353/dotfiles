@@ -12,7 +12,6 @@ import ScreenCorners from "widget/bar/ScreenCorners"
 import SettingsDialog from "widget/settings/SettingsDialog"
 import Verification from "widget/powermenu/Verification"
 import Shortcuts from "widget/keybinds/index"
-// import Hyprshade from "widget/hyprshade/hyprshade"
 import { forMonitors } from "lib/utils"
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
@@ -29,7 +28,6 @@ App.config({
         "quicksettings": options.transition.value,
         "datemenu": options.transition.value,
         "shortcuts": options.transition.value,
-        // "hyprshade": options.transition.value,
     },
     windows: () => [
         ...forMonitors(Bar),
@@ -42,6 +40,5 @@ App.config({
         SettingsDialog(),
         Verification(),
         Shortcuts(),
-        // Hyprshade(),
     ],
 })

@@ -1,3 +1,24 @@
+Version 1.1.4
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
+---------------------------------------------------------
+**Script**
+- Add new AUR package: `hyprsunset-git`
+- Add keybind to toggle Hyprsunset's night light: Ctrl+Super+N
+- Remove `hyprshade`
+- Add opt-in role for VMware Workstation
+- Ship and add support for fcitx5
+  - Also includes fcitx5 IMEs for the following languages;
+    - Chinese
+    - Japanese
+    - Korean
+    - toki pona
+- Add supplementary font support for Japanese and toki pona
+- Add `lib32-gnutls` as a compatibility layer dependency
+
+**Fixes**
+- Fix autocompletion for `ls`
+- Add missing keycombo guide for SUPER key passthrough
+
 Version 1.1.3
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.3
 ---------------------------------------------------------

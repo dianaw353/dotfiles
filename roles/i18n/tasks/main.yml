@@ -1,0 +1,18 @@
+---
+- name: "i18n | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: i18n_distribution_config
+
+- name: "i18n | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: i18n_distribution_config.stat.exists
+
+- name: Copy configs for fcitx5
+  ansible.posix.synchronize:
+    mode: push
+    src: "{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+    recursive: yes
+  loop:
+    - { src: 'fcitx5', dest: '.config' }

@@ -204,6 +204,18 @@ View [the relevant issues tag](https://github.com/dianaw353/dotfiles/issues?q=is
   - Install and configure core packages
     - (Optional) Change the default shell
       - Supports only ZSH. Also disables OMP warnings if my config is used.
+  - i18n (Internationalization)
+    - Install fcitx5 and configure it.
+      - The only configuration for now is allowing language switches everywhere.
+    - (Optional per language) Install fonts for non-Latin languages. Currently supports the following languages:
+      - CJK (Chinese-Japanese-Korean) - Noto
+      - Japanese - Official font by the IPA
+      - toki pona - linja pona
+    - (Optional per language) Install fcitx5 IMEs for non-Latin languages. Currently supports the following languages with their respective packages:
+      - Chinese - `fcitx5-chinese-addons`
+      - Japanese - `fcitx5-mozc`
+      - Korean - `fcitx5-hangul`
+      - toki pona - `ilo-sitelen-git`
   - Install custom apps
   - KVM
     - Replace `iptables` with `iptables-nft`
@@ -212,6 +224,10 @@ View [the relevant issues tag](https://github.com/dianaw353/dotfiles/issues?q=is
     - Add current user to `libvirt` group
     - Update `libvirtd` settings
     - Make sure virtual network is started and set it to automatically start on boot
+  - VMware
+    - Install specified headers package for your kernel (Required for `vmmon` and `vmnet` kernel modules)
+    - Install VMware Workstation from AUR
+    - Enable USB Arbitrator and Networks services
   - Install required packages and optimal gaming experience
 - Post-configuration Tasks
   - Clear AUR cache

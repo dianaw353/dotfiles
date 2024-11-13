@@ -1,0 +1,17 @@
+---                
+- name: Install VMware and deps
+  block:
+    - name: Install kernel headers
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - "{{ system.headers_package }}"
+
+    - name: Install KVM packages
+      kewlfft.aur.aur:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - vmware-workstation

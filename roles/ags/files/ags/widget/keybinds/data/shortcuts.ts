@@ -11,6 +11,8 @@ const column1 = [
       { keys: ['⌘', '+', '󰳾'], action: 'Pick Up & Move Window'},
       { keys: ['⌘', '+', '󰳽'], action: 'Resize Window Upon Window Border'},
       { keys: ['⌘', '+', 'Q'], action: 'Quit Window' },
+      { keys: ['⌘', '+', 'P'], action: 'Pass SUPER key through to a VM' },
+      { keys: ['⌘', '+', '󱊷'], action: 'Regrab SUPER key from the VM' },
     ],
     appeartick: 1
   },
@@ -40,7 +42,6 @@ const column2 = [
       { keys: ['⌘', '+', ''], action: 'Toggle Overview' },
       { keys: ['⌘', '+', '󱊮'], action: 'Toggle Power Menu' },
       { keys: ['⌘', '+', '/'], action: 'Toggle Shortcuts Menu' },
-      // { keys: ['⌘', '+', '󰘶', '+', 'H'], action: 'Toggle Hyprshade Menu' },
     ],
     appeartick: 2
   },
@@ -82,6 +83,7 @@ const column3 = [
     name: 'Scripts',
     binds: [
       { keys: ['⌘', '+', '󰘵', '+', 'G'], action: 'Enable/Disable Gaming Mode' },
+      { keys: ['󰘴', '+', '⌘', '+', 'N'], action: 'Toggle Night Light' },
     ],
     appeartick: 3
   }
