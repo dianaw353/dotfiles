@@ -27,6 +27,13 @@
         - { src: 'wezterm', dest: '.config', package: 'wezterm' }
       when: item.package in ansible_facts.packages
 
+    - name: Configure Electron
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+      loop:
+        - { src: 'electron-flags.conf', dest: '.config/electron-flags.conf' }
+
 - name: Update User Shell and Disable Warnings
   block:
     - name: Ensure zsh is set for current user
