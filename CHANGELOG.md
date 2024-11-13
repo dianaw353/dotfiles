@@ -16,6 +16,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
 
 **Fixes**
 - Fix autocompletion for `ls`
+- Add missing keycombo guide for SUPER key passthrough
 
 Version 1.1.3
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.3

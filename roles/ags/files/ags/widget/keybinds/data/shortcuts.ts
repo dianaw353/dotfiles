@@ -11,6 +11,8 @@ const column1 = [
       { keys: ['⌘', '+', '󰳾'], action: 'Pick Up & Move Window'},
       { keys: ['⌘', '+', '󰳽'], action: 'Resize Window Upon Window Border'},
       { keys: ['⌘', '+', 'Q'], action: 'Quit Window' },
+      { keys: ['⌘', '+', 'P'], action: 'Pass SUPER key through to a VM' },
+      { keys: ['⌘', '+', '󱊷'], action: 'Regrab SUPER key from the VM' },
     ],
     appeartick: 1
   },
