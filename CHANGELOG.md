@@ -1,3 +1,9 @@
+Version 1.1.5
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
+---------------------------------------------------------
+**Fixes**
+- Configure Electron apps for proper Wayland support
+
 Version 1.1.4
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
 ---------------------------------------------------------
