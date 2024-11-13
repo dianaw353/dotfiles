@@ -26,14 +26,22 @@ system:
   # Use the exact package name if you want to use the said hypervisor
   headers_package: linux-headers
 
-  # Whether to install dynamic cursors
-  # The Hyprland package on official Arch repo is currently broken that
-  # breaks "hyprpm", which is what we use to install the plugin.
-  # Enabling this is not a good idea unless you rebuild the package
-  # with the proposed fix beforehand.
-  # See dianaw353/dotfiles#53 for more info.
-  # true or false
-  dynamic_cursors: false
+  hyprland:
+    plugins:
+      # Master switch for Hyprland plugins
+      # The Hyprland package on official Arch repo is currently broken that
+      # breaks "hyprpm", which is what we use to install the plugins.
+      # Uncommenting this is not a good idea unless you rebuild the package
+      # with the proposed fix beforehand.
+      # See dianaw353/dotfiles#53 for more info.
+      # true or false
+      enabled: false
+
+      # List of URLs to install Hyprland plugins from
+      # These URLs will each be passed to "hyprpm add" directly and
+      # iterated through. Comments at the end of URLs are fine.
+      list:
+        - https://github.com/virtcode/hypr-dynamic-cursors # dynamic-cursors
 
 i18n:
   # Supplementary fonts

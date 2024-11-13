@@ -50,28 +50,36 @@
 
 - name: Manage Hyprland dynamic cursors
   block:
-    - name: Update hyprpm package list
+    - name: "Hyprland | Update hyprpm package list"
       command: hyprpm update
-      when: system.dynamic_cursors
+      when: system.hyprland.plugins.enabled
+      changed_when: no
 
-    - name: Check if hypr-dynamic-cursors is installed
-      ansible.builtin.command:
-        cmd: "hyprpm list | grep 'dynamic-cursors' || true"
-      register: plugin_check_output
-      changed_when: false
-      when: system.dynamic_cursors
-
-    - name: Set dynamic-cursors plugin installation status
-      ansible.builtin.set_fact:
-        is_dynamic_cursors_plugin_installed: "{{ 'dynamic-cursors' in plugin_check_output.stdout }}"
-      when: plugin_check_output is defined and system.dynamic_cursors
-
-    - name: Add hypr-dynamic-cursors repository
+    - name: "Hyprland | Add plugin repos"
       ansible.builtin.shell:
-        cmd: "echo 'Y' | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors"
-      when: not is_dynamic_cursors_plugin_installed and system.dynamic_cursors
+        cmd: "yes | hyprpm add {{ item }}"
+      loop: "{{ system.hyprland.plugins.list }}"
+      ignore_errors: yes
+      when: system.hyprland.plugins.enabled and system.hyprland.plugins.list is defined
+      changed_when: no
 
-    - name: Enable dynamic cursors
+    - name: "Hyprland | Gather the names of installed plugins"
+      ansible.builtin.shell:
+        cmd: "hyprpm list | grep Plugin | sed 's/.* //'"
+      ignore_errors: yes
+      register: installed_hypr_packages
+      when: system.hyprland.plugins.enabled
+      changed_when: no
+
+    - name: "Hyprland | Print the names of the detected packages"
+      ansible.builtin.debug:
+        var: installed_hypr_packages.stdout_lines
+      when: system.hyprland.plugins.enabled and installed_hypr_packages.stdout_lines is defined
+
+    - name: "Hyprland | Enable all installed plugins"
       ansible.builtin.command:
-        cmd: "hyprpm enable dynamic-cursors"
-      when: not is_dynamic_cursors_plugin_installed and system.dynamic_cursors
+        cmd: "hyprpm enable {{ item }}"
+      loop: "{{ installed_hypr_packages.stdout_lines }}"
+      ignore_errors: yes
+      when: system.hyprland.plugins.enabled and installed_hypr_packages.stdout_lines is defined
+      changed_when: no
