@@ -13,6 +13,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
     - Korean
     - toki pona
 - Add supplementary font support for Japanese and toki pona
+- Add `lib32-gnutls` as a compatibility layer dependency
 
 **Fixes**
 - Fix autocompletion for `ls`

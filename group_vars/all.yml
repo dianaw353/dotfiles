@@ -119,6 +119,7 @@ gaming:
     - winetricks
     - dxvk-bin
     - vkd3d
+    - lib32-gnutls
   utilities:
     # - bottles
     - protonplus
