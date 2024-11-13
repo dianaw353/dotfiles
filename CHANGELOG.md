@@ -8,6 +8,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 
 **Script**
 - Make `hyprland` role work standalone too.
+- Add a global toggle for dynamic cursors plugin. See #53.
 
 **Fixes**
 - Configure Electron apps for proper Wayland support

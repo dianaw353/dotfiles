@@ -50,25 +50,28 @@
 
 - name: Manage Hyprland dynamic cursors
   block:
-    # - name: Update hyprpm package list
-    #   command: hyprpm update
+    - name: Update hyprpm package list
+      command: hyprpm update
+      when: system.dynamic_cursors
 
     - name: Check if hypr-dynamic-cursors is installed
       ansible.builtin.command:
         cmd: "hyprpm list | grep 'dynamic-cursors' || true"
       register: plugin_check_output
       changed_when: false
+      when: system.dynamic_cursors
 
     - name: Set dynamic-cursors plugin installation status
       ansible.builtin.set_fact:
         is_dynamic_cursors_plugin_installed: "{{ 'dynamic-cursors' in plugin_check_output.stdout }}"
+      when: plugin_check_output is defined and system.dynamic_cursors
 
     - name: Add hypr-dynamic-cursors repository
       ansible.builtin.shell:
         cmd: "echo 'Y' | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors"
-      when: not is_dynamic_cursors_plugin_installed
+      when: not is_dynamic_cursors_plugin_installed and system.dynamic_cursors
 
     - name: Enable dynamic cursors
       ansible.builtin.command:
         cmd: "hyprpm enable dynamic-cursors"
-      when: not is_dynamic_cursors_plugin_installed
+      when: not is_dynamic_cursors_plugin_installed and system.dynamic_cursors
