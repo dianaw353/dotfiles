@@ -39,12 +39,33 @@ system:
     xdg_autostart: false
 
     plugins:
+      # Rebuilds Hyprland using a known-to-work patch if hyprpm fails
+      #
+      # You might want to reconsider enabling this as rebuilding an
+      # entire WM might kill your computer if it's not powerful enough.
+      #
+      # Furthermore, it's not always the case that hyprpm breaks
+      # because of packaging issues. Enabling this option will do
+      # nothing if we don't have a patch to apply at packaging level.
+      #
+      # See #53 for more info.
+      #
+      # true or false
+      rebuild_hypr_on_failure:
+        enabled: false
+
+        # URL to get PKGBUILD from
+        pkgbuild_url: "https://gitlab.archlinux.org/archlinux/packaging/packages/hyprland/-/raw/2cd8a96a90616647a82ea11127b131aef6ce6e6c/PKGBUILD"
+
       # Master switch for Hyprland plugins
+      #
       # The Hyprland package on official Arch repo is currently broken that
       # breaks "hyprpm", which is what we use to install the plugins.
-      # Uncommenting this is not a good idea unless you rebuild the package
-      # with the proposed fix beforehand.
-      # See dianaw353/dotfiles#53 for more info.
+      # Setting this to true is not a good idea unless you rebuild the package
+      # with the proposed fix beforehand or enable rebuild_hypr_on_fail.
+      #
+      # See #53 for more info.
+      #
       # true or false
       enabled: false
 

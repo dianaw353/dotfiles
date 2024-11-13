@@ -26,3 +26,48 @@
         - hyprpicker
         # hyprshade
         - hyprsunset-git
+
+- name: Test Hyprpm After Installation and Rebuild If Necessary
+  block:
+    - name: Update hyprpm package list
+      command: hyprpm update
+      ignore_errors: yes
+      register: hyprpm_update_outcome
+      when: system.hyprland.plugins.rebuild_hypr_on_failure.enabled and system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url is defined
+      changed_when: no
+
+
+    - name: Rebuild Hyprland
+      ansible.builtin.shell:
+        cmd: |
+          "mkdir {{ ansible_user_dir }}/hyprland_rebuild"
+          "cd {{ ansible_user_dir }}/hyprland_rebuild"
+          "wget {{ system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url }}"
+          makepkg -s
+      register: hyprland_rebuild_outcome
+      when:
+        - system.hyprland.plugins.rebuild_hypr_on_failure.enabled and system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url is defined
+        - hyprpm_update_outcome is defined and hyprpm_update_outcome.failed and "'mismatch' in hyprpm_update_outcome.stdout.lower()"
+      changed_when: no
+
+    - name: Install rebuilt Hyprland
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - "{{ ansible_user_dir }}/hyprland_rebuild/hyprland-0.45.0-1-x86_64.pkg.tar.zst"
+      ignore_errors: yes
+      register: hyprland_reinstall_outcome
+      when:
+        - system.hyprland.plugins.rebuild_hypr_on_failure.enabled and system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url is defined
+        - hyprland_rebuild_outcome.failed is defined and not hyprland_rebuild_outcome.failed
+
+    - name: Update hyprpm package list
+      command: hyprpm update
+      ignore_errors: yes
+      register: hyprpm_update_outcome
+      when:
+        - system.hyprland.plugins.rebuild_hypr_on_failure.enabled and system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url is defined
+        - hyprland_reinstall_outcome.failed is defined and not hyprland_reinstall_outcome.failed
+      changed_when: no

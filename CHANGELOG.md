@@ -10,7 +10,12 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 **Script**
 - Make `hyprland` role work standalone too.
 - Install Steam Native Runtime for compatibility.
-- Allow installing other plugins using Git repo URLs. Also see #53.
+- Optionally rebuild Hyprland if;
+  - Hyprpm fails,
+  - The relevant toggle is enabled, and
+  - A URL to a PKGBUILD is defined.
+    - See #53 as to why this is a thing.
+- Allow installing other plugins using Git repo URLs.
 
 **Fixes**
 - Configure Electron apps for proper Wayland support
