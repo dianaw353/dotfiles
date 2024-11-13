@@ -3,6 +3,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 ---------------------------------------------------------
 **Changes**
 - Hyprland: Involve SUPER key into the shortcut for screen recording
+- Enable support for XDG autostart entries using `dex`
+  - This replaces explicitly launching fcitx5 as it already provides an XDG autostart entry.
 
 **Fixes**
 - Configure Electron apps for proper Wayland support

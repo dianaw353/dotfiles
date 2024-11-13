@@ -15,6 +15,7 @@
         - qt5-wayland
         - gtk4
         - libadwaita
+        - dex
 
 - name: Install Audio Server Packages
   block:
