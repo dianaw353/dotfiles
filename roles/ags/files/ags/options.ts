@@ -192,7 +192,7 @@ const options = mkOptions(OPTIONS, {
         position: opt<"left" | "center" | "right">("right"),
         localSend: opt("localsend"),
         bluetoothSettings: opt("wezterm -e sh -c 'printf \"\\033]0;Bluetooth Manager TUI\\007\"; bluetuith'"),
-        networkSettings: opt("wezterm, -e sh -c 'printf \"\\033]0;Network Manager TUI\\007\"; nmtui'"),
+        networkSettings: opt("wezterm -e sh -c 'printf \"\\033]0;Network Manager TUI\\007\"; nmtui'"),
         media: {
             monochromeIcon: opt(true),
             coverSize: opt(100),
