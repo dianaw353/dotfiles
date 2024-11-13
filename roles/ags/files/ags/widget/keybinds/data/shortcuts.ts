@@ -59,7 +59,8 @@ const column2 = [
     icon: '',
     name: 'Session Shortcuts',
     binds: [
-      { keys: ['⌘', '+', 'L'], action: 'Lock session' },
+      { keys: ['⌘', '+', 'L'], action: 'Lock Session' },
+      { keys: ['⌘', '+', '󰘶', '+', 'M'], action: 'Log Out (Exit Hyprland)' },
     ],
     appeartick: 2
   },
