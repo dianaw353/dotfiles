@@ -3,6 +3,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 ---------------------------------------------------------
 **Changes**
 - Hyprland: Involve SUPER key into the shortcut for screen recording
+- Hyprland: Rebind "Reload AGS" to `SUPER+Shift+R`
 - Enable support for XDG autostart entries using `dex`
   - This replaces explicitly launching fcitx5 as it already provides an XDG autostart entry.
   - See #52 for a deeper lore into this.

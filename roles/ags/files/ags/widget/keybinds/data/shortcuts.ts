@@ -37,7 +37,7 @@ const column2 = [
     icon: '󰜬',
     name: 'Widgets (AGS)',
     binds: [
-      { keys: ['󰘲', '+', '󰘴', '+', 'R'], action: 'Restart AGS' },
+      { keys: ['⌘', '+', '󰘶', '+', 'R'], action: 'Restart AGS' },
       { keys: ['⌘', '+', '󰘴', '+', '󰌑'], action: 'Toggle App Launcher' },
       { keys: ['⌘', '+', ''], action: 'Toggle Overview' },
       { keys: ['⌘', '+', '󱊮'], action: 'Toggle Power Menu' },
