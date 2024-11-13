@@ -5,11 +5,12 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 - Hyprland: Involve SUPER key into the shortcut for screen recording
 - Enable support for XDG autostart entries using `dex`
   - This replaces explicitly launching fcitx5 as it already provides an XDG autostart entry.
+  - See #52 for a deeper lore into this.
 
 **Script**
 - Make `hyprland` role work standalone too.
 - Install Steam Native Runtime for compatibility.
-- Allow installing other plugins using Git repo URLs. See #53.
+- Allow installing other plugins using Git repo URLs. Also see #53.
 
 **Fixes**
 - Configure Electron apps for proper Wayland support

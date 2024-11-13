@@ -27,6 +27,17 @@ system:
   headers_package: linux-headers
 
   hyprland:
+    # Support for autostart entries from XDG, provided by dex
+    #
+    # Setting this to false will stop such entries from working and
+    # you will have to add apps you want to launch on boot as exec-once
+    # entries in ~/.config/hypr/config/autostart.conf.
+    #
+    # See #52 for a deeper lore into this.
+    #
+    # true or false
+    xdg_autostart: false
+
     plugins:
       # Master switch for Hyprland plugins
       # The Hyprland package on official Arch repo is currently broken that

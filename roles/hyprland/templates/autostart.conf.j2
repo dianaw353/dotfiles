@@ -29,5 +29,10 @@ exec-once = hypridle
 # Environment for xdg-desktop-portal-hyprland
 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
+{% if system.hyprland.xdg_autostart %}
 # XDG autostart
-exec-once=dex -a
+exec-once = dex -a
+{% else %}
+# Initialize fcitx5
+exec-once = /usr/bin/fcitx5
+{% endif %}

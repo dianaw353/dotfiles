@@ -15,7 +15,15 @@
         - qt5-wayland
         - gtk4
         - libadwaita
+
+    - name: Install dex For XDG Autostart Support | {{ ansible_distribution }}
+      community.general.pacman:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
         - dex
+      when: system.hyprland.xdg_autostart
 
 - name: Install Audio Server Packages
   block:
