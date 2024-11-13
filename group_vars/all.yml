@@ -29,13 +29,14 @@ system:
 i18n:
   # Supplementary fonts
   fonts:
-    - cjk # Chinese-Japanese-Korean
+    - cjk # Noto Chinese-Japanese-Korean
+    - ja # Japanese outline font by IPA, Japan
     - tok # toki pona - sitelen pona
 
   # IMEs for fcitx5
   imes:
     - zh # Chinese - Pinyin
-    - jp # Japanese - Mozc
+    - ja # Japanese - Mozc
     - ko # Korean - Hangul
     - tok # toki pona - ilo sitelen
 

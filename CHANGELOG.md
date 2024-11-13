@@ -12,7 +12,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
     - Japanese
     - Korean
     - toki pona
-- Add supplementary font support for toki pona
+- Add supplementary font support for Japanese and toki pona
 
 **Fixes**
 - Fix autocompletion for `ls`

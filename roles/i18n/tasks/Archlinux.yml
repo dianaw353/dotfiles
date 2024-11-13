@@ -26,6 +26,7 @@
       become: true
       loop:
         - { package: 'noto-fonts-cjk', language: 'cjk' }
+        - { package: 'otf-ipafont', language: 'ja' }
       when: item.language in i18n.fonts
 
     - name: Install supplementary fonts from the AUR
@@ -44,7 +45,7 @@
       become: true
       loop:
         - { package: 'fcitx5-chinese-addons', language: 'zh' }
-        - { package: 'fcitx5-mozc', language: 'jp' }
+        - { package: 'fcitx5-mozc', language: 'ja' }
         - { package: 'fcitx5-hangul', language: 'ko' }
       when: item.language in i18n.imes
 

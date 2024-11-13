@@ -209,6 +209,7 @@ View [the relevant issues tag](https://github.com/dianaw353/dotfiles/issues?q=is
       - The only configuration for now is allowing language switches everywhere.
     - (Optional per language) Install fonts for non-Latin languages. Currently supports the following languages:
       - CJK (Chinese-Japanese-Korean) - Noto
+      - Japanese - Official font by the IPA
       - toki pona - linja pona
     - (Optional per language) Install fcitx5 IMEs for non-Latin languages. Currently supports the following languages with their respective packages:
       - Chinese - `fcitx5-chinese-addons`
