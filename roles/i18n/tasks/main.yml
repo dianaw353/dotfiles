@@ -9,10 +9,17 @@
   when: i18n_distribution_config.stat.exists
 
 - name: Copy configs for fcitx5
-  ansible.posix.synchronize:
-    mode: push
-    src: "{{ item.src }}"
-    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-    recursive: yes
-  loop:
-    - { src: 'fcitx5', dest: '.config' }
+  block:
+    - name: Create base config directory
+      file:
+        path: "{{ ansible_user_dir}}/.config"
+        state: directory
+
+    - name: Synchronize configuration for fcitx5
+      ansible.posix.synchronize:
+        mode: push
+        src: "{{ item.src }}"
+        dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+        recursive: yes
+      loop:
+        - { src: 'fcitx5', dest: '.config' }

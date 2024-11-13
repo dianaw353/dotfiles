@@ -1,7 +1,2 @@
 #!/bin/bash
-
-if `pgrep hyprsunset > /dev/null`; then
-    killall hyprsunset
-else
-    hyprsunset -t 4000 &
-fi
+pgrep hyprsunset > /dev/null && killall hyprsunset || hyprsunset -t 4000 &
