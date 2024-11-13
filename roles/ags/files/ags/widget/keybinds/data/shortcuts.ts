@@ -40,7 +40,6 @@ const column2 = [
       { keys: ['⌘', '+', ''], action: 'Toggle Overview' },
       { keys: ['⌘', '+', '󱊮'], action: 'Toggle Power Menu' },
       { keys: ['⌘', '+', '/'], action: 'Toggle Shortcuts Menu' },
-      // { keys: ['⌘', '+', '󰘶', '+', 'H'], action: 'Toggle Hyprshade Menu' },
     ],
     appeartick: 2
   },
