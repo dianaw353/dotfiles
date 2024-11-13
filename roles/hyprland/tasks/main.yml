@@ -21,6 +21,19 @@
         - { src: 'hypr', dest: '.config/' }
         - { src: 'hypr/scripts', dest: '.config/hypr/' }
 
+    - name: "Hyprland | Get GPUs"
+      ansible.builtin.shell: set -o pipefail && lspci | grep -i 'VGA\|3D\|display'
+      register: gpu_result
+      changed_when: no
+
+    - name: "Hyprland | Nvidia GPU Detection"
+      set_fact:
+        has_nvidia: "{{ 'nvidia' in gpu_result.stdout.lower() }}"
+
+    - name: "Hyprland | VM Detection"
+      set_fact:
+        is_vm: "{{ ansible_facts.virtualization_role is defined and ansible_facts.virtualization_role != 'host' }}"
+
     - name: "Hyprland | Update configuration templates"
       ansible.builtin.template:
         src: "{{ item.src }}"

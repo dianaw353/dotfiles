@@ -6,6 +6,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 - Enable support for XDG autostart entries using `dex`
   - This replaces explicitly launching fcitx5 as it already provides an XDG autostart entry.
 
+**Script**
+- Make `hyprland` role work standalone too.
+
 **Fixes**
 - Configure Electron apps for proper Wayland support
 - AGS: Fix the "Settings" button under WiFi menu in the QS
