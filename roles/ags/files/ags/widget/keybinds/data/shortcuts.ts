@@ -82,6 +82,7 @@ const column3 = [
     name: 'Scripts',
     binds: [
       { keys: ['⌘', '+', '󰘵', '+', 'G'], action: 'Enable/Disable Gaming Mode' },
+      { keys: ['󰘴', '+', '⌘', '+', 'N'], action: 'Toggle Night Light' },
     ],
     appeartick: 3
   }

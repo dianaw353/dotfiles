@@ -10,8 +10,8 @@
       loop:
         - hyprcursor
         - hyprlang
-        - hyprutils
-        - hyprwayland-scanner
+        - hyprutils-git
+        - hyprwayland-scanner-git
         - hyprland
         - hypridle
         - hyprlock
@@ -25,4 +25,4 @@
         - "{{ icons.system_icons_package }}"
         - hyprpicker
         - hyprshade
-
+        - hyprsunset-git

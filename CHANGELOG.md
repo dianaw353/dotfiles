@@ -1,7 +1,9 @@
 Version 1.1.4
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
 ---------------------------------------------------------
-**Changes**
+**Script**
+- Add new AUR package: `hyprsunset-git`
+- Add keybind to toggle Hyprsunset's night light: Ctrl+Super+N
 - Add opt-in role for VMware Workstation
 - Ship and add support for fcitx5
   - Also includes fcitx5 IMEs for the following languages;
