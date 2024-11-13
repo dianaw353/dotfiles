@@ -129,6 +129,7 @@ gaming:
     - dxvk-bin
     - vkd3d
     - lib32-gnutls
+    - steam-native-runtime
   utilities:
     # - bottles
     - protonplus
