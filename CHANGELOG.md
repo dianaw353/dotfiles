@@ -1,3 +1,10 @@
+Version 1.1.5.1
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5.1
+-----------------------------------------------------------
+**Fixes**
+- Stick to AGSv1.
+  - We have to do this as an interim until we port the current AGS config to v2.
+
 Version 1.1.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 ---------------------------------------------------------
