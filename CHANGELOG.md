@@ -1,6 +1,10 @@
 Version 1.1.6
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
 ---------------------------------------------------------
+**Changes**
+- New package: `batsignal`
+  - Also preconfigured for a sane configuration on just about any laptop.
+
 **Fixes**
 - Stick to AGSv1.
   - We have to do this as an interim until we port the current AGS config to v2.

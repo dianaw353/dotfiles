@@ -31,6 +31,9 @@
           when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect and system.audio_server == 'pulseaudio'"
           scope: user
           become: false
+        - name: batsignal
+          scope: user
+          become: false
 
     - name: Start pipewire services
       ansible.builtin.systemd:
@@ -43,6 +46,12 @@
         - pipewire
         - pipewire-pulse
         - wireplumber
+
+- name: Create a drop-in for batsignal
+  command: |
+    mkdir -p {{ ansible_user_dir }}/.config/systemd/user/batsignal.service.d
+    printf '[Service]\nExecStart=\nExecStart=batsignal -d 2 -c 5 -w 15 -D "systemctl hibernate"' > {{ ansible_user_dir }}/.config/systemd/user/batsignal.service.d/options.conf
+  become: false
 
 - name: Restart Systemd Services
   ansible.builtin.systemd:
@@ -58,6 +67,9 @@
       when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect"
     - name: pulseaudio-bluetooth-autoconnect
       when: "system.enable_bluetooth and system.enable_bluetooth_autoconnect and system.audio_server == 'pulseaudio'"
+      scope: user
+      become: false
+    - name: batsignal
       scope: user
       become: false
 
