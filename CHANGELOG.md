@@ -1,9 +1,14 @@
-Version 1.1.5.1
-https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5.1
------------------------------------------------------------
+Version 1.1.6
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
+---------------------------------------------------------
 **Fixes**
 - Stick to AGSv1.
   - We have to do this as an interim until we port the current AGS config to v2.
+- Various improvements for PiP windows
+  - Improve the way PiP windows are detected
+    - This one aims to make it work on Google Chrome and Chromium forks
+  - Make PiP windows opaque
+  - Remove WM borders from PiP windows
 
 Version 1.1.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
