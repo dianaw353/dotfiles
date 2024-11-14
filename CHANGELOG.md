@@ -16,6 +16,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
   - Make PiP windows opaque
   - Remove WM borders from PiP windows
 - Fix some keybind symbols in the keybind guide.
+- Fix the fullscreen keybind to involve Shift
 
 Version 1.1.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
