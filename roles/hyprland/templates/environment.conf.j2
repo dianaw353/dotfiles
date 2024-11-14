@@ -5,7 +5,7 @@ source = $hyprland-conf/environments/kvm.conf
 #source = $hyprland-conf/environments/kvm.conf
 {% endif %}
 
-{% if "'nvidia' in gpu_result.stdout.lower()" %}
+{% if has_nvidia %}
 source = $hyprland-conf/environments/nvidia.conf
 {% else %}
 #source = $hyprland-conf/environments/nvidia.conf

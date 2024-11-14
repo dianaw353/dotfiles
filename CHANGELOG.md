@@ -1,3 +1,29 @@
+Version 1.1.5
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
+---------------------------------------------------------
+**Changes**
+- Hyprland: Involve SUPER key into the shortcut for screen recording
+- Hyprland: Rebind "Reload AGS" to `SUPER+Shift+R`
+- Enable support for XDG autostart entries using `dex`
+  - This replaces explicitly launching fcitx5 as it already provides an XDG autostart entry.
+  - See #52 for a deeper lore into this.
+
+**Script**
+- Make `hyprland` role work standalone too.
+- Install Steam Native Runtime for compatibility.
+- Optionally rebuild Hyprland if;
+  - Hyprpm fails,
+  - The relevant toggle is enabled, and
+  - A URL to a PKGBUILD is defined.
+    - See #53 as to why this is a thing.
+- Allow installing other plugins using Git repo URLs.
+
+**Fixes**
+- Configure Electron apps for proper Wayland support
+- AGS: Fix the "Settings" button under WiFi menu in the QS
+- ZSH: Fix return code "1" upon launch
+- Add missing keycombo guide for logging out (exiting Hyprland)
+
 Version 1.1.4
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.4
 ---------------------------------------------------------

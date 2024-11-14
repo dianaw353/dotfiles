@@ -37,7 +37,7 @@ const column2 = [
     icon: '󰜬',
     name: 'Widgets (AGS)',
     binds: [
-      { keys: ['󰘲', '+', '󰘴', '+', 'R'], action: 'Restart AGS' },
+      { keys: ['⌘', '+', '󰘶', '+', 'R'], action: 'Restart AGS' },
       { keys: ['⌘', '+', '󰘴', '+', '󰌑'], action: 'Toggle App Launcher' },
       { keys: ['⌘', '+', ''], action: 'Toggle Overview' },
       { keys: ['⌘', '+', '󱊮'], action: 'Toggle Power Menu' },
@@ -51,7 +51,7 @@ const column2 = [
     binds: [
       { keys: ['PrtScr'], action: 'Selective Screenshot' },
       { keys: ['󰘴', '+', 'PrtScr'], action: 'Screenshot Full screen' },
-      { keys: ['󱊶'], action: 'Selective Record' },
+      { keys: ['⌘', '+', '󱊶'], action: 'Selective Record' },
     ],
     appeartick: 2
   },
@@ -59,7 +59,8 @@ const column2 = [
     icon: '',
     name: 'Session Shortcuts',
     binds: [
-      { keys: ['⌘', '+', 'L'], action: 'Lock session' },
+      { keys: ['⌘', '+', 'L'], action: 'Lock Session' },
+      { keys: ['⌘', '+', '󰘶', '+', 'M'], action: 'Log Out (Exit Hyprland)' },
     ],
     appeartick: 2
   },

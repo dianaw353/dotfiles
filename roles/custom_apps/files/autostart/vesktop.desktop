@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Vesktop
+Comment=Vesktop autostart script
+Exec="/usr/lib/electron31/electron" "--ozone-platform-hint=auto" "--enable-wayland-ime" "/usr/lib/vesktop/app.asar" "env" "ELECTRON_OZONE_PLATFORM_HINT=auto"
+StartupNotify=false
+Terminal=false

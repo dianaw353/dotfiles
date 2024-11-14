@@ -20,7 +20,20 @@
       loop:
         - { src: 'hypr', dest: '.config/' }
         - { src: 'hypr/scripts', dest: '.config/hypr/' }
-    
+
+    - name: "Hyprland | Get GPUs"
+      ansible.builtin.shell: set -o pipefail && lspci | grep -i 'VGA\|3D\|display'
+      register: gpu_result
+      changed_when: no
+
+    - name: "Hyprland | Nvidia GPU Detection"
+      set_fact:
+        has_nvidia: "{{ 'nvidia' in gpu_result.stdout.lower() }}"
+
+    - name: "Hyprland | VM Detection"
+      set_fact:
+        is_vm: "{{ ansible_facts.virtualization_role is defined and ansible_facts.virtualization_role != 'host' }}"
+
     - name: "Hyprland | Update configuration templates"
       ansible.builtin.template:
         src: "{{ item.src }}"
@@ -37,25 +50,36 @@
 
 - name: Manage Hyprland dynamic cursors
   block:
-    # - name: Update hyprpm package list
-    #   command: hyprpm update
+    - name: "Hyprland | Update hyprpm package list"
+      command: hyprpm update
+      when: system.hyprland.plugins.enabled
+      changed_when: no
 
-    - name: Check if hypr-dynamic-cursors is installed
-      ansible.builtin.command:
-        cmd: "hyprpm list | grep 'dynamic-cursors' || true"
-      register: plugin_check_output
-      changed_when: false
-
-    - name: Set dynamic-cursors plugin installation status
-      ansible.builtin.set_fact:
-        is_dynamic_cursors_plugin_installed: "{{ 'dynamic-cursors' in plugin_check_output.stdout }}"
-
-    - name: Add hypr-dynamic-cursors repository
+    - name: "Hyprland | Add plugin repos"
       ansible.builtin.shell:
-        cmd: "echo 'Y' | hyprpm add https://github.com/virtcode/hypr-dynamic-cursors"
-      when: not is_dynamic_cursors_plugin_installed
+        cmd: "yes | hyprpm add {{ item }}"
+      loop: "{{ system.hyprland.plugins.list }}"
+      ignore_errors: yes
+      when: system.hyprland.plugins.enabled and system.hyprland.plugins.list is defined
+      changed_when: no
 
-    - name: Enable dynamic cursors
+    - name: "Hyprland | Gather the names of installed plugins"
+      ansible.builtin.shell:
+        cmd: "hyprpm list | grep Plugin | sed 's/.* //'"
+      ignore_errors: yes
+      register: installed_hypr_packages
+      when: system.hyprland.plugins.enabled
+      changed_when: no
+
+    - name: "Hyprland | Print the names of the detected packages"
+      ansible.builtin.debug:
+        var: installed_hypr_packages.stdout_lines
+      when: system.hyprland.plugins.enabled and installed_hypr_packages.stdout_lines is defined
+
+    - name: "Hyprland | Enable all installed plugins"
       ansible.builtin.command:
-        cmd: "hyprpm enable dynamic-cursors"
-      when: not is_dynamic_cursors_plugin_installed
+        cmd: "hyprpm enable {{ item }}"
+      loop: "{{ installed_hypr_packages.stdout_lines }}"
+      ignore_errors: yes
+      when: system.hyprland.plugins.enabled and installed_hypr_packages.stdout_lines is defined
+      changed_when: no

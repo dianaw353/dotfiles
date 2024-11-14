@@ -26,6 +26,55 @@ system:
   # Use the exact package name if you want to use the said hypervisor
   headers_package: linux-headers
 
+  hyprland:
+    # Support for autostart entries from XDG, provided by dex
+    #
+    # Setting this to false will stop such entries from working and
+    # you will have to add apps you want to launch on boot as exec-once
+    # entries in ~/.config/hypr/config/autostart.conf.
+    #
+    # See #52 for a deeper lore into this.
+    #
+    # true or false
+    xdg_autostart: false
+
+    plugins:
+      # Rebuilds Hyprland using a known-to-work patch if hyprpm fails
+      #
+      # You might want to reconsider enabling this as rebuilding an
+      # entire WM might kill your computer if it's not powerful enough.
+      #
+      # Furthermore, it's not always the case that hyprpm breaks
+      # because of packaging issues. Enabling this option will do
+      # nothing if we don't have a patch to apply at packaging level.
+      #
+      # See #53 for more info.
+      #
+      # true or false
+      rebuild_hypr_on_failure:
+        enabled: false
+
+        # URL to get PKGBUILD from
+        pkgbuild_url: "https://gitlab.archlinux.org/archlinux/packaging/packages/hyprland/-/raw/2cd8a96a90616647a82ea11127b131aef6ce6e6c/PKGBUILD"
+
+      # Master switch for Hyprland plugins
+      #
+      # The Hyprland package on official Arch repo is currently broken that
+      # breaks "hyprpm", which is what we use to install the plugins.
+      # Setting this to true is not a good idea unless you rebuild the package
+      # with the proposed fix beforehand or enable rebuild_hypr_on_fail.
+      #
+      # See #53 for more info.
+      #
+      # true or false
+      enabled: false
+
+      # List of URLs to install Hyprland plugins from
+      # These URLs will each be passed to "hyprpm add" directly and
+      # iterated through. Comments at the end of URLs are fine.
+      list:
+        - https://github.com/virtcode/hypr-dynamic-cursors # dynamic-cursors
+
 i18n:
   # Supplementary fonts
   fonts:
@@ -120,6 +169,7 @@ gaming:
     - dxvk-bin
     - vkd3d
     - lib32-gnutls
+    - steam-native-runtime
   utilities:
     # - bottles
     - protonplus

@@ -8,7 +8,22 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: custom_apps_distribution_config.stat.exists
 
-#- name: "Gather package facts"
-#  ansible.builtin.package_facts:
+- name: Copy Configuration Files
+  block:
+    - name: "Gather package facts"
+      ansible.builtin.package_facts:
+
+    - name: Create base config directory
+      file:
+        path: "{{ ansible_user_dir }}/.config/autostart"
+        state: directory
+
+    - name: "Sync configuration files"
+      ansible.posix.synchronize:
+        src: "{{ item.src }}"
+        dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+      loop:
+        - { src: 'autostart/vesktop.desktop', dest: '.config/autostart/vesktop.desktop', package: 'vesktop-bin' }
+      when: item.package in ansible_facts.packages
 
 
