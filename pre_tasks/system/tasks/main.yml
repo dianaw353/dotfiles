@@ -50,7 +50,7 @@
 - name: Create a drop-in for batsignal
   command: |
     mkdir -p {{ ansible_user_dir }}/.config/systemd/user/batsignal.service.d
-    printf '[Service]\nExecStart=\nExecStart=batsignal -d 2 -c 5 -w 15 -D "systemctl hibernate"' > {{ ansible_user_dir }}/.config/systemd/user/batsignal.service.d/options.conf
+    printf '[Service]\nExecStart=\nExecStart=batsignal -d 5 -c 10 -w 20 -D "systemctl hibernate"' > {{ ansible_user_dir }}/.config/systemd/user/batsignal.service.d/options.conf
   become: false
 
 - name: Restart Systemd Services
