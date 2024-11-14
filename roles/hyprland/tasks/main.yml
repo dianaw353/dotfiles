@@ -47,6 +47,7 @@
         - { src: 'env_default.conf.j2', dest: 'config/environments/default.conf' }
         - { src: 'environment.conf.j2', dest: 'config/environment.conf' }
         - { src: 'hyprlock.conf.j2', dest: 'hyprlock.conf' }
+        - { src: 'keybindings.conf.j2', dest: 'config/keybindings/default.conf' }
 
 - name: Manage Hyprland dynamic cursors
   block:
