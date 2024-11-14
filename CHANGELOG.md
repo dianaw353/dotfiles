@@ -6,6 +6,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
   - Also preconfigured for a sane configuration on just about any laptop.
 
 **Fixes**
+- Fix how local rebuilds independent from AUR are handled.
 - Stick to AGSv1.
   - We have to do this as an interim until we port the current AGS config to v2.
 - Various improvements for PiP windows

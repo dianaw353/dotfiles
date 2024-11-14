@@ -54,15 +54,27 @@
           cd {{ ansible_user_dir }}/agsv1_rebuild
           /usr/bin/curl -fsSL https://github.com/kotontrion/PKGBUILDS/raw/main/agsv1/PKGBUILD > PKGBUILD
           makepkg -s
+      ignore_errors: yes
       register: agsv1_build_outcome
       changed_when: no
       when: system.ags.need_v1 is defined and system.ags.need_v1
 
     - name: Install Rebuilt AGSv1
-      community.general.pacman:
-        name: "{{ item }}"
-        state: present
+      ansible.builtin.shell:
+        cmd: "pacman -U --noconfirm {{ ansible_user_dir }}/agsv1_rebuild/agsv1-1.9.0-1-x86_64.pkg.tar.zst"
       become: true
-      loop:
-        - "{{ ansible_user_dir }}/agsv1_rebuild/agsv1-1.9.0-1-x86_64.pkg.tar.zst"
+      register: agsv1_install_outcome
+
+  rescue:
+    - name: Uninstall Existing AGS
+      community.general.pacman:
+        name: aylurs-gtk-shell-git
+        state: absent
+      become: true
+      register: agsv2_uninstall_outcome
+
+    - name: Install Rebuilt AGSv1
+      ansible.builtin.shell:
+        cmd: "pacman -U --noconfirm {{ ansible_user_dir }}/agsv1_rebuild/agsv1-1.9.0-1-x86_64.pkg.tar.zst"
+      become: true
       register: agsv1_install_outcome
