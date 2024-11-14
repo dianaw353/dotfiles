@@ -7,6 +7,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
 
 **Fixes**
 - Fix how local rebuilds independent from AUR are handled.
+- Fix the way AGS versions are treated during version check.
 - Stick to AGSv1.
   - We have to do this as an interim until we port the current AGS config to v2.
 - Various improvements for PiP windows
