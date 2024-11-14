@@ -13,6 +13,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
     - This one aims to make it work on Google Chrome and Chromium forks
   - Make PiP windows opaque
   - Remove WM borders from PiP windows
+- Fix some keybind symbols in the keybind guide.
 
 Version 1.1.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
