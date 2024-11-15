@@ -11,10 +11,12 @@ exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = hyprpm reload
 
 # Initilize ags
-{% if system.ags.need_v1 is defined and system.ags.need_v1 %}
+{% if system.ags.version is defined %}
+{% if system.ags.version == "v1" or system.ags.version == "both" %}
 exec-once = agsv1
 {% else %}
-exec-once = ags
+exec-once = ags run ~/.config/agsv2/config.js
+{% endif %}
 {% endif %}
 
 # Set up cursor theme

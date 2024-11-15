@@ -1,0 +1,44 @@
+@use "sass:math";
+@use "sass:color";
+
+window#keybinds {
+  .keybinds {
+    @include floating_widget;
+    color: $fg;
+    background-color: $bg;
+    min-width: 85rem;
+    min-height: 60rem;
+  }
+
+  .keybinds-list {
+    margin: $spacing;
+    padding: $padding;
+  }
+
+  .column-list {
+    margin-right: $spacing * 0.1;
+    padding-right: $padding * 0.1;
+
+    .catagory-group {
+      background-color: $widget-bg;
+      margin: $spacing;
+      padding: $padding;
+      border-radius: $radius;
+      border: $border;
+    }
+
+    .catagory-row {
+      padding-bottom: $padding * 0.5;
+    }
+
+    .catagory-label {
+      padding-top: $padding * 0.5;
+      padding-bottom: $padding * 0.5;
+    }
+  }
+}
+
+.header {
+  margin-top: $spacing;
+  padding-top: $padding;
+}

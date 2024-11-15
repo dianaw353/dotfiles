@@ -42,10 +42,14 @@
       become: false
       loop:
         - aylurs-gtk-shell-git
-      when: system.ags.need_v1 is not defined or not system.ags.need_v1
+      when:
+        - system.ags.version is defined
+        - system.ags.version == "v2" or system.ags.version == "both"
 
 - name: Build and Install AGSv1
-  when: system.ags.need_v1 is defined and system.ags.need_v1
+  when:
+    - system.ags.version is defined
+    - system.ags.version == "v1" or system.ags.version == "both"
   block:
     - name: Build AGSv1
       ansible.builtin.shell:

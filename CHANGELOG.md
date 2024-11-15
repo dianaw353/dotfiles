@@ -6,6 +6,11 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.7
   - Also performs a true upgrade depending on your installation type if you already had dotfiles before!
   - If you're crazy enough, you may even try to swap channels between rolling and stable.
     - **No support will be provided for any attempts about channel swaps!**
+- Initial support for AGSv2 (DEVELOPMENT PURPOSES ONLY!!!)
+  - Change need_v1 to version and support both versions to coexist.
+  - Configure Hyprland keybindings to run respective scripts for AGS invocations.
+  - Write scripts to run across both versions of AGS.
+  - Add the ability to switch AGS versions using a keyboard shortcut when system.ags.version is set to "both".
 
 Version 1.1.6
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6

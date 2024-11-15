@@ -76,14 +76,14 @@ system:
         - https://github.com/virtcode/hypr-dynamic-cursors # dynamic-cursors
 
   ags:
-    # Whether to use AGSv1.
+    # AGS version to use.
     #
-    # Don't set this to false if you can't deal with rewriting the entire stack for v2!
+    # Keep this set to v1 if you can't deal with rewriting the entire stack for v2!
     #
     # See Aylur/ags#618 for more info.
     #
-    # true or false
-    need_v1: true
+    # v1 or v2 or both
+    version: v1
 
 i18n:
   # Supplementary fonts

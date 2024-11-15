@@ -57,25 +57,68 @@
       loop:
         - { path: '/var/cache/greeter', owner: 'greeter', group: 'greeter', mode: '0755' }
         
-    - name: Ags user config
+    - name: Ags user config - Agsv1
       ansible.posix.synchronize:
         mode: push
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
         recursive: yes
+      when:
+        - system.ags.version is defined
+        - system.ags.version == "v1" or system.ags.version == "both"
       loop:
         - { src: "ags", dest: "{{ ansible_user_dir }}/.config/" }
         
-    - name: Ags system config 
+    - name: Ags user config - Agsv2
       ansible.posix.synchronize:
         mode: push
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
         recursive: yes
+      when:
+        - system.ags.version is defined
+        - system.ags.version == "v2"
+      loop:
+        - { src: "agsv2", dest: "{{ ansible_user_dir }}/.config/" }
+
+    - name: Ags user config - Shortcuts
+      ansible.builtin.template:
+        src: "{{ item.src }}"
+        dest: "{{ ansible_user_dir }}/.config/{{ item.version }}/widget/keybinds/data/shortcuts.ts"
+        backup: no
+      become: false
+      when:
+        - system.ags.version is defined
+        - system.ags.version == "both"
+      loop:
+        - { src: "shortcuts.ts.j2", version: "ags" }
+        - { src: "shortcuts.ts.j2", version: "agsv2" }
+        
+    - name: Ags system config - Agsv1
+      ansible.posix.synchronize:
+        mode: push
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        recursive: yes
+      when:
+        - system.ags.version is defined
+        - system.ags.version == "v1" or system.ags.version == "both"
       loop:
         - { src: "ags", dest: "/etc/greetd/" }
       become: true
 
+    - name: Ags system config - Agsv2
+      ansible.posix.synchronize:
+        mode: push
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        recursive: yes
+      when:
+        - system.ags.version is defined
+        - system.ags.version == "v2"
+      loop:
+        - { src: "agsv2", dest: "/etc/greetd/" }
+      become: true
 
 - name: Manage User Pictures
   block:
