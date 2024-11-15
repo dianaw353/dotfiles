@@ -1,6 +1,8 @@
 Version 1.1.7
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.7
 ---------------------------------------------------------
+## This version is the last version to properly support AGSv1! The next versions will only be for maintenance until AGSv2 support is complete and no new features or changes will be made unless absolutely necessary!
+
 **Changes**
 - Initial support for AGSv2 (DEVELOPMENT PURPOSES ONLY!!!)
   - Change need_v1 to version and support both versions to coexist.
