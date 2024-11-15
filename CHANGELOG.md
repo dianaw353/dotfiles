@@ -1,3 +1,12 @@
+Version 1.1.7
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.7
+---------------------------------------------------------
+**Script**
+- Add version check for the main script.
+  - Also performs a true upgrade depending on your installation type if you already had dotfiles before!
+  - If you're crazy enough, you may even try to swap channels between rolling and stable.
+    - **No support will be provided for any attempts about channel swaps!**
+
 Version 1.1.6
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
 ---------------------------------------------------------

@@ -131,7 +131,7 @@ function _task_done {
 
 # Arch setup function
 function arch_setup {
-  for pkg in ansible curl python python-pip python-watchdog openssh rsync git noto-fonts-emoji; do
+  for pkg in ansible curl python python-pip python-watchdog openssh rsync git noto-fonts-emoji jq; do
     if ! pacman -Q $pkg >/dev/null 2>&1; then
       _task "Installing $pkg"
       _cmd "sudo pacman -S --noconfirm $pkg" 5 2 "Failed to install $pkg."
@@ -153,18 +153,66 @@ function update_ansible_galaxy {
   fi
 }
 
-# Get the latest release tag
-function get_latest_release {
-  curl --silent "https://api.github.com/repos/$REPO/releases/latest" | \
-    grep '"tag_name":' | \
-    sed -E 's/.*"([^"]+)".*/\1/'
+# Get the latest version
+function get_latest_version {
+  if [[ $MODE == "rolling" ]]; then
+    curl --silent "https://api.github.com/repos/$REPO/commits/heads/main" | \
+      jq -r .sha
+  else
+    curl --silent "https://api.github.com/repos/$REPO/releases/latest" | \
+      jq -r .tag_name
+  fi
+}
+
+# Get the installed version
+function get_installed_version {
+  if [[ $MODE == "rolling" ]] && [[ -d "$DOTFILES_DIR/.git" ]]; then
+    cd $DOTFILES_DIR
+    git rev-parse HEAD
+  elif [[ -f "$DOTFILES_DIR/VERSION" ]]; then
+    cat $DOTFILES_DIR/VERSION
+  fi
+}
+
+# Check if we have the latest version
+function check_version {
+  local latest_version="$(get_latest_version)"
+  local installed_version="$(get_installed_version)"
+
+  _task "Checking for updates..."
+  [[ "${latest_version}" != "${installed_version}" ]] || _cmd "false" 1 0 "You already have the latest version."
+}
+
+# Get the diff between local and remote versions so we know what changes to apply
+function get_upgrade_diff {
+  local latest_version=$(get_latest_version)
+  local installed_version=$(get_installed_version)
+
+  curl --silent \
+    -H "Accept: application/vnd.github.diff" \
+    "https://api.github.com/repos/dianaw353/dotfiles/compare/${installed_version}...${latest_version}"
+}
+
+# Perform an upgrade by patching/pulling instead of cloning everything from scratch
+function upgrade {
+  local latest_version=$(get_latest_version)
+
+  _task "Upgrading existing dotfiles..."
+  _cmd "cd $DOTFILES_DIR" 3 2 "Failed to enter into existing dotfiles directory."
+  if [[ -d "$DOTFILES_DIR/.git" ]]; then
+    _cmd "git stash" 3 2 "Failed to stash unstaged changes."
+    _cmd "git fetch $REPO_URL $latest_version" 3 2 "Failed to fetch the latest version."
+    _cmd "git checkout FETCH_HEAD" 3 2 "Failed to checkout fetched version."
+    _cmd "echo 'Upgrade complete! You may want to pop your stash with git stash pop.'" 1 0 "Upgrade complete! You may want to pop your stash with git stash pop."
+  elif [[ -f "$DOTFILES_DIR/VERSION" ]]; then
+    _cmd "$(get_upgrade_diff) | patch -p1" 3 2 "Failed to fetch and apply the update."
+  fi
 }
 
 # Get the latest release zip URL
 function get_latest_zip {
   curl --silent "https://api.github.com/repos/$REPO/releases/latest" | \
-    grep '"zipball_url":' | \
-    sed -E 's/.*"([^"]+)".*/\1/'
+    jq -r .zipball_url
 }
 
 # Download the latest release and extract it
@@ -179,6 +227,7 @@ function download_latest_release {
   _cmd "unzip -o $zip_file -d $HOME/dotfiles_temp" 3 2 "Failed to extract the latest release."
 
   _task "Renaming the extracted folder to dotfiles"
+  _cmd "rm -rf $DOTFILES_DIR" 3 2 "Failed to remove old dotfiles directory."
   _cmd "mv $HOME/dotfiles_temp/*dotfiles-* $DOTFILES_DIR" 3 2 "Failed to rename extracted folder."
 
   _task "Cleaning up"
@@ -187,9 +236,15 @@ function download_latest_release {
 
 # Clone repository for rolling updates
 function clone_repository {
-  _task "Cloning the repository"
-  _cmd "rm -rf $DOTFILES_DIR" 3 2 "Failed to remove old dotfiles directory."
-  _cmd "git clone $REPO_URL $DOTFILES_DIR" 3 2 "Failed to clone repository."
+  if [[ ! -d "$DOTFILES_DIR/.git" ]]; then
+    _task "Cloning the repository"
+    _cmd "rm -rf $DOTFILES_DIR" 3 2 "Failed to remove old dotfiles directory."
+    _cmd "git clone $REPO_URL $DOTFILES_DIR" 3 2 "Failed to clone repository."
+  else
+    _task "Pulling latest changes"
+    _cmd "cd $DOTFILES_DIR" 3 2 "Failed to enter into existing dotfiles directory."
+    _cmd "git pull $REPO_URL main --rebase" 3 2 "Failed to pull the latest changes."
+  fi
 }
 
 # Load OS and setup based on detected OS
@@ -205,7 +260,10 @@ case $ID in
     ;;
 esac
 
-if [[ $MODE == "rolling" ]]; then
+if [[ -f "$DOTFILES_DIR/VERSION" ]]; then
+  check_version
+  upgrade
+elif [[ $MODE == "rolling" ]]; then
   clone_repository
 else
   download_latest_release
