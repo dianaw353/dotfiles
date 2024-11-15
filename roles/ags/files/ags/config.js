@@ -32,8 +32,13 @@ try {
             throw `"${bundler}" is not a valid bundler`
     }
 
-    if (v.ags[1] < v.expect[1] || v.ags[2] < v.expect[2]) {
+    if (v.ags[0] < v.expect[0] && v.ags[1] < v.expect[1] && v.ags[2] < v.expect[2]) {
         print(`my config needs at least v${v.expect.join(".")}, yours is v${v.ags.join(".")}`)
+        App.quit()
+    }
+
+    if (v.ags[0] > v.expect[0]) {
+        print(`my config doesn't work on ags versions higher than v${v.expect[0]}, yours is v${v.ags[0]}`)
         App.quit()
     }
 

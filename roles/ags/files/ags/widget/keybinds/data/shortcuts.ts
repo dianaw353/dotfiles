@@ -21,7 +21,7 @@ const column1 = [
     icon: '',
     name: 'Windows: Type',
     binds: [
-      { keys: ['⌘', '󰘶', '+', 'F'], action: 'Fullscreen' },
+      { keys: ['⌘', '+', '󰘶', '+', 'F'], action: 'Fullscreen' },
       { keys: ['⌘', '+', '<direction>'], action: 'Focus window' },
       { keys: ['⌘', '+', 'T'], action: 'Toggle Fake Floating' },
       { keys: ['⌘', '+', 'J'], action: 'Flip Window position' },
@@ -50,7 +50,7 @@ const column2 = [
     name: 'Screen Utilities',
     binds: [
       { keys: ['PrtScr'], action: 'Selective Screenshot' },
-      { keys: ['󰘴', '+', 'PrtScr'], action: 'Screenshot Full screen' },
+      { keys: ['󰘶', '+', 'PrtScr'], action: 'Screenshot Full screen' },
       { keys: ['⌘', '+', '󱊶'], action: 'Selective Record' },
     ],
     appeartick: 2

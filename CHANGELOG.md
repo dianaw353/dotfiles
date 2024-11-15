@@ -1,3 +1,23 @@
+Version 1.1.6
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.6
+---------------------------------------------------------
+**Changes**
+- New package: `batsignal`
+  - Also preconfigured for a sane configuration on just about any laptop.
+
+**Fixes**
+- Fix how local rebuilds independent from AUR are handled.
+- Fix the way AGS versions are treated during version check.
+- Stick to AGSv1.
+  - We have to do this as an interim until we port the current AGS config to v2.
+- Various improvements for PiP windows
+  - Improve the way PiP windows are detected
+    - This one aims to make it work on Google Chrome and Chromium forks
+  - Make PiP windows opaque
+  - Remove WM borders from PiP windows
+- Fix some keybind symbols in the keybind guide.
+- Fix the fullscreen keybind to involve Shift
+
 Version 1.1.5
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.5
 ---------------------------------------------------------

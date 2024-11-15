@@ -8,7 +8,7 @@ export default Widget.Box(
       css: 'font-size: 3em; margin-right: 0.25em;',
     }),
     Widget.Label({
-      label: '⌘ + Slash',
+      label: '⌘ + /',
       css: 'font-size: 2em;',
       className: 'cheatsheet-key',
     }),

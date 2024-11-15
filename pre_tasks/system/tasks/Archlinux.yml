@@ -15,6 +15,7 @@
         - qt5-wayland
         - gtk4
         - libadwaita
+        - batsignal
 
     - name: Install dex For XDG Autostart Support | {{ ansible_distribution }}
       community.general.pacman:

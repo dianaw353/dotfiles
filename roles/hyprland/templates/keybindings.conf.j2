@@ -21,6 +21,16 @@ bind = $mainMod ALT, G, exec, $hyprland-scripts/gamemode.sh
 bind = CTRL $mainMod, N, exec, $hyprland-scripts/hyprsunset.sh
 
 # Ags keybingings
+{% if system.ags.need_v1 is defined and system.ags.need_v1 %}
+bind=  $mainMod SHIFT, R,  exec, agsv1 -q; agsv1
+bind = $mainMod CTRL, RETURN, exec, agsv1 -t launcher
+bind = $mainMod, SLASH, exec, agsv1 -t keybinds
+bind = $mainMod, F4, exec, agsv1 -t powermenu
+bind = $mainMod, Tab,     exec, agsv1 -t overview
+bind = $mainMod, F12,   exec, agsv1 -r 'recorder.start()'
+bind = , Print,         exec, agsv1 -r 'recorder.screenshot()'
+bind = SHIFT, Print,    exec, agsv1 -r 'recorder.screenshot(true)'
+{% else %}
 bind=  $mainMod SHIFT, R,  exec, ags -q; ags
 bind = $mainMod CTRL, RETURN, exec, ags -t launcher
 bind = $mainMod, SLASH, exec, ags -t keybinds
@@ -29,6 +39,7 @@ bind = $mainMod, Tab,     exec, ags -t overview
 bind = $mainMod, F12,   exec, ags -r 'recorder.start()'
 bind = , Print,         exec, ags -r 'recorder.screenshot()'
 bind = SHIFT, Print,    exec, ags -r 'recorder.screenshot(true)'
+{% endif %}
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l

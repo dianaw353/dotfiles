@@ -42,16 +42,14 @@
           cd {{ ansible_user_dir }}/hyprland_rebuild
           /usr/bin/curl -fsSL {{ system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url }} > PKGBUILD
           makepkg -s
+      ignore_errors: yes
       register: hyprland_rebuild_outcome
       changed_when: no
 
     - name: Install rebuilt Hyprland
-      community.general.pacman:
-        name: "{{ item }}"
-        state: present
+      ansible.builtin.shell:
+        cmd: "pacman -U --noconfirm {{ ansible_user_dir }}/hyprland_rebuild/hyprland-0.*-x86_64.pkg.tar.zst"
       become: true
-      loop:
-        - "{{ ansible_user_dir }}/hyprland_rebuild/hyprland-0.45.0-1-x86_64.pkg.tar.zst"
       register: hyprland_reinstall_outcome
 
   always:
