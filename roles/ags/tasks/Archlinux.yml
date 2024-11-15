@@ -50,31 +50,33 @@
     - name: Build AGSv1
       ansible.builtin.shell:
         cmd: |
-          mkdir {{ ansible_user_dir }}/agsv1_rebuild
+          mkdir -p {{ ansible_user_dir }}/agsv1_rebuild
           cd {{ ansible_user_dir }}/agsv1_rebuild
           /usr/bin/curl -fsSL https://github.com/kotontrion/PKGBUILDS/raw/main/agsv1/PKGBUILD > PKGBUILD
-          makepkg -s
-      ignore_errors: yes
+          pkgname=$(bash -c 'source PKGBUILD && echo "${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"')
+          makepkg -sC
+          if [ "$?" == "13" ] && [ ! -f "${pkgname}" ]; then
+            false
+          fi
       register: agsv1_build_outcome
-      changed_when: no
-      when: system.ags.need_v1 is defined and system.ags.need_v1
+      changed_when: "'Finished making' in agsv1_build_outcome.stdout"
 
-    - name: Install Rebuilt AGSv1
-      ansible.builtin.shell:
-        cmd: "pacman -U --noconfirm {{ ansible_user_dir }}/agsv1_rebuild/agsv1-1.9.0-1-x86_64.pkg.tar.zst"
-      become: true
-      register: agsv1_install_outcome
-
-  rescue:
     - name: Uninstall Existing AGS
       community.general.pacman:
-        name: aylurs-gtk-shell-git
+        name: "{{ item }}"
         state: absent
       become: true
       register: agsv2_uninstall_outcome
+      loop:
+        - aylurs-gtk-shell
+        - aylurs-gtk-shell-git
 
-    - name: Install Rebuilt AGSv1
+    - name: Install Built AGSv1
       ansible.builtin.shell:
-        cmd: "pacman -U --noconfirm {{ ansible_user_dir }}/agsv1_rebuild/agsv1-1.9.0-1-x86_64.pkg.tar.zst"
+        cmd: |
+          cd {{ ansible_user_dir }}/agsv1_rebuild
+          pkgname=$(bash -c 'source PKGBUILD && echo "${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"')
+          pacman -U --noconfirm {{ ansible_user_dir }}/agsv1_rebuild/${pkgname}
       become: true
       register: agsv1_install_outcome
+      changed_when: "'is up to date' not in agsv1_install_outcome.stderr"
