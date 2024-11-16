@@ -1,3 +1,9 @@
+Version 1.1.8
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8
+---------------------------------------------------------
+**Fixes**
+- Add an `im_quirks.sh` `profile.d` script for applications to pick up fcitx5 as best as physically possible.
+
 Version 1.1.7
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.7
 ---------------------------------------------------------

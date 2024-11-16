@@ -23,3 +23,12 @@
         recursive: yes
       loop:
         - { src: 'fcitx5', dest: '.config' }
+
+    - name: Set up profile so that fcitx5 is picked up properly
+      ansible.posix.synchronize:
+        mode: push
+        src: "{{ item.src }}"
+        dest: "/etc/{{ item.dest }}"
+        recursive: yes
+      loop:
+        - { src: 'profile.d/im_quirks.sh', dest: 'im_quirks.sh' }
