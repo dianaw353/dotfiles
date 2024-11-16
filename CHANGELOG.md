@@ -4,8 +4,26 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8
 **Changes**
 - Install `nvidia-prime` to use `prime-run` if proprietary NVIDIA driver is being installed.
 
+**Script**
+- Link Electron launch flag configuration to non-default locations too.
+  - This configuration was introduced along with i18n support to have Electron run under native Wayland.
+  - This is equivalent to running the executable with `--ozone-platform-hint=auto --enable-wayland-ime`.
+    - The former enables Electron to use native Wayland if the session is Wayland.
+    - The latter enables 3rd party IMEs (I.e. those that aren't native to the shell) to be used.
+  - The following apps are explicitly configured so far;
+    - Google Chrome and Chromium browsers that read `chrome-flags.conf`.
+    - Apps reading `electron12-flags.conf` instead of `electron-flags.conf`.
+    - Spotify
+    - Vesktop (Desktop Vencord client using newer versions of Electron)
+  - Please open an issue if you come across an app that doesn't get possessed with this change (the cursor should be Adwaita and fcitx5 shouldn't work on such an app).
+    - Steam Client is **EXCLUDED**! Open an issue about Steam Client **only if you can find a way to seep these flags through yourself!** A PR would be much appreciated if you can do that instead.
+
 **Fixes**
 - Add an `im_quirks.sh` `profile.d` script for applications to pick up fcitx5 as best as physically possible.
+  - This includes, but isn't limited to,
+    - Apps running under XWayland that respect `XMODIFIERS` variable
+    - GTK apps
+    - Qt apps (Tested and confirmed with WhatSie)
 
 Version 1.1.7
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.7
