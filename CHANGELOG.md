@@ -1,6 +1,9 @@
 Version 1.1.8
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8
 ---------------------------------------------------------
+**Changes**
+- Install `nvidia-prime` to use `prime-run` if proprietary NVIDIA driver is being installed.
+
 **Fixes**
 - Add an `im_quirks.sh` `profile.d` script for applications to pick up fcitx5 as best as physically possible.
 
