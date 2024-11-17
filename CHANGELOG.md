@@ -25,6 +25,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8
     - GTK apps
     - Qt apps (Tested and confirmed with WhatSie)
 - Add build dependencies for agsv1
+- Ags version switcher fix
 
 Version 1.1.7
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.7
