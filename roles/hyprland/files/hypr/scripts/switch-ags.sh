@@ -14,6 +14,6 @@ elif pgrep -x "agsv1" > /dev/null; then
 else
     # If neither are running, start ags
     echo "Neither ags nor agsv1 are running. Starting ags..."
-    #ags run -d ~/.config/agsv2 &
+    agsv1 run
 fi
 
