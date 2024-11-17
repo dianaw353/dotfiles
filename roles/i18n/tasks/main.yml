@@ -30,5 +30,6 @@
         src: "{{ item.src }}"
         dest: "/etc/{{ item.dest }}"
         recursive: yes
+      become: true
       loop:
         - { src: 'profile.d/im_quirks.sh', dest: 'im_quirks.sh' }
