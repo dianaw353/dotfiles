@@ -51,6 +51,17 @@
     - system.ags.version is defined
     - system.ags.version == "v1" or system.ags.version == "both"
   block:
+    - name: Install dependencies required to build AGSv1
+      kewlfft.aur.aur:
+        name: "{{ item }}"
+        state: present
+      become: false
+      loop:
+        - npm
+        - python-mako
+        - python-markdown
+        - gobject-introspection
+
     - name: Build AGSv1
       ansible.builtin.shell:
         cmd: |
