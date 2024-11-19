@@ -10,8 +10,8 @@ $inactive-bg-lightness: 20%;
 // Dimensions and Spacing
 $radius: 7px;
 $button-padding: 0 8px;
-$label-margin: 2px;
-$workspace-margin: 0.5rem;
+$label-margin: .25rem;
+$margin: 0.5rem;
 $workspace-min-size: 1rem;
 $workspace-focus-min-size: 1rem;
 $audio-slider-margin: 0 1em;
@@ -71,7 +71,7 @@ window.Bar {
 
   .Workspaces {
     button {
-      margin: $workspace-margin;
+      margin: $margin;
       @include circular-styles($workspace-min-size);
 
       &.focused {
@@ -101,7 +101,11 @@ window.Bar {
   }
 
   .SysTray {
-    margin: 0.5em;
+    margin: $margin;
+
+    button {
+      margin-left: $margin;
+    }
   }
 
   .Battery label {
