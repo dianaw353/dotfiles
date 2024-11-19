@@ -1,5 +1,5 @@
 import { App } from "astal/gtk3";
-import style from "./theme/style.scss";
+import style from "theme/dark/dark.scss";
 import Bar from "./widget/bar/Bar";
 import NotificationPopups from "./widget/notifications/NotificationPopups";
 
