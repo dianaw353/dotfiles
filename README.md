@@ -30,9 +30,22 @@
 > Laptop workarounds are based on community feedback, and NVIDIA support is noted by Hyprland Wiki to be unofficial but supported with the help of the community.
 
 ## Showcase
-![main desktop](assets/2024-11-03_09-51-24.png)
-![keybinds](assets/2024-11-03_09-51-44.png)
-![settings page](assets/2024-11-03_09-52-00.png)
+
+### Version 2
+
+Currently being developed... Picture comming Soon!
+
+### Version 1 as of 11-18-14 (Maintenance Mode)
+
+<div align="center"><table>
+<tr><td><img src="https://github.com/dianaw353/dotfiles/blob/main/assets/2024-11-03_09-51-24.png?raw=true"/></td>
+</tr>
+</table></div>
+
+<div align="center"><table>
+<tr><td><img src="https://github.com/dianaw353/dotfiles/blob/main/assets/2024-11-03_09-51-44.png?raw=true"/></td>
+<td><img src="https://github.com/dianaw353/dotfiles/blob/main/assets/2024-11-03_09-52-00.png?raw=true"/></td></tr>
+</table></div>
 
 ## Featues
 
