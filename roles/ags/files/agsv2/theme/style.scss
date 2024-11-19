@@ -1,0 +1,124 @@
+@use "sass:color";
+
+$bg: #212223;
+$fg: #f1f1f1;
+$accent: #378DF7;
+$border-radius: 7px;
+$transition-duration: 200ms;
+$button-size: 1rem;
+$button-focused-size: 2rem;
+$button-margin: .5rem;
+$workspace-circle-size: 1rem;
+$inactive-bg-lightness: 20%;
+$audio-slider-margin: 0 1em;
+$label-padding: 0 8px;
+$label-margin: 2px;
+$icon-margin-right: .6em;
+
+window.Bar {
+  border: none;
+  box-shadow: none;
+  background-color: $bg;
+  color: $fg;
+  font-size: 1.1em;
+  font-weight: bold;
+
+  button {
+    all: unset;
+    background-color: transparent;
+
+    &:hover label {
+      background-color: color.scale($fg, $alpha: -84%);
+      border-color: color.scale($accent, $alpha: -80%);
+    }
+
+    &:active label {
+      background-color: color.scale($fg, $alpha: -80%);
+    }
+  }
+
+  label {
+    transition: $transition-duration;
+    padding: $label-padding;
+    margin: $label-margin;
+    border-radius: $border-radius;
+    border: 1pt solid transparent;
+  }
+
+  .Workspaces {
+    button {
+      margin: $button-margin;
+      min-width: $button-size;
+      min-height: $button-size;
+      border-radius: $border-radius;
+      transition: background-color $transition-duration;
+
+      &.focused {
+        min-width: $button-focused-size;
+        background-color: $accent;
+      }
+
+      &.inactive {
+        background-color: color.scale($bg, $lightness: $inactive-bg-lightness);
+      }
+    }
+
+    .WorkspaceCircle {
+      min-width: $workspace-circle-size;
+      min-height: $workspace-circle-size;
+      border-radius: $border-radius;
+    }
+  }
+
+  .FocusedClient {
+    color: $accent;
+  }
+
+  .Media .Cover {
+    min-height: 1.2em;
+    min-width: 1.2em;
+    border-radius: $border-radius;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .SysTray {
+    margin: .5em;
+  }
+
+  .Battery label {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .AudioSlider {
+    * {
+      all: unset;
+    }
+
+    icon {
+      margin-right: $icon-margin-right;
+    }
+
+    margin: $audio-slider-margin;
+
+    trough {
+      background-color: color.scale($fg, $alpha: -80%);
+      border-radius: $border-radius;
+    }
+
+    highlight {
+      background-color: $accent;
+      min-height: .8em;
+      border-radius: $border-radius;
+    }
+
+    slider {
+      background-color: $fg;
+      border-radius: $border-radius;
+      min-height: 1em;
+      min-width: 1em;
+      margin: -.2em;
+    }
+  }
+}
