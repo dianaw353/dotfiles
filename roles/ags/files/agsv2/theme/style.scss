@@ -1,72 +1,90 @@
-@use "sass:color";
+@use 'sass:color';
 
+// Variables
+// Colors
 $bg: #212223;
 $fg: #f1f1f1;
 $accent: #378DF7;
-$border-radius: 7px;
-$transition-duration: 200ms;
-$button-size: 1rem;
-$button-focused-size: 2rem;
-$button-margin: .5rem;
-$workspace-circle-size: 1rem;
 $inactive-bg-lightness: 20%;
-$audio-slider-margin: 0 1em;
-$label-padding: 0 8px;
-$label-margin: 2px;
-$icon-margin-right: .6em;
 
+// Dimensions and Spacing
+$radius: 7px;
+$button-padding: 0 8px;
+$label-margin: 2px;
+$workspace-margin: 0.5rem;
+$workspace-min-size: 1rem;
+$workspace-focus-min-size: 1rem;
+$audio-slider-margin: 0 1em;
+$slider-min-size: 1em;
+$slider-margin: -0.2em;
+$icon-margin-right: 0.6em;
+
+// Typography
+$font-size: 1.1em;
+$font-weight: bold;
+
+// Transition
+$transition-duration: 200ms;
+
+// Mixin for common styles
+@mixin button-styles {
+  all: unset;
+  background-color: transparent;
+  transition: background-color $transition-duration;
+
+  &:hover label {
+    background-color: color.adjust($fg, $alpha: -0.84);
+    border-color: color.adjust($accent, $alpha: -0.8);
+  }
+
+  &:active label {
+    background-color: color.adjust($fg, $alpha: -0.8);
+  }
+}
+
+@mixin circular-styles($size: $workspace-min-size) {
+  min-width: $size;
+  min-height: $size;
+  border-radius: 50%;
+}
+
+// Main window.Bar styles
 window.Bar {
   border: none;
   box-shadow: none;
   background-color: $bg;
   color: $fg;
-  font-size: 1.1em;
-  font-weight: bold;
+  font-size: $font-size;
+  font-weight: $font-weight;
 
   button {
-    all: unset;
-    background-color: transparent;
-
-    &:hover label {
-      background-color: color.scale($fg, $alpha: -84%);
-      border-color: color.scale($accent, $alpha: -80%);
-    }
-
-    &:active label {
-      background-color: color.scale($fg, $alpha: -80%);
-    }
+    @include button-styles;
   }
 
   label {
     transition: $transition-duration;
-    padding: $label-padding;
+    padding: $button-padding;
     margin: $label-margin;
-    border-radius: $border-radius;
+    border-radius: $radius;
     border: 1pt solid transparent;
   }
 
   .Workspaces {
     button {
-      margin: $button-margin;
-      min-width: $button-size;
-      min-height: $button-size;
-      border-radius: $border-radius;
-      transition: background-color $transition-duration;
+      margin: $workspace-margin;
+      @include circular-styles($workspace-min-size);
 
       &.focused {
-        min-width: $button-focused-size;
         background-color: $accent;
       }
 
       &.inactive {
-        background-color: color.scale($bg, $lightness: $inactive-bg-lightness);
+        background-color: color.adjust($bg, $lightness: $inactive-bg-lightness);
       }
     }
 
     .WorkspaceCircle {
-      min-width: $workspace-circle-size;
-      min-height: $workspace-circle-size;
-      border-radius: $border-radius;
+      @include circular-styles($workspace-min-size);
     }
   }
 
@@ -75,15 +93,15 @@ window.Bar {
   }
 
   .Media .Cover {
-    min-height: 1.2em;
     min-width: 1.2em;
-    border-radius: $border-radius;
+    min-height: 1.2em;
+    border-radius: $radius;
     background-position: center;
     background-size: contain;
   }
 
   .SysTray {
-    margin: .5em;
+    margin: 0.5em;
   }
 
   .Battery label {
@@ -92,6 +110,8 @@ window.Bar {
   }
 
   .AudioSlider {
+    margin: $audio-slider-margin;
+
     * {
       all: unset;
     }
@@ -100,25 +120,26 @@ window.Bar {
       margin-right: $icon-margin-right;
     }
 
-    margin: $audio-slider-margin;
+    trough,
+    highlight,
+    slider {
+      border-radius: $radius;
+    }
 
     trough {
-      background-color: color.scale($fg, $alpha: -80%);
-      border-radius: $border-radius;
+      background-color: color.adjust($fg, $alpha: -0.8);
     }
 
     highlight {
       background-color: $accent;
-      min-height: .8em;
-      border-radius: $border-radius;
+      min-height: 0.8em;
     }
 
     slider {
       background-color: $fg;
-      border-radius: $border-radius;
-      min-height: 1em;
-      min-width: 1em;
-      margin: -.2em;
+      min-height: $slider-min-size;
+      min-width: $slider-min-size;
+      margin: $slider-margin;
     }
   }
 }
