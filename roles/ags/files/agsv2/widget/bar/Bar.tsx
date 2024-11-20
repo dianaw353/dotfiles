@@ -27,6 +27,7 @@ export default function Bar(monitor: Gdk.Monitor) {
                 <FocusedClient />
             </box>
             <box>
+                <Time />
                 <Media />
             </box>
             <box hexpand halign={Gtk.Align.END} >
@@ -34,7 +35,6 @@ export default function Bar(monitor: Gdk.Monitor) {
                 <Wifi />
                 <Audio />
                 <BatteryLevel />
-                <Time />
             </box>
         </centerbox>
     </window>

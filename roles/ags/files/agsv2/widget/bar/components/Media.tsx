@@ -22,7 +22,7 @@ export default function Media() {
                 />
             </box>
         ) : (
-            "Nothing Playing"
+            ""
         ))}
     </box>
 }

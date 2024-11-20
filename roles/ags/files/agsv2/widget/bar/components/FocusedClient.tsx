@@ -9,7 +9,7 @@ export default function FocusedClient() {
     return (
         <box className="Focused" visible={focused.as(Boolean)}>
             {focused.as(client => (
-                client && <label label={bind(client, "title").as(String)} />
+                client && <label label={bind(client, "initial-title").as(String)} />
             ))}
         </box>
     );
