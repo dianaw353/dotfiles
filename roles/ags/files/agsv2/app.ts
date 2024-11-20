@@ -1,7 +1,8 @@
 import { App } from "astal/gtk3";
-import style from "theme/dark/dark.scss";
+import style from "./theme/dark/dark.scss";
 import Bar from "./widget/bar/Bar";
 import NotificationPopups from "./widget/notifications/NotificationPopups";
+import Applauncher from "./widget/applauncher/Applauncher";
 
 App.start({
     css: style,
@@ -15,6 +16,12 @@ App.start({
         const bars = monitors.map(Bar);
         const notifications = monitors.map(NotificationPopups);
         
-        return [...bars, ...notifications];
+        const applaunchers = monitors.map(() => {
+            const launcher = Applauncher();
+            launcher.hide();
+            return launcher;
+        });
+
+        return [...bars, ...notifications, ...applaunchers];
     }
 });
