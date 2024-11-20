@@ -8,6 +8,7 @@ import BatteryLevel from "./components/BatteryLevel"
 import Media from "./components/Media"
 import FocusedClient from "./components/FocusedClient";
 import Time from "./components/Time";
+import AppLauncher from "./components/Applauncher";
 
 export default function Bar(monitor: Gdk.Monitor) {
     const anchor = Astal.WindowAnchor.TOP
@@ -21,6 +22,7 @@ export default function Bar(monitor: Gdk.Monitor) {
         anchor={anchor}>
         <centerbox>
             <box hexpand halign={Gtk.Align.START}>
+                <AppLauncher />
                 <Workspaces />
                 <FocusedClient />
             </box>
