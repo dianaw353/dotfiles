@@ -1,29 +1,5 @@
+@use './dark_variables.scss' as *;
 @use 'sass:color';
-
-// --- Variables ---
-$bg: #212223;
-$fg: #f1f1f1;
-$accent: #378DF7;
-$button-bg-hover: color.adjust($fg, $alpha: -0.84);
-$button-bg-active: color.adjust($fg, $alpha: -0.8);
-$border-color-transparent: transparent;
-$border-color-inactive: color.adjust($bg, $lightness: 20%);
-
-// Dimensions & Spacing
-$radius: 6px;
-$button-padding: 0 6px;
-$label-margin: .25rem;
-$margin: 0.5rem;
-$min-size: .5rem; // Combined min-size for workspace and slider
-$slider-margin: -0.2em;
-$icon-margin-right: 0.6em;
-$border-width: 3pt;
-$font-size: 1.1em;
-$font-weight: bold;
-$font-family: 'Arial', sans-serif;
-
-// Transitions
-$transition-duration: 200ms;
 
 // --- Mixins ---
 

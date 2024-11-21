@@ -1,15 +1,6 @@
+@use './dark_variables.scss' as *;
 @use 'sass:string';
 @use 'sass:color';
-
-// --- Variables ---
-$bg: #212223; // Background color
-$fg: #f1f1f1; // Foreground (text) color
-$error: red;
-$box-shadow: 2px 3px 8px 0 rgba(0, 0, 0, 0.4); // Box shadow
-$border-radius: 13px;
-$margin: 1rem;
-$padding: 0.5rem;
-$font-size: 1.2em;
 
 // --- Main Styles ---
 

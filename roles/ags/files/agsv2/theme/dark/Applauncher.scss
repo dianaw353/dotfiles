@@ -1,20 +1,6 @@
+@use './dark_variables.scss' as *;
 @use 'sass:string';
 @use 'sass:color';
-
-// --- Variables ---
-$bg: #212223;
-$fg: #f1f1f1;
-$accent: #378DF7;
-$button-bg-hover: color.adjust($fg, $alpha: -0.84);
-$button-bg-active: color.adjust($fg, $alpha: -0.8);
-$border-radius: 11px;
-$margin: 1rem;
-$padding: .8rem;
-$box-shadow: 2px 3px 8px 0 rgba(0, 0, 0, 0.4);
-
-$font-size: 1.1em;
-$font-weight: bold;
-$font-family: 'Arial', sans-serif;
 
 // --- Main Styles ---
 
