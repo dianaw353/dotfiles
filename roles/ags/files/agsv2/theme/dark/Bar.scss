@@ -1,53 +1,57 @@
 @use 'sass:color';
 
-// Variables
-// Colors
+// --- Variables ---
 $bg: #212223;
 $fg: #f1f1f1;
 $accent: #378DF7;
-$inactive-bg-lightness: 20%;
+$button-bg-hover: color.adjust($fg, $alpha: -0.84);
+$button-bg-active: color.adjust($fg, $alpha: -0.8);
+$border-color-transparent: transparent;
+$border-color-inactive: color.adjust($bg, $lightness: 20%);
 
-// Dimensions and Spacing
-$radius: 7px;
-$button-padding: 0 8px;
+// Dimensions & Spacing
+$radius: 6px;
+$button-padding: 0 6px;
 $label-margin: .25rem;
 $margin: 0.5rem;
-$workspace-min-size: 1rem;
-$workspace-focus-min-size: 1rem;
-$slider-min-size: 1em;
+$min-size: .5rem; // Combined min-size for workspace and slider
 $slider-margin: -0.2em;
 $icon-margin-right: 0.6em;
-
-// Typography
+$border-width: 3pt;
 $font-size: 1.1em;
 $font-weight: bold;
+$font-family: 'Arial', sans-serif;
 
-// Transition
+// Transitions
 $transition-duration: 200ms;
 
-// Mixin for common styles
-@mixin button-styles {
+// --- Mixins ---
+
+// Mixin for button styles
+@mixin button-styles($hover-bg-color: $button-bg-hover, $active-bg-color: $button-bg-active, $accent-color: $accent) {
   all: unset;
   background-color: transparent;
   transition: background-color $transition-duration;
 
   &:hover label {
-    background-color: color.adjust($fg, $alpha: -0.84);
-    border-color: color.adjust($accent, $alpha: -0.8);
+    background-color: $hover-bg-color;
+    border-color: color.adjust($accent-color, $alpha: -0.8);
   }
 
   &:active label {
-    background-color: color.adjust($fg, $alpha: -0.8);
+    background-color: $active-bg-color;
   }
 }
 
-@mixin circular-styles($size: $workspace-min-size) {
+// Mixin for circular styles
+@mixin circular-styles($size: $min-size) {
   min-width: $size;
   min-height: $size;
   border-radius: 50%;
 }
 
-// Main window.Bar styles
+// --- Main Styles ---
+
 window.Bar {
   border: none;
   box-shadow: none;
@@ -55,6 +59,7 @@ window.Bar {
   color: $fg;
   font-size: $font-size;
   font-weight: $font-weight;
+  font-family: $font-family;
 
   button {
     @include button-styles;
@@ -65,25 +70,25 @@ window.Bar {
     padding: $button-padding;
     margin: $label-margin;
     border-radius: $radius;
-    border: 3pt solid transparent;
+    border: $border-width solid $border-color-transparent;
   }
 
   .Workspaces {
     button {
       margin: $margin;
-      @include circular-styles($workspace-min-size);
+      @include circular-styles($min-size);
 
       &.focused {
         background-color: $accent;
       }
 
       &.inactive {
-        background-color: color.adjust($bg, $lightness: $inactive-bg-lightness);
+        background-color: $border-color-inactive;
       }
     }
 
     .WorkspaceCircle {
-      @include circular-styles($workspace-min-size);
+      @include circular-styles(1.5rem);
     }
   }
 

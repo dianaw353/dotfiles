@@ -1,13 +1,17 @@
-@use "sass:string";
+@use 'sass:string';
+@use 'sass:color';
 
-@function gtkalpha($c, $a) {
-  @return string.unquote("alpha(#{$c},#{$a})");
-}
-
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #{"@theme_fg_color"};
-$bg-color: #{"@theme_bg_color"};
+// --- Variables ---
+$bg: #212223; // Background color
+$fg: #f1f1f1; // Foreground (text) color
 $error: red;
+$box-shadow: 2px 3px 8px 0 rgba(0, 0, 0, 0.4); // Box shadow
+$border-radius: 13px;
+$margin: 1rem;
+$padding: 0.5rem;
+$font-size: 1.2em;
+
+// --- Main Styles ---
 
 window.NotificationPopups {
   all: unset;
@@ -16,42 +20,40 @@ window.NotificationPopups {
 eventbox.Notification {
 
   &:first-child>box {
-    margin-top: 1rem;
+    margin-top: $margin;
   }
 
   &:last-child>box {
-    margin-bottom: 1rem;
+    margin-bottom: $margin;
   }
 
-  // eventboxes can not take margins so we style its inner box instead
+  // eventboxes cannot take margins, so we style the inner box instead
   >box {
     min-width: 400px;
-    border-radius: 13px;
-    background-color: $bg-color;
+    border-radius: $border-radius;
+    background-color: $bg;
     margin: .5rem 1rem .5rem 1rem;
-    box-shadow: 2px 3px 8px 0 gtkalpha(black, .4);
-    border: 1pt solid gtkalpha($fg-color, .03);
+    box-shadow: $box-shadow;
+    border: 1pt solid rgba($fg, 0.03); // Use rgba for the border color
   }
 
   &.critical>box {
-    border: 1pt solid gtkalpha($error, .4);
+    border: 1pt solid rgba($error, 0.4);
 
     .header {
-
       .app-name {
-        color: gtkalpha($error, .8);
-
+        color: rgba($error, 0.8);
       }
 
       .app-icon {
-        color: gtkalpha($error, .6);
+        color: rgba($error, 0.6);
       }
     }
   }
 
   .header {
-    padding: .5rem;
-    color: gtkalpha($fg-color, 0.5);
+    padding: $padding;
+    color: rgba($fg, 0.5);
 
     .app-icon {
       margin: 0 .4rem;
@@ -79,7 +81,7 @@ eventbox.Notification {
 
   separator {
     margin: 0 .4rem;
-    background-color: gtkalpha($fg-color, .1);
+    background-color: rgba($fg, 0.1); // Use rgba for separator background
   }
 
   .content {
@@ -87,16 +89,16 @@ eventbox.Notification {
     margin-top: .5rem;
 
     .summary {
-      font-size: 1.2em;
-      color: $fg-color;
+      font-size: $font-size;
+      color: $fg;
     }
 
     .body {
-      color: gtkalpha($fg-color, 0.8);
+      color: rgba($fg, 0.8);
     }
 
     .image {
-      border: 1px solid gtkalpha($fg-color, .02);
+      border: 1px solid rgba($fg, 0.02);
       margin-right: .5rem;
       border-radius: 9px;
       min-width: 100px;
