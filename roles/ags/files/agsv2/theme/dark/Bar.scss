@@ -91,12 +91,10 @@ window.Bar {
     color: $accent;
   }
 
-  .Media .Cover {
+  .Media {
     min-width: 1.2em;
     min-height: 1.2em;
     border-radius: $radius;
-    background-position: center;
-    background-size: contain;
   }
 
   .SysTray {
