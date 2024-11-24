@@ -95,4 +95,9 @@ window.Bar {
     margin-left: $margin;
     margin-right: $margin;
   }
+
+  // PowerButton margin
+  .PowerButton {
+    margin-right: $margin; // Adjust the right margin as needed
+  }
 }

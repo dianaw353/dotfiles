@@ -1,0 +1,58 @@
+@use './dark_variables.scss' as *;
+
+// Window Styling
+.window {
+  background-color: $bg;
+  color: $fg;
+  padding: $padding;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+  font-family: $font-family;
+}
+
+// Powermenu Container Styling
+.powermenu-container {
+  padding: $margin;
+  background-color: $bg;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+}
+
+// Action Buttons Container
+.action-buttons {
+  padding-top: $margin;
+  padding-bottom: $margin;
+}
+
+// Action Button Styling
+.action-button {
+  background-color: $accent;
+  color: $fg;
+  padding: $button-padding;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  border: $border-width solid $border-color-inactive;
+  border-radius: $radius;
+  transition: background-color $transition-duration, transform $transition-duration;
+
+  &:hover {
+    background-color: $button-bg-hover;
+  }
+
+  &:active {
+    background-color: $button-bg-active;
+  }
+
+  .action-icon {
+    margin-right: $icon-margin-right;
+  }
+
+  .action-label {
+    margin-left: $label-margin;
+  }
+}
+
+// Overlay Background
+.overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+}

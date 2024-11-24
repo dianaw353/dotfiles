@@ -1,5 +1,5 @@
 import { Astal, Gtk, Gdk } from "astal/gtk3"
-
+import PowerButton from "./components/PowerButton";
 import Workspaces from "./components/Workspaces"
 import SysTray from "./components/SysTray"
 import Wifi from "./components/Wifi"
@@ -35,7 +35,9 @@ export default function Bar(monitor: Gdk.Monitor) {
                 <Wifi />
                 <Audio />
                 <BatteryLevel />
+                <PowerButton />
             </box>
         </centerbox>
     </window>
 }
+
