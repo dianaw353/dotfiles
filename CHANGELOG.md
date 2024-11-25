@@ -1,14 +1,22 @@
 Version 1.1.9-dev
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 -------------------------------------------------------------
-**Script**
-- AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
+**Changes**
 - AGS: Install AGSv2 config on both AGS versions.
 - AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
+- Hyprland: Put HyprPM stuff in a separate role. This change brings the following changes along:
+  - Check if Hyprland is running or not before actually running HyprPM. This should buy me enough time to make an implementation to have it run on autostart instead of completely skipping it.
+  - Remove `system.hyprland.plugins.enabled` variable. The rest of the variables inside `system.hyprland.plugins` stay as is.
+    - **If your modification used to rely on this variable's presence in one way or another, you should either restore the variable downstream or check if `hyprpm` is in `default_roles` instead.**
+
+**Script**
 - Core apps: Create configuration directory for Vesktop to link `electron-flags.conf` in there properly.
-- VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
+
+**Fixes**
+- AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
+- VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
 
 Version 1.1.8
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8
