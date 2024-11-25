@@ -48,4 +48,4 @@
         - { src: 'environment.conf.j2', dest: 'config/environment.conf' }
         - { src: 'hyprlock.conf.j2', dest: 'hyprlock.conf' }
         - { src: 'keybindings.conf.j2', dest: 'config/keybindings/default.conf' }
-        - { src: 'relaod.sh.j2', dest: 'scripts/ags/reload.sh' }
+        - { src: 'reload.sh.j2', dest: 'scripts/ags/reload.sh' }
