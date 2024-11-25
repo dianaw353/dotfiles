@@ -83,7 +83,7 @@ system:
     # See Aylur/ags#618 for more info.
     #
     # v1 or v2 or both
-    version: v1
+    version: both
 
 i18n:
   # Supplementary fonts

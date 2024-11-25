@@ -5,6 +5,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
 - VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
+- Vars: Set default preferred version for AGS to `both`. This will install both v1 and v2 with a keybind to switch between either.
 
 Version 1.1.8
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8
