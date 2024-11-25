@@ -12,7 +12,6 @@
         - hyprlang
         - hyprutils-git
         - hyprwayland-scanner-git
-        - hyprland
         - hypridle
         - hyprlock
         - xdg-desktop-portal-hyprland
@@ -26,6 +25,7 @@
         - hyprpicker
         # hyprshade
         - hyprsunset-git
+        - hyprland
 
 - name: Test Hyprpm After Installation and Rebuild If Necessary
   when:
