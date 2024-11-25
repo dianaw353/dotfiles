@@ -3,6 +3,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 -------------------------------------------------------------
 **Script**
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
+- AGS: Install AGSv2 config on both AGS versions.
+- AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
 - VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 

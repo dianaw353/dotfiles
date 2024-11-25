@@ -77,7 +77,7 @@
         recursive: yes
       when:
         - system.ags.version is defined
-        - system.ags.version == "v2"
+        - system.ags.version == "v2" or system.ags.version == "both"
       loop:
         - { src: "agsv2", dest: "{{ ansible_user_dir }}/.config/" }
 
@@ -92,7 +92,6 @@
         - system.ags.version == "both"
       loop:
         - { src: "shortcuts.ts.j2", version: "ags" }
-        - { src: "shortcuts.ts.j2", version: "agsv2" }
         
     - name: Ags system config - Agsv1
       ansible.posix.synchronize:
