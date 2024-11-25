@@ -1,3 +1,9 @@
+Version 1.1.9-dev
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
+-------------------------------------------------------------
+**Changes**
+- Vars: Set default preferred version for AGS to `both`. This will install both v1 and v2 with a keybind to switch between either.
+
 Version 1.1.8.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 -----------------------------------------------------------
