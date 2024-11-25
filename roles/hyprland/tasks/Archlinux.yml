@@ -8,10 +8,11 @@
         use: "{{ pacman.aur_helper }}"
       become: false
       loop:
-        - hyprcursor
-        - hyprlang
         - hyprutils-git
         - hyprwayland-scanner-git
+        - hyprsunset-git
+        - hyprcursor
+        - hyprlang
         - hypridle
         - hyprlock
         - xdg-desktop-portal-hyprland
@@ -24,7 +25,6 @@
         - "{{ icons.system_icons_package }}"
         - hyprpicker
         # hyprshade
-        - hyprsunset-git
         - hyprland
 
 - name: Test Hyprpm After Installation and Rebuild If Necessary
