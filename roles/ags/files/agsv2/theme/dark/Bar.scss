@@ -1,10 +1,17 @@
-@use './dark_variables.scss' as *;
+@use './dark_variables' as *;
 @use 'sass:color';
+@use 'sass:math'; // Import the math module for division
 
 // --- Mixins ---
 
+// Mixin for circular styles
+@mixin circular-styles($size: $min-size) {
+  padding: math.div($size, 2); // Use math.div for division
+  border-radius: 50%; // Ensure it's circular
+}
+
 // Mixin for button styles
-@mixin button-styles($hover-bg-color: $button-bg-hover, $active-bg-color: $button-bg-active, $accent-color: $accent) {
+@mixin button-styles($hover-bg-color: $button-bg-hover, $active-bg-color: $button-bg-active, $accent-color: $primary-bg) {
   all: unset;
   background-color: transparent;
   transition: background-color $transition-duration;
@@ -19,18 +26,9 @@
   }
 }
 
-// Mixin for circular styles
-@mixin circular-styles($size: $min-size) {
-  min-width: $size;
-  min-height: $size;
-  border-radius: 50%;
-}
-
 // --- Main Styles ---
 
 window.Bar {
-  border: none;
-  box-shadow: none;
   background-color: $bg;
   color: $fg;
   font-size: $font-size;
@@ -45,58 +43,39 @@ window.Bar {
     transition: $transition-duration;
     padding: $button-padding;
     margin: $label-margin;
-    border-radius: $radius;
     border: $border-width solid $border-color-transparent;
   }
 
   .Workspaces {
     button {
       margin: $margin;
-      @include circular-styles($min-size);
+      @include circular-styles(1rem); // Adjust size as needed for perfect circle
 
       &.focused {
-        background-color: $accent;
+        background-color: $primary-bg;
       }
 
       &.inactive {
-        background-color: $border-color-inactive;
+        background-color: color.adjust($bg, $lightness: 15%);
       }
     }
 
     .WorkspaceCircle {
-      @include circular-styles(1.5rem);
+      @include circular-styles(1rem); // Ensure the circle is a perfect size
     }
   }
 
   .FocusedClient {
-    color: $accent;
+    color: $primary-bg;
   }
 
-  .Media {
-    min-width: 1.2em;
-    min-height: 1.2em;
-    border-radius: $radius;
-  }
-
-  .SysTray {
-    margin: $margin;
-
-    button {
-      margin-left: $margin;
-    }
-  }
-
-  .Battery label {
-    padding-left: 0;
-    margin-left: $margin;
-  }
-
+  .Media,
+  .SysTray,
+  .Battery label,
   .Audio {
-    margin-left: $margin;
-    margin-right: $margin;
+    margin: $margin;
   }
 
-  // PowerButton margin
   .PowerButton {
     margin-right: $margin; // Adjust the right margin as needed
   }

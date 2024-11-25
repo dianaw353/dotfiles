@@ -1,11 +1,11 @@
-@use './dark_variables.scss' as *;
+@use './dark_variables' as *;
 
 // Window Styling
 .window {
   background-color: $bg;
   color: $fg;
   padding: $padding;
-  border-radius: $radius;
+  border-radius: $border-radius;
   box-shadow: $box-shadow;
   font-family: $font-family;
 }
@@ -14,7 +14,7 @@
 .powermenu-container {
   padding: $margin;
   background-color: $bg;
-  border-radius: $radius;
+  border-radius: $border-radius;
   box-shadow: $box-shadow;
 }
 
@@ -26,13 +26,13 @@
 
 // Action Button Styling
 .action-button {
-  background-color: $accent;
+  background-color: $primary-bg;
   color: $fg;
   padding: $button-padding;
   font-size: $font-size;
   font-weight: $font-weight;
   border: $border-width solid $border-color-inactive;
-  border-radius: $radius;
+  border-radius: $border-radius;
   transition: background-color $transition-duration, transform $transition-duration;
 
   &:hover {

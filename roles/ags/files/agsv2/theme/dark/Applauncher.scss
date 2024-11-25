@@ -1,4 +1,4 @@
-@use './dark_variables.scss' as *;
+@use './dark_variables' as *;
 @use 'sass:string';
 @use 'sass:color';
 
@@ -16,14 +16,14 @@ window#launcher {
 
     entry {
       margin-bottom: $margin;
-      border: $border-width solid $accent;
+      border: $border-width solid $primary-bg;
     }
 
     button {
       min-width: 0;
       min-height: 0;
       padding: .5rem;
-      border: $border-width solid $accent;
+      border: $border-width solid $primary-bg;
 
       icon {
         font-size: 3em;

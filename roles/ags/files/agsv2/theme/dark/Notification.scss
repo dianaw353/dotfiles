@@ -1,4 +1,4 @@
-@use './dark_variables.scss' as *;
+@use './dark_variables' as *;
 @use 'sass:string';
 @use 'sass:color';
 
@@ -18,14 +18,13 @@ eventbox.Notification {
     margin-bottom: $margin;
   }
 
-  // eventboxes cannot take margins, so we style the inner box instead
   >box {
     min-width: 400px;
     border-radius: $border-radius;
     background-color: $bg;
-    margin: .5rem 1rem .5rem 1rem;
+    margin: .5rem 1rem;
     box-shadow: $box-shadow;
-    border: 1pt solid rgba($fg, 0.03); // Use rgba for the border color
+    border: 1pt solid rgba($fg, 0.03);
   }
 
   &.critical>box {
@@ -72,7 +71,7 @@ eventbox.Notification {
 
   separator {
     margin: 0 .4rem;
-    background-color: rgba($fg, 0.1); // Use rgba for separator background
+    background-color: rgba($fg, 0.1);
   }
 
   .content {
