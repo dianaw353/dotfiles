@@ -19,6 +19,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
 - Hyprland: Port over the check for AGS version check in switch-ags to all scripts related to AGS.
+- Hyprland: Run desired AGS version if reload is triggered but there's no AGS instance running.
+  - AGSv1 will run if system.ags.version == v1 or both.
+  - AGSv2 will run if system.ags.version == v2.
 - VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
 
 Version 1.1.8
