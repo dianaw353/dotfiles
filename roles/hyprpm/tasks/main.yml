@@ -23,11 +23,11 @@
     - name: Install HyprPM Packages
       when: "'running' in hyprland_running.stdout"
       block:
-        - name: "HyprPM | Update hyprpm package list"
+        - name: "HyprPM | Update HyprPM Package List"
           command: hyprpm update
           changed_when: no
 
-        - name: "HyprPM | Add plugin repos"
+        - name: "HyprPM | Add Plugin Repos If Any"
           ansible.builtin.shell:
             cmd: "yes | hyprpm add {{ item }}"
           loop: "{{ system.hyprland.plugins.list }}"
@@ -35,22 +35,20 @@
           when: system.hyprland.plugins.list is defined
           changed_when: no
 
-        - name: "HyprPM | Gather the names of installed plugins"
+        - name: "HyprPM | Gather The Names Of Installed Packages"
           ansible.builtin.shell:
             cmd: "hyprpm list | grep Plugin | sed 's/.* //'"
-          ignore_errors: yes
           register: installed_hypr_packages
           changed_when: no
 
-        - name: "HyprPM | Print the names of the detected packages"
+        - name: "HyprPM | Print The Names Of The Detected Packages If Any"
           ansible.builtin.debug:
             var: installed_hypr_packages.stdout_lines
           when: installed_hypr_packages.stdout_lines is defined
 
-        - name: "HyprPM | Enable all installed plugins"
+        - name: "HyprPM | Enable All Detected Packages If Any"
           ansible.builtin.command:
             cmd: "hyprpm enable {{ item }}"
           loop: "{{ installed_hypr_packages.stdout_lines }}"
-          ignore_errors: yes
           when: installed_hypr_packages.stdout_lines is defined
           changed_when: no
