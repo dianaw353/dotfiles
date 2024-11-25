@@ -18,6 +18,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - AGS: Remove the separate AGSv1 build dependencies installation step.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
+- Hyprland: Port over the check for AGS version check in switch-ags to all scripts related to AGS.
 - VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
 
 Version 1.1.8
