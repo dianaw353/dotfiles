@@ -16,6 +16,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 **Fixes**
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
 - AGS: Remove the separate AGSv1 build dependencies installation step.
+- Hyprland: Add touchpad toggle keybinding into the keybindings template too.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
 - Hyprland: Port over the check for AGS version check in switch-ags to all scripts related to AGS.
