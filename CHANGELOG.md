@@ -4,6 +4,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 **Changes**
 - AGS: Install AGSv2 config on both AGS versions.
 - AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
+- AGS: Remove AGSv2 uninstall step from AGSv1 build task.
 - Hyprland: Put HyprPM stuff in a separate role. This change brings the following changes along:
   - Check if Hyprland is running or not before actually running HyprPM. This should buy me enough time to make an implementation to have it run on autostart instead of completely skipping it.
   - Remove `system.hyprland.plugins.enabled` variable. The rest of the variables inside `system.hyprland.plugins` stay as is.
@@ -14,6 +15,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 
 **Fixes**
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
+- AGS: Remove the separate AGSv1 build dependencies installation step.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
 - VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
