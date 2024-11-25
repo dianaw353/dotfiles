@@ -69,7 +69,7 @@
           cd {{ ansible_user_dir }}/agsv1_rebuild
           /usr/bin/curl -fsSL https://github.com/kotontrion/PKGBUILDS/raw/main/agsv1/PKGBUILD > PKGBUILD
           pkgname=$(bash -c 'source PKGBUILD && echo "${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"')
-          makepkg -sC
+          makepkg -sC --noconfirm
           if [ "$?" == "13" ] && [ ! -f "${pkgname}" ]; then
             false
           fi
