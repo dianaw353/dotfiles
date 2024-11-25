@@ -51,6 +51,13 @@
     - system.ags.version is defined
     - system.ags.version == "v1" or system.ags.version == "both"
   block:
+    - name: Check if AGSv1 is Already Installed
+      ansible.builtin.shell:
+        cmd: |
+          pacman -Q agsv1 || true
+      changed_when: no
+      register: agsv1_installed
+
     - name: Build AGSv1
       ansible.builtin.shell:
         cmd: |
@@ -64,13 +71,10 @@
           fi
       register: agsv1_build_outcome
       changed_when: "'Finished making' in agsv1_build_outcome.stdout"
+      when: "'not found' in agsv1_installed.stderr"
 
     - name: Install Built AGSv1
-      ansible.builtin.shell:
-        cmd: |
-          cd {{ ansible_user_dir }}/agsv1_rebuild
-          pkgname=$(bash -c 'source PKGBUILD && echo "${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"')
-          pacman -U --noconfirm {{ ansible_user_dir }}/agsv1_rebuild/${pkgname}
+      community.general.pacman:
+        name: "{{ ansible_user_dir }}/agsv1_rebuild/agsv1-1.9.0-1-x86_64.pkg.tar.zst"
       become: true
-      register: agsv1_install_outcome
-      changed_when: "'is up to date' not in agsv1_install_outcome.stderr"
+      when: "'not found' in agsv1_installed.stderr"

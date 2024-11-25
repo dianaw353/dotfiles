@@ -14,7 +14,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - Core apps: Create configuration directory for Vesktop to link `electron-flags.conf` in there properly.
 
 **Fixes**
+- AGS: Check if AGSv1 is already installed before proceeding with a rebuild.
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
+- AGS: Migrate to Ansible-native way of handling local packages.
 - AGS: Remove the separate AGSv1 build dependencies installation step.
 - Hyprland: Add touchpad toggle keybinding into the keybindings template too.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
@@ -23,6 +25,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - Hyprland: Run desired AGS version if reload is triggered but there's no AGS instance running.
   - AGSv1 will run if system.ags.version == v1 or both.
   - AGSv2 will run if system.ags.version == v2.
+- HyprPM: Port the changes in package build process from the AGS role to Hyprland rebuild.
 - VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
 
 Version 1.1.8
