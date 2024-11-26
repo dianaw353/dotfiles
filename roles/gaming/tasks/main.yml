@@ -8,3 +8,10 @@
   ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
   when: gaming_distribution_config.stat.exists
 
+- name: Gaming | Disable IPv6 on Kernel
+  ansible.posix.synchronize:
+    mode: push
+    src: modprobe.d/ipv6.conf
+    dest: /etc/modprobe.d/ipv6.conf
+  become: true
+  when: "'lutris' in gaming.launchers"

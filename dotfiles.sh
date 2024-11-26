@@ -51,7 +51,9 @@ META OPTIONS
 
 BRANCH
   stable                     Use the stable release from GitHub (downloads the latest release as a ZIP file).
-  rolling                    Clone the latest version directly from the GitHub repository.
+  rolling                    Clone the latest version directly from the **main** branch of the GitHub repository.
+  developer                  Clone the latest version directly from the **dev** branch of the GitHub repository.
+                             Keep in mind that the dev branch has frequent changes and defaults to AGSv2 in many places!
 
 EOF
 }
@@ -65,6 +67,12 @@ while [[ $# -gt 0 ]]; do
       ;;
     rolling)
       MODE="rolling"
+      REPO_BRANCH="main"
+      shift
+      ;;
+    developer)
+      MODE="developer"
+      REPO_BRANCH="dev"
       shift
       ;;
     -h|--help)
@@ -158,6 +166,9 @@ function get_latest_version {
   if [[ $MODE == "rolling" ]]; then
     curl --silent "https://api.github.com/repos/$REPO/commits/heads/main" | \
       jq -r .sha
+  elif [[ $MODE == "developer" ]]; then
+    curl --silent "https://api.github.com/repos/$REPO/commits/heads/dev" | \
+      jq -r .sha
   else
     curl --silent "https://api.github.com/repos/$REPO/releases/latest" | \
       jq -r .tag_name
@@ -166,7 +177,7 @@ function get_latest_version {
 
 # Get the installed version
 function get_installed_version {
-  if [[ $MODE == "rolling" ]] && [[ -d "$DOTFILES_DIR/.git" ]]; then
+  if [[ $MODE == "rolling" || "developer" ]] && [[ -d "$DOTFILES_DIR/.git" ]]; then
     cd $DOTFILES_DIR
     git rev-parse HEAD
   elif [[ -f "$DOTFILES_DIR/VERSION" ]]; then
@@ -199,12 +210,7 @@ function upgrade {
 
   _task "Upgrading existing dotfiles..."
   _cmd "cd $DOTFILES_DIR" 3 2 "Failed to enter into existing dotfiles directory."
-  if [[ -d "$DOTFILES_DIR/.git" ]]; then
-    _cmd "git stash" 3 2 "Failed to stash unstaged changes."
-    _cmd "git fetch $REPO_URL $latest_version" 3 2 "Failed to fetch the latest version."
-    _cmd "git checkout FETCH_HEAD" 3 2 "Failed to checkout fetched version."
-    _cmd "echo 'Upgrade complete! You may want to pop your stash with git stash pop.'" 1 0 "Upgrade complete! You may want to pop your stash with git stash pop."
-  elif [[ -f "$DOTFILES_DIR/VERSION" ]]; then
+  if [[ -f "$DOTFILES_DIR/VERSION" ]]; then
     _cmd "$(get_upgrade_diff) | patch -p1" 3 2 "Failed to fetch and apply the update."
   fi
 }
@@ -234,16 +240,27 @@ function download_latest_release {
   _cmd "rm -rf $zip_file $HOME/dotfiles_temp" 3 2 "Cleanup failed."
 }
 
-# Clone repository for rolling updates
+# Clone repository for rolling or developer updates
 function clone_repository {
   if [[ ! -d "$DOTFILES_DIR/.git" ]]; then
     _task "Cloning the repository"
     _cmd "rm -rf $DOTFILES_DIR" 3 2 "Failed to remove old dotfiles directory."
-    _cmd "git clone $REPO_URL $DOTFILES_DIR" 3 2 "Failed to clone repository."
+    _cmd "git clone $REPO_URL -b $REPO_BRANCH $DOTFILES_DIR" 3 2 "Failed to clone repository."
   else
     _task "Pulling latest changes"
     _cmd "cd $DOTFILES_DIR" 3 2 "Failed to enter into existing dotfiles directory."
-    _cmd "git pull $REPO_URL main --rebase" 3 2 "Failed to pull the latest changes."
+    _cmd "git fetch $REPO_URL $REPO_BRANCH" 3 2 "Failed to fetch the latest changes on the requested release."
+    _task "Backing up out-of-tree patches"
+    _cmd "git stash" 3 2 "Failed to stash uncommitted changes."
+    _cmd "git format-patch -o oot_patches origin/$(git branch --show-current)" 3 2 "Failed to create patch files for out-of-tree commits."
+    _task "Performing an in-place upgrade"
+    _cmd "git checkout FETCH_HEAD" 3 2 "Failed to checkout to the requested release."
+    _cmd "git branch -M $REPO_BRANCH" 3 2 "Failed to create the target branch."
+    _task "Restoring out-of-tree patches"
+    _cmd "git am --empty=drop oot_patches/*.patch" 1 0 "Failed to apply out-of-tree patches. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    _cmd "git stash pop" 1 0 "Failed to reapply the uncommitted changes. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    _task "Cleaning up"
+    _cmd "rm -rf oot_patches" 3 2 "Failed to delete the temporary directory for out-of-tree patches."
   fi
 }
 
@@ -260,11 +277,11 @@ case $ID in
     ;;
 esac
 
-if [[ -f "$DOTFILES_DIR/VERSION" ]]; then
+if [[ $MODE == "rolling" || "developer" ]]; then
+  clone_repository
+elif [[ -f "$DOTFILES_DIR/VERSION" ]]; then
   check_version
   upgrade
-elif [[ $MODE == "rolling" ]]; then
-  clone_repository
 else
   download_latest_release
 fi

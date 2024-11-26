@@ -9,7 +9,7 @@
       loop:
         - "{{ system.headers_package }}"
 
-    - name: Install KVM packages
+    - name: Install VMware Workstation
       kewlfft.aur.aur:
         name: "{{ item }}"
         state: present

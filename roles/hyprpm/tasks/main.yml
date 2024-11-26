@@ -1,0 +1,54 @@
+---
+- name: "HyprPM | Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: hyprpm_distribution_config
+
+- name: "HyprPM | Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks:
+    file: "{{ ansible_distribution }}.yml"
+  when: hyprpm_distribution_config.stat.exists
+
+- name: Configure Hyprland Packages
+  block:
+    - name: "HyprPM | Hyprland Process Check"
+      ansible.builtin.shell:
+        cmd: |
+          if pgrep -x "Hyprland" > /dev/null; then
+            echo "running"
+          fi
+      register: hyprland_running
+      changed_when: no
+
+    - name: Install HyprPM Packages
+      when: "'running' in hyprland_running.stdout"
+      block:
+        - name: "HyprPM | Update HyprPM Package List"
+          command: hyprpm update
+          changed_when: no
+
+        - name: "HyprPM | Add Plugin Repos If Any"
+          ansible.builtin.shell:
+            cmd: "yes | hyprpm add {{ item }}"
+          loop: "{{ system.hyprland.plugins.list }}"
+          ignore_errors: yes
+          when: system.hyprland.plugins.list is defined
+          changed_when: no
+
+        - name: "HyprPM | Gather The Names Of Installed Packages"
+          ansible.builtin.shell:
+            cmd: "hyprpm list | grep Plugin | sed 's/.* //'"
+          register: installed_hypr_packages
+          changed_when: no
+
+        - name: "HyprPM | Print The Names Of The Detected Packages If Any"
+          ansible.builtin.debug:
+            var: installed_hypr_packages.stdout_lines
+          when: installed_hypr_packages.stdout_lines is defined
+
+        - name: "HyprPM | Enable All Detected Packages If Any"
+          ansible.builtin.command:
+            cmd: "hyprpm enable {{ item }}"
+          loop: "{{ installed_hypr_packages.stdout_lines }}"
+          when: installed_hypr_packages.stdout_lines is defined
+          changed_when: no

@@ -55,19 +55,7 @@ system:
         enabled: false
 
         # URL to get PKGBUILD from
-        pkgbuild_url: "https://gitlab.archlinux.org/archlinux/packaging/packages/hyprland/-/raw/2cd8a96a90616647a82ea11127b131aef6ce6e6c/PKGBUILD"
-
-      # Master switch for Hyprland plugins
-      #
-      # The Hyprland package on official Arch repo is currently broken that
-      # breaks "hyprpm", which is what we use to install the plugins.
-      # Setting this to true is not a good idea unless you rebuild the package
-      # with the proposed fix beforehand or enable rebuild_hypr_on_fail.
-      #
-      # See #53 for more info.
-      #
-      # true or false
-      enabled: false
+        #pkgbuild_url: "https://gitlab.archlinux.org/archlinux/packaging/packages/hyprland/-/raw/2cd8a96a90616647a82ea11127b131aef6ce6e6c/PKGBUILD"
 
       # List of URLs to install Hyprland plugins from
       # These URLs will each be passed to "hyprpm add" directly and
@@ -138,6 +126,7 @@ pre_tasks:
 default_roles:
   - ags
   - hyprland
+  - hyprpm
   - core_apps
   - i18n # Internationlization. Ex. fcitx5, supplementary fonts
   - custom_apps
@@ -157,6 +146,7 @@ core_packages: # outside of WM/DE dependencies
     - zed # Visual studio alternitive
     - zsh # if zsh it would install my configuration and would also install zoxide, fzf, eza, zinit, and oh-my-posh
     - helix # text editor
+    - gnome-themes-extra # Adwaita as known to be the default theme for GTK.
     - ttf-dejavu-nerd
     - mission-center # System Monitor
     - noto-fonts

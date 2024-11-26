@@ -8,11 +8,11 @@
         use: "{{ pacman.aur_helper }}"
       become: false
       loop:
-        - hyprcursor
-        - hyprlang
         - hyprutils-git
         - hyprwayland-scanner-git
-        - hyprland
+        - hyprsunset-git
+        - hyprcursor
+        - hyprlang
         - hypridle
         - hyprlock
         - xdg-desktop-portal-hyprland
@@ -25,46 +25,4 @@
         - "{{ icons.system_icons_package }}"
         - hyprpicker
         # hyprshade
-        - hyprsunset-git
-
-- name: Test Hyprpm After Installation and Rebuild If Necessary
-  when:
-    - system.hyprland.plugins.rebuild_hypr_on_failure.enabled is defined
-    - system.hyprland.plugins.rebuild_hypr_on_failure.enabled
-    - system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url is defined
-    - "'PKGBUILD' in system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url"
-  block:
-    - name: Update hyprpm package list
-      command: hyprpm update
-      changed_when: no
-
-  rescue:
-    - name: Rebuild Hyprland
-      ansible.builtin.shell:
-        cmd: |
-          mkdir -p {{ ansible_user_dir }}/hyprland_rebuild
-          cd {{ ansible_user_dir }}/hyprland_rebuild
-          /usr/bin/curl -fsSL {{ system.hyprland.plugins.rebuild_hypr_on_failure.pkgbuild_url }} > PKGBUILD
-          pkgname=$(bash -c 'source PKGBUILD && echo "${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"')
-          makepkg -sC
-          if [ "$?" == "13" ] && [ ! -f "${pkgname}" ]; then
-            false
-          fi
-      register: hyprland_rebuild_outcome
-      changed_when: "'Finished making' in hyprland_rebuild_outcome.stdout"
-
-    - name: Install Rebuilt Hyprland
-      ansible.builtin.shell:
-        cmd: |
-          pkgname=$(bash -c 'source PKGBUILD && echo "${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"')
-          pacman -U --noconfirm {{ ansible_user_dir }}/hyprland_rebuild/${pkgname}
-      become: true
-      register: hyprland_reinstall_outcome
-      changed_when: "'is up to date' not in hyprland_reinstall_outcome.stderr"
-
-  always:
-    - name: Update hyprpm package list
-      command: hyprpm update
-      ignore_errors: yes
-      register: hyprpm_update_outcome
-      changed_when: no
+        - hyprland

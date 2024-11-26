@@ -34,6 +34,13 @@
       loop:
         - { src: 'electron-flags.conf', dest: '.config/electron-flags.conf' }
 
+    - name: Create Configuration Directory for Vesktop
+      file:
+        path: "{{ ansible_user_dir }}/.config/{{ item }}"
+        state: directory
+      loop:
+        - vesktop
+
     - name: Link Electron Configuration to Non-Standard Locations
       ansible.builtin.file:
         src: "{{ ansible_user_dir }}/.config/electron-flags.conf"
