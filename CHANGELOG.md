@@ -9,6 +9,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - Hyprland: Also possess `both` AGS version config for v2-by-default reload behavior.
 - Vars: Set default preferred version for AGS to `both`. This will install both v1 and v2 with a keybind to switch between either.
 
+**Fixes**
+- AGS: Make the power menu in AGSv2 dismissable by clicking outside.
+
 Version 1.1.8.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 -----------------------------------------------------------
