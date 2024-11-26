@@ -9,6 +9,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
   - Check if Hyprland is running or not before actually running HyprPM. This should buy me enough time to make an implementation to have it run on autostart instead of completely skipping it.
   - Remove `system.hyprland.plugins.enabled` variable. The rest of the variables inside `system.hyprland.plugins` stay as is.
     - **If your modification used to rely on this variable's presence in one way or another, you should either restore the variable downstream or check if `hyprpm` is in `default_roles` instead.**
+- Gaming: Disable IPv6 kernel support if Lutris is going to be installed.
+  - This was done to boost launch time for Lutris from more than 1 minute to mere seconds. This is a known issue and this workaround is advised to do so.
 - Vars: Set default preferred version for AGS to `both`. This will install both v1 and v2 with a keybind to switch between either.
 
 **Script**
