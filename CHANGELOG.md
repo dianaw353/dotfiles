@@ -1,6 +1,6 @@
-Version 1.1.9-dev
-https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
--------------------------------------------------------------
+Version dev
+https://github.com/dianaw353/dotfiles/tree/dev
+----------------------------------------------
 **Changes**
 - AGS: Revamp the design for power menu in AGSv2.
   - It's now more familiar. ;3
