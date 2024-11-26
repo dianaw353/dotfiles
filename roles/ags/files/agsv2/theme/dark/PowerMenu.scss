@@ -12,7 +12,7 @@
 
 // Powermenu Container Styling
 .powermenu-container {
-  padding: $margin;
+  padding: $padding;
   background-color: $bg;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
@@ -20,17 +20,19 @@
 
 // Action Buttons Container
 .action-buttons {
+  margin: 1.5*$power-button-padding;
   padding-top: $margin;
   padding-bottom: $margin;
 }
 
 // Action Button Styling
 .action-button {
-  background-color: $primary-bg;
   color: $fg;
-  padding: $button-padding;
-  font-size: $font-size;
-  font-weight: $font-weight;
+  min-height: $power-button-min-dimens;
+  min-width: $power-button-min-dimens;
+  margin-left: $power-button-padding/2;
+  margin-right: $power-button-padding/2;
+  padding: 2*$power-button-padding;
   border: $border-width solid $border-color-inactive;
   border-radius: $border-radius;
   transition: background-color $transition-duration, transform $transition-duration;
@@ -39,17 +41,23 @@
     background-color: $button-bg-hover;
   }
 
+  &:focus {
+    border-color: $primary-bg;
+    background-color: $button-bg-hover;
+  }
+
   &:active {
-    background-color: $button-bg-active;
+    background-color: $primary-bg;
+    color: $bg;
   }
 
   .action-icon {
-    margin-right: $icon-margin-right;
+    font-size: $power-icon-size;
   }
+}
 
-  .action-label {
-    margin-left: $label-margin;
-  }
+.action-label {
+  font-size: $power-text-font-size;
 }
 
 // Overlay Background

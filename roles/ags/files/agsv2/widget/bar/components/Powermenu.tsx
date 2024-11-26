@@ -77,16 +77,18 @@ export default function Powermenu() {
         >
           <box orientation="horizontal" spacing={16} className="action-buttons">
             {actions.map(({ action, icon, label }) => (
-              <button
-                className="action-button"
-                onClicked={() => handleAction(action)}
-                aria-label={label}
-              >
-                <box className="action-content">
-                  <icon className="action-icon" icon={icon} />
-                  <label className="action-label" label={label} />
-                </box>
-              </button>
+              <box valign={Gtk.Align.CENTER} vertical className="action-button-master">
+                <button
+                  className="action-button"
+                  onClicked={() => handleAction(action)}
+                  aria-label={label}
+                >
+                  <box valign={Gtk.Align.CENTER} vertical className="action-container">
+                    <icon className="action-icon" icon={icon} />
+                  </box>
+                </button>
+                <label className="action-label" label={label} />
+              </box>
             ))}
           </box>
         </box>

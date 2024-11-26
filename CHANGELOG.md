@@ -6,6 +6,10 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - AGS: Install `nwg-look` for GTK2 and GTK3 theme configuration.
 - AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
 - AGS: Remove AGSv2 uninstall step from AGSv1 build task.
+- AGS: Revamp the design for power menu in AGSv2.
+  - It's now more familiar. ;3
+- AGS: Revamp the design for apps panel in AGSv2.
+  - Looks much better to look at if you ask me.
 - Core apps: Create configuration directory for Vesktop to link `electron-flags.conf` in there properly.
 - Hyprland: Put HyprPM stuff in a separate role. This change brings the following changes along:
   - Check if Hyprland is running or not before actually running HyprPM. This should buy me enough time to make an implementation to have it run on autostart instead of completely skipping it.
