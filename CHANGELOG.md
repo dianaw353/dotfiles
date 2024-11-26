@@ -2,14 +2,24 @@ Version 1.1.9-dev
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 -------------------------------------------------------------
 **Changes**
-- AGS: Install AGSv2 config on both AGS versions.
-- AGS: Install `nwg-look` for GTK2 and GTK3 theme configuration.
-- AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
-- AGS: Remove AGSv2 uninstall step from AGSv1 build task.
 - AGS: Revamp the design for power menu in AGSv2.
   - It's now more familiar. ;3
 - AGS: Revamp the design for apps panel in AGSv2.
   - Looks much better to look at if you ask me.
+- Hyprland: Possess "both" AGS version config too with the v2-by-default reload behavior.
+- Vars: Set default preferred version for AGS to `both`. This will install both v1 and v2 with a keybind to switch between either.
+
+**Fixes**
+- AGS: Make the power menu in AGSv2 dismissable by clicking outside.
+
+Version 1.1.8.1
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
+-----------------------------------------------------------
+**Changes**
+- AGS: Install AGSv2 config on both AGS versions.
+- AGS: Install `nwg-look` for GTK2 and GTK3 theme configuration.
+- AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
+- AGS: Remove AGSv2 uninstall step from AGSv1 build task.
 - Core apps: Create configuration directory for Vesktop to link `electron-flags.conf` in there properly.
 - Hyprland: Put HyprPM stuff in a separate role. This change brings the following changes along:
   - Check if Hyprland is running or not before actually running HyprPM. This should buy me enough time to make an implementation to have it run on autostart instead of completely skipping it.
@@ -17,7 +27,6 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
     - **If your modification used to rely on this variable's presence in one way or another, you should either restore the variable downstream or check if `hyprpm` is in `default_roles` instead.**
 - Gaming: Disable IPv6 kernel support if Lutris is going to be installed.
   - This was done to boost launch time for Lutris from more than 1 minute to mere seconds. This is a known issue and this workaround is advised to do so.
-- Vars: Set default preferred version for AGS to `both`. This will install both v1 and v2 with a keybind to switch between either.
 
 **Script**
 - Add an option for developer branch.
@@ -28,7 +37,6 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 **Fixes**
 - AGS: Check if AGSv1 is already installed before proceeding with a rebuild.
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
-- AGS: Make the power menu in AGSv2 dismissable by clicking outside.
 - AGS: Migrate to Ansible-native way of handling local packages.
 - AGS: Remove the separate AGSv1 build dependencies installation step.
 - Vars: Add `gnome-themes-extra` to core packages to install Adwaita theme as known to be the default for GTK.
@@ -41,8 +49,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
   - If your touchpad only advertises itself as a `2-synaptics-touchpad` and no other device name ending in `-touchpad`, you should open an issue with your laptop's output for `hyprctl devices`.
 - Hyprland: Port over the check for AGS version check in switch-ags to all scripts related to AGS.
 - Hyprland: Run desired AGS version if reload is triggered but there's no AGS instance running.
-  - AGSv1 will run if system.ags.version == v1.
-  - AGSv2 will run if system.ags.version == both or v2.
+  - AGSv1 will run if system.ags.version == v1 or both.
+  - AGSv2 will run if system.ags.version == v2.
 - HyprPM: Port the changes in package build process from the AGS role to Hyprland rebuild.
 - VMware: Fix misleading name for the package installation process. (KVM packages -> VMware Workstation)
 
