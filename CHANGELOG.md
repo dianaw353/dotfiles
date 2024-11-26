@@ -28,6 +28,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 **Fixes**
 - AGS: Check if AGSv1 is already installed before proceeding with a rebuild.
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
+- AGS: Make the power menu in AGSv2 dismissable by clicking outside.
 - AGS: Migrate to Ansible-native way of handling local packages.
 - AGS: Remove the separate AGSv1 build dependencies installation step.
 - Vars: Add `gnome-themes-extra` to core packages to install Adwaita theme as known to be the default for GTK.

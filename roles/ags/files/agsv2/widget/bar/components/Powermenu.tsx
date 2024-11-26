@@ -69,30 +69,36 @@ export default function Powermenu() {
       }}
       className="window"
     >
-      <box className="powermenu-container">
-        <box
-          hexpand={false}
-          valign={Gtk.Align.CENTER}
-          halign={Gtk.Align.CENTER}
-        >
-          <box orientation="horizontal" spacing={16} className="action-buttons">
-            {actions.map(({ action, icon, label }) => (
-              <box valign={Gtk.Align.CENTER} vertical className="action-button-master">
-                <button
-                  className="action-button"
-                  onClicked={() => handleAction(action)}
-                  aria-label={label}
-                >
-                  <box valign={Gtk.Align.CENTER} vertical className="action-container">
-                    <icon className="action-icon" icon={icon} />
-                  </box>
-                </button>
-                <label className="action-label" label={label} />
-              </box>
-            ))}
+      <box>
+        <eventbox widthRequest={4000} expand onClick={hide} />
+        <box hexpand={false} horizontal>
+          <eventbox heightRequest={1000} onClick={hide} />
+          <box className="powermenu-container" widthRequest={750}
+            hexpand={false}
+            valign={Gtk.Align.CENTER}
+            halign={Gtk.Align.CENTER}
+          >
+            <box orientation="horizontal" spacing={16} className="action-buttons">
+              {actions.map(({ action, icon, label }) => (
+                <box valign={Gtk.Align.CENTER} vertical className="action-button-master">
+                  <button
+                    className="action-button"
+                    onClicked={() => handleAction(action)}
+                    aria-label={label}
+                    valign={Gtk.Align.CENTER}
+                    vertical
+                  >
+                      <icon className="action-icon" icon={icon} />
+                  </button>
+                  <label className="action-label" label={label} />
+                </box>
+              ))}
+            </box>
+            <eventbox expand className="overlay" />
           </box>
+          <eventbox onClick={hide} />
         </box>
-        <eventbox expand className="overlay" />
+        <eventbox widthRequest={4000} expand onClick={hide} />
       </box>
     </window>
   );
