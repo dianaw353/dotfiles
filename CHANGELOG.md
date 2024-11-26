@@ -2,6 +2,10 @@ Version 1.1.9-dev
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 -------------------------------------------------------------
 **Changes**
+- AGS: Revamp the design for power menu in AGSv2.
+  - It's now more familiar. ;3
+- AGS: Revamp the design for apps panel in AGSv2.
+  - Looks much better to look at if you ask me.
 - Hyprland: Also possess `both` AGS version config for v2-by-default reload behavior.
 - Vars: Set default preferred version for AGS to `both`. This will install both v1 and v2 with a keybind to switch between either.
 
