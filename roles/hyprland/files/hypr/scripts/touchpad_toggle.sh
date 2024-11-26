@@ -18,7 +18,7 @@
 hyprctl keyword device:a true > /dev/null 2>&1
 
 # Set device to be toggled
-export HYPRLAND_DEVICE="$(hyprctl devices | grep touchpad | sed 's/.*	//')"
+export HYPRLAND_DEVICE="$(hyprctl devices | grep touchpad | sed '/2-synaptics-touchpad/d; s/.*	//')"
 export HYPRLAND_VARIABLE="device[${HYPRLAND_DEVICE}]:enabled"
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
@@ -39,13 +39,13 @@ if [ "$TOUCHPAD_ENABLED" != "false" ]; then
   export PREVIOUS_STATUS="true"
   export TOUCHPAD_ENABLED="false"
   # Try to disable the touchpad. If it fails, set the new status to enabled.
-  hyprctl keyword "$HYPRLAND_VARIABLE" "$TOUCHPAD_ENABLED" || export TOUCHPAD_ENABLED="true"
+  hyprctl --batch -r -- keyword "$HYPRLAND_VARIABLE" $TOUCHPAD_ENABLED || export TOUCHPAD_ENABLED="true"
 else
   # The touchpad is known to be disabled.
   export PREVIOUS_STATUS="false"
   export TOUCHPAD_ENABLED="true"
   # Try to enable the touchpad. If it fails, set the new status to disabled.
-  hyprctl keyword "$HYPRLAND_VARIABLE" "$TOUCHPAD_ENABLED" || export TOUCHPAD_ENABLED="false"
+  hyprctl --batch -r -- keyword "$HYPRLAND_VARIABLE" $TOUCHPAD_ENABLED || export TOUCHPAD_ENABLED="false"
 fi
 
 # Write the new touchpad status into the status file.
