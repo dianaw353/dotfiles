@@ -24,6 +24,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - Hyprland: Add touchpad toggle keybinding into the keybindings template too.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
+- Hyprland: Make touchpad toggle script work again for Synaptics touchpads using Microsoft Precision Touchpad standard on the latest version of Hyprland.
+  - If your touchpad only advertises itself as a `2-synaptics-touchpad` and no other device name ending in `-touchpad`, you should open an issue with your laptop's output for `hyprctl devices`.
 - Hyprland: Port over the check for AGS version check in switch-ags to all scripts related to AGS.
 - Hyprland: Run desired AGS version if reload is triggered but there's no AGS instance running.
   - AGSv1 will run if system.ags.version == v1.
