@@ -6,6 +6,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - AGS: Install `nwg-look` for GTK2 and GTK3 theme configuration.
 - AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
 - AGS: Remove AGSv2 uninstall step from AGSv1 build task.
+- Core apps: Create configuration directory for Vesktop to link `electron-flags.conf` in there properly.
 - Hyprland: Put HyprPM stuff in a separate role. This change brings the following changes along:
   - Check if Hyprland is running or not before actually running HyprPM. This should buy me enough time to make an implementation to have it run on autostart instead of completely skipping it.
   - Remove `system.hyprland.plugins.enabled` variable. The rest of the variables inside `system.hyprland.plugins` stay as is.
@@ -14,7 +15,10 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
   - This was done to boost launch time for Lutris from more than 1 minute to mere seconds. This is a known issue and this workaround is advised to do so.
 
 **Script**
-- Core apps: Create configuration directory for Vesktop to link `electron-flags.conf` in there properly.
+- Add an option for developer branch.
+- Various optimizations and improvements to handle git-based upgrades.
+  - Rolling and developer branches will always use Git to upgrade.
+  - Stable will try to upgrade with the use of `patch -p1` and the patch hunks provided by the GitHub APIs if eligible.
 
 **Fixes**
 - AGS: Check if AGSv1 is already installed before proceeding with a rebuild.
