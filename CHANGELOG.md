@@ -27,6 +27,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - AGS: Remove the separate AGSv1 build dependencies installation step.
 - Vars: Add `gnome-themes-extra` to core packages to install Adwaita theme as known to be the default for GTK.
 - Hyprland: Add touchpad toggle keybinding into the keybindings template too.
+- Hyprland: Fix the command for reloading AGSv2 directly.
+- Hyprland: Fix the request name for recorder in AGSv1.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
 - Hyprland: Make touchpad toggle script work again for Synaptics touchpads using Microsoft Precision Touchpad standard on the latest version of Hyprland.
