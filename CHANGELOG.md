@@ -1,6 +1,6 @@
-Version 1.1.9-dev
-https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
--------------------------------------------------------------
+Version 1.1.8.1
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
+-----------------------------------------------------------
 **Changes**
 - AGS: Install AGSv2 config on both AGS versions.
 - AGS: Install `nwg-look` for GTK2 and GTK3 theme configuration.
