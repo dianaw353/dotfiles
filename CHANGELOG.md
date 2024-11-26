@@ -3,6 +3,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 -------------------------------------------------------------
 **Changes**
 - AGS: Install AGSv2 config on both AGS versions.
+- AGS: Install `nwg-look` for GTK2 and GTK3 theme configuration.
 - AGS: Don't use the template for keybinds widget data for both AGS versions in AGSv2.
 - AGS: Remove AGSv2 uninstall step from AGSv1 build task.
 - Hyprland: Put HyprPM stuff in a separate role. This change brings the following changes along:
@@ -21,6 +22,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.9-dev
 - AGS: Make AGSv1 compilation actually work by passing `--noconfirm`.
 - AGS: Migrate to Ansible-native way of handling local packages.
 - AGS: Remove the separate AGSv1 build dependencies installation step.
+- Vars: Add `gnome-themes-extra` to core packages to install Adwaita theme as known to be the default for GTK.
 - Hyprland: Add touchpad toggle keybinding into the keybindings template too.
 - Hyprland: Install the main Hyprland package last to avoid conflicts with -git versions of the dependencies.
 - Hyprland: Install -git packages first to avoid conflicts with non-git versions of the same packages later on.
