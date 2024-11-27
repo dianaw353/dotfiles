@@ -29,6 +29,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 
 **Fixes**
 - AGS: Fix the icon substitude for OpenJDK Java 23.
+- Drivers: Install DKMS version of the proprietary NVIDIA driver instead of regular one.
+  - To support custom kernels etc.
 - VMware: Install kernel headers using AUR helper instead of Pacman itself.
   - Really useful if you have a custom kernel installed from the AUR.
 

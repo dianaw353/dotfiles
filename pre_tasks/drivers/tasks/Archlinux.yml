@@ -145,7 +145,7 @@
         state: present
       become: true
       loop:
-        - nvidia
+        - nvidia-dkms
         - nvidia-utils
         - cuda
         - opencl-nvidia
