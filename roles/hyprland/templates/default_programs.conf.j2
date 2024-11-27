@@ -1,0 +1,10 @@
+# -----------------------------------------------------
+# Programs
+# name: "Default"
+# -----------------------------------------------------
+
+$lock_cmd = pidof hyprlock || hyprlock       # taken from hypridle.conf
+$terminal = {{ system.hyprland.shortcut_apps.terminal }}
+$fileManager = {{ system.hyprland.shortcut_apps.file_manager }}
+$browser = {{ system.hyprland.shortcut_apps.browser }}
+$system-monitor = {{ system.hyprland.shortcut_apps.system_monitor }}

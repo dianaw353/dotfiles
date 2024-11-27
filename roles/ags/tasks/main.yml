@@ -56,7 +56,7 @@
       become: true
       loop:
         - { path: '/var/cache/greeter', owner: 'greeter', group: 'greeter', mode: '0755' }
-        
+
     - name: Ags user config - Agsv1
       ansible.posix.synchronize:
         mode: push
@@ -93,6 +93,30 @@
       loop:
         - { src: "favorites.ts.j2", version: "ags" }
 
+    - name: Get the name for keybound terminal app
+      ansible.builtin.shell:
+        cmd: |
+          grep "Name=" $(grep -r {{ system.hyprland.shortcut_apps.terminal }} /usr/share/applications | sed "s/:.*//" | uniq | head -n1) | head -n1 | sed "s/.*=//"
+      register: terminal_app_name
+
+    - name: Get the name for keybound web browser
+      ansible.builtin.shell:
+        cmd: |
+          grep "Name=" $(grep -r {{ system.hyprland.shortcut_apps.browser }} /usr/share/applications | sed "s/:.*//" | uniq | head -n1) | head -n1 | sed "s/.*=//"
+      register: browser_app_name
+
+    - name: Get the name for keybound file manager
+      ansible.builtin.shell:
+        cmd: |
+          grep "Name=" $(grep -r {{ system.hyprland.shortcut_apps.file_manager }} /usr/share/applications | sed "/autorun/d; /cache/d; s/:.*//" | uniq | head -n1) | head -n1 | sed "s/.*=//"
+      register: fm_app_name
+
+    - name: Get the name for system monitor app
+      ansible.builtin.shell:
+        cmd: |
+          grep "Name=" $(grep -r {{ system.hyprland.shortcut_apps.system_monitor }} /usr/share/applications | sed "s/:.*//" | uniq | head -n1) | head -n1 | sed "s/.*=//"
+      register: three_finger_salute_app_name
+
     - name: Ags user config - Shortcuts
       ansible.builtin.template:
         src: "{{ item.src }}"
@@ -104,7 +128,7 @@
         - system.ags.version == "both"
       loop:
         - { src: "shortcuts.ts.j2", version: "ags" }
-        
+
     - name: Ags system config - Agsv1
       ansible.posix.synchronize:
         mode: push
