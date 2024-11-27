@@ -9,6 +9,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 **Script**
 - Fix the in-place upgrade method in rolling/development releases.
 
+**Fixes**
+- AGS: Fix the icon substitude for OpenJDK Java 23.
+
 Version 1.1.8.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 -----------------------------------------------------------
