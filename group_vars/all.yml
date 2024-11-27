@@ -33,6 +33,15 @@ system:
   headers_package: linux-headers
 
   hyprland:
+    # Default apps set for keybinds
+    #
+    # Accepted values are the executable names in /usr/bin
+    shortcut_apps:
+      browser: zen-browser # Web browser
+      terminal: wezterm # Terminal
+      file_manager: nautilus # File manager
+      system_monitor: missioncenter # CTRL+ALT+DEL task manager
+
     # Support for autostart entries from XDG, provided by dex
     #
     # Setting this to false will stop such entries from working and
