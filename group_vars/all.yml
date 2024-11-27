@@ -21,6 +21,12 @@ system:
     # Options: :, close:, minimize:, maximize:, close,minimize: close,maximize:, manimize,maximize, or close,minimize,maximize:
     buttons: ":"
 
+    # Default GTK theme to use during installation
+    # Adwaita theme is the regular GTK3 Adwaita theme.
+    # adw-gtk3 is a port of the Adwaita theme seen in GTK4.
+    # Options: Adwaita, adw-gtk3
+    theme: adw-gtk3
+
   # Headers package for your kernel
   # Required for VMware Workstation
   # Use the exact package name if you want to use the said hypervisor
