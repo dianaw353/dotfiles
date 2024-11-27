@@ -79,6 +79,20 @@ system:
     # v1 or v2 or both
     version: v1
 
+    # Favorites for Apps widget
+    #
+    # Up to 5 favorites are advised. Any more will make the widget
+    # wider and might even make it render out of display.
+    #
+    # Accepted values are any descriptive string, such as a unique
+    # portion of the Exec or the Icon line, in the app's .desktop file.
+    favorites:
+      - zen-browser
+      - wezterm
+      - nautilus
+      - gnome-calendar
+      - spotube
+
 i18n:
   # Supplementary fonts
   fonts:
