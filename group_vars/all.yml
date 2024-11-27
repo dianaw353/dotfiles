@@ -152,7 +152,6 @@ core_packages: # outside of WM/DE dependencies
     - zed # Visual studio alternitive
     - zsh # if zsh it would install my configuration and would also install zoxide, fzf, eza, zinit, and oh-my-posh
     - helix # text editor
-    - gnome-themes-extra # Adwaita as known to be the default theme for GTK.
     - ttf-dejavu-nerd
     - mission-center # System Monitor
     - noto-fonts

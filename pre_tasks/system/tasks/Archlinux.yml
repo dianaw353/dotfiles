@@ -15,6 +15,7 @@
         - qt5-wayland
         - gtk4
         - libadwaita
+        - gnome-themes-extra
         - adw-gtk-theme
         - batsignal
 
