@@ -152,6 +152,8 @@ core_packages: # outside of WM/DE dependencies
     - zed # Visual studio alternitive
     - zsh # if zsh it would install my configuration and would also install zoxide, fzf, eza, zinit, and oh-my-posh
     - helix # text editor
+    - eog # Eye of GNOME, the older GTK3 GNOME image viewer
+    - eog-plugins # Plugins for Eye of GNOME
     - ttf-dejavu-nerd
     - mission-center # System Monitor
     - noto-fonts
