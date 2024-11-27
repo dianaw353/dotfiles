@@ -16,6 +16,7 @@ Version 1.1.8.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 -----------------------------------------------------------
 **Changes**
+- AGS: Make favorites configurable.
 - Pre-tasks: Install `adw-gtk-theme` and add a variable to set the default GTK3 theme between GTK3 and GTK4 Adwaita.
 - Vars: Add Eye of GNOME as the image viewer in core packages.
 - Move `gnome-themes-extra` from vars to pre-tasks.
