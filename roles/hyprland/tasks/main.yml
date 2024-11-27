@@ -50,3 +50,12 @@
         - { src: 'keybindings.conf.j2', dest: 'config/keybindings/default.conf' }
         - { src: 'reload.sh.j2', dest: 'scripts/ags/reload.sh' }
         - { src: 'default_programs.conf.j2', dest: 'config/programs/default.conf' }
+
+    - name: "Hyprland | Update /etc/environment"
+      ansible.builtin.template:
+        src: environment.j2
+        dest: /etc/environment
+        backup: yes
+        owner: root
+        group: root
+      become: true

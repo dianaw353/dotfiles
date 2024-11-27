@@ -27,17 +27,6 @@
       loop:
         - { src: 'config.toml.j2', dest: 'config.toml' }
 
-    - name: "Ags Greetd Configuration | Set up the environment"
-      ansible.builtin.template:
-        src: "{{ item.src }}"
-        dest: "/etc/{{ item.dest }}"
-        backup: yes
-        owner: "root"
-        group: "root"
-      become: true
-      loop:
-        - { src: 'environment.j2', dest: 'environment' }
-
     - name: Enable services
       systemd:
         name: "{{ item }}"
