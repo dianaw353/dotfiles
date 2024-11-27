@@ -15,6 +15,9 @@ https://github.com/dianaw353/dotfiles/tree/dev
 Version 1.1.8.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 -----------------------------------------------------------
+**Changes**
+- Pre-tasks: Install `adw-gtk-theme` and add a variable to set the default GTK3 theme between GTK3 and GTK4 Adwaita.
+
 **Script**
 - Fix the in-place upgrade method in rolling/development releases.
 

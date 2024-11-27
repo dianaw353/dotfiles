@@ -79,6 +79,9 @@
     - name: Gtk Window Buttons
       command: "gsettings set org.gnome.desktop.wm.preferences button-layout {{ system.gtk.buttons }}"
 
+    - name: Gtk Theme
+      command: "gsettings set org.gnome.desktop.interface gtk-theme {{ system.gtk.theme }}"
+
     - name: Ensure HoldoffTimeoutSec is set to 5 in /etc/systemd/logind.conf
       lineinfile:
         path: /etc/systemd/logind.conf
