@@ -221,3 +221,14 @@ gaming:
     - steam
     - heroic-games-launcher-bin
     - lutris
+  prismlauncher:
+    java:
+      # Default OpenJDK version to use
+      #
+      # Use the following command to get the versions you have installed.
+      #   ls /usr/lib/jvm/java-*-openjdk
+      #
+      # You can also specify a version from Arch repos here and it will be installed.
+      #
+      # 8 or 11 or 17 or 21 or 23
+      version: 21

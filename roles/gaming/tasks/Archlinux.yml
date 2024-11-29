@@ -38,3 +38,16 @@
         - jdk11-openjdk
         - jdk17-openjdk
         - jdk21-openjdk
+
+    - name: Set Java versions
+      ansible.builtin.shell:
+        cmd: |
+          previous_version=$(archlinux-java get)
+          archlinux-java set java-{{ gaming.prismlauncher.java.version }}-openjdk
+          if [[ "$previous_version" != "$(archlinux-java get)" ]]; then
+            echo "changed"
+          fi
+      become: true
+      register: java_version_changed
+      changed_when: "'changed' in java_version_changed.stdout"
+      when: "'prismlauncher' in gaming.launchers"
