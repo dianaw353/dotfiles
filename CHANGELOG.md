@@ -17,6 +17,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 -----------------------------------------------------------
 **Changes**
 - AGS: Make favorites configurable.
+- Gaming: Add an option to set system-wide default for OpenJDK version.
+  - This is very useful as you might have to use Java 21 if you compile Android apps.
 - Hyprland: Make keybound apps (Ex. default terminal app) configurable.
 - Pre-tasks: Install `adw-gtk-theme` and add a variable to set the default GTK3 theme between GTK3 and GTK4 Adwaita.
 - System: Add option to set USE_MPERFORMANCE=true|false in /etc/environment for applicable AUR packages like `linux-nitrous`.
