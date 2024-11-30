@@ -9,6 +9,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 - Pre-tasks: Install `adw-gtk-theme` and add a variable to set the default GTK3 theme between GTK3 and GTK4 Adwaita.
 - System: Add option to set USE_MPERFORMANCE=true|false in /etc/environment for applicable AUR packages like `linux-nitrous`.
 - Vars: Add Eye of GNOME as the image viewer in core packages.
+- Vars: Turn `system.ags.version` to a list variable and rename it to `system.ags.versions`.
 - Move `gnome-themes-extra` from vars to pre-tasks.
 - Move /etc/environment template from AGS to Hyprland.
 
