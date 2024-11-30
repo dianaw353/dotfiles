@@ -4,7 +4,7 @@ if pgrep -x "agsv1" > /dev/null; then
 elif pgrep -x "ags" > /dev/null; then
   ags quit -i js; ags run -d ~/.config/agsv2
 else
-{% if system.ags.version is defined and system.ags.version == "v1" %}
+{% if system.ags.versions is defined and 'v1' in system.ags.versions %}
   agsv1
 {% else %}
   ags run ~/.config/agsv2/config.js

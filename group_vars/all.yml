@@ -87,14 +87,16 @@ system:
         - https://github.com/virtcode/hypr-dynamic-cursors # dynamic-cursors
 
   ags:
-    # AGS version to use.
+    # List of AGS version(s) to use.
     #
-    # Keep this set to v1 if you can't deal with rewriting the entire stack for v2!
+    # Keep this set only to v1 if you can't deal with rewriting the entire stack for v2!
     #
     # See Aylur/ags#618 for more info.
     #
-    # v1 or v2 or both
-    version: both
+    # You may enable either or both, but NEVER NEITHER!
+    versions:
+      - v1
+      - v2
 
     # Favorites for Apps widget
     #

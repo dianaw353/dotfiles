@@ -61,7 +61,7 @@ const column2 = [
     binds: [
       { keys: ['⌘', '+', 'L'], action: 'Lock Session' },
       { keys: ['⌘', '+', '󰘶', '+', 'M'], action: 'Log Out (Exit Hyprland)' },
-{% if system.ags.version is defined and system.ags.version == "both" %}
+{% if system.ags.versions is defined and 'v1' in system.ags.versions and 'v2' in system.ags.versions %}
       { keys: ['⌘', '+', '󰘶', '+', 'S'], action: 'Switch AGS Runtime Version' },
 {% endif %}
     ],
