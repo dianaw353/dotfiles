@@ -71,9 +71,9 @@ export default function Powermenu() {
     >
       <box>
         <eventbox widthRequest={4000} expand onClick={hide} />
-        <box hexpand={false} horizontal>
-          <eventbox heightRequest={1000} onClick={hide} />
-          <box className="powermenu-container" widthRequest={750}
+        <box hexpand={false} valign={Gtk.Align.CENTER} vertical>
+          <eventbox heightRequest={500} onClick={hide} />
+          <box className="powermenu-container" widthRequest={750} heightRequest={150}
             hexpand={false}
             valign={Gtk.Align.CENTER}
             halign={Gtk.Align.CENTER}
@@ -96,7 +96,7 @@ export default function Powermenu() {
             </box>
             <eventbox expand className="overlay" />
           </box>
-          <eventbox onClick={hide} />
+          <eventbox heightRequest={500} onClick={hide} />
         </box>
         <eventbox widthRequest={4000} expand onClick={hide} />
       </box>
