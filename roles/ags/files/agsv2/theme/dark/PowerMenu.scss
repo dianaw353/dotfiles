@@ -26,6 +26,7 @@
 
 // Action Button Styling
 .action-button {
+  outline-style: none;
   color: $fg;
   min-height: $power-button-min-dimens;
   min-width: $power-button-min-dimens;
@@ -33,7 +34,7 @@
   margin-right: $power-button-padding/2;
   padding: 2*$power-button-padding;
   border: $border-width solid $border-color-inactive;
-  border-radius: $border-radius;
+  border-radius: 100%;
   transition: background-color $transition-duration, transform $transition-duration;
 
   &:hover {
