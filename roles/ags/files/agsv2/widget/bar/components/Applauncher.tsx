@@ -17,10 +17,15 @@ export default function AppsButton() {
     };
 
     return (
-        <button
-            className="AppsButton"
-            onClicked={AppLauncher}>
-            Apps
-        </button>
+        <box>
+            <button
+                className="AppsButton"
+                onClicked={AppLauncher}>
+                <box>
+                    <icon icon="archlinux-logo" />
+                    <label label="Apps" />
+                </box>
+            </button>
+        </box>
     );
 }

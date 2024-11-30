@@ -15,13 +15,16 @@
   all: unset;
   background-color: transparent;
   transition: background-color $transition-duration;
+  padding: $button-padding;
+  margin: $label-margin;
+  border: $border-width solid $border-color-transparent;
 
-  &:hover label {
+  &:hover {
     background-color: $hover-bg-color;
     border-color: color.adjust($accent-color, $alpha: -0.8);
   }
 
-  &:active label {
+  &:active {
     background-color: $active-bg-color;
   }
 }
