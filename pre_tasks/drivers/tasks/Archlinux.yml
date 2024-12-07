@@ -58,12 +58,6 @@
         - mesa-vdpau
         - libva-mesa-driver
         - vulkan-radeon
-        - rocm-hip-runtime
-        - rocm-hip-sdk
-        - hip-runtime-amd
-        - rocm-core
-        - rocm-opencl-runtime
-        - rocm-opencl-sdk
 
     - name: Install 32bit AMD drivers
       community.general.pacman:
