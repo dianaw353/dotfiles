@@ -29,7 +29,7 @@ bind = $mainMod, Tab,     exec, $hyprland-scripts/ags/overview.sh # agsv1 -t ove
 bind = $mainMod, F12,   exec, $hyprland-scripts/ags/record.sh # agsv1 -r 'recorder.start()' || ags request 'recorder.start'
 bind = , Print,         exec, $hyprland-scripts/ags/partial-screenshot.sh # agsv1 -r 'recorder.screenshot()' || ags request 'recorder.screenshot.partial'
 bind = SHIFT, Print,    exec, $hyprland-scripts/ags/full-screenshot.sh # agsv1 -r 'recorder.screenshot(true)' || ags request 'recorder.screenshot.full'
-{% if system.ags.version is defined and system.ags.version == "both" %}
+{% if system.ags.versions is defined and 'v1' in system.ags.versions and 'v2' in system.ags.versions %}
 bind = $mainMod SHIFT, S, exec, $hyprland-scripts/switch-ags.sh
 {% endif %}
 

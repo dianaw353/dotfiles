@@ -1,5 +1,6 @@
 import { opt, mkOptions } from "lib/option"
 import { distro } from "lib/variables"
+import { favorites } from "lib/favorites"
 import { icon } from "lib/utils"
 import icons from "lib/icons"
 
@@ -155,15 +156,7 @@ const options = mkOptions(OPTIONS, {
         apps: {
             iconSize: opt(62),
             max: opt(6),
-            favorites: opt([
-                [
-                    "zen-browser",
-                    "wezterm",
-                    "org.gnome.Nautilus",
-                    "org.gnome.Calendar",
-                    "spotify",
-                ],
-            ]),
+            favorites: opt([favorites]),
         },
     },
 

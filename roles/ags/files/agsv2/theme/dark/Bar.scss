@@ -1,0 +1,84 @@
+@use './dark_variables' as *;
+@use 'sass:color';
+@use 'sass:math'; // Import the math module for division
+
+// --- Mixins ---
+
+// Mixin for circular styles
+@mixin circular-styles($size: $min-size) {
+  padding: math.div($size, 2); // Use math.div for division
+  border-radius: 50%; // Ensure it's circular
+}
+
+// Mixin for button styles
+@mixin button-styles($hover-bg-color: $button-bg-hover, $active-bg-color: $button-bg-active, $accent-color: $primary-bg) {
+  all: unset;
+  background-color: transparent;
+  transition: background-color $transition-duration;
+  padding: $button-padding;
+  margin: $label-margin;
+  border: $border-width solid $border-color-transparent;
+
+  &:hover {
+    background-color: $hover-bg-color;
+    border-color: color.adjust($accent-color, $alpha: -0.8);
+  }
+
+  &:active {
+    background-color: $active-bg-color;
+  }
+}
+
+// --- Main Styles ---
+
+window.Bar {
+  background-color: $bg;
+  color: $fg;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  font-family: $font-family;
+
+  button {
+    @include button-styles;
+  }
+
+  label {
+    transition: $transition-duration;
+    margin: $label-margin;
+    border: $border-width solid $border-color-transparent;
+  }
+
+  .Workspaces {
+    button {
+      margin: $margin;
+      @include circular-styles(1rem); // Adjust size as needed for perfect circle
+
+      &.focused {
+        background-color: $primary-bg;
+      }
+
+      &.inactive {
+        background-color: color.adjust($bg, $lightness: 15%);
+      }
+    }
+
+    .WorkspaceCircle {
+      @include circular-styles(1rem); // Ensure the circle is a perfect size
+    }
+  }
+
+  .FocusedClient {
+    color: $primary-bg;
+  }
+
+  .Media,
+  .SysTray,
+  .Battery label,
+  .Audio {
+    margin: $margin;
+  }
+
+  .PowerButton {
+    margin-right: $margin; // Adjust the right margin as needed
+  }
+}

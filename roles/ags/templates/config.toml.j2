@@ -9,8 +9,8 @@ vt = 1
 # `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
 # with whatever you want started, such as `sway`.
 #command = "cage -s -d -- ags -b greeter -c /etc/greetd/ags/greeter.js"
-{% if system.ags.version is defined %}
-{% if system.ags.version == "v1" or system.ags.version == "both" %}
+{% if system.ags.versions is defined %}
+{% if 'v1' in system.ags.versions %}
 command = "cage -ds -m last agsv1 -- -c /etc/greetd/ags/greeter.js"
 {% else %}
 command = "cage -ds -m last ags -- run /etc/greetd/ags/greeter.js"

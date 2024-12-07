@@ -72,10 +72,10 @@ const column3 = [
     icon: '󱓞',
     name: 'Apps',
     binds: [
-      { keys: ['⌘', '+', '󰌑'], action: 'Launch Terminal: Wezterm' },
-      { keys: ['⌘', '+', 'B'], action: 'Launch Browser: Zed Browser' },
-      { keys: ['⌘', '+', 'E'], action: 'Launch File Manager: Nautilus' },
-      { keys: ['󰘴', '+', '󰘵', '+', '󰆴'], action: 'Launch System Monitor: Mission Control' }, 
+      { keys: ['⌘', '+', '󰌑'], action: 'Launch Terminal: WezTerm' },
+      { keys: ['⌘', '+', 'B'], action: 'Launch Web Browser: Zen Browser' },
+      { keys: ['⌘', '+', 'E'], action: 'Launch File Manager: Files' },
+      { keys: ['󰘴', '+', '󰘵', '+', '󰆴'], action: 'Launch System Monitor: Mission Center' },
     ],
     appeartick: 3
   },

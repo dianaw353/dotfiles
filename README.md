@@ -1,6 +1,6 @@
-> [!IMPORTANT]
+> [!WARNING]
 > This repo is going under some overhaul as we start working on the switch to Aylur's Gtk Shell, version 2.x.
-> The branch you're at, `main`, is currently at AGS version 1.9.0 and will no longer have new features unless absolutely necessary.
+> The branch you're at, `dev`, is only meant for development purposes. While it provides an experience identical to `main` to the average consumer, you're advised to stick with there instead of here.
 
 <div align="center">
  <h1>Dotfiles</h1>

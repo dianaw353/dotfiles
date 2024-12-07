@@ -11,8 +11,8 @@ exec-once=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = hyprpm reload
 
 # Initilize ags
-{% if system.ags.version is defined %}
-{% if system.ags.version == "v1" or system.ags.version == "both" %}
+{% if system.ags.versions is defined %}
+{% if 'v1' in system.ags.versions %}
 exec-once = agsv1
 {% else %}
 exec-once = ags run ~/.config/agsv2/config.js

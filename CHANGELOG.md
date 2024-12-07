@@ -1,8 +1,41 @@
+Version dev
+https://github.com/dianaw353/dotfiles/tree/dev
+----------------------------------------------
+**Changes**
+- AGS: Revamp the design for power menu in AGSv2.
+  - It's now more familiar. ;3
+- AGS: Revamp the design for apps panel in AGSv2.
+  - Looks much better to look at if you ask me.
+- Hyprland: v2-by-default behavior is active whenever AGSv2 is enabled regardless if v1 is enabled or not.
+- Vars: Enable both AGS versions. This will also enable a keybind to switch between them.
+
+**Fixes**
+- AGS: Make the power menu in AGSv2 dismissable by clicking outside.
+
 Version 1.1.8.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
 -----------------------------------------------------------
+**Changes**
+- AGS: Make favorites configurable.
+- Gaming: Add an option to set system-wide default for OpenJDK version.
+  - This is very useful as you might have to use Java 21 if you compile Android apps.
+- Hyprland: Make keybound apps (Ex. default terminal app) configurable.
+- Pre-tasks: Install `adw-gtk-theme` and add a variable to set the default GTK3 theme between GTK3 and GTK4 Adwaita.
+- System: Add option to set USE_MPERFORMANCE=true|false in /etc/environment for applicable AUR packages like `linux-nitrous`.
+- Vars: Add Eye of GNOME as the image viewer in core packages.
+- Vars: Turn `system.ags.version` to a list variable and rename it to `system.ags.versions`.
+- Move `gnome-themes-extra` from vars to pre-tasks.
+- Move /etc/environment template from AGS to Hyprland.
+
 **Script**
 - Fix the in-place upgrade method in rolling/development releases.
+
+**Fixes**
+- AGS: Fix the icon substitude for OpenJDK Java 23.
+- Drivers: Install DKMS version of the proprietary NVIDIA driver instead of regular one.
+  - To support custom kernels etc.
+- VMware: Install kernel headers using AUR helper instead of Pacman itself.
+  - Really useful if you have a custom kernel installed from the AUR.
 
 Version 1.1.8.1
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1

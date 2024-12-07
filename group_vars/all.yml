@@ -21,12 +21,35 @@ system:
     # Options: :, close:, minimize:, maximize:, close,minimize: close,maximize:, manimize,maximize, or close,minimize,maximize:
     buttons: ":"
 
+    # Default GTK theme to use during installation
+    # Adwaita theme is the regular GTK3 Adwaita theme.
+    # adw-gtk3 is a port of the Adwaita theme seen in GTK4.
+    # Options: Adwaita, adw-gtk3
+    theme: adw-gtk3
+
   # Headers package for your kernel
   # Required for VMware Workstation
   # Use the exact package name if you want to use the said hypervisor
   headers_package: linux-headers
 
+  # Enable USE_MPERFORMANCE in /etc/environment
+  #
+  # This is going to be really useful if you e.g. install Nitrous
+  # kernel from the AUR on a modern computer.
+  #
+  # true or false
+  use_mperformance: false
+
   hyprland:
+    # Default apps set for keybinds
+    #
+    # Accepted values are the executable names in /usr/bin
+    shortcut_apps:
+      browser: zen-browser # Web browser
+      terminal: wezterm # Terminal
+      file_manager: nautilus # File manager
+      system_monitor: missioncenter # CTRL+ALT+DEL task manager
+
     # Support for autostart entries from XDG, provided by dex
     #
     # Setting this to false will stop such entries from working and
@@ -64,14 +87,30 @@ system:
         - https://github.com/virtcode/hypr-dynamic-cursors # dynamic-cursors
 
   ags:
-    # AGS version to use.
+    # List of AGS version(s) to use.
     #
-    # Keep this set to v1 if you can't deal with rewriting the entire stack for v2!
+    # Keep this set only to v1 if you can't deal with rewriting the entire stack for v2!
     #
     # See Aylur/ags#618 for more info.
     #
-    # v1 or v2 or both
-    version: v1
+    # You may enable either or both, but NEVER NEITHER!
+    versions:
+      - v1
+      - v2
+
+    # Favorites for Apps widget
+    #
+    # Up to 5 favorites are advised. Any more will make the widget
+    # wider and might even make it render out of display.
+    #
+    # Accepted values are any descriptive string, such as a unique
+    # portion of the Exec or the Icon line, in the app's .desktop file.
+    favorites:
+      - zen-browser
+      - wezterm
+      - nautilus
+      - gnome-calendar
+      - spotube
 
 i18n:
   # Supplementary fonts
@@ -146,7 +185,8 @@ core_packages: # outside of WM/DE dependencies
     - zed # Visual studio alternitive
     - zsh # if zsh it would install my configuration and would also install zoxide, fzf, eza, zinit, and oh-my-posh
     - helix # text editor
-    - gnome-themes-extra # Adwaita as known to be the default theme for GTK.
+    - eog # Eye of GNOME, the older GTK3 GNOME image viewer
+    - eog-plugins # Plugins for Eye of GNOME
     - ttf-dejavu-nerd
     - mission-center # System Monitor
     - noto-fonts
@@ -183,3 +223,14 @@ gaming:
     - steam
     - heroic-games-launcher-bin
     - lutris
+  prismlauncher:
+    java:
+      # Default OpenJDK version to use
+      #
+      # Use the following command to get the versions you have installed.
+      #   ls /usr/lib/jvm/java-*-openjdk
+      #
+      # You can also specify a version from Arch repos here and it will be installed.
+      #
+      # 8 or 11 or 17 or 21 or 23
+      version: 21

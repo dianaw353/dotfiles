@@ -61,7 +61,7 @@ const column2 = [
     binds: [
       { keys: ['⌘', '+', 'L'], action: 'Lock Session' },
       { keys: ['⌘', '+', '󰘶', '+', 'M'], action: 'Log Out (Exit Hyprland)' },
-{% if system.ags.version is defined and system.ags.version == "both" %}
+{% if system.ags.versions is defined and 'v1' in system.ags.versions and 'v2' in system.ags.versions %}
       { keys: ['⌘', '+', '󰘶', '+', 'S'], action: 'Switch AGS Runtime Version' },
 {% endif %}
     ],
@@ -75,10 +75,10 @@ const column3 = [
     icon: '󱓞',
     name: 'Apps',
     binds: [
-      { keys: ['⌘', '+', '󰌑'], action: 'Launch Terminal: Wezterm' },
-      { keys: ['⌘', '+', 'B'], action: 'Launch Browser: Zed Browser' },
-      { keys: ['⌘', '+', 'E'], action: 'Launch File Manager: Nautilus' },
-      { keys: ['󰘴', '+', '󰘵', '+', '󰆴'], action: 'Launch System Monitor: Mission Control' }, 
+      { keys: ['⌘', '+', '󰌑'], action: 'Launch Terminal: {{ terminal_app_name.stdout }}' },
+      { keys: ['⌘', '+', 'B'], action: 'Launch Web Browser: {{ browser_app_name.stdout }}' },
+      { keys: ['⌘', '+', 'E'], action: 'Launch File Manager: {{ fm_app_name.stdout }}' },
+      { keys: ['󰘴', '+', '󰘵', '+', '󰆴'], action: 'Launch System Monitor: {{ three_finger_salute_app_name.stdout }}' },
     ],
     appeartick: 3
   },
