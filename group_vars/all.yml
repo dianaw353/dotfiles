@@ -96,7 +96,7 @@ system:
     # You may enable either or both, but NEVER NEITHER!
     versions:
       - v1
-      # v2
+      - v2
 
     # Favorites for Apps widget
     #

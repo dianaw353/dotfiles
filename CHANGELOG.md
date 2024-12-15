@@ -1,3 +1,17 @@
+Version dev
+https://github.com/dianaw353/dotfiles/tree/dev
+----------------------------------------------
+**Changes**
+- AGS: Revamp the design for power menu in AGSv2.
+  - It's now more familiar. ;3
+- AGS: Revamp the design for apps panel in AGSv2.
+  - Looks much better to look at if you ask me.
+- Hyprland: v2-by-default behavior is active whenever AGSv2 is enabled regardless if v1 is enabled or not.
+- Vars: Enable both AGS versions. This will also enable a keybind to switch between them.
+
+**Fixes**
+- AGS: Make the power menu in AGSv2 dismissable by clicking outside.
+
 Version 1.1.8.2
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.2
 -----------------------------------------------------------
