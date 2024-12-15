@@ -12,8 +12,8 @@ https://github.com/dianaw353/dotfiles/tree/dev
 **Fixes**
 - AGS: Make the power menu in AGSv2 dismissable by clicking outside.
 
-Version 1.1.8.1
-https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.1
+Version 1.1.8.2
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.2
 -----------------------------------------------------------
 **Changes**
 - AGS: Make favorites configurable.
