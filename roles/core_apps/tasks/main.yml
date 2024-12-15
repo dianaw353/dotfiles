@@ -24,7 +24,7 @@
         - { src: 'helix', dest: '.config', package: 'helix' }
         - { src: 'oh-my-posh', dest: '.config', package: 'oh-my-posh-bin' }
         - { src: 'zsh/.zshrc', dest: '', package: 'zsh'}
-        - { src: 'wezterm', dest: '.config', package: 'wezterm' }
+        - { src: 'wezterm', dest: '.config', package: 'wezterm-git' }
       when: item.package in ansible_facts.packages
 
     - name: Configure Electron
