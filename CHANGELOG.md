@@ -12,6 +12,13 @@ https://github.com/dianaw353/dotfiles/tree/dev
 **Fixes**
 - AGS: Make the power menu in AGSv2 dismissable by clicking outside.
 
+Version 1.1.8.3
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
+-----------------------------------------------------------
+**Fixes**
+- Hyprland: The Hyprlock skin would render incorrectly with resolutions other than 1080p.
+  - Resolved by repositioning the elements using proper `bottom` and `top` directives.
+
 Version 1.1.8.2
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.2
 -----------------------------------------------------------
