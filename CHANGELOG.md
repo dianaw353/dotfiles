@@ -32,6 +32,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.2
 
 **Fixes**
 - AGS: Fix the icon substitude for OpenJDK Java 23.
+- Hyprland: Fix the `col.active_border` property in window configs.
 - Drivers: Install DKMS version of the proprietary NVIDIA driver instead of regular one.
   - To support custom kernels etc.
 - VMware: Install kernel headers using AUR helper instead of Pacman itself.
