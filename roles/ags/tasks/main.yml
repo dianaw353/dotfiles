@@ -148,7 +148,7 @@
 
 - name: Manage User Pictures
   block:
-    - name: "Synchronize pictures"
+    - name: Synchronize pictures
       ansible.posix.synchronize:
         mode: push
         src: "{{ playbook_dir }}/assets/{{ item.src }}"
@@ -160,6 +160,17 @@
         - { src: 'Wallpapers/mountain.png', dest: '/var/cache/greeter/background' }
         - { src: 'pfp', dest: '{{ ansible_user_dir }}/Pictures' }
         - { src: 'Wallpapers/mountain.png', dest: '{{ ansible_user_dir }}/.config/background' }
+    
+    - name: Download additional wallpapers
+      ansible.builtin.shell:
+        cmd: |
+          cd {{ ansible_user_dir }}/Pictures/Wallpapers/
+          for i in $(curl "https://api.github.com/repos/"{{ item.repo }}"/git/trees/"{{ item.tree }}"?recursive=1" | jq '.tree.[].path' | grep {{ item.path }}"/"); do
+            curl --remote-name https://raw.githubusercontent.com/{{ item.repo }}/{{ item.tree }}/$i
+          done
+      become: false
+      changed_when: no
+      loop: "{{ system.ags.wallpaper_repos }}"
 
     - name: Synchronize ags system configuration files
       ansible.posix.synchronize:

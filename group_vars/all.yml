@@ -112,6 +112,18 @@ system:
       - gnome-calendar
       - spotube
 
+    # URLs of GitHub repos to download wallpapers from.
+    #
+    # GitHub API is employed to get the file list, so it's advised for you to stick to GitHub only.
+    #
+    # There are no extension filters - ALL files from the specified directory will be downloaded!
+    #
+    # The sample format below downloads from dianaw353/wallpapers, main branch, src folder.
+    #
+    # Files at the root of the repo is NOT supported yet.
+    wallpaper_repos:
+      - {  repo: "dianaw353/wallpapers", tree: "main", path: "src" }
+
 i18n:
   # Supplementary fonts
   fonts:

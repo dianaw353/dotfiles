@@ -6,6 +6,8 @@ https://github.com/dianaw353/dotfiles/tree/dev
   - It's now more familiar. ;3
 - AGS: Revamp the design for apps panel in AGSv2.
   - Looks much better to look at if you ask me.
+- AGS: Add support for additional wallpapers.
+  - Leverages from GitHub repos and employs GitHub API to do the heavy lifting.
 - Hyprland: v2-by-default behavior is active whenever AGSv2 is enabled regardless if v1 is enabled or not.
 - Vars: Enable both AGS versions. This will also enable a keybind to switch between them.
 
