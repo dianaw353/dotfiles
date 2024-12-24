@@ -8,9 +8,9 @@
         use: "{{ pacman.aur_helper }}"
       become: false
       loop:
-        - hyprutils-git
-        - hyprwayland-scanner-git
-        - hyprsunset-git
+        - hyprutils
+        - hyprwayland-scanner
+        - hyprsunset
         - hyprcursor
         - hyprlang
         - hypridle
