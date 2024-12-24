@@ -20,6 +20,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
 **Fixes**
 - Hyprland: The Hyprlock skin would render incorrectly with resolutions other than 1080p.
   - Resolved by repositioning the elements using proper `bottom` and `top` directives.
+- Update the default GTK3 theme to `adw-gtk3-dark` to better complement the preference for dark theme.
+  - Also document the config even further for an explanation about user-configured themes.
 
 Version 1.1.8.2
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.2
