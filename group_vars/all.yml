@@ -169,6 +169,7 @@ default_roles:
   - core_apps
   - i18n # Internationlization. Ex. fcitx5, supplementary fonts
   - custom_apps
+  # - flatpak
   # - kvm # Virtal Machine setup
   # - vmware # VMware Workstation - Type 2 hypervisor alternative to KVM
   - gaming
