@@ -2,10 +2,8 @@ Version dev
 https://github.com/dianaw353/dotfiles/tree/dev
 ----------------------------------------------
 **Changes**
-- AGS: Revamp the design for power menu in AGSv2.
-  - It's now more familiar. ;3
-- AGS: Revamp the design for apps panel in AGSv2.
-  - Looks much better to look at if you ask me.
+- AGS: Fully configure AGSv2.
+  - Also designed to be an improved version of the skin in AGSv1. :D
 - AGS: Add support for additional wallpapers.
   - Leverages from GitHub repos and employs GitHub API to do the heavy lifting.
 - Hyprland: v2-by-default behavior is active whenever AGSv2 is enabled regardless if v1 is enabled or not.
@@ -15,9 +13,6 @@ https://github.com/dianaw353/dotfiles/tree/dev
 - Add Flatpak as an opt-in role.
   - Flatpak has FlatHub preconfigured system-wide on Arch. We still have the repo directive in main task for other distros that don't follow suit.
   - Also installs Flatseal on Arch for permission management.
-
-**Fixes**
-- AGS: Make the power menu in AGSv2 dismissable by clicking outside.
 
 Version 1.1.8.3
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
