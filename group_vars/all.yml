@@ -24,8 +24,13 @@ system:
     # Default GTK theme to use during installation
     # Adwaita theme is the regular GTK3 Adwaita theme.
     # adw-gtk3 is a port of the Adwaita theme seen in GTK4.
-    # Options: Adwaita, adw-gtk3
-    theme: adw-gtk3
+    # 
+    # If you install an additional theme, this config is a good opportunity to set that as your preference.
+    # 
+    # Light themes WILL break the UI colors on AGSv2! A fix is in the way!
+    # 
+    # Options: Adwaita{,-dark}, adw-gtk3{,-dark}, ...
+    theme: adw-gtk3-dark
 
   # Headers package for your kernel
   # Required for VMware Workstation
@@ -96,7 +101,7 @@ system:
     # You may enable either or both, but NEVER NEITHER!
     versions:
       - v1
-      # v2
+      - v2
 
     # Favorites for Apps widget
     #
@@ -111,6 +116,18 @@ system:
       - nautilus
       - gnome-calendar
       - spotube
+
+    # URLs of GitHub repos to download wallpapers from.
+    #
+    # GitHub API is employed to get the file list, so it's advised for you to stick to GitHub only.
+    #
+    # There are no extension filters - ALL files from the specified directory will be downloaded!
+    #
+    # The sample format below downloads from dianaw353/wallpapers, main branch, src folder.
+    #
+    # Files at the root of the repo is NOT supported yet.
+    wallpaper_repos:
+      - {  repo: "dianaw353/wallpapers", tree: "main", path: "src" }
 
 i18n:
   # Supplementary fonts
@@ -169,6 +186,7 @@ default_roles:
   - core_apps
   - i18n # Internationlization. Ex. fcitx5, supplementary fonts
   - custom_apps
+  # - flatpak
   # - kvm # Virtal Machine setup
   # - vmware # VMware Workstation - Type 2 hypervisor alternative to KVM
   - gaming

@@ -1,0 +1,40 @@
+@use 'sass:color';
+
+// --- Dark Theme Variables ---
+$bg: #171717;
+$fg: #eeeeee;
+$primary-bg: #51a4e7;
+$primary-fg: #141414;
+$error-bg: #e55f86;
+$error-fg: #141414;
+
+$button-bg-hover: color.adjust($fg, $alpha: -0.84);
+$button-bg-active: color.adjust($fg, $alpha: -0.8);
+$border-radius: 30px;
+$margin: 0.5rem;
+$padding: 0.8rem;
+$box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.4);
+$error: red;
+$border-color-transparent: transparent;
+$border-color-inactive: color.adjust($bg, $lightness: 20%);
+
+$font-size: 1.1em;
+$font-weight: bold;
+$font-family: 'Ubuntu Nerd Font';
+
+$power-text-font-size: 1.25em;
+$power-icon-size: 5em;
+
+// Dimensions & Spacing
+$radius: 6px;
+$button-padding: 0 6px;
+$power-button-padding: 10px;
+$power-button-min-dimens: 1.7em;
+$label-margin: 0.25rem;
+$min-size: 0.5rem;
+$slider-margin: -0.2em;
+$icon-margin-right: 0.6em;
+$border-width: 2px;
+
+// Transitions
+$transition-duration: 200ms;

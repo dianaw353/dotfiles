@@ -1,0 +1,67 @@
+@use './dark_variables' as *;
+@use 'sass:math';
+
+// Window Styling
+.window {
+  color: $fg;
+  padding: $padding;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  font-family: $font-family;
+}
+
+// Powermenu Container Styling
+.powermenu-container {
+  padding: $padding;
+  background-color: $bg;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}
+
+// Action Buttons Container
+.action-buttons {
+  margin: 1.5*$power-button-padding;
+  padding-top: $margin;
+  padding-bottom: $margin;
+}
+
+// Action Button Styling
+.action-button {
+  outline-style: none;
+  color: $fg;
+  min-height: $power-button-min-dimens;
+  min-width: $power-button-min-dimens;
+  margin-left: math.div($power-button-padding, 2);
+  margin-right: math.div($power-button-padding, 2);
+  padding: 2*$power-button-padding;
+  border: $border-width solid $border-color-inactive;
+  border-radius: 100%;
+  transition: background-color $transition-duration, transform $transition-duration;
+
+  &:hover {
+    background-color: $button-bg-hover;
+  }
+
+  &:focus {
+    border-color: $primary-bg;
+    background-color: $button-bg-hover;
+  }
+
+  &:active {
+    background-color: $primary-bg;
+    color: $bg;
+  }
+
+  .action-icon {
+    font-size: $power-icon-size;
+  }
+}
+
+.action-label {
+  font-size: $power-text-font-size;
+}
+
+// Overlay Background
+.overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+}
