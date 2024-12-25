@@ -71,11 +71,14 @@ window.Bar {
     color: $primary-bg;
   }
 
+  .Wifi,
   .Media,
-  .SysTray,
-  .Battery label,
-  .Audio {
+  .SysTray {
     margin: $margin;
+  }
+
+  .Battery {
+    margin-left: $margin;
   }
 
   .PowerButton {
