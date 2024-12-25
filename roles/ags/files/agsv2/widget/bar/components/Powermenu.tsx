@@ -67,7 +67,7 @@ export default function Powermenu() {
           hide();
         }
       }}
-      className="window"
+      className="powermenu"
     >
       <box>
         <eventbox widthRequest={4000} expand onClick={hide} />
