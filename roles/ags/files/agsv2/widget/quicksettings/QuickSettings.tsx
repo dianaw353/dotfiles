@@ -16,6 +16,8 @@ export default function QS() {
         if (event.get_keyval()[1] === Gdk.KEY_Escape) self.hide();
       }}
       className="quicksettings"
+      marginTop={70}
+      marginRight={20}
     >
       <box className="powermenu-container"
         hexpand={false}
