@@ -236,15 +236,23 @@ function clone_repository {
     _cmd "cd $DOTFILES_DIR" 3 2 "Failed to enter into existing dotfiles directory."
     _cmd "git fetch $REPO_URL $REPO_BRANCH" 3 2 "Failed to fetch the latest changes on the requested release."
     _task "Backing up out-of-tree patches"
-    _cmd "git stash" 3 2 "Failed to stash uncommitted changes."
+    stashed=0
+    if [[ "$(git diff)" != "" ]]; then
+      _cmd "git stash" 3 2 "Failed to stash uncommitted changes."
+      stashed=1
+    fi
     _cmd "git format-patch -o oot_patches origin/$(git branch --show-current)" 3 2 "Failed to create patch files for out-of-tree commits."
     _task "Performing an in-place upgrade"
     _cmd "git checkout FETCH_HEAD" 3 2 "Failed to checkout to the requested release."
     _cmd "git branch -f $REPO_BRANCH" 3 2 "Failed to create the target branch."
     _cmd "git checkout $REPO_BRANCH" 3 2 "Failed to switch to the target branch."
     _task "Restoring out-of-tree patches"
-    _cmd "git am --empty=drop oot_patches/*.patch" 1 0 "Failed to apply out-of-tree patches. You might have conflicts in your working tree. Use git-status and fix the conflicts."
-    _cmd "git stash pop" 1 0 "Failed to reapply the uncommitted changes. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    if [[ -f "oot_patches/*.patch" ]]; then
+      _cmd "git am --empty=drop oot_patches/*.patch" 1 0 "Failed to apply out-of-tree patches. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    fi
+    if [[ $stashed -eq 1 ]]; then
+      _cmd "git stash pop" 1 0 "Failed to reapply the uncommitted changes. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    fi
     _task "Cleaning up"
     _cmd "rm -rf oot_patches" 3 2 "Failed to delete the temporary directory for out-of-tree patches."
   fi

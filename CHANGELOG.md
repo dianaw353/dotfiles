@@ -20,6 +20,7 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
 **Script**
 - Miscallenous improvements to the preinstall script
   - Lint the script using shellcheck and fix the syntax warnings accordingly.
+  - Handle the OOT patches during git-based upgrades properly.
 
 **Fixes**
 - Hyprland: The Hyprlock skin would render incorrectly with resolutions other than 1080p.
