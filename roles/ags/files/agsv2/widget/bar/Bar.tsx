@@ -2,9 +2,7 @@ import { Astal, Gtk, Gdk } from "astal/gtk3"
 import PowerButton from "./components/PowerButton";
 import Workspaces from "./components/Workspaces"
 import SysTray from "./components/SysTray"
-import Wifi from "./components/Wifi"
-import Audio from "./components/Audio"
-import BatteryLevel from "./components/BatteryLevel"
+import QSButton from "./components/QSButton"
 import Media from "./components/Media"
 import FocusedClient from "./components/FocusedClient";
 import Time from "./components/Time";
@@ -32,9 +30,7 @@ export default function Bar(monitor: Gdk.Monitor) {
             </box>
             <box hexpand halign={Gtk.Align.END} >
                 <SysTray />
-                <Wifi />
-                <Audio />
-                <BatteryLevel />
+                <QSButton />
                 <PowerButton />
             </box>
         </centerbox>
