@@ -17,6 +17,10 @@ https://github.com/dianaw353/dotfiles/tree/dev
 Version 1.1.8.3
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
 -----------------------------------------------------------
+**Script**
+- Miscallenous improvements to the preinstall script
+  - Lint the script using shellcheck and fix the syntax warnings accordingly.
+
 **Fixes**
 - Hyprland: The Hyprlock skin would render incorrectly with resolutions other than 1080p.
   - Resolved by repositioning the elements using proper `bottom` and `top` directives.
