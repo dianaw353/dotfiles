@@ -19,7 +19,7 @@ export default function QS() {
       marginTop={70}
       marginRight={20}
     >
-      <box className="powermenu-container"
+      <box className="quicksettings-container"
         hexpand={false}
         heightRequest={500} widthRequest={500} 
         comment="We'll be filling the contents of this thing later...">
