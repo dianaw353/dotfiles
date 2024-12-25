@@ -15,5 +15,9 @@ window#quicksettings {
   padding: $padding;
   background-color: $bg;
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  /* box-shadow: $box-shadow; */
+}
+
+.action-mini-qsbutton {
+  border-radius: 100%;
 }
