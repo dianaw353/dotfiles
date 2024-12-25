@@ -18,6 +18,7 @@
   padding: $button-padding;
   margin: $label-margin;
   border: $border-width solid $border-color-transparent;
+  border-radius: $border-radius;
 
   &:hover {
     background-color: $hover-bg-color;
@@ -83,5 +84,10 @@ window.Bar {
 
   .PowerButton {
     margin-right: $margin; // Adjust the right margin as needed
+
+    icon {
+      margin-left: math.div($margin, 1.5);
+      margin-right: math.div($margin, 1.5);
+    }
   }
 }
