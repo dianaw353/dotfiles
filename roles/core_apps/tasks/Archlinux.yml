@@ -21,7 +21,7 @@
       when: "'zsh' in core_packages"
 
     - name: Install Some Helix Launguage Support Dependencies
-      ansible.builtin.pacman:
+      kewlfft.aur.aur:
         name: "{{ item }}"
         state: present
       loop:
