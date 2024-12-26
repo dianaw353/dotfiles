@@ -1,6 +1,7 @@
 import { App, Astal, Gdk, Gtk } from "astal/gtk3"
 import { execAsync } from "astal/process";
 import BatteryLevel from "../bar/components/BatteryLevel";
+import Audio from "./Audio";
 
 function hide() {
   App.get_window("quicksettings")!.hide();
@@ -28,8 +29,9 @@ export default function QS() {
   const actions = [
     { action: "logout", icon: "system-log-out-symbolic" },
     { action: "shutdown", icon: "system-shutdown-symbolic" },
-  ]
-  return(
+  ];
+  
+  return (
     <window
       name="quicksettings"
       anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT}
@@ -46,24 +48,31 @@ export default function QS() {
       <box className="quicksettings-container"
         hexpand={false}
         comment="We'll be filling the contents of this thing later...">
-        <box orientation="horizontal" spacing={16} className="mini-qsbuttons">
-          <button valign={Gtk.Align.LEFT} vertical>
-            <BatteryLevel />
-          </button>
-          {actions.map(({ action, icon}) => (
-            <box valign={Gtk.Align.TOP} vertical className="mini-qsbuttons-master">
+        
+        <box orientation="vertical" spacing={16} className="mini-qsbuttons-master" vertical>
+          <box orientation="horizontal" spacing={16} className="mini-qsbuttons">
+            <button valign={Gtk.Align.LEFT} vertical>
+              <BatteryLevel />
+            </button>
+          <box orientation="vertical" widthRequest={350} />
+            {actions.map(({ action, icon }) => (
               <button
                 className="action-mini-qsbutton"
                 onClicked={() => handleAction(action)}
                 valign={Gtk.Align.CENTER}
                 vertical
               >
-              <icon className="action-qsicon" icon={icon} />
+                <icon className="action-qsicon" icon={icon} />
               </button>
-            </box>
-          ))}
+            ))}
           </box>
-          <eventbox onClick={hide} />
+          
+          <box orientation="horizontal" spacing={16} className="slider-container" halign={Gtk.Align.CENTER} widthRequest={470}>
+            <Audio />
+          </box>
+        </box>
+        
+        <eventbox onClick={hide} />
       </box>
     </window>
   );
