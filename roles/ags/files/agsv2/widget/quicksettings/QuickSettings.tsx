@@ -3,6 +3,7 @@ import { execAsync } from "astal/process";
 import BatteryLevel from "../bar/components/BatteryLevel";
 import Audio from "./Audio";
 import BrightnessSlider from "./Brightness";
+import NetworkButton from "./Network";
 
 const COMMANDS = {
   shutdown: "shutdown now",
@@ -70,6 +71,9 @@ export default function QS() {
           <box orientation="horizontal" spacing={16} className="slider-container" halign={Gtk.Align.CENTER} widthRequest={470}>
             <BrightnessSlider />
           </box>
+        <box orientation ="horizontal" spacing={16} className="button" halign={Gtk.Align.RIGHT} widthRequest={230}>
+          <NetworkButton/>
+        </box>
         </box>
 
         <eventbox onClick={hide} />
