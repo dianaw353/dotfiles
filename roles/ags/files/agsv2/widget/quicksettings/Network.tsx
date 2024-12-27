@@ -1,18 +1,35 @@
 import { Variable, GLib, bind } from "astal";
 import { Gtk } from "astal/gtk3";
-import { exec, execAsync } from "astal/process";
 import Network from "gi://AstalNetwork";
+import { exec, execAsync } from "astal/process"
 
 export default function NetworkButton() {
   const { wifi } = Network.get_default();
 
+  const getWifiStatusLabel = () => {
+    if (!wifi.enabled) {
+      return "Connecting...";
+    } else if (wifi.ssid) {
+      return wifi.ssid; // Display the SSID if connected
+    } else {
+      return "Enabled"; // Display "Enabled" if Wi-Fi is on but not connected
+    }
+  };
+
+  const toggleWifi = () => {
+    if (wifi.enabled) {
+      wifi.set_enabled(false); // Disable Wi-Fi
+    } else {
+      wifi.set_enabled(true); // Enable Wi-Fi
+    }
+  };
+
   const handleMainButtonClick = () => {
-    // Logic for the main button click
-    console.log("Main button clicked!");
+    toggleWifi();
+    console.log(`Wi-Fi is now ${wifi.enabled ? 'disabled' : 'enabled'}`);
   };
 
   const handleDropdownButtonClick = () => {
-    // Logic for the dropdown button click
     exec("wezterm -e sh -c 'printf \"\\033]0;Network Manager TUI\\007\"; nmtui'")
     console.log("Dropdown button clicked!");
   };
@@ -28,7 +45,7 @@ export default function NetworkButton() {
             />
             <label
               className="ssid"
-              label={bind(wifi, "ssid").as(String)}
+              label={getWifiStatusLabel()} // Use the status label function
             />
           </box>
         </button>
