@@ -50,6 +50,7 @@
         state: link
       loop:
         - chrome
+        - code
         - electron12
         - spotify
         - vesktop/vesktop
