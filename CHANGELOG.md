@@ -23,6 +23,9 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
   - Handle the OOT patches during git-based upgrades properly.
 
 **Fixes**
+- Link the electron configuration to the configuration VSCode uses.
+- Hyprland: Attempt to reinstall hyprwayland-scanner to fix hyprpm
+  - See: https://github.com/hyprwm/Hyprland/issues/6008
 - Hyprland: The Hyprlock skin would render incorrectly with resolutions other than 1080p.
   - Resolved by repositioning the elements using proper `bottom` and `top` directives.
 - Update the default GTK3 theme to `adw-gtk3-dark` to better complement the preference for dark theme.
