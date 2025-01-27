@@ -1,10 +1,11 @@
 ---
 # If we don't do this, Hyprland will fail to activate plugins on fly.
 - name: HyprPM | Reinstall HyprWayland-Scanner
-  community.general.pacman:
-    name: hyprwayland-scanner
-    state: present
-    reason_for: all
+  ansible.builtin.shell:
+    cmd: |
+      pacman -S --noconfirm hyprwayland-scanner
+  changed_when: no
+  become: true
 
 - name: HyprPM | Test HyprPM and Rebuild If Necessary
   when:
