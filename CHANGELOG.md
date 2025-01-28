@@ -4,6 +4,7 @@ https://github.com/dianaw353/dotfiles/tree/dev
 **Changes**
 - AGS: Fully configure AGSv2.
   - Also designed to be an improved version of the skin in AGSv1. :D
+  - It's also maintained in [a separate repo](https://github.com/kurtbahartr/diana-epik-shell) for portability.
 - AGS: Add support for additional wallpapers.
   - Leverages from GitHub repos and employs GitHub API to do the heavy lifting.
 - Hyprland: v2-by-default behavior is active whenever AGSv2 is enabled regardless if v1 is enabled or not.
