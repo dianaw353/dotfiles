@@ -108,8 +108,8 @@ system:
     # Up to 5 favorites are advised. Any more will make the widget
     # wider and might even make it render out of display.
     #
-    # Accepted values are any descriptive string, such as a unique
-    # portion of the Exec or the Icon line, in the app's .desktop file.
+    # Accepted values are the .desktop file names, without the
+    # ".desktop" extension, of the said app.
     favorites:
       - zen-browser
       - wezterm
