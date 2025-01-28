@@ -24,6 +24,8 @@ https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
 
 **Fixes**
 - Link the electron configuration to the configuration VSCode uses.
+- Hyprland: Add configuration for the Hypr "ecosystem".
+  - Basically disables the "Hyprland is updated!" dialogs and donation begging.
 - Hyprland: Attempt to reinstall hyprwayland-scanner to fix hyprpm
   - See: https://github.com/hyprwm/Hyprland/issues/6008
 - Hyprland: The Hyprlock skin would render incorrectly with resolutions other than 1080p.
