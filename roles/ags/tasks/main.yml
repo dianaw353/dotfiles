@@ -70,17 +70,18 @@
       loop:
         - { src: "agsv2", dest: "{{ ansible_user_dir }}/.config/" }
 
-    - name: Ags user config - Favorites
+    - name: Ags user config - Options
       ansible.builtin.template:
         src: "{{ item.src }}"
-        dest: "{{ ansible_user_dir }}/.config/{{ item.version }}/lib/favorites.ts"
+        dest: "{{ ansible_user_dir }}/.config/{{ item.version }}/{{ item.target }}"
         backup: no
       become: false
       when:
         - system.ags.versions is defined
         - system.ags.favorites is defined
       loop:
-        - { src: "favorites.ts.j2", version: "ags" }
+        - { src: "favorites.ts.j2", version: "ags", target: "lib/favorites.ts" }
+        - { src: "options.ts.j2", version: "agsv2", target: "options.ts" }
 
     - name: Get the name for keybound terminal app
       ansible.builtin.shell:
