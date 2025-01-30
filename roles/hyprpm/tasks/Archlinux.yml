@@ -1,4 +1,12 @@
 ---
+# If we don't do this, Hyprland will fail to activate plugins on fly.
+- name: HyprPM | Reinstall HyprWayland-Scanner
+  ansible.builtin.shell:
+    cmd: |
+      pacman -S --noconfirm hyprwayland-scanner
+  changed_when: no
+  become: true
+
 - name: HyprPM | Test HyprPM and Rebuild If Necessary
   when:
     - system.hyprland.plugins.rebuild_hypr_on_failure.enabled is defined
@@ -58,6 +66,6 @@
   always:
     - name: HyprPM | Update HyprPM Package List After Attempting Rebuild
       command: hyprpm update
-      ignore_errors: yes
+      ignore_errors: true
       register: hyprpm_update_outcome
       changed_when: no

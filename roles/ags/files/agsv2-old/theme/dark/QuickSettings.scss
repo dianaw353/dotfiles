@@ -1,0 +1,23 @@
+@use './dark_variables' as *;
+@use 'sass:math';
+
+// Window Styling
+window#quicksettings {
+  color: $fg;
+  padding: $padding;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  font-family: $font-family;
+}
+
+// QuickSettings Container Styling - Copied from Powermenu
+.quicksettings-container {
+  padding: $padding;
+  background-color: $bg;
+  border-radius: $border-radius;
+  /* box-shadow: $box-shadow; */
+}
+
+.action-mini-qsbutton {
+  border-radius: 100%;
+}

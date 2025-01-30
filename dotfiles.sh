@@ -2,35 +2,13 @@
 
 # Color codes
 RESTORE='\033[0m'
-BLACK='\033[00;30m'
-RED='\033[00;31m'
-GREEN='\033[00;32m'
-YELLOW='\033[00;33m'
-BLUE='\033[00;34m'
-PURPLE='\033[00;35m'
-CYAN='\033[00;36m'
-LIGHTGRAY='\033[00;37m'
 LBLACK='\033[01;30m'
 LRED='\033[01;31m'
 LGREEN='\033[01;32m'
 LYELLOW='\033[01;33m'
-LBLUE='\033[01;34m'
-LPURPLE='\033[01;35m'
-LCYAN='\033[01;36m'
-WHITE='\033[01;37m'
 OVERWRITE='\e[1A\e[K'
 
-# Emoji codes
-CHECK_MARK="${GREEN}\xE2\x9C\x94${RESTORE}"
-X_MARK="${RED}\xE2\x9C\x96${RESTORE}"
-PIN="${RED}\xF0\x9F\x93\x8C${RESTORE}"
-CLOCK="${GREEN}\xE2\x8C\x9B${RESTORE}"
-ARROW="${CYAN}\xE2\x96\xB6${RESTORE}"
-BOOK="${RED}\xF0\x9F\x93\x8B${RESTORE}"
-WARNING="${RED}\xF0\x9F\x9A\xA8${RESTORE}"
-RIGHT_ANGLE="${GREEN}\xE2\x88\x9F${RESTORE}"
-
-DOTFILES_LOG="$HOME/.dotfiles.log"
+DOTFILES_LOG="$HOME/.cache/dotfiles.log"
 DOTFILES_DIR="$HOME/dotfiles"
 
 set -e
@@ -90,10 +68,10 @@ done
 # Function to display task status
 function _task {
   if [[ $TASK != "" ]]; then
-    printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}${RESTORE}\n"
+    echo -e "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}${RESTORE}"
   fi
   TASK=$1
-  printf "${LBLACK} [ ]  ${TASK}${RESTORE}\n"
+  echo -e "${LBLACK} [ ]  ${TASK}${RESTORE}"
 }
 
 # Improved command execution with retry and error handling
@@ -104,27 +82,28 @@ function _cmd {
   local error_message=${4:-"Command failed: $command"} # Custom error message
 
   if ! [[ -f $DOTFILES_LOG ]]; then
-    touch $DOTFILES_LOG
+    touch "$DOTFILES_LOG"
   fi
-  > $DOTFILES_LOG
 
-  for ((i=0; i<retries; i++)); do
-    if eval "$command" 1> /dev/null 2> $DOTFILES_LOG; then
-      return 0 # success
-    else
-      printf "${OVERWRITE}${LRED} [X]  Attempt $((i+1)) failed: ${TASK}${RESTORE}\n"
-      sleep $retry_delay
-    fi
-  done
+  {
+    for ((i=0; i<retries; i++)); do
+      if eval "$command" 1> /dev/null 2> "$DOTFILES_LOG"; then
+        return 0 # success
+      else
+        echo -e "${OVERWRITE}${LRED} [X]  Attempt $((i+1)) failed: ${TASK}${RESTORE}"
+        sleep "$retry_delay"
+      fi
+    done
 
-  # Final failure message with error output
-  printf "${OVERWRITE}${LRED} [X]  ${TASK} - ${error_message}${RESTORE}\n"
-  while read -r line; do
-    printf "      ${line}\n"
-  done < $DOTFILES_LOG
+    # Final failure message with error output
+    echo -e "${OVERWRITE}${LRED} [X]  ${TASK} - ${error_message}${RESTORE}"
+    while read -r line; do
+      echo -e "      ${line}"
+    done
+   } > "$DOTFILES_LOG"
   printf "\n"
 
-  rm $DOTFILES_LOG
+  rm "$DOTFILES_LOG"
   exit 1
 }
 
@@ -133,7 +112,7 @@ function _clear_task {
 }
 
 function _task_done {
-  printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}${RESTORE}\n"
+  echo -e "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}${RESTORE}"
   _clear_task
 }
 
@@ -157,7 +136,7 @@ function update_ansible_galaxy {
   if [ -f "$DOTFILES_DIR/requirements/common.yml" ]; then
     _cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml" 3 2 "Ansible Galaxy update for common.yml failed."
   else
-    printf "${LYELLOW} [-] ./requirements/common.yml does not exist. Skipping Ansible Galaxy update.${RESTORE}\n"
+    echo -e "${LYELLOW} [-] ./requirements/common.yml does not exist. Skipping Ansible Galaxy update.${RESTORE}"
   fi
 }
 
@@ -177,18 +156,20 @@ function get_latest_version {
 
 # Get the installed version
 function get_installed_version {
-  if [[ $MODE == "rolling" || "developer" ]] && [[ -d "$DOTFILES_DIR/.git" ]]; then
-    cd $DOTFILES_DIR
+  if [[ $MODE == "rolling" || $MODE == "developer" ]] && [[ -d "$DOTFILES_DIR/.git" ]]; then
+    cd "$DOTFILES_DIR"
     git rev-parse HEAD
   elif [[ -f "$DOTFILES_DIR/VERSION" ]]; then
-    cat $DOTFILES_DIR/VERSION
+    cat "$DOTFILES_DIR/VERSION"
   fi
 }
 
 # Check if we have the latest version
 function check_version {
-  local latest_version="$(get_latest_version)"
-  local installed_version="$(get_installed_version)"
+  latest_version="$(get_latest_version)"
+  local latest_version
+  installed_version="$(get_installed_version)"
+  local installed_version
 
   _task "Checking for updates..."
   [[ "${latest_version}" != "${installed_version}" ]] || _cmd "false" 1 0 "You already have the latest version."
@@ -196,8 +177,10 @@ function check_version {
 
 # Get the diff between local and remote versions so we know what changes to apply
 function get_upgrade_diff {
-  local latest_version=$(get_latest_version)
-  local installed_version=$(get_installed_version)
+  latest_version=$(get_latest_version)
+  local latest_version
+  installed_version=$(get_installed_version)
+  local installed_version
 
   curl --silent \
     -H "Accept: application/vnd.github.diff" \
@@ -206,7 +189,8 @@ function get_upgrade_diff {
 
 # Perform an upgrade by patching/pulling instead of cloning everything from scratch
 function upgrade {
-  local latest_version=$(get_latest_version)
+  latest_version=$(get_latest_version)
+  local latest_version
 
   _task "Upgrading existing dotfiles..."
   _cmd "cd $DOTFILES_DIR" 3 2 "Failed to enter into existing dotfiles directory."
@@ -223,7 +207,8 @@ function get_latest_zip {
 
 # Download the latest release and extract it
 function download_latest_release {
-  local zip_url=$(get_latest_zip)
+  zip_url=$(get_latest_zip)
+  local zip_url
   local zip_file="$HOME/dotfiles_latest.zip"
 
   _task "Downloading the latest release from GitHub"
@@ -251,15 +236,23 @@ function clone_repository {
     _cmd "cd $DOTFILES_DIR" 3 2 "Failed to enter into existing dotfiles directory."
     _cmd "git fetch $REPO_URL $REPO_BRANCH" 3 2 "Failed to fetch the latest changes on the requested release."
     _task "Backing up out-of-tree patches"
-    _cmd "git stash" 3 2 "Failed to stash uncommitted changes."
+    stashed=0
+    if [[ "$(git diff)" != "" ]]; then
+      _cmd "git stash" 3 2 "Failed to stash uncommitted changes."
+      stashed=1
+    fi
     _cmd "git format-patch -o oot_patches origin/$(git branch --show-current)" 3 2 "Failed to create patch files for out-of-tree commits."
     _task "Performing an in-place upgrade"
     _cmd "git checkout FETCH_HEAD" 3 2 "Failed to checkout to the requested release."
     _cmd "git branch -f $REPO_BRANCH" 3 2 "Failed to create the target branch."
     _cmd "git checkout $REPO_BRANCH" 3 2 "Failed to switch to the target branch."
     _task "Restoring out-of-tree patches"
-    _cmd "git am --empty=drop oot_patches/*.patch" 1 0 "Failed to apply out-of-tree patches. You might have conflicts in your working tree. Use git-status and fix the conflicts."
-    _cmd "git stash pop" 1 0 "Failed to reapply the uncommitted changes. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    if [[ -f "oot_patches/*.patch" ]]; then
+      _cmd "git am --empty=drop oot_patches/*.patch" 1 0 "Failed to apply out-of-tree patches. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    fi
+    if [[ $stashed -eq 1 ]]; then
+      _cmd "git stash pop" 1 0 "Failed to reapply the uncommitted changes. You might have conflicts in your working tree. Use git-status and fix the conflicts."
+    fi
     _task "Cleaning up"
     _cmd "rm -rf oot_patches" 3 2 "Failed to delete the temporary directory for out-of-tree patches."
   fi
@@ -278,7 +271,7 @@ case $ID in
     ;;
 esac
 
-if [[ $MODE == "rolling" || "developer" ]]; then
+if [[ $MODE == "rolling" || $MODE == "developer" ]]; then
   clone_repository
 elif [[ -f "$DOTFILES_DIR/VERSION" ]]; then
   check_version

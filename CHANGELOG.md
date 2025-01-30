@@ -1,3 +1,39 @@
+Version dev
+https://github.com/dianaw353/dotfiles/tree/dev
+----------------------------------------------
+**Changes**
+- AGS: Fully configure AGSv2.
+  - Also designed to be an improved version of the skin in AGSv1. :D
+  - It's also maintained in [a separate repo](https://github.com/kurtbahartr/diana-epik-shell) for portability.
+- AGS: Add support for additional wallpapers.
+  - Leverages from GitHub repos and employs GitHub API to do the heavy lifting.
+- Hyprland: v2-by-default behavior is active whenever AGSv2 is enabled regardless if v1 is enabled or not.
+- Vars: Enable both AGS versions. This will also enable a keybind to switch between them.
+
+**Script**
+- Add Flatpak as an opt-in role.
+  - Flatpak has FlatHub preconfigured system-wide on Arch. We still have the repo directive in main task for other distros that don't follow suit.
+  - Also installs Flatseal on Arch for permission management.
+
+Version 1.1.8.3
+https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.3
+-----------------------------------------------------------
+**Script**
+- Miscallenous improvements to the preinstall script
+  - Lint the script using shellcheck and fix the syntax warnings accordingly.
+  - Handle the OOT patches during git-based upgrades properly.
+
+**Fixes**
+- Link the electron configuration to the configuration VSCode uses.
+- Hyprland: Add configuration for the Hypr "ecosystem".
+  - Basically disables the "Hyprland is updated!" dialogs and donation begging.
+- Hyprland: Attempt to reinstall hyprwayland-scanner to fix hyprpm
+  - See: https://github.com/hyprwm/Hyprland/issues/6008
+- Hyprland: The Hyprlock skin would render incorrectly with resolutions other than 1080p.
+  - Resolved by repositioning the elements using proper `bottom` and `top` directives.
+- Update the default GTK3 theme to `adw-gtk3-dark` to better complement the preference for dark theme.
+  - Also document the config even further for an explanation about user-configured themes.
+
 Version 1.1.8.2
 https://github.com/dianaw353/dotfiles/releases/tag/V1.1.8.2
 -----------------------------------------------------------

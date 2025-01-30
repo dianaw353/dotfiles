@@ -1,0 +1,70 @@
+@use './dark_variables' as *;
+@use 'sass:string';
+@use 'sass:color';
+
+// --- Main Styles ---
+
+window#launcher {
+  all: unset;
+
+  box.Applauncher {
+    background-color: $bg;
+    border-radius: $border-radius;
+    margin: $margin;
+    padding: $padding;
+    box-shadow: $box-shadow;
+
+    entry {
+      margin-bottom: $margin;
+      border: $border-width solid $bg;
+      border-radius: $border-radius;
+    }
+
+    button {
+      min-width: 0;
+      min-height: 0;
+      padding: 1.5*$power-button-padding;
+      padding-top: 0.75*$power-button-padding;
+      padding-bottom: 0.75*$power-button-padding;
+      border: $border-width solid $border-color-inactive;
+      border-radius: $border-radius;
+
+      &:hover {
+        background-color: $button-bg-hover;
+      }
+
+      &:focus {
+        border-color: $primary-bg;
+        background-color: $button-bg-hover;
+      }
+
+      icon {
+        font-size: 3em;
+        margin-right: .75rem;
+      }
+
+      label.name {
+        font-weight: $font-weight;
+        font-size: $font-size;
+      }
+
+      label.description {
+        color: rgba($fg, 0.8);
+      }
+    }
+
+    box.not-found {
+      padding: 1rem;
+
+      icon {
+        font-size: 6em;
+        color: rgba($fg, 0.7);
+      }
+
+      label {
+        color: rgba($fg, 0.9);
+        font-size: 1.2em;
+      }
+    }
+  }
+}
